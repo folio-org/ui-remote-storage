@@ -1,0 +1,90 @@
+{
+  "name": "@folio/remote-storage",
+  "version": "1.0.0",
+  "description": "Description for remote storage",
+  "main": "index.js",
+  "repository": "",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=10"
+  },
+  "stripes": {
+    "actsAs": [
+      "settings"
+    ],
+    "displayName": "ui-remote-storage.meta.title",
+    "route": "/remote-storage",
+    "okapiInterfaces": {
+    },
+    "icons": [
+      {
+        "name": "app",
+        "alt": "View and manage remote storages",
+        "title": "Remote storage"
+      }
+    ],
+    "stripesDeps": [
+      "@folio/stripes-acq-components"
+    ],
+    "permissionSets": [
+      {
+        "permissionName": "settings.remote-storage.enabled",
+        "displayName": "Settings (Remote storages): display list of settings pages",
+        "subPermissions": [
+          "settings.enabled"
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "build": "stripes build --output ./output",
+    "lint": "eslint .",
+    "start": "stripes serve",
+    "test": "jest --ci --coverage --passWithNoTests"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.7.4",
+    "@folio/eslint-config-stripes": "^5.0.0",
+    "@folio/stripes": "^5.0.0",
+    "@folio/stripes-cli": "^1.13.0",
+    "@testing-library/jest-dom": "^5.11.1",
+    "@testing-library/react": "^11.0.2",
+    "babel-eslint": "^10.0.0",
+    "babel-jest": "^26.3.0",
+    "core-js": "^3.6.1",
+    "eslint": "^6.2.1",
+    "eslint-plugin-filenames": "^1.3.2",
+    "eslint-plugin-jest": "^24.0.0",
+    "faker": "^4.1.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.4.2",
+    "jest-css-modules": "^2.1.0",
+    "jest-junit": "^11.1.0",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
+    "react-intl": "^5.7.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "regenerator-runtime": "^0.13.3"
+  },
+  "dependencies": {
+    "@folio/stripes-acq-components": "^2.1.0",
+    "lodash": "^4.17.5",
+    "prop-types": "^15.5.10",
+    "query-string": "^6.1.0",
+    "react-hot-loader": "^4.3.12",
+    "react-router-prop-types": "^1.0.4"
+  },
+  "peerDependencies": {
+    "@folio/stripes": "^5.0.0",
+    "react": "*",
+    "react-intl": "^5.7.0 ",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0"
+  }
+}
