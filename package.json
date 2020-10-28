@@ -33,6 +33,14 @@
         "subPermissions": [
           "settings.enabled"
         ]
+      },
+      {
+        "permissionName": "ui-remote-storage.settings.remote-storages.all",
+        "displayName": "Remote storage: Create and edit",
+        "visible": true,
+        "subPermissions": [
+          "settings.remote-storage.enabled"
+        ]
       }
     ]
   },
