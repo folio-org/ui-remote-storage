@@ -14,8 +14,7 @@
     ],
     "displayName": "ui-remote-storage.meta.title",
     "route": "/remote-storage",
-    "okapiInterfaces": {
-    },
+    "okapiInterfaces": {},
     "icons": [
       {
         "name": "app",
@@ -83,6 +82,7 @@
   "dependencies": {
     "@folio/stripes-acq-components": "^2.1.0",
     "lodash": "^4.17.5",
+    "moment": "^2.29.1",
     "prop-types": "^15.5.10",
     "query-string": "^6.1.0",
     "react-hot-loader": "^4.3.12",

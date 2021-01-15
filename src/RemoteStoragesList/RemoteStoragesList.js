@@ -1,0 +1,86 @@
+import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
+import {
+  withRouter,
+} from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
+
+import {
+  Pane,
+  MultiColumnList,
+  PaneMenu,
+  Button,
+} from '@folio/stripes/components';
+
+import { STORAGES_LIST_ROUTE } from '../const';
+
+const visibleColumns = ['name', 'providerName', 'lastUpdate'];
+const columnMapping = {
+  name: <FormattedMessage id="ui-remote-storage.list.name" />,
+  providerName: <FormattedMessage id="ui-remote-storage.list.providerName" />,
+  lastUpdate: <FormattedMessage id="ui-remote-storage.list.lastUpdate" />,
+};
+
+const RemoteStoragesList = ({
+  defaultWidth,
+  storages,
+  isLoading,
+  storagesCount,
+  history,
+}) => {
+  const openStorageDetails = useCallback(
+    (e, meta) => {
+      history.push({
+        pathname: `${STORAGES_LIST_ROUTE}/view/${meta.id}`,
+      });
+    },
+    [history],
+  );
+
+  const lastMenu = (
+    <PaneMenu>
+      <Button
+        id="new-remote-storage"
+        onClick={() => {}}
+        buttonStyle="primary"
+        marginBottom0
+      >
+        <FormattedMessage id="stripes-smart-components.new" />
+      </Button>
+    </PaneMenu>
+  );
+
+  return (
+    <Pane
+      paneTitle={<FormattedMessage id="ui-remote-storage.meta.title" />}
+      defaultWidth={defaultWidth}
+      lastMenu={lastMenu}
+    >
+      <MultiColumnList
+        id="storages-list"
+        totalCount={storagesCount}
+        contentData={storages}
+        visibleColumns={visibleColumns}
+        columnMapping={columnMapping}
+        loading={isLoading}
+        onRowClick={openStorageDetails}
+        autosize
+      />
+    </Pane>
+  );
+};
+
+RemoteStoragesList.propTypes = {
+  defaultWidth: PropTypes.string,
+  storages: PropTypes.arrayOf(PropTypes.object),
+  isLoading: PropTypes.bool,
+  storagesCount: PropTypes.number,
+  history: ReactRouterPropTypes.history.isRequired,
+};
+
+RemoteStoragesList.defaultProps = {
+  defaultWidth: '50%',
+};
+
+export default withRouter(RemoteStoragesList);
