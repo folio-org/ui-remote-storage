@@ -2,9 +2,8 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import {
-  withRouter,
+  useHistory,
 } from 'react-router-dom';
-import ReactRouterPropTypes from 'react-router-prop-types';
 
 import {
   Pane,
@@ -27,8 +26,9 @@ const RemoteStoragesList = ({
   storages,
   isLoading,
   storagesCount,
-  history,
 }) => {
+  const history = useHistory();
+
   const openStorageDetails = useCallback(
     (e, meta) => {
       history.push({
@@ -76,11 +76,10 @@ RemoteStoragesList.propTypes = {
   storages: PropTypes.arrayOf(PropTypes.object),
   isLoading: PropTypes.bool,
   storagesCount: PropTypes.number,
-  history: ReactRouterPropTypes.history.isRequired,
 };
 
 RemoteStoragesList.defaultProps = {
   defaultWidth: '50%',
 };
 
-export default withRouter(RemoteStoragesList);
+export default RemoteStoragesList;

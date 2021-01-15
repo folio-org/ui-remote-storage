@@ -2,9 +2,8 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import {
-  withRouter,
+  useHistory,
 } from 'react-router-dom';
-import ReactRouterPropTypes from 'react-router-prop-types';
 
 import {
   Pane,
@@ -33,8 +32,9 @@ const RemoteStorageDetails = ({
   defaultWidth,
   storage,
   isLoading,
-  history,
 }) => {
+  const history = useHistory();
+
   const [expandAll, sections, toggleSection] = useAccordionToggle(
     Object.values(SECTIONS_STORAGE).reduce((acc, k) => {
       acc[k] = true;
@@ -133,11 +133,10 @@ RemoteStorageDetails.propTypes = {
   defaultWidth: PropTypes.string,
   storage: PropTypes.object,
   isLoading: PropTypes.bool,
-  history: ReactRouterPropTypes.history.isRequired,
 };
 
 RemoteStorageDetails.defaultProps = {
   defaultWidth: '50%',
 };
 
-export default withRouter(RemoteStorageDetails);
+export default RemoteStorageDetails;

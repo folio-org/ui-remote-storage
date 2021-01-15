@@ -28,7 +28,7 @@ const RemoteStoragesListContainer = ({
       setStoragesList(prev => [
         ...prev,
         ...configurations.map(storage => {
-          const lastUpdate = moment.utc(storage.metadata.updatedDateю || storage.metadata.createdDate);
+          const lastUpdate = moment.utc(storage.metadata.updatedDate || storage.metadata.createdDate);
 
           return {
             ...storage,
@@ -56,14 +56,6 @@ RemoteStoragesListContainer.manifest = Object.freeze({
     accumulate: true,
     throwErrors: false,
   },
-  // mappings: {
-  //   type: 'okapi',
-  //   path: 'remote-storage/mappings',
-  //   records: 'mappings',
-  //   pk: 'folioLocationId',
-  //   clientGeneratePk: false, // because we use POST instead of PUT for modification here (there's no PUT)
-  //   throwErrors: false,
-  // },
 });
 
 RemoteStoragesListContainer.propTypes = {

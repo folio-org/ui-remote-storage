@@ -19,9 +19,7 @@ const RemoteStorageDetailsContainer = ({
     setIsLoading(true);
     mutator.configurations.GET({
       path: `remote-storage/configurations/${params.id}`,
-    }).then(storageResponse => {
-      setStorage(storageResponse);
-    }).finally(() => setIsLoading(false));
+    }).then(setStorage).finally(() => setIsLoading(false));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.id]);
 
