@@ -1,5 +1,20 @@
 {
   "meta.title": "Remote storage",
 
+  "list.name": "Name",
+  "list.providerName": "Provider",
+  "list.lastUpdate": "Last Update",
+
+  "details.title": "General information",
+  "details.storageName": "Remote storage name",
+  "details.providerName": "Provider name",
+  "details.url": "URL (domain)",
+  
+  "accession.title": "Accession configuration",
+  "accession.schedule.title": "Accession Schedule",
+  "accession.schedule.info": "Runs every {delay} {unit}(s)",
+
+  "retrieval.title": "Retrieval configuration",
+
   "permission.settings.remote-storages.all": "Remote storage: Create and edit"
 }
