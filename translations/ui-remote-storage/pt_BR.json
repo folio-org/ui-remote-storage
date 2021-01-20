@@ -1,4 +1,15 @@
 {
     "meta.title": "Armazenamento externo",
-    "permission.settings.remote-storages.all": "Armazenamento remoto: Criar e editar"
+    "permission.settings.remote-storages.all": "Armazenamento remoto: Criar e editar",
+    "list.name": "Nome",
+    "list.providerName": "Fornecedor",
+    "list.lastUpdate": "Última atualização",
+    "details.title": "Informações gerais",
+    "details.storageName": "Nome de armazenamento externo",
+    "details.providerName": "Nome do provedor",
+    "details.url": "URL (domain)",
+    "accession.title": "Accession configuration",
+    "accession.schedule.title": "Accession Schedule",
+    "accession.schedule.info": "Runs every {delay} {unit}(s)",
+    "retrieval.title": "Configuração de recuperação"
 }
