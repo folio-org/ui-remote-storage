@@ -5,3 +5,9 @@ export const SECTIONS_STORAGE = {
   ACCESSION: 'accession',
   RETRIEVAL: 'retrieval',
 };
+
+export const TIME_UNITS = [
+  { label: 'second(s)', value: 'second(s)' },
+  { label: 'minute(s)', value: 'minute(s)' },
+  { label: 'hour(s)', value: 'hour(s)' },
+]

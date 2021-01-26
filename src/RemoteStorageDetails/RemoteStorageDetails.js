@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import {
   useHistory,
+  useParams,
 } from 'react-router-dom';
 
 import {
@@ -15,6 +16,8 @@ import {
   MenuSection,
   Row,
   KeyValue,
+  Icon,
+  Button,
 } from '@folio/stripes/components';
 import {
   ViewMetaData,
@@ -34,6 +37,7 @@ const RemoteStorageDetails = ({
   isLoading,
 }) => {
   const history = useHistory();
+  const { id } = useParams();
 
   const [expandAll, sections, toggleSection] = useAccordionToggle(
     Object.values(SECTIONS_STORAGE).reduce((acc, k) => {
@@ -44,7 +48,20 @@ const RemoteStorageDetails = ({
   );
 
   const renderActionMenu = useCallback(() => (
-    <MenuSection id="storage-details-actions" />
+    <MenuSection id="storage-details-actions">
+      <Button
+        id="clickable-edit-storage"
+        buttonStyle="dropdownItem"
+        data-test-button-edit-storage
+        to={{
+          pathname: `${STORAGES_LIST_ROUTE}/edit/${id}`,
+        }}
+      >
+        <Icon size="small" icon="edit">
+          <FormattedMessage id="ui-remote-storage.edit" />
+        </Icon>
+      </Button>
+    </MenuSection>
   ), []);
 
   const closePane = useCallback(
