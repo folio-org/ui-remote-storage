@@ -62,7 +62,7 @@ const RemoteStorageDetails = ({
         </Icon>
       </Button>
     </MenuSection>
-  ), []);
+  ), [id]);
 
   const closePane = useCallback(
     () => {

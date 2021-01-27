@@ -10,4 +10,4 @@ export const TIME_UNITS = [
   { label: 'second(s)', value: 'second(s)' },
   { label: 'minute(s)', value: 'minute(s)' },
   { label: 'hour(s)', value: 'hour(s)' },
-]
+];
