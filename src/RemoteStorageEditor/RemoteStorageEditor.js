@@ -52,7 +52,7 @@ const RemoteStorageEditor = ({
 
   const paneFooter = useMemo(() => (
     <FormFooter
-      label={<FormattedMessage id="ui-finance.saveAndClose" />}
+      label={<FormattedMessage id="ui-remote-storage.saveAndClose" />}
       handleSubmit={handleSubmit}
       pristine={pristine}
       submitting={submitting}

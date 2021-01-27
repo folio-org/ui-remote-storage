@@ -2,6 +2,7 @@
   "meta.title": "Remote storage",
 
   "edit": "Edit",
+  "saveAndClose": "Save & close",
 
   "list.name": "Name",
   "list.providerName": "Provider",
