@@ -35,6 +35,7 @@ const RemoteStorageDetails = ({
   defaultWidth,
   storage,
   isLoading,
+  onRemovestorage,
 }) => {
   const history = useHistory();
   const { id } = useParams();
@@ -61,8 +62,19 @@ const RemoteStorageDetails = ({
           <FormattedMessage id="ui-remote-storage.edit" />
         </Icon>
       </Button>
+
+      <Button
+        id="clickable-delete-storage"
+        buttonStyle="dropdownItem"
+        data-test-button-delete-storage
+        onClick={onRemovestorage}
+      >
+        <Icon size="small" icon="trash">
+          <FormattedMessage id="ui-remote-storage.delete" />
+        </Icon>
+      </Button>
     </MenuSection>
-  ), [id]);
+  ), [id, onRemovestorage]);
 
   const closePane = useCallback(
     () => {
@@ -150,6 +162,7 @@ RemoteStorageDetails.propTypes = {
   defaultWidth: PropTypes.string,
   storage: PropTypes.object,
   isLoading: PropTypes.bool,
+  onRemovestorage: PropTypes.func,
 };
 
 RemoteStorageDetails.defaultProps = {

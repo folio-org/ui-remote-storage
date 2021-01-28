@@ -10,6 +10,7 @@ import {
   MultiColumnList,
   PaneMenu,
   Button,
+  LoadingPane,
 } from '@folio/stripes/components';
 
 import { STORAGES_LIST_ROUTE } from '../const';
@@ -26,6 +27,7 @@ const RemoteStoragesList = ({
   storages,
   isLoading,
   storagesCount,
+  newStorage,
 }) => {
   const history = useHistory();
 
@@ -42,7 +44,7 @@ const RemoteStoragesList = ({
     <PaneMenu>
       <Button
         id="new-remote-storage"
-        onClick={() => {}}
+        onClick={newStorage}
         buttonStyle="primary"
         marginBottom0
       >
@@ -50,6 +52,10 @@ const RemoteStoragesList = ({
       </Button>
     </PaneMenu>
   );
+
+  if (isLoading) {
+    return <LoadingPane />;
+  }
 
   return (
     <Pane
@@ -63,7 +69,6 @@ const RemoteStoragesList = ({
         contentData={storages}
         visibleColumns={visibleColumns}
         columnMapping={columnMapping}
-        loading={isLoading}
         onRowClick={openStorageDetails}
         autosize
       />

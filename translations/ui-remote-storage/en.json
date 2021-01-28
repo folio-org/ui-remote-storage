@@ -3,6 +3,7 @@
 
   "edit": "Edit",
   "saveAndClose": "Save & close",
+  "delete": "Delete", 
 
   "list.name": "Name",
   "list.providerName": "Provider",
@@ -25,5 +26,14 @@
   "editForm.title": "Edit {name}",
 
   "confirmationModal.message": "Are you sure you want to change the remote storage configuration?",
-  "confirmationModal.save": "Save"
+  "confirmationModal.save": "Save",
+
+  "cannotDeleteModal.header": "Cannot delete Remote Storage location",
+  "cannotDeleteModal.message": "This remote storage configuration cannot be deleted. One or more holding and or item records are associated.",
+
+  "removingModal.title": "Remove {name}",
+  "removingModal.message": "Are you sure you want to delete the remote storage configuration?",
+
+  "remove.success": "Remote storage configuration was successfully deleted.",
+  "remove.error": "Remote storage configuration was not deleted."
 }

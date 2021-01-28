@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
@@ -10,10 +10,12 @@ import {
 import RemoteStoragesList from './RemoteStoragesList';
 
 const RemoteStoragesListContainer = ({
-  mutator,
+  mutator: originMutator,
 }) => {
   const stripes = useStripes();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const mutator = useMemo(() => originMutator, []);
   const [storagesList, setStoragesList] = useState([]);
   const [isLoading, setIsLoading] = useState();
   const [storagesCount, setStoragesCount] = useState();
@@ -38,13 +40,24 @@ const RemoteStoragesListContainer = ({
       ]);
       setStoragesCount(totalRecords);
     }).finally(() => setIsLoading(false));
-  }, [mutator, localeDateFormat]);
+  }, [mutator.configurations, localeDateFormat]);
+
+  const newStorage = useCallback(() => {
+    mutator.configurations.POST({
+      name: 'RS2',
+      providerName: 'Dematic EMS',
+      url: 'http://rs2.dematic.com',
+      accessionDelay: 2,
+      accessionTimeUnit: 'minutes',
+    });
+  }, []);
 
   return (
     <RemoteStoragesList
       storages={storagesList}
       isLoading={isLoading}
       storagesCount={storagesCount}
+      newStorage={newStorage}
     />
   );
 };
@@ -55,11 +68,11 @@ RemoteStoragesListContainer.manifest = Object.freeze({
     path: 'remote-storage/configurations',
     accumulate: true,
     throwErrors: false,
+    clientGeneratePk: false,
   },
 });
 
 RemoteStoragesListContainer.propTypes = {
-
   mutator: PropTypes.object.isRequired,
 };
 
