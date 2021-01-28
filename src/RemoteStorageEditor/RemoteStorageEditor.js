@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { Field, FormSpy } from 'react-final-form';
 
 import {
@@ -41,6 +41,8 @@ const RemoteStorageEditor = ({
   onClose,
   handleSubmit,
 }) => {
+  const intl = useIntl();
+
   const [isDematicSD, setIsDematicSD] = useState();
   const [expandAll, sections, toggleSection] = useAccordionToggle(
     Object.values(SECTIONS_STORAGE).reduce((acc, k) => {
@@ -52,13 +54,13 @@ const RemoteStorageEditor = ({
 
   const paneFooter = useMemo(() => (
     <FormFooter
-      label={<FormattedMessage id="ui-remote-storage.saveAndClose" />}
+      label={intl.formatMessage({ id: 'ui-remote-storage.saveAndClose' })}
       handleSubmit={handleSubmit}
       pristine={pristine}
       submitting={submitting}
       onCancel={onClose}
     />
-  ), [onClose, handleSubmit, submitting, pristine]);
+  ), [intl, handleSubmit, pristine, submitting, onClose]);
 
   const changeProvider = useCallback(({ values }) => {
     if (values?.providerName === 'DEMATIC_SD') {
@@ -67,6 +69,11 @@ const RemoteStorageEditor = ({
       setIsDematicSD(false);
     }
   }, []);
+
+  const storageNameLabel = intl.formatMessage({ id: 'ui-remote-storage.details.storageName' });
+  const providerNameLabel = intl.formatMessage({ id: 'ui-remote-storage.details.providerName' });
+  const urlLabel = intl.formatMessage({ id: 'ui-remote-storage.details.url' });
+  const statusUrlLabel = intl.formatMessage({ id: 'ui-remote-storage.details.statusUrl' });
 
   if (isLoading) {
     return <LoadingPane />;
@@ -79,12 +86,14 @@ const RemoteStorageEditor = ({
       <form style={{ height: '100vh' }}>
         <Pane
           paneTitle={
-            <FormattedMessage
-              id="ui-remote-storage.editForm.title"
-              values={{
+            intl.formatMessage(
+              {
+                id: 'ui-remote-storage.editForm.title',
+              },
+              {
                 name: initialValues.name,
-              }}
-            />}
+              },
+            )}
           footer={paneFooter}
           onClose={onClose}
           dismissible
@@ -109,83 +118,65 @@ const RemoteStorageEditor = ({
                 onToggle={toggleSection}
               >
                 <Accordion
-                  label={<FormattedMessage id="ui-remote-storage.details.title" />}
+                  label={intl.formatMessage({ id: 'ui-remote-storage.details.title' })}
                   id={SECTIONS_STORAGE.INFORMATION}
                 >
                   {initialValues.metadata && <ViewMetaData metadata={initialValues.metadata} />}
                   <Row>
                     <Col xs={3}>
-                      <FormattedMessage id="ui-remote-storage.details.storageName">
-                        {label => (
-                          <Field
-                            component={TextField}
-                            area-label={label}
-                            label={label}
-                            name="name"
-                          />
-                        )}
-
-                      </FormattedMessage>
+                      <Field
+                        component={TextField}
+                        area-label={storageNameLabel}
+                        label={storageNameLabel}
+                        name="name"
+                      />
                     </Col>
                     <Col xs={3}>
-                      <FormattedMessage id="ui-remote-storage.details.providerName">
-                        {label => (
-                          <Field
-                            component={Select}
-                            area-label={label}
-                            label={label}
-                            name="providerName"
-                            dataOptions={providers}
-                          />
-                        )}
-
-                      </FormattedMessage>
+                      <Field
+                        component={Select}
+                        area-label={providerNameLabel}
+                        label={providerNameLabel}
+                        name="providerName"
+                        dataOptions={providers}
+                      />
                     </Col>
                     <Col xs={4}>
-                      <FormattedMessage id="ui-remote-storage.details.url">
-                        {label => (
-                          <Field
-                            component={TextField}
-                            area-label={label}
-                            label={label}
-                            name="url"
-                          />
-                        )}
-
-                      </FormattedMessage>
+                      <Field
+                        component={TextField}
+                        area-label={urlLabel}
+                        label={urlLabel}
+                        name="url"
+                      />
                     </Col>
                     {isDematicSD && (
                       <Col xs={4}>
-                        <FormattedMessage id="ui-remote-storage.details.statusUrl">
-                          {label => (
-                            <Field
-                              component={TextField}
-                              area-label={label}
-                              label={label}
-                              name="statusUrl"
-                            />
-                          )}
-
-                        </FormattedMessage>
+                        <Field
+                          component={TextField}
+                          area-label={statusUrlLabel}
+                          label={statusUrlLabel}
+                          name="statusUrl"
+                        />
                       </Col>
                     )}
                   </Row>
                 </Accordion>
 
                 <Accordion
-                  label={<FormattedMessage id="ui-remote-storage.accession.title" />}
+                  label={intl.formatMessage({ id: 'ui-remote-storage.accession.title' })}
                   id={SECTIONS_STORAGE.ACCESSION}
                 >
-                  <KeyValue label={<FormattedMessage id="ui-remote-storage.accession.schedule.title" />}>
+                  <KeyValue label={intl.formatMessage({ id: 'ui-remote-storage.accession.schedule.title' })}>
                     <Row>
                       <Col xsOffset={0}>
-                        <FormattedMessage
-                          id="ui-remote-storage.accession.schedule.info"
-                          values={{
+                        {intl.formatMessage(
+                          {
+                            id: 'ui-remote-storage.accession.schedule.info',
+                          },
+                          {
                             delay: '',
                             unit: '',
-                          }}
-                        />
+                          },
+                        )}
                       </Col>
                       <Col xs={1}>
                         <Field
@@ -207,7 +198,7 @@ const RemoteStorageEditor = ({
                 </Accordion>
 
                 <Accordion
-                  label={<FormattedMessage id="ui-remote-storage.retrieval.title" />}
+                  label={intl.formatMessage({ id: 'ui-remote-storage.retrieval.title' })}
                   id={SECTIONS_STORAGE.RETRIEVAL}
                 />
               </AccordionSet>
