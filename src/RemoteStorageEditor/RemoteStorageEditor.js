@@ -61,7 +61,7 @@ const RemoteStorageEditor = ({
   ), [onClose, handleSubmit, submitting, pristine]);
 
   const changeProvider = useCallback(({ values }) => {
-    if (values?.providerName === 'Dematic StagingDirector') {
+    if (values?.providerName === 'DEMATIC_SD') {
       setIsDematicSD(true);
     } else {
       setIsDematicSD(false);
