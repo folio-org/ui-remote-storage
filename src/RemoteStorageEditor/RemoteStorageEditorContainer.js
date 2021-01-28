@@ -42,7 +42,7 @@ const RemoteStorageEditorContainer = ({
     Promise.all([providersPromise, configurationsPromise])
       .then(([providersResponse, configurationsResponse]) => {
         setProviders(providersResponse.map(provider => ({
-          value: provider.name,
+          value: provider.id,
           label: provider.name,
         })));
         setStorage(configurationsResponse);
