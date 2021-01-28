@@ -70,14 +70,16 @@ const RemoteStorageEditor = ({
     }
   }, []);
 
-  const storageNameLabel = intl.formatMessage({ id: 'ui-remote-storage.details.storageName' });
-  const providerNameLabel = intl.formatMessage({ id: 'ui-remote-storage.details.providerName' });
-  const urlLabel = intl.formatMessage({ id: 'ui-remote-storage.details.url' });
-  const statusUrlLabel = intl.formatMessage({ id: 'ui-remote-storage.details.statusUrl' });
-
   if (isLoading) {
     return <LoadingPane />;
   }
+
+  const labels = {
+    storageNameLabel: intl.formatMessage({ id: 'ui-remote-storage.details.storageName' }),
+    providerNameLabel: intl.formatMessage({ id: 'ui-remote-storage.details.providerName' }),
+    urlLabel: intl.formatMessage({ id: 'ui-remote-storage.details.url' }),
+    statusUrlLabel: intl.formatMessage({ id: 'ui-remote-storage.details.statusUrl' }),
+  };
 
   return (
     <Layer
@@ -126,16 +128,16 @@ const RemoteStorageEditor = ({
                     <Col xs={3}>
                       <Field
                         component={TextField}
-                        area-label={storageNameLabel}
-                        label={storageNameLabel}
+                        area-label={labels.storageNameLabel}
+                        label={labels.storageNameLabel}
                         name="name"
                       />
                     </Col>
                     <Col xs={3}>
                       <Field
                         component={Select}
-                        area-label={providerNameLabel}
-                        label={providerNameLabel}
+                        area-label={labels.providerNameLabel}
+                        label={labels.providerNameLabel}
                         name="providerName"
                         dataOptions={providers}
                       />
@@ -143,8 +145,8 @@ const RemoteStorageEditor = ({
                     <Col xs={4}>
                       <Field
                         component={TextField}
-                        area-label={urlLabel}
-                        label={urlLabel}
+                        area-label={labels.urlLabel}
+                        label={labels.urlLabel}
                         name="url"
                       />
                     </Col>
@@ -152,8 +154,8 @@ const RemoteStorageEditor = ({
                       <Col xs={4}>
                         <Field
                           component={TextField}
-                          area-label={statusUrlLabel}
-                          label={statusUrlLabel}
+                          area-label={labels.statusUrlLabel}
+                          label={labels.statusUrlLabel}
                           name="statusUrl"
                         />
                       </Col>
