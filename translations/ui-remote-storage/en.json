@@ -34,7 +34,7 @@
   "confirmationModal.save": "Save",
 
   "cannotDeleteModal.header": "Cannot delete Remote Storage location",
-  "cannotDeleteModal.message": "This remote storage configuration cannot be deleted. One or more holding and or item records are associated.",
+  "cannotDeleteModal.message": "One or more holdings and/or item records are associated with this location and cannot be deleted.",
 
   "removingModal.title": "Remove {name}",
   "removingModal.message": "Are you sure you want to delete the remote storage configuration?",
