@@ -14,6 +14,9 @@
   "details.providerName": "Provider name",
   "details.url": "URL (domain)",
   "details.statusUrl": "Status URL",
+
+  "name.DEMATIC_SD": "Dematic StagingDirector",
+  "name.DEMATIC_EMS": "Dematic EMS",
   
   "accession.title": "Accession configuration",
   "accession.schedule.title": "Accession Schedule",
@@ -24,8 +27,10 @@
   "permission.settings.remote-storages.all": "Remote storage: Create and edit",
 
   "editForm.title": "Edit {name}",
+  "createForm.title": "Create configuration",
 
-  "confirmationModal.message": "Are you sure you want to change the remote storage configuration?",
+  "confirmationModal.edit.message": "Are you sure you want to change the remote storage configuration?",
+  "confirmationModal.create.message": "Are you sure you want to save the remote storage configuration?",
   "confirmationModal.save": "Save",
 
   "cannotDeleteModal.header": "Cannot delete Remote Storage location",
@@ -35,5 +40,8 @@
   "removingModal.message": "Are you sure you want to delete the remote storage configuration?",
 
   "remove.success": "Remote storage configuration was successfully deleted.",
-  "remove.error": "Remote storage configuration was not deleted."
+  "remove.error": "Remote storage configuration was not deleted.",
+
+  "create.success": "Remote storage configuration was successfully created.",
+  "create.error": "Remote storage configuration was not created."
 }

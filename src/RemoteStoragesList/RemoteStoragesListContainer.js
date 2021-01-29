@@ -59,15 +59,11 @@ const RemoteStoragesListContainer = ({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const newStorage = useCallback(() => {
-    mutator.configurations.POST({
-      name: 'RS2',
-      providerName: 'DEMATIC_EMS',
-      url: 'http://rs2.dematic.com',
-      accessionDelay: 2,
-      accessionTimeUnit: 'minutes',
+  const onCreateConfiguration = useCallback(() => {
+    history.push({
+      pathname: `${STORAGES_LIST_ROUTE}/create`,
     });
-  }, []);
+  }, [history]);
 
   useLocationReset(history, location, STORAGES_LIST_ROUTE, refreshList);
 
@@ -76,7 +72,7 @@ const RemoteStoragesListContainer = ({
       storages={storagesList}
       isLoading={isLoading}
       storagesCount={storagesCount}
-      newStorage={newStorage}
+      onCreateConfiguration={onCreateConfiguration}
     />
   );
 };
@@ -88,6 +84,7 @@ RemoteStoragesListContainer.manifest = Object.freeze({
     accumulate: true,
     throwErrors: false,
     clientGeneratePk: false,
+    fetch: false,
   },
 });
 

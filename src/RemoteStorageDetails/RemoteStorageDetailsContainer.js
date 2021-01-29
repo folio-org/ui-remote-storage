@@ -31,8 +31,8 @@ const RemoteStorageDetailsContainer = ({
 
   const [storage, setStorage] = useState({});
   const [isLoading, setIsLoading] = useState();
-  const [isConfigurationUsed, setIsConfigurationUsed] = useState();
-  const [isDeleteConfirmationShown, setIsDeleteConfirmationShown] = useState();
+  const [isConfigurationUsed, setIsConfigurationUsed] = useState(false);
+  const [isDeleteConfirmationShown, setIsDeleteConfirmationShown] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);

@@ -7,7 +7,7 @@ export const SECTIONS_STORAGE = {
 };
 
 export const TIME_UNITS = [
-  { label: 'second(s)', value: 'second(s)' },
-  { label: 'minute(s)', value: 'minute(s)' },
-  { label: 'hour(s)', value: 'hour(s)' },
+  { label: 'second(s)', value: 'seconds' },
+  { label: 'minute(s)', value: 'minutes' },
+  { label: 'hour(s)', value: 'hours' },
 ];

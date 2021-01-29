@@ -27,7 +27,7 @@ const RemoteStoragesList = ({
   storages,
   isLoading,
   storagesCount,
-  newStorage,
+  onCreateConfiguration,
 }) => {
   const history = useHistory();
 
@@ -44,7 +44,7 @@ const RemoteStoragesList = ({
     <PaneMenu>
       <Button
         id="new-remote-storage"
-        onClick={newStorage}
+        onClick={onCreateConfiguration}
         buttonStyle="primary"
         marginBottom0
       >
@@ -81,6 +81,7 @@ RemoteStoragesList.propTypes = {
   storages: PropTypes.arrayOf(PropTypes.object),
   isLoading: PropTypes.bool,
   storagesCount: PropTypes.number,
+  onCreateConfiguration: PropTypes.func,
 };
 
 RemoteStoragesList.defaultProps = {

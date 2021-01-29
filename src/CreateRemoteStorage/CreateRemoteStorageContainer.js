@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import {
   useHistory,
-  useParams,
 } from 'react-router-dom';
 
 import {
@@ -13,6 +12,9 @@ import {
 import {
   ConfirmationModal,
 } from '@folio/stripes/components';
+import {
+  useShowCallout,
+} from '@folio/stripes-acq-components';
 
 import RemoteStorageForm from '../RemoteStorageForm';
 
@@ -20,67 +22,67 @@ import {
   STORAGES_LIST_ROUTE,
 } from '../const';
 
-const RemoteStorageEditorContainer = ({
+const CreateRemoteStorageContainer = ({
   mutator,
 }) => {
   const history = useHistory();
-  const { id } = useParams();
+  const showCallout = useShowCallout();
 
-  const [storage, setStorage] = useState({});
   const [providers, setProviders] = useState([]);
-  const [editedRemoteStorage, setEditedRemoteStorage] = useState();
+  const [createdRemoteStorage, setCreatedRemoteStorage] = useState({});
   const [isConfirmationModalOpened, setIsConfirmationModalOpened] = useState();
   const [isLoading, setIsLoading] = useState();
 
   useEffect(() => {
     setIsLoading(true);
-    const providersPromise = mutator.providers.GET();
-    const configurationsPromise = mutator.configurations.GET({
-      path: `remote-storage/configurations/${id}`,
-    });
-
-    Promise.all([providersPromise, configurationsPromise])
-      .then(([providersResponse, configurationsResponse]) => {
+    mutator.providers.GET()
+      .then((providersResponse) => {
         setProviders(providersResponse.map(provider => ({
           value: provider.id,
           label: provider.name,
         })));
-        setStorage(configurationsResponse);
       }).finally(() => setIsLoading(false));
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  }, []);
 
   const onClose = useCallback(
     () => {
       history.push({
-        pathname: `${STORAGES_LIST_ROUTE}/view/${id}`,
+        pathname: STORAGES_LIST_ROUTE,
       });
     },
-    [history, id],
+    [history],
   );
 
   const onSubmit = useCallback(
     (formValue) => {
       setIsConfirmationModalOpened(true);
-      setEditedRemoteStorage(formValue);
+      setCreatedRemoteStorage(formValue);
     },
     [],
   );
 
-  const onSubmitEdition = useCallback(
+  const onSubmitCreation = useCallback(
     () => {
-      mutator.configurations.PUT(editedRemoteStorage)
-        .then(onClose)
+      mutator.configurations.POST(createdRemoteStorage)
+        .then(() => {
+          history.replace({
+            pathname: `${STORAGES_LIST_ROUTE}`,
+          });
+          showCallout({ messageId: 'ui-remote-storage.create.success' });
+        })
+        .catch(() => {
+          showCallout({ messageId: 'ui-remote-storage.create.error', type: 'error' });
+        })
         .finally(() => setIsConfirmationModalOpened(false));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [editedRemoteStorage],
+    [createdRemoteStorage, history, showCallout],
   );
 
   return (
     <>
       <RemoteStorageForm
-        initialValues={storage}
         providers={providers}
         isLoading={isLoading}
         onClose={onClose}
@@ -91,12 +93,11 @@ const RemoteStorageEditorContainer = ({
         open={isConfirmationModalOpened}
         heading={
           <FormattedMessage
-            id="ui-remote-storage.editForm.title"
-            values={{ name: storage.name }}
+            id="ui-remote-storage.createForm.title"
           />
         }
-        message={<FormattedMessage id="ui-remote-storage.confirmationModal.edit.message" />}
-        onConfirm={onSubmitEdition}
+        message={<FormattedMessage id="ui-remote-storage.confirmationModal.create.message" />}
+        onConfirm={onSubmitCreation}
         onCancel={onClose}
         confirmLabel={<FormattedMessage id="ui-remote-storage.confirmationModal.save" />}
       />
@@ -104,13 +105,11 @@ const RemoteStorageEditorContainer = ({
   );
 };
 
-RemoteStorageEditorContainer.manifest = Object.freeze({
+CreateRemoteStorageContainer.manifest = Object.freeze({
   configurations: {
     type: 'okapi',
     path: 'remote-storage/configurations',
-    accumulate: true,
     throwErrors: false,
-    fetch: false,
   },
   providers: {
     type: 'okapi',
@@ -121,8 +120,8 @@ RemoteStorageEditorContainer.manifest = Object.freeze({
   },
 });
 
-RemoteStorageEditorContainer.propTypes = {
+CreateRemoteStorageContainer.propTypes = {
   mutator: PropTypes.object.isRequired,
 };
 
-export default stripesConnect(RemoteStorageEditorContainer);
+export default stripesConnect(CreateRemoteStorageContainer);

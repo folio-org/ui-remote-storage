@@ -8,6 +8,7 @@ import {
 import RemoteStoragesListContainer from './RemoteStoragesList';
 import RemoteStorageDetails from './RemoteStorageDetails';
 import RemoteStorageEditorContainer from './RemoteStorageEditor';
+import CreateRomoteStoargeContainer from './CreateRemoteStorage';
 
 import { STORAGES_LIST_ROUTE } from './const';
 
@@ -30,6 +31,10 @@ const RemoteStorageSettings = () => {
       <Route
         path={`${STORAGES_LIST_ROUTE}/edit/:id`}
         component={RemoteStorageEditorContainer}
+      />
+      <Route
+        path={`${STORAGES_LIST_ROUTE}/create`}
+        component={CreateRomoteStoargeContainer}
       />
     </>
   );

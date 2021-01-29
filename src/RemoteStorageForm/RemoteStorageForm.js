@@ -32,7 +32,7 @@ import {
 
 const spySubscription = { values: true };
 
-const RemoteStorageEditor = ({
+const RemoteStorageForm = ({
   initialValues,
   providers,
   isLoading,
@@ -81,21 +81,20 @@ const RemoteStorageEditor = ({
     statusUrlLabel: intl.formatMessage({ id: 'ui-remote-storage.details.statusUrl' }),
   };
 
+  const paneTitle = initialValues
+    ? intl.formatMessage(
+      { id: 'ui-remote-storage.editForm.title' },
+      { name: initialValues.name },
+    )
+    : intl.formatMessage({ id: 'ui-remote-storage.createForm.title' });
+
   return (
     <Layer
       isOpen
     >
       <form style={{ height: '100vh' }}>
         <Pane
-          paneTitle={
-            intl.formatMessage(
-              {
-                id: 'ui-remote-storage.editForm.title',
-              },
-              {
-                name: initialValues.name,
-              },
-            )}
+          paneTitle={paneTitle}
           footer={paneFooter}
           onClose={onClose}
           dismissible
@@ -123,7 +122,7 @@ const RemoteStorageEditor = ({
                   label={intl.formatMessage({ id: 'ui-remote-storage.details.title' })}
                   id={SECTIONS_STORAGE.INFORMATION}
                 >
-                  {initialValues.metadata && <ViewMetaData metadata={initialValues.metadata} />}
+                  {initialValues?.metadata && <ViewMetaData metadata={initialValues.metadata} />}
                   <Row>
                     <Col xs={3}>
                       <Field
@@ -140,6 +139,7 @@ const RemoteStorageEditor = ({
                         label={labels.providerNameLabel}
                         name="providerName"
                         dataOptions={providers}
+                        defaultValue={providers[0]?.value}
                       />
                     </Col>
                     <Col xs={4}>
@@ -193,6 +193,7 @@ const RemoteStorageEditor = ({
                           component={Select}
                           name="accessionTimeUnit"
                           dataOptions={TIME_UNITS}
+                          defaultValue={TIME_UNITS[0].value}
                         />
                       </Col>
                     </Row>
@@ -216,7 +217,7 @@ const RemoteStorageEditor = ({
   );
 };
 
-RemoteStorageEditor.propTypes = {
+RemoteStorageForm.propTypes = {
   initialValues: PropTypes.object,
   providers: PropTypes.arrayOf(PropTypes.object),
   isLoading: PropTypes.bool,
@@ -229,4 +230,4 @@ RemoteStorageEditor.propTypes = {
 export default stripesFinalForm({
   navigationCheck: true,
   subscription: { values: true },
-})(RemoteStorageEditor);
+})(RemoteStorageForm);
