@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Route, Switch, withRouter } from 'react-router';
+import { Route, withRouter } from 'react-router';
 
 import {
   Paneset,

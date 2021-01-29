@@ -1,18 +1,25 @@
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { useLocation, useHistory } from 'react-router-dom';
 
 import {
   stripesConnect,
   useStripes,
 } from '@folio/stripes/core';
 
+import { useLocationReset } from '@folio/stripes-acq-components';
+
 import RemoteStoragesList from './RemoteStoragesList';
+
+import { STORAGES_LIST_ROUTE } from '../const';
 
 const RemoteStoragesListContainer = ({
   mutator: originMutator,
 }) => {
   const stripes = useStripes();
+  const location = useLocation();
+  const history = useHistory();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const mutator = useMemo(() => originMutator, []);
@@ -24,7 +31,7 @@ const RemoteStoragesListContainer = ({
     moment.localeData(stripes.locale).longDateFormat('L')
   ), [stripes.locale]);
 
-  useEffect(() => {
+  const loadConfigurations = useCallback(() => {
     setIsLoading(true);
     mutator.configurations.GET().then(({ totalRecords, configurations }) => {
       setStoragesList(prev => [
@@ -42,15 +49,27 @@ const RemoteStoragesListContainer = ({
     }).finally(() => setIsLoading(false));
   }, [mutator.configurations, localeDateFormat]);
 
+  const refreshList = () => {
+    setStoragesList([]);
+    loadConfigurations();
+  };
+
+  useEffect(() => {
+    loadConfigurations();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const newStorage = useCallback(() => {
     mutator.configurations.POST({
       name: 'RS2',
-      providerName: 'Dematic EMS',
+      providerName: 'DEMATIC_EMS',
       url: 'http://rs2.dematic.com',
       accessionDelay: 2,
       accessionTimeUnit: 'minutes',
     });
   }, []);
+
+  useLocationReset(history, location, STORAGES_LIST_ROUTE, refreshList);
 
   return (
     <RemoteStoragesList
