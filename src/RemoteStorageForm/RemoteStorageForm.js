@@ -91,6 +91,7 @@ const RemoteStorageForm = ({
   return (
     <Layer
       isOpen
+      contentLabel="Edit configuration"
     >
       <form style={{ height: '100vh' }}>
         <Pane
