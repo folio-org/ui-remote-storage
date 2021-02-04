@@ -67,6 +67,7 @@ const RemoteStorageForm = ({
       setIsDematicSD(true);
     } else {
       setIsDematicSD(false);
+      delete values.statusUrl;
     }
   }, []);
 
@@ -91,6 +92,7 @@ const RemoteStorageForm = ({
   return (
     <Layer
       isOpen
+      contentLabel="Edit configuration"
     >
       <form style={{ height: '100vh' }}>
         <Pane
