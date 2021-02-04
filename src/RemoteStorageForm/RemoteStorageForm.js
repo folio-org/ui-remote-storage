@@ -67,7 +67,6 @@ const RemoteStorageForm = ({
       setIsDematicSD(true);
     } else {
       setIsDematicSD(false);
-      delete values.statusUrl;
     }
   }, []);
 
