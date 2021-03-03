@@ -89,6 +89,8 @@
   },
   "dependencies": {
     "@folio/stripes-acq-components": "^2.1.0",
+    "@testing-library/dom": "^7.29.6",
+    "@testing-library/user-event": "^12.8.0",
     "lodash": "^4.17.5",
     "moment": "^2.29.1",
     "prop-types": "^15.5.10",

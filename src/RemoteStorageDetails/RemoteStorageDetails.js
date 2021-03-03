@@ -96,6 +96,7 @@ const RemoteStorageDetails = ({
 
   return (
     <Pane
+      data-testid="storage-details-pane"
       actionMenu={renderActionMenu}
       paneTitle={storage.name}
       defaultWidth={defaultWidth}
@@ -147,12 +148,12 @@ const RemoteStorageDetails = ({
         </Accordion>
 
         <Accordion
-          label={intl.formatMessage({ id: 'ui-remote-storage.accession.title' })}
-          id={SECTIONS_STORAGE.ACCESSION}
+          label={intl.formatMessage({ id: 'ui-remote-storage.synchronization.title' })}
+          id={SECTIONS_STORAGE.SYNCHRONIZATION}
         >
-          <KeyValue label={intl.formatMessage({ id: 'ui-remote-storage.accession.schedule.title' })}>
+          <KeyValue label={intl.formatMessage({ id: 'ui-remote-storage.synchronization.schedule.title' })}>
             {intl.formatMessage(
-              { id: 'ui-remote-storage.accession.schedule.info' },
+              { id: 'ui-remote-storage.synchronization.schedule.info' },
               {
                 delay: storage.accessionDelay,
                 unit: storage.accessionTimeUnit,
@@ -160,11 +161,6 @@ const RemoteStorageDetails = ({
             )}
           </KeyValue>
         </Accordion>
-
-        <Accordion
-          label={intl.formatMessage({ id: 'ui-remote-storage.retrieval.title' })}
-          id={SECTIONS_STORAGE.RETRIEVAL}
-        />
       </AccordionSet>
     </Pane>
   );
