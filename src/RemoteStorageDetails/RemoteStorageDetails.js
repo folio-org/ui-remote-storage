@@ -25,6 +25,7 @@ import {
 import {
   useAccordionToggle,
 } from '@folio/stripes-acq-components';
+import { IfPermission } from '@folio/stripes/core';
 
 import {
   SECTIONS_STORAGE,
@@ -50,31 +51,33 @@ const RemoteStorageDetails = ({
   );
 
   const renderActionMenu = useCallback(() => (
-    <MenuSection id="storage-details-actions">
-      <Button
-        id="clickable-edit-storage"
-        buttonStyle="dropdownItem"
-        data-test-button-edit-storage
-        to={{
-          pathname: `${STORAGES_LIST_ROUTE}/edit/${id}`,
-        }}
-      >
-        <Icon size="small" icon="edit">
-          {intl.formatMessage({ id: 'ui-remote-storage.edit' })}
-        </Icon>
-      </Button>
+    <IfPermission perm="ui-remote-storage.settings.remote-storages.all">
+      <MenuSection id="storage-details-actions">
+        <Button
+          id="clickable-edit-storage"
+          buttonStyle="dropdownItem"
+          data-test-button-edit-storage
+          to={{
+            pathname: `${STORAGES_LIST_ROUTE}/edit/${id}`,
+          }}
+        >
+          <Icon size="small" icon="edit">
+            {intl.formatMessage({ id: 'ui-remote-storage.edit' })}
+          </Icon>
+        </Button>
 
-      <Button
-        id="clickable-delete-storage"
-        buttonStyle="dropdownItem"
-        data-test-button-delete-storage
-        onClick={onRemovestorage}
-      >
-        <Icon size="small" icon="trash">
-          {intl.formatMessage({ id: 'ui-remote-storage.delete' })}
-        </Icon>
-      </Button>
-    </MenuSection>
+        <Button
+          id="clickable-delete-storage"
+          buttonStyle="dropdownItem"
+          data-test-button-delete-storage
+          onClick={onRemovestorage}
+        >
+          <Icon size="small" icon="trash">
+            {intl.formatMessage({ id: 'ui-remote-storage.delete' })}
+          </Icon>
+        </Button>
+      </MenuSection>
+    </IfPermission>
   // eslint-disable-next-line react-hooks/exhaustive-deps
   ), [id]);
 

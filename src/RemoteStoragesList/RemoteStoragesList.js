@@ -13,6 +13,8 @@ import {
   LoadingPane,
 } from '@folio/stripes/components';
 
+import { IfPermission } from '@folio/stripes/core';
+
 import { STORAGES_LIST_ROUTE } from '../const';
 
 const visibleColumns = ['name', 'providerName', 'lastUpdate'];
@@ -41,16 +43,18 @@ const RemoteStoragesList = ({
   );
 
   const lastMenu = (
-    <PaneMenu>
-      <Button
-        id="new-remote-storage"
-        onClick={onCreateConfiguration}
-        buttonStyle="primary"
-        marginBottom0
-      >
-        <FormattedMessage id="stripes-smart-components.new" />
-      </Button>
-    </PaneMenu>
+    <IfPermission perm="ui-remote-storage.settings.remote-storages.all">
+      <PaneMenu>
+        <Button
+          id="new-remote-storage"
+          onClick={onCreateConfiguration}
+          buttonStyle="primary"
+          marginBottom0
+        >
+          <FormattedMessage id="stripes-smart-components.new" />
+        </Button>
+      </PaneMenu>
+    </IfPermission>
   );
 
   if (isLoading) {

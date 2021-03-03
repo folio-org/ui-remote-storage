@@ -38,10 +38,15 @@
       },
       {
         "permissionName": "ui-remote-storage.settings.remote-storages.all",
-        "displayName": "Remote storage: Create and edit",
+        "displayName": "Remote storage: Create, read, update, delete",
         "visible": true,
         "subPermissions": [
-          "settings.remote-storage.enabled"
+          "remote-storage.configurations.collection.get",
+          "remote-storage.configurations.item.get",
+          "remote-storage.mappings.item.post",
+          "remote-storage.mappings.item.delete",
+          "remote-storage.mappings.collection.get",
+          "remote-storage.mappings.item.get"
         ]
       }
     ]
