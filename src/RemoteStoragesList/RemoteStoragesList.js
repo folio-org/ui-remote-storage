@@ -46,7 +46,7 @@ const RemoteStoragesList = ({
     <IfPermission perm="ui-remote-storage.settings.remote-storages.all">
       <PaneMenu>
         <Button
-          id="new-remote-storage"
+          data-testid="new-remote-storage"
           onClick={onCreateConfiguration}
           buttonStyle="primary"
           marginBottom0
