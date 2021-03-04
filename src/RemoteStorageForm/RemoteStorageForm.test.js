@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, act, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
 import '@folio/stripes-acq-components/test/jest/__mock__';
@@ -36,25 +36,19 @@ const renderRemoteStorageForm = ({
 
 describe('RemoteStorageForm', () => {
   it('should open create form if no initialValues', async () => {
-    await act(async () => {
-      renderRemoteStorageForm();
-    });
+    renderRemoteStorageForm();
 
-    expect(screen.getByText('ui-remote-storage.createForm.title')).toBeDefined();
+    await waitFor(() => expect(screen.getByText('ui-remote-storage.createForm.title')).toBeDefined());
   });
 
   it('should open create form if initialValues exist', async () => {
-    await act(async () => {
-      renderRemoteStorageForm({ initialValues: {} });
-    });
+    renderRemoteStorageForm({ initialValues: {} });
 
-    expect(screen.getByText('ui-remote-storage.editForm.title')).toBeDefined();
+    await waitFor(() => expect(screen.getByText('ui-remote-storage.editForm.title')).toBeDefined());
   });
 
   it('should show Status URL if Dematic SD choosed', async () => {
-    await act(async () => {
-      renderRemoteStorageForm({ initialValues: {} });
-    });
+    renderRemoteStorageForm({ initialValues: {} });
 
     await waitFor(() => {
       user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), 'DEMATIC_SD');
