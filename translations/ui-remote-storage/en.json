@@ -22,7 +22,7 @@
   "synchronization.schedule.title": "Data synchronization schedule",
   "synchronization.schedule.info": "Runs every {delay} {unit}",
 
-  "permission.settings.remote-storages.all": "Remote storage: Create and edit",
+  "permission.settings.remote-storages.all": "Remote storage: Create, read, update, delete",
 
   "editForm.title": "Edit {name}",
   "createForm.title": "Create configuration",
