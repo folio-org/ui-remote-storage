@@ -95,6 +95,7 @@ const RemoteStorageForm = ({
     >
       <form style={{ height: '100vh' }}>
         <Pane
+          defaultWidth="fill"
           paneTitle={paneTitle}
           footer={paneFooter}
           onClose={onClose}
@@ -165,15 +166,15 @@ const RemoteStorageForm = ({
                 </Accordion>
 
                 <Accordion
-                  label={intl.formatMessage({ id: 'ui-remote-storage.accession.title' })}
-                  id={SECTIONS_STORAGE.ACCESSION}
+                  label={intl.formatMessage({ id: 'ui-remote-storage.synchronization.title' })}
+                  id={SECTIONS_STORAGE.SYNCHRONIZATION}
                 >
-                  <KeyValue label={intl.formatMessage({ id: 'ui-remote-storage.accession.schedule.title' })}>
+                  <KeyValue label={intl.formatMessage({ id: 'ui-remote-storage.synchronization.schedule.title' })}>
                     <Row>
                       <Col xsOffset={0}>
                         {intl.formatMessage(
                           {
-                            id: 'ui-remote-storage.accession.schedule.info',
+                            id: 'ui-remote-storage.synchronization.schedule.info',
                           },
                           {
                             delay: '',
@@ -200,11 +201,6 @@ const RemoteStorageForm = ({
                     </Row>
                   </KeyValue>
                 </Accordion>
-
-                <Accordion
-                  label={intl.formatMessage({ id: 'ui-remote-storage.retrieval.title' })}
-                  id={SECTIONS_STORAGE.RETRIEVAL}
-                />
               </AccordionSet>
             </Col>
           </Row>
