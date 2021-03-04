@@ -95,6 +95,7 @@ const RemoteStorageForm = ({
     >
       <form style={{ height: '100vh' }}>
         <Pane
+          defaultWidth="fill"
           paneTitle={paneTitle}
           footer={paneFooter}
           onClose={onClose}
