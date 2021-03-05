@@ -8,10 +8,6 @@
     "details.storageName": "Nazwa zdalnego magazynu",
     "details.providerName": "Nazwa dostawcy",
     "details.url": "URL (domena)",
-    "accession.title": "Konfiguracja akcesji",
-    "accession.schedule.title": "Harmonogram akcesji",
-    "accession.schedule.info": "Uruchamiane co {delay} {unit}",
-    "retrieval.title": "Konfiguracja pobierania",
     "edit": "Edytuj",
     "saveAndClose": "Zapisz i zamknij",
     "delete": "Usuń",
@@ -30,5 +26,8 @@
     "remove.success": "Konfiguracja zdalnego magazynu została pomyślnie usunięta.",
     "remove.error": "Konfiguracja zdalnego magazynu nie została usunięta.",
     "create.success": "Konfiguracja zdalnego magazynu została pomyślnie utworzona.",
-    "create.error": "Konfiguracja zdalnego magazynu nie została utworzona."
+    "create.error": "Konfiguracja zdalnego magazynu nie została utworzona.",
+    "synchronization.title": "Data synchronization settings",
+    "synchronization.schedule.title": "Data synchronization schedule",
+    "synchronization.schedule.info": "Runs every {delay} {unit}"
 }
