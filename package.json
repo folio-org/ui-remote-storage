@@ -31,7 +31,8 @@
     "permissionSets": [
       {
         "permissionName": "settings.remote-storage.enabled",
-        "displayName": "Settings (Remote storages): display list of settings pages",
+        "displayName": "Settings (Remote storages): Module is enabled.",
+        "visible": false,
         "subPermissions": [
           "settings.enabled"
         ]
@@ -46,7 +47,8 @@
           "remote-storage.mappings.item.post",
           "remote-storage.mappings.item.delete",
           "remote-storage.mappings.collection.get",
-          "remote-storage.mappings.item.get"
+          "remote-storage.mappings.item.get",
+          "settings.remote-storage.enabled"
         ]
       }
     ]
