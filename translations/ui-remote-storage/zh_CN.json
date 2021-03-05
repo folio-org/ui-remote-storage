@@ -8,10 +8,6 @@
     "details.storageName": "远程存储名称",
     "details.providerName": "提供者名称",
     "details.url": "网址（域）",
-    "accession.title": "加入配置",
-    "accession.schedule.title": "加入时间表",
-    "accession.schedule.info": "运行每{delay} {unit}",
-    "retrieval.title": "检索配置",
     "edit": "编辑",
     "saveAndClose": "保存并关闭",
     "delete": "删除",
@@ -30,5 +26,8 @@
     "remove.success": "远程存储配置已成功删除。",
     "remove.error": "远程存储配置未删除。",
     "create.success": "远程存储配置已成功创建。",
-    "create.error": "远程存储配置未创建。"
+    "create.error": "远程存储配置未创建。",
+    "synchronization.title": "Data synchronization settings",
+    "synchronization.schedule.title": "Data synchronization schedule",
+    "synchronization.schedule.info": "Runs every {delay} {unit}"
 }
