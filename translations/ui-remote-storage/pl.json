@@ -27,7 +27,7 @@
     "remove.error": "Konfiguracja zdalnego magazynu nie została usunięta.",
     "create.success": "Konfiguracja zdalnego magazynu została pomyślnie utworzona.",
     "create.error": "Konfiguracja zdalnego magazynu nie została utworzona.",
-    "synchronization.title": "Data synchronization settings",
-    "synchronization.schedule.title": "Data synchronization schedule",
-    "synchronization.schedule.info": "Runs every {delay} {unit}"
+    "synchronization.title": "Ustawienia synchronizacji danych",
+    "synchronization.schedule.title": "Harmonogram synchronizacji danych",
+    "synchronization.schedule.info": "Uruchamiane co {delay} {unit}"
 }
