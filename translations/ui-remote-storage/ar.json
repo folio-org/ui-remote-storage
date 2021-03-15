@@ -1,6 +1,6 @@
 {
     "meta.title": "التخزين عن بعد",
-    "permission.settings.remote-storages.all": "التخزين عن بعد: أنشئ وحرّر",
+    "permission.settings.remote-storages.all": "التخزين عن بعد: أنشئ، اقرأ، حدّث، احذف",
     "list.name": "الاسم",
     "list.providerName": "مقدم الخدمة",
     "list.lastUpdate": "آخر تحديث",
