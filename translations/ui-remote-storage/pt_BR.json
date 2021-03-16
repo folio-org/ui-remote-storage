@@ -8,10 +8,6 @@
     "details.storageName": "Nome de armazenamento externo",
     "details.providerName": "Nome do provedor",
     "details.url": "URL (domínio)",
-    "accession.title": "Configuração de adesão",
-    "accession.schedule.title": "Cronograma de adesão",
-    "accession.schedule.info": "Executa a cada {delay} {unit} (s)",
-    "retrieval.title": "Configuração de recuperação",
     "edit": "Editar",
     "saveAndClose": "Salvar e fechar",
     "delete": "Excluir",
@@ -30,5 +26,8 @@
     "remove.success": "Remote storage configuration was successfully deleted.",
     "remove.error": "Remote storage configuration was not deleted.",
     "create.success": "Remote storage configuration was successfully created.",
-    "create.error": "Remote storage configuration was not created."
+    "create.error": "Remote storage configuration was not created.",
+    "synchronization.title": "Data synchronization settings",
+    "synchronization.schedule.title": "Data synchronization schedule",
+    "synchronization.schedule.info": "Runs every {delay} {unit}"
 }
