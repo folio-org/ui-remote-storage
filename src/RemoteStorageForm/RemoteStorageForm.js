@@ -43,7 +43,7 @@ const RemoteStorageForm = ({
 }) => {
   const intl = useIntl();
 
-  const [selectedProvider, setSelectedProviter] = useState()
+  const [selectedProvider, setSelectedProviter] = useState();
   const [expandAll, sections, toggleSection] = useAccordionToggle(
     Object.values(SECTIONS_STORAGE).reduce((acc, k) => {
       acc[k] = true;
