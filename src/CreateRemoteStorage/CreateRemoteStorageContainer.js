@@ -20,6 +20,8 @@ import RemoteStorageForm from '../RemoteStorageForm';
 
 import {
   STORAGES_LIST_ROUTE,
+  DEMATIC_SD,
+  CAIASOFT,
 } from '../const';
 
 const CreateRemoteStorageContainer = ({
@@ -57,9 +59,8 @@ const CreateRemoteStorageContainer = ({
   const onSubmit = useCallback(
     (formValue) => {
       setIsConfirmationModalOpened(true);
-      if (formValue.providerName !== 'DEMATIC_SD') {
-        delete formValue.statusUrl;
-      }
+      if (formValue.providerName !== DEMATIC_SD) delete formValue.statusUrl;
+      if (formValue.providerName !== CAIASOFT) delete formValue.apiKey;
       setCreatedRemoteStorage(formValue);
     },
     [],

@@ -7,6 +7,12 @@ import '@folio/stripes-acq-components/test/jest/__mock__';
 
 import RemoteStorageForm from './RemoteStorageForm';
 
+import {
+  DEMATIC_SD,
+  DEMATIC_EMS,
+  CAIASOFT,
+} from '../const';
+
 jest.mock(
   '@folio/stripes-components/lib/Layer',
   () => props => props.children,
@@ -48,26 +54,26 @@ describe('RemoteStorageForm', () => {
   it('should show Status URL if Dematic SD chosen', () => {
     renderRemoteStorageForm({
       initialValues: {},
-      providers: [{ label: 'DEMATIC_SD' }, { label: 'DEMATIC_EMS' }],
+      providers: [{ label: DEMATIC_SD }, { label: DEMATIC_EMS }],
     });
 
-    user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), 'DEMATIC_SD');
+    user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), DEMATIC_SD);
     expect(screen.queryByLabelText('ui-remote-storage.details.statusUrl')).toBeVisible();
 
-    user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), 'DEMATIC_EMS');
+    user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), DEMATIC_EMS);
     expect(screen.queryByLabelText('ui-remote-storage.details.statusUrl')).not.toBeInTheDocument();
   });
 
   it('should show Credential properties if Caiasoft chosen', () => {
     renderRemoteStorageForm({
       initialValues: {},
-      providers: [{ label: 'DEMATIC_SD' }, { label: 'CAIASOFT' }],
+      providers: [{ label: DEMATIC_SD }, { label: CAIASOFT }],
     });
 
-    user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), 'CAIASOFT');
+    user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), CAIASOFT);
     expect(screen.queryByLabelText('ui-remote-storage.details.credProperties')).toBeVisible();
 
-    user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), 'DEMATIC_SD');
+    user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), DEMATIC_SD);
     expect(screen.queryByLabelText('ui-remote-storage.details.credProperties')).not.toBeInTheDocument();
   });
 });

@@ -28,6 +28,8 @@ import stripesFinalForm from '@folio/stripes/final-form';
 import {
   SECTIONS_STORAGE,
   TIME_UNITS,
+  DEMATIC_SD,
+  CAIASOFT,
 } from '../const';
 
 const spySubscription = { values: true };
@@ -66,8 +68,8 @@ const RemoteStorageForm = ({
     setSelectedProviter(values.providerName);
   }, []);
 
-  const isDematicSD = selectedProvider === 'DEMATIC_SD';
-  const isCaiasoft = selectedProvider === 'CAIASOFT';
+  const isDematicSD = selectedProvider === DEMATIC_SD;
+  const isCaiasoft = selectedProvider === CAIASOFT;
 
   if (isLoading) {
     return <LoadingPane />;
