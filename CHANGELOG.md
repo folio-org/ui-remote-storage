@@ -12,3 +12,4 @@
 * [UIRS-19](https://issues.folio.org/browse/UIRS-19) Update stripes-cli to v2
 * [UIRS-10](https://issues.folio.org/browse/UIRS-10) Add personal data disclosure form
 * [UIRS-20](https://issues.folio.org/browse/UIRS-20) Rename accession and retrieval configurations
+* [UIRS-15](https://issues.folio.org/browse/UIRS-15) Remote Storage Settings: Credential properties (apiKey)

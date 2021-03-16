@@ -18,7 +18,6 @@ const RemoteStorageSettings = () => {
       <Paneset
         paneTitle={<FormattedMessage id="ui-remote-storage.meta.title" />}
       >
-        {/* <RemoteStoragesListContainer /> */}
         <Route
           path={STORAGES_LIST_ROUTE}
           component={RemoteStoragesListContainer}

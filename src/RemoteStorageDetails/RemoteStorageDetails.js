@@ -144,6 +144,13 @@ const RemoteStorageDetails = ({
                 </KeyValue>
               </Col>
             )}
+            {storage.apiKey && (
+              <Col xs={6}>
+                <KeyValue label={intl.formatMessage({ id: 'ui-remote-storage.details.credProperties' })}>
+                  {storage.apiKey}
+                </KeyValue>
+              </Col>
+            )}
           </Row>
         </Accordion>
 

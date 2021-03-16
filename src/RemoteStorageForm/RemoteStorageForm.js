@@ -43,7 +43,7 @@ const RemoteStorageForm = ({
 }) => {
   const intl = useIntl();
 
-  const [isDematicSD, setIsDematicSD] = useState();
+  const [selectedProvider, setSelectedProviter] = useState()
   const [expandAll, sections, toggleSection] = useAccordionToggle(
     Object.values(SECTIONS_STORAGE).reduce((acc, k) => {
       acc[k] = true;
@@ -63,12 +63,11 @@ const RemoteStorageForm = ({
   ), [intl, handleSubmit, pristine, submitting, onClose]);
 
   const changeProvider = useCallback(({ values }) => {
-    if (values?.providerName === 'DEMATIC_SD') {
-      setIsDematicSD(true);
-    } else {
-      setIsDematicSD(false);
-    }
+    setSelectedProviter(values.providerName);
   }, []);
+
+  const isDematicSD = useMemo(() => selectedProvider === 'DEMATIC_SD', [selectedProvider]);
+  const isCaiasoft = useMemo(() => selectedProvider === 'CAIASOFT', [selectedProvider]);
 
   if (isLoading) {
     return <LoadingPane />;
@@ -79,6 +78,7 @@ const RemoteStorageForm = ({
     providerNameLabel: intl.formatMessage({ id: 'ui-remote-storage.details.providerName' }),
     urlLabel: intl.formatMessage({ id: 'ui-remote-storage.details.url' }),
     statusUrlLabel: intl.formatMessage({ id: 'ui-remote-storage.details.statusUrl' }),
+    credPropertiesLabel: intl.formatMessage({ id: 'ui-remote-storage.details.credProperties' }),
   };
 
   const paneTitle = initialValues
@@ -159,6 +159,16 @@ const RemoteStorageForm = ({
                           area-label={labels.statusUrlLabel}
                           label={labels.statusUrlLabel}
                           name="statusUrl"
+                        />
+                      </Col>
+                    )}
+                    {isCaiasoft && (
+                      <Col xs={4}>
+                        <Field
+                          component={TextField}
+                          area-label={labels.credPropertiesLabel}
+                          label={labels.credPropertiesLabel}
+                          name="apiKey"
                         />
                       </Col>
                     )}

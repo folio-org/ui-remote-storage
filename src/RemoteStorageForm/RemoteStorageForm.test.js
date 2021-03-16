@@ -57,4 +57,17 @@ describe('RemoteStorageForm', () => {
     user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), 'DEMATIC_EMS');
     expect(screen.queryByLabelText('ui-remote-storage.details.statusUrl')).not.toBeInTheDocument();
   });
+
+  it('should show Credential properties if Caiasoft chosen', () => {
+    renderRemoteStorageForm({
+      initialValues: {},
+      providers: [{ label: 'DEMATIC_SD' }, { label: 'CAIASOFT' }],
+    });
+
+    user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), 'CAIASOFT');
+    expect(screen.queryByLabelText('ui-remote-storage.details.credProperties')).toBeVisible();
+
+    user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), 'DEMATIC_SD');
+    expect(screen.queryByLabelText('ui-remote-storage.details.credProperties')).not.toBeInTheDocument();
+  });
 });

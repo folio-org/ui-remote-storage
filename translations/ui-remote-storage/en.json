@@ -14,9 +14,11 @@
   "details.providerName": "Provider name",
   "details.url": "URL (domain)",
   "details.statusUrl": "Status URL",
+  "details.credProperties": "Credential properties",
 
   "name.DEMATIC_SD": "Dematic StagingDirector",
   "name.DEMATIC_EMS": "Dematic EMS",
+  "name.CAIASOFT": "Caiasoft",
   
   "synchronization.title": "Data synchronization settings",
   "synchronization.schedule.title": "Data synchronization schedule",
