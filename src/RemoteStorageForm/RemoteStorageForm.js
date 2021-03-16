@@ -66,8 +66,8 @@ const RemoteStorageForm = ({
     setSelectedProviter(values.providerName);
   }, []);
 
-  const isDematicSD = useMemo(() => selectedProvider === 'DEMATIC_SD', [selectedProvider]);
-  const isCaiasoft = useMemo(() => selectedProvider === 'CAIASOFT', [selectedProvider]);
+  const isDematicSD = selectedProvider === 'DEMATIC_SD';
+  const isCaiasoft = selectedProvider === 'CAIASOFT';
 
   if (isLoading) {
     return <LoadingPane />;
