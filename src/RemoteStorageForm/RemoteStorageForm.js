@@ -1,7 +1,7 @@
 import React, { useMemo, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import { Field, FormSpy } from 'react-final-form';
+import { Field, FormSpy, useFormState } from 'react-final-form';
 
 import {
   Pane,
@@ -41,9 +41,10 @@ const RemoteStorageForm = ({
   pristine,
   submitting,
   onClose,
-  handleSubmit,
+  onSubmit,
 }) => {
   const intl = useIntl();
+  const { values: formValues } = useFormState();
 
   const [selectedProvider, setSelectedProviter] = useState();
   const [expandAll, sections, toggleSection] = useAccordionToggle(
@@ -52,6 +53,16 @@ const RemoteStorageForm = ({
 
       return acc;
     }, {}),
+  );
+
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (formValues.providerName !== DEMATIC_SD) delete formValues.statusUrl;
+      if (formValues.providerName !== CAIASOFT) delete formValues.apiKey;
+      onSubmit(formValues);
+    },
+    [formValues, onSubmit],
   );
 
   const paneFooter = useMemo(() => (
@@ -231,7 +242,7 @@ RemoteStorageForm.propTypes = {
   providers: PropTypes.arrayOf(PropTypes.object),
   isLoading: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool,
   pristine: PropTypes.bool,
 };
