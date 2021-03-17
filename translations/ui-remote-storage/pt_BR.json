@@ -27,7 +27,7 @@
     "remove.error": "Remote storage configuration was not deleted.",
     "create.success": "Remote storage configuration was successfully created.",
     "create.error": "Remote storage configuration was not created.",
-    "synchronization.title": "Data synchronization settings",
-    "synchronization.schedule.title": "Data synchronization schedule",
-    "synchronization.schedule.info": "Runs every {delay} {unit}"
+    "synchronization.title": "Configurações de sincronização de dados",
+    "synchronization.schedule.title": "Cronograma de sincronização de dados",
+    "synchronization.schedule.info": "Executa a cada {delay} {unit}"
 }
