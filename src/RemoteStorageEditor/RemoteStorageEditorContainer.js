@@ -18,8 +18,6 @@ import RemoteStorageForm from '../RemoteStorageForm';
 
 import {
   STORAGES_LIST_ROUTE,
-  DEMATIC_SD,
-  CAIASOFT,
 } from '../const';
 
 const RemoteStorageEditorContainer = ({
