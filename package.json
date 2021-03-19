@@ -57,7 +57,7 @@
     "build": "yarn stripes build --output ./output",
     "lint": "eslint .",
     "start": "yarn stripes serve",
-    "test": "jest --ci --coverage --passWithNoTests"
+    "test": "jest --ci --coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
