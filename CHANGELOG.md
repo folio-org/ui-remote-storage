@@ -3,7 +3,8 @@
 ## (IN PROGRESS)
 * [UIRS-15](https://issues.folio.org/browse/UIRS-15) Remote Storage Settings: Credential properties (apiKey)
 
-### Stories
+## [1.0.0](https://github.com/folio-org/ui-remote-storage/tree/v1.0.0) (2021-03-19)
+
 * [UIRS-4](https://issues.folio.org/browse/UIRS-4) Project Setup: ui-remote-storage
 * [UIRS-3](https://issues.folio.org/browse/UIRS-3) Permission: Remote storage configuration
 * [UIRS-2](https://issues.folio.org/browse/UIRS-2) Remote storage configuration
