@@ -64,7 +64,7 @@ describe('RemoteStorageForm', () => {
     expect(screen.queryByLabelText('ui-remote-storage.details.statusUrl')).not.toBeInTheDocument();
   });
 
-  it('should show Credential properties if Caiasoft chosen', () => {
+  it('should show Credential properties if Caiasoft is chosen', () => {
     renderRemoteStorageForm({
       initialValues: {},
       providers: [{ label: DEMATIC_SD }, { label: CAIASOFT }],
