@@ -60,7 +60,7 @@ const RemoteStorageForm = ({
       e.preventDefault();
       if (formValues.providerName !== DEMATIC_SD) delete formValues.statusUrl;
       if (formValues.providerName !== CAIASOFT) delete formValues.apiKey;
-      onSubmit(formValues);
+      return onSubmit(formValues);
     },
     [formValues, onSubmit],
   );
