@@ -15,4 +15,4 @@ export const TIME_UNITS = [
 
 export const DEMATIC_SD = 'DEMATIC_SD';
 export const DEMATIC_EMS = 'DEMATIC_EMS';
-export const CAIASOFT = 'CAIASOFT';
+export const CAIASOFT = 'CAIA_SOFT';
