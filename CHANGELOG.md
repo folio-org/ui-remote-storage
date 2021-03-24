@@ -1,6 +1,7 @@
 # Change history for ui-remote-storage
 
 ## (IN PROGRESS)
+* [UIRS-15](https://issues.folio.org/browse/UIRS-15) Remote Storage Settings: Credential properties (apiKey)
 
 ## [1.0.0](https://github.com/folio-org/ui-remote-storage/tree/v1.0.0) (2021-03-19)
 

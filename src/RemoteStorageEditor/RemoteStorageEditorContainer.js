@@ -62,9 +62,6 @@ const RemoteStorageEditorContainer = ({
   const onSubmit = useCallback(
     (formValue) => {
       setIsConfirmationModalOpened(true);
-      if (formValue.providerName !== 'DEMATIC_SD') {
-        delete formValue.statusUrl;
-      }
       setEditedRemoteStorage(formValue);
     },
     [],

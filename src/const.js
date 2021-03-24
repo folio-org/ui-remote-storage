@@ -12,3 +12,7 @@ export const TIME_UNITS = [
   { label: 'week(s)', value: 'weeks' },
   { label: 'month(s)', value: 'months' },
 ];
+
+export const DEMATIC_SD = 'DEMATIC_SD';
+export const DEMATIC_EMS = 'DEMATIC_EMS';
+export const CAIASOFT = 'CAIASOFT';

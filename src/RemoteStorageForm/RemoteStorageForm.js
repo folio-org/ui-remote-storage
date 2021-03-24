@@ -1,7 +1,7 @@
 import React, { useMemo, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import { Field, FormSpy } from 'react-final-form';
+import { Field, FormSpy, useFormState } from 'react-final-form';
 
 import {
   Pane,
@@ -28,6 +28,8 @@ import stripesFinalForm from '@folio/stripes/final-form';
 import {
   SECTIONS_STORAGE,
   TIME_UNITS,
+  DEMATIC_SD,
+  CAIASOFT,
 } from '../const';
 
 const spySubscription = { values: true };
@@ -39,17 +41,29 @@ const RemoteStorageForm = ({
   pristine,
   submitting,
   onClose,
-  handleSubmit,
+  onSubmit,
 }) => {
   const intl = useIntl();
+  const { values: formValues } = useFormState();
 
-  const [isDematicSD, setIsDematicSD] = useState();
+  const [selectedProvider, setSelectedProviter] = useState();
   const [expandAll, sections, toggleSection] = useAccordionToggle(
     Object.values(SECTIONS_STORAGE).reduce((acc, k) => {
       acc[k] = true;
 
       return acc;
     }, {}),
+  );
+
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (formValues.providerName !== DEMATIC_SD) delete formValues.statusUrl;
+      if (formValues.providerName !== CAIASOFT) delete formValues.apiKey;
+
+      return onSubmit(formValues);
+    },
+    [formValues, onSubmit],
   );
 
   const paneFooter = useMemo(() => (
@@ -63,12 +77,11 @@ const RemoteStorageForm = ({
   ), [intl, handleSubmit, pristine, submitting, onClose]);
 
   const changeProvider = useCallback(({ values }) => {
-    if (values?.providerName === 'DEMATIC_SD') {
-      setIsDematicSD(true);
-    } else {
-      setIsDematicSD(false);
-    }
+    setSelectedProviter(values.providerName);
   }, []);
+
+  const isDematicSD = selectedProvider === DEMATIC_SD;
+  const isCaiasoft = selectedProvider === CAIASOFT;
 
   if (isLoading) {
     return <LoadingPane />;
@@ -79,6 +92,7 @@ const RemoteStorageForm = ({
     providerNameLabel: intl.formatMessage({ id: 'ui-remote-storage.details.providerName' }),
     urlLabel: intl.formatMessage({ id: 'ui-remote-storage.details.url' }),
     statusUrlLabel: intl.formatMessage({ id: 'ui-remote-storage.details.statusUrl' }),
+    credPropertiesLabel: intl.formatMessage({ id: 'ui-remote-storage.details.credProperties' }),
   };
 
   const paneTitle = initialValues
@@ -162,6 +176,16 @@ const RemoteStorageForm = ({
                         />
                       </Col>
                     )}
+                    {isCaiasoft && (
+                      <Col xs={4}>
+                        <Field
+                          component={TextField}
+                          area-label={labels.credPropertiesLabel}
+                          label={labels.credPropertiesLabel}
+                          name="apiKey"
+                        />
+                      </Col>
+                    )}
                   </Row>
                 </Accordion>
 
@@ -219,7 +243,7 @@ RemoteStorageForm.propTypes = {
   providers: PropTypes.arrayOf(PropTypes.object),
   isLoading: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool,
   pristine: PropTypes.bool,
 };
