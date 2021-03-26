@@ -30,7 +30,7 @@ const CreateRemoteStorageContainer = ({
 
   const [providers, setProviders] = useState([]);
   const [createdRemoteStorage, setCreatedRemoteStorage] = useState({});
-  const [isConfirmationModalOpened, setIsConfirmationModalOpened] = useState();
+  const [isConfirmationModalOpened, setIsConfirmationModalOpened] = useState(false);
   const [isLoading, setIsLoading] = useState();
 
   useEffect(() => {

@@ -1,7 +1,7 @@
-import React, { useMemo, useCallback, useState } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import { Field, FormSpy, useFormState } from 'react-final-form';
+import { Field } from 'react-final-form';
 
 import {
   Pane,
@@ -32,8 +32,6 @@ import {
   CAIASOFT,
 } from '../const';
 
-const spySubscription = { values: true };
-
 const RemoteStorageForm = ({
   initialValues,
   providers,
@@ -42,11 +40,10 @@ const RemoteStorageForm = ({
   submitting,
   onClose,
   onSubmit,
+  values,
 }) => {
   const intl = useIntl();
-  const { values: formValues } = useFormState();
 
-  const [selectedProvider, setSelectedProviter] = useState();
   const [expandAll, sections, toggleSection] = useAccordionToggle(
     Object.values(SECTIONS_STORAGE).reduce((acc, k) => {
       acc[k] = true;
@@ -58,12 +55,12 @@ const RemoteStorageForm = ({
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      if (formValues.providerName !== DEMATIC_SD) delete formValues.statusUrl;
-      if (formValues.providerName !== CAIASOFT) delete formValues.apiKey;
+      if (values.providerName !== DEMATIC_SD) delete values.statusUrl;
+      if (values.providerName !== CAIASOFT) delete values.apiKey;
 
-      return onSubmit(formValues);
+      return onSubmit(values);
     },
-    [formValues, onSubmit],
+    [values, onSubmit],
   );
 
   const paneFooter = useMemo(() => (
@@ -76,12 +73,8 @@ const RemoteStorageForm = ({
     />
   ), [intl, handleSubmit, pristine, submitting, onClose]);
 
-  const changeProvider = useCallback(({ values }) => {
-    setSelectedProviter(values.providerName);
-  }, []);
-
-  const isDematicSD = selectedProvider === DEMATIC_SD;
-  const isCaiasoft = selectedProvider === CAIASOFT;
+  const isDematicSD = values.providerName === DEMATIC_SD;
+  const isCaiasoft = values.providerName === CAIASOFT;
 
   if (isLoading) {
     return <LoadingPane />;
@@ -230,16 +223,13 @@ const RemoteStorageForm = ({
           </Row>
         </Pane>
       </form>
-      <FormSpy
-        subscription={spySubscription}
-        onChange={changeProvider}
-      />
     </Layer>
   );
 };
 
 RemoteStorageForm.propTypes = {
   initialValues: PropTypes.object,
+  values: PropTypes.object,
   providers: PropTypes.arrayOf(PropTypes.object),
   isLoading: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
