@@ -29,7 +29,7 @@ const RemoteStorageEditorContainer = ({
   const [storage, setStorage] = useState({});
   const [providers, setProviders] = useState([]);
   const [editedRemoteStorage, setEditedRemoteStorage] = useState();
-  const [isConfirmationModalOpened, setIsConfirmationModalOpened] = useState();
+  const [isConfirmationModalOpened, setIsConfirmationModalOpened] = useState(false);
   const [isLoading, setIsLoading] = useState();
 
   useEffect(() => {
