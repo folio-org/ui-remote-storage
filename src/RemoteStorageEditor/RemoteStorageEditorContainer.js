@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import {
@@ -10,11 +9,9 @@ import {
 import {
   stripesConnect,
 } from '@folio/stripes/core';
-import {
-  ConfirmationModal,
-} from '@folio/stripes/components';
+import { useShowCallout } from '@folio/stripes-acq-components';
 
-import RemoteStorageForm from '../RemoteStorageForm';
+import Editor from '../Editor';
 
 import {
   STORAGES_LIST_ROUTE,
@@ -24,12 +21,11 @@ const RemoteStorageEditorContainer = ({
   mutator,
 }) => {
   const history = useHistory();
+  const showCallout = useShowCallout();
   const { id } = useParams();
 
   const [storage, setStorage] = useState({});
   const [providers, setProviders] = useState([]);
-  const [editedRemoteStorage, setEditedRemoteStorage] = useState();
-  const [isConfirmationModalOpened, setIsConfirmationModalOpened] = useState(false);
   const [isLoading, setIsLoading] = useState();
 
   useEffect(() => {
@@ -59,48 +55,24 @@ const RemoteStorageEditorContainer = ({
     [history, id],
   );
 
-  const onSubmit = useCallback(
-    (formValue) => {
-      setIsConfirmationModalOpened(true);
-      setEditedRemoteStorage(formValue);
-    },
-    [],
-  );
-
-  const onSubmitEdition = useCallback(
-    () => {
-      mutator.configurations.PUT(editedRemoteStorage)
-        .then(onClose)
-        .finally(() => setIsConfirmationModalOpened(false));
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [editedRemoteStorage],
-  );
+  const onSubmit = values => mutator.configurations.PUT(values)
+    .then(() => {
+      onClose();
+      showCallout({ messageId: 'ui-remote-storage.edit.success.changed' });
+    })
+    .catch(err => {
+      showCallout({ messageId: 'ui-remote-storage.edit.error', type: 'error' });
+      throw err;
+    });
 
   return (
-    <>
-      <RemoteStorageForm
-        initialValues={storage}
-        providers={providers}
-        isLoading={isLoading}
-        onClose={onClose}
-        onSubmit={onSubmit}
-      />
-      <ConfirmationModal
-        id="save-confirmation-modal"
-        open={isConfirmationModalOpened}
-        heading={
-          <FormattedMessage
-            id="ui-remote-storage.editForm.title"
-            values={{ name: storage.name }}
-          />
-        }
-        message={<FormattedMessage id="ui-remote-storage.confirmationModal.edit.message" />}
-        onConfirm={onSubmitEdition}
-        onCancel={onClose}
-        confirmLabel={<FormattedMessage id="ui-remote-storage.confirmationModal.save" />}
-      />
-    </>
+    <Editor
+      initialValues={storage}
+      providers={providers}
+      isLoading={isLoading}
+      onClose={onClose}
+      onSubmit={onSubmit}
+    />
   );
 };
 

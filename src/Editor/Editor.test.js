@@ -5,7 +5,7 @@ import user from '@testing-library/user-event';
 
 import '@folio/stripes-acq-components/test/jest/__mock__';
 
-import RemoteStorageForm from './RemoteStorageForm';
+import Editor from './Editor';
 
 import {
   DEMATIC_SD,
@@ -27,7 +27,7 @@ const renderRemoteStorageForm = ({
   submitting = false,
 } = {}) => (render(
   <MemoryRouter>
-    <RemoteStorageForm
+    <Editor
       initialValues={initialValues}
       providers={providers}
       onSubmit={onSubmit}
