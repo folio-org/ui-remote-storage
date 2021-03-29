@@ -3,7 +3,7 @@
 
   "edit": "Edit",
   "saveAndClose": "Save & close",
-  "delete": "Delete", 
+  "delete": "Delete",
 
   "list.name": "Name",
   "list.providerName": "Provider",
@@ -19,7 +19,7 @@
   "name.DEMATIC_SD": "Dematic StagingDirector",
   "name.DEMATIC_EMS": "Dematic EMS",
   "name.CAIA_SOFT": "Caiasoft",
-  
+
   "synchronization.title": "Data synchronization settings",
   "synchronization.schedule.title": "Data synchronization schedule",
   "synchronization.schedule.info": "Runs every {delay} {unit}",
@@ -43,5 +43,9 @@
   "remove.error": "Remote storage configuration was not deleted.",
 
   "create.success": "Remote storage configuration was successfully created.",
-  "create.error": "Remote storage configuration was not created."
+  "create.error": "Error occurred while saving Remote storage configuration.",
+
+  "edit.success.created": "Remote storage configuration was successfully created.",
+  "edit.success.changed": "Remote storage configuration was successfully changed.",
+  "edit.error": "Error occurred while saving Remote storage configuration."
 }

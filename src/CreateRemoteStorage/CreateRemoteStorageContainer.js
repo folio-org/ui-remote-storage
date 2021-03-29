@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import {
@@ -10,13 +9,10 @@ import {
   stripesConnect,
 } from '@folio/stripes/core';
 import {
-  ConfirmationModal,
-} from '@folio/stripes/components';
-import {
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
-import RemoteStorageForm from '../RemoteStorageForm';
+import Editor from '../Editor';
 
 import {
   STORAGES_LIST_ROUTE,
@@ -29,8 +25,6 @@ const CreateRemoteStorageContainer = ({
   const showCallout = useShowCallout();
 
   const [providers, setProviders] = useState([]);
-  const [createdRemoteStorage, setCreatedRemoteStorage] = useState({});
-  const [isConfirmationModalOpened, setIsConfirmationModalOpened] = useState(false);
   const [isLoading, setIsLoading] = useState();
 
   useEffect(() => {
@@ -54,54 +48,25 @@ const CreateRemoteStorageContainer = ({
     [history],
   );
 
-  const onSubmit = useCallback(
-    (formValue) => {
-      setIsConfirmationModalOpened(true);
-      setCreatedRemoteStorage(formValue);
-    },
-    [],
-  );
-
-  const onSubmitCreation = useCallback(
-    () => {
-      mutator.configurations.POST(createdRemoteStorage)
-        .then(() => {
-          history.replace({
-            pathname: `${STORAGES_LIST_ROUTE}`,
-          });
-          showCallout({ messageId: 'ui-remote-storage.create.success' });
-        })
-        .catch(() => {
-          showCallout({ messageId: 'ui-remote-storage.create.error', type: 'error' });
-        })
-        .finally(() => setIsConfirmationModalOpened(false));
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [createdRemoteStorage, history, showCallout],
-  );
+  const onSubmit = values => mutator.configurations.POST(values)
+    .then(() => {
+      history.replace({
+        pathname: STORAGES_LIST_ROUTE,
+      });
+      showCallout({ messageId: 'ui-remote-storage.edit.success.created' });
+    })
+    .catch(err => {
+      showCallout({ messageId: 'ui-remote-storage.edit.error', type: 'error' });
+      throw err;
+    });
 
   return (
-    <>
-      <RemoteStorageForm
-        providers={providers}
-        isLoading={isLoading}
-        onClose={onClose}
-        onSubmit={onSubmit}
-      />
-      <ConfirmationModal
-        id="save-confirmation-modal"
-        open={isConfirmationModalOpened}
-        heading={
-          <FormattedMessage
-            id="ui-remote-storage.createForm.title"
-          />
-        }
-        message={<FormattedMessage id="ui-remote-storage.confirmationModal.create.message" />}
-        onConfirm={onSubmitCreation}
-        onCancel={onClose}
-        confirmLabel={<FormattedMessage id="ui-remote-storage.confirmationModal.save" />}
-      />
-    </>
+    <Editor
+      providers={providers}
+      isLoading={isLoading}
+      onClose={onClose}
+      onSubmit={onSubmit}
+    />
   );
 };
 
