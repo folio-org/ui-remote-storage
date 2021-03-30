@@ -26,8 +26,13 @@
     "remove.success": "Remote storage configuration was successfully deleted.",
     "remove.error": "Remote storage configuration was not deleted.",
     "create.success": "Remote storage configuration was successfully created.",
-    "create.error": "Remote storage configuration was not created.",
+    "create.error": "Error occurred while saving Remote storage configuration.",
     "synchronization.title": "Data synchronization settings",
     "synchronization.schedule.title": "Data synchronization schedule",
-    "synchronization.schedule.info": "Runs every {delay} {unit}"
+    "synchronization.schedule.info": "Runs every {delay} {unit}",
+    "details.credProperties": "Credential properties",
+    "name.CAIA_SOFT": "Caiasoft",
+    "edit.success.created": "遠端儲存設定已成功建立。",
+    "edit.success.changed": "遠端儲存設定已成功修改。",
+    "edit.error": "儲存遠端儲存設定時發生錯誤。"
 }

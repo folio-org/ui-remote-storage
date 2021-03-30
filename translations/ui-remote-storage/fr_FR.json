@@ -26,8 +26,13 @@
     "remove.success": "La configuration du stockage distant a été supprimée avec succès.",
     "remove.error": "La configuration du stockage distant n'a pas été supprimée.",
     "create.success": "La configuration du stockage distant a été créée avec succès.",
-    "create.error": "La configuration du stockage à distance n'a pas été créée.",
+    "create.error": "Une erreur s'est produite lors de l'enregistrement de la configuration du stockage distant.",
     "synchronization.title": "Paramètres de synchronisation des données",
     "synchronization.schedule.title": "Calendrier de synchronisation des données",
-    "synchronization.schedule.info": "S'exécute tous les {delay} {unit}"
+    "synchronization.schedule.info": "S'exécute tous les {delay} {unit}",
+    "details.credProperties": "Propriétés des identifiants",
+    "name.CAIA_SOFT": "Caiasoft",
+    "edit.success.created": "Remote storage configuration was successfully created.",
+    "edit.success.changed": "Remote storage configuration was successfully changed.",
+    "edit.error": "Error occurred while saving Remote storage configuration."
 }
