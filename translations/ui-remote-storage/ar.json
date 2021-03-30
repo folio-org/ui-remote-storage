@@ -29,5 +29,10 @@
     "create.error": "لم يتم إنشاء تهيئة المخزون البعيدة.",
     "synchronization.title": "إعدادات مزامنة البيانات",
     "synchronization.schedule.title": "جدول مزامنة البيانات",
-    "synchronization.schedule.info": "يتم تشغيله كل {delay} {unit}"
+    "synchronization.schedule.info": "يتم تشغيله كل {delay} {unit}",
+    "details.credProperties": "خصائص الاعتماد",
+    "name.CAIA_SOFT": "Caiasoft",
+    "edit.success.created": "تم إنشاء تهيئة المخزون البعيد بنجاح.",
+    "edit.success.changed": "تم تغيير تهيئة المخزون البعيد بنجاح.",
+    "edit.error": "حدث خطأ أثناء حفظ تهيئة المخزون البعيد."
 }

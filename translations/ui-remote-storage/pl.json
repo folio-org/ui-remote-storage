@@ -29,5 +29,10 @@
     "create.error": "Konfiguracja zdalnego magazynu nie została utworzona.",
     "synchronization.title": "Ustawienia synchronizacji danych",
     "synchronization.schedule.title": "Harmonogram synchronizacji danych",
-    "synchronization.schedule.info": "Uruchamiane co {delay} {unit}"
+    "synchronization.schedule.info": "Uruchamiane co {delay} {unit}",
+    "details.credProperties": "Credential properties",
+    "name.CAIA_SOFT": "Caiasoft",
+    "edit.success.created": "Remote storage configuration was successfully created.",
+    "edit.success.changed": "Remote storage configuration was successfully changed.",
+    "edit.error": "Error occurred while saving Remote storage configuration."
 }
