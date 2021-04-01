@@ -5,32 +5,22 @@ import {
   useHistory,
   useParams,
 } from 'react-router-dom';
+import { Form } from 'react-final-form';
 
 import {
   Pane,
-  Accordion,
-  AccordionSet,
-  Col,
-  ExpandAllButton,
   LoadingPane,
   MenuSection,
-  Row,
-  KeyValue,
   Icon,
   Button,
 } from '@folio/stripes/components';
-import {
-  ViewMetaData,
-} from '@folio/stripes/smart-components';
-import {
-  useAccordionToggle,
-} from '@folio/stripes-acq-components';
 import { IfPermission } from '@folio/stripes/core';
 
 import {
-  SECTIONS_STORAGE,
   STORAGES_LIST_ROUTE,
 } from '../const';
+
+import { Details } from '../Details';
 
 const RemoteStorageDetails = ({
   defaultWidth,
@@ -41,14 +31,6 @@ const RemoteStorageDetails = ({
   const history = useHistory();
   const { id } = useParams();
   const intl = useIntl();
-
-  const [expandAll, sections, toggleSection] = useAccordionToggle(
-    Object.values(SECTIONS_STORAGE).reduce((acc, k) => {
-      acc[k] = true;
-
-      return acc;
-    }, {}),
-  );
 
   const renderActionMenu = useCallback(() => (
     <IfPermission perm="ui-remote-storage.settings.remote-storages.all">
@@ -103,72 +85,16 @@ const RemoteStorageDetails = ({
       onClose={closePane}
       dismissible
     >
-      <Row end="xs">
-        <Col xs={12}>
-          <ExpandAllButton
-            accordionStatus={sections}
-            onToggle={expandAll}
-          />
-        </Col>
-      </Row>
-
-      <AccordionSet
-        accordionStatus={sections}
-        onToggle={toggleSection}
+      <Form
+        onSubmit={() => {}}
+        initialValues={storage}
       >
-        <Accordion
-          label={intl.formatMessage({ id: 'ui-remote-storage.details.title' })}
-          id={SECTIONS_STORAGE.INFORMATION}
-        >
-          {storage.metadata && <ViewMetaData metadata={storage.metadata} />}
-          <Row>
-            <Col xs={6}>
-              <KeyValue label={intl.formatMessage({ id: 'ui-remote-storage.details.storageName' })}>
-                {storage.name}
-              </KeyValue>
-            </Col>
-            <Col xs={4}>
-              <KeyValue label={intl.formatMessage({ id: 'ui-remote-storage.details.providerName' })}>
-                {intl.formatMessage({ id: `ui-remote-storage.name.${storage.providerName}` })}
-              </KeyValue>
-            </Col>
-            <Col xs={6}>
-              <KeyValue label={intl.formatMessage({ id: 'ui-remote-storage.details.url' })}>
-                {storage.url}
-              </KeyValue>
-            </Col>
-            {storage.statusUrl && (
-              <Col xs={6}>
-                <KeyValue label={intl.formatMessage({ id: 'ui-remote-storage.details.statusUrl' })}>
-                  {storage.statusUrl}
-                </KeyValue>
-              </Col>
-            )}
-            {storage.apiKey && (
-              <Col xs={6}>
-                <KeyValue label={intl.formatMessage({ id: 'ui-remote-storage.details.credProperties' })}>
-                  {storage.apiKey}
-                </KeyValue>
-              </Col>
-            )}
-          </Row>
-        </Accordion>
-
-        <Accordion
-          label={intl.formatMessage({ id: 'ui-remote-storage.synchronization.title' })}
-          id={SECTIONS_STORAGE.SYNCHRONIZATION}
-        >
-          <KeyValue label={intl.formatMessage({ id: 'ui-remote-storage.synchronization.schedule.title' })}>
-            {intl.formatMessage(
-              { id: 'ui-remote-storage.synchronization.schedule.info' },
-              {
-                delay: storage.accessionDelay,
-                unit: storage.accessionTimeUnit,
-              },
-            )}
-          </KeyValue>
-        </Accordion>
-      </AccordionSet>
+        {() => (
+          <Details
+            isNonInteractive
+          />
+        )}
+      </Form>
     </Pane>
   );
 };

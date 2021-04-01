@@ -33,7 +33,11 @@ const Editor = ({
 
   const handleSubmit = (values) => {
     if (values.providerName !== DEMATIC_SD) delete values.statusUrl;
-    if (values.providerName !== CAIASOFT) delete values.apiKey;
+
+    if (values.providerName !== CAIASOFT) {
+      delete values.apiKey;
+      delete values.accessionWorkflowDetails;
+    }
 
     return confirmation
       .wait()
@@ -78,7 +82,6 @@ const Editor = ({
 Editor.propTypes = {
   initialValues: PropTypes.object,
   values: PropTypes.object,
-  providers: PropTypes.arrayOf(PropTypes.object),
   isLoading: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
