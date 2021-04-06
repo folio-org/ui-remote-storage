@@ -34,5 +34,10 @@
     "name.CAIA_SOFT": "Caiasoft",
     "edit.success.created": "遠端儲存設定已成功建立。",
     "edit.success.changed": "遠端儲存設定已成功修改。",
-    "edit.error": "儲存遠端儲存設定時發生錯誤。"
+    "edit.error": "儲存遠端儲存設定時發生錯誤。",
+    "select": "Select",
+    "accession-workflow.title": "Accession workflow preference",
+    "accession-workflow.error.undefined": "Accession workflow preference must be selected to save configuration",
+    "accession-workflow.option.new": "Create new holdings record",
+    "accession-workflow.option.existing": "Assign to existing holdings record"
 }
