@@ -3,6 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import { queryHelpers } from '@testing-library/dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import RemoteStorageDetails from './RemoteStorageDetails';
 
@@ -14,12 +15,14 @@ const renderRemoteStorageDetails = ({
   storage = {},
   onRemovestorage = jest.fn(),
 } = {}) => (render(
-  <MemoryRouter>
-    <RemoteStorageDetails
-      storage={storage}
-      onRemovestorage={onRemovestorage}
-    />
-  </MemoryRouter>,
+  <QueryClientProvider client={new QueryClient()}>
+    <MemoryRouter>
+      <RemoteStorageDetails
+        storage={storage}
+        onRemovestorage={onRemovestorage}
+      />
+    </MemoryRouter>
+  </QueryClientProvider>,
 ));
 
 describe('RemoteStorageDetails', () => {
