@@ -31,6 +31,7 @@ export const AccessionWorkflow = props => {
     <Select
       dataOptions={OPTIONS}
       placeholder={formatMessage({ id: 'ui-remote-storage.select' })}
+      tooltipText={formatMessage({ id: 'ui-remote-storage.accession-workflow.tooltip' })}
       required
       {...field}
       {...props}
