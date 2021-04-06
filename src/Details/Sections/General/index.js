@@ -61,26 +61,26 @@ export const General = ({ isNonInteractive }) => {
           />
         </Col>
         {isDematicSD && (
-        <Col xs={4}>
-          <Field
-            component={TextField}
-            area-label={labels.statusUrlLabel}
-            label={labels.statusUrlLabel}
-            name="statusUrl"
-            isNonInteractive={isNonInteractive}
-          />
-        </Col>
+          <Col xs={4}>
+            <Field
+              component={TextField}
+              area-label={labels.statusUrlLabel}
+              label={labels.statusUrlLabel}
+              name="statusUrl"
+              isNonInteractive={isNonInteractive}
+            />
+          </Col>
         )}
         {isCaiasoft && (
-        <Col xs={4}>
-          <Field
-            component={TextField}
-            area-label={labels.credPropertiesLabel}
-            label={labels.credPropertiesLabel}
-            name="apiKey"
-            isNonInteractive={isNonInteractive}
-          />
-        </Col>
+          <Col xs={4}>
+            <Field
+              component={TextField}
+              area-label={labels.credPropertiesLabel}
+              label={labels.credPropertiesLabel}
+              name="apiKey"
+              isNonInteractive={isNonInteractive}
+            />
+          </Col>
         )}
       </Row>
     </Accordion>
