@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { noop } from 'lodash';
 import { useIntl } from 'react-intl';
 import {
   useHistory,
@@ -86,14 +87,10 @@ const RemoteStorageDetails = ({
       dismissible
     >
       <Form
-        onSubmit={() => {}}
+        onSubmit={noop}
         initialValues={storage}
       >
-        {() => (
-          <Details
-            isNonInteractive
-          />
-        )}
+        {() => <Details isNonInteractive />}
       </Form>
     </Pane>
   );

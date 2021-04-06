@@ -41,7 +41,6 @@ const renderRemoteStorageForm = ({
     <MemoryRouter>
       <Editor
         initialValues={initialValues}
-        // providers={providers}
         onSubmit={onSubmit}
         onClose={onClose}
         pristine={pristine}
