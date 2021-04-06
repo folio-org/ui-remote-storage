@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { useField } from 'react-final-form';
 
 import { Select } from '@folio/stripes-acq-components';
@@ -24,12 +24,13 @@ const validate = value => (
 );
 
 export const AccessionWorkflow = props => {
+  const { formatMessage } = useIntl();
   const field = useField(FIELD_NAME, { validate });
 
   return (
     <Select
       dataOptions={OPTIONS}
-      placeholder={<FormattedMessage id="ui-remote-storage.select" />}
+      placeholder={formatMessage({ id: 'ui-remote-storage.select' })}
       required
       {...field}
       {...props}
