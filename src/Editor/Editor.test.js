@@ -64,23 +64,23 @@ describe('Editor', () => {
   });
 
   it('should show Status URL if Dematic SD chosen', () => {
-    renderRemoteStorageForm({
-      initialValues: {},
-      providers: [{ label: DEMATIC_SD }, { label: DEMATIC_EMS }],
-    });
+    renderRemoteStorageForm();
 
-    user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), DEMATIC_SD);
+    const providers = screen.getByRole('combobox', { name: 'ui-remote-storage.details.providerName' });
+    const dematicSdOption = getByRole(providers, 'option', { name: DEMATIC_SD });
+    const otherOptions = getAllByRole(providers, 'option', { name: text => text !== DEMATIC_SD });
+
+    user.selectOptions(providers, dematicSdOption);
     expect(screen.queryByLabelText('ui-remote-storage.details.statusUrl')).toBeVisible();
 
-    user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), DEMATIC_EMS);
-    expect(screen.queryByLabelText('ui-remote-storage.details.statusUrl')).not.toBeInTheDocument();
+    otherOptions.forEach(option => {
+      user.selectOptions(providers, option);
+      expect(screen.queryByLabelText('ui-remote-storage.details.statusUrl')).not.toBeInTheDocument();
+    });
   });
 
-  it('should show Credential properties if Caiasoft is chosen', async () => {
-    renderRemoteStorageForm({
-      initialValues: {},
-      providers: [{ label: DEMATIC_SD }, { label: CAIASOFT }],
-    });
+  it('should show Credential properties if Caiasoft is chosen', () => {
+    renderRemoteStorageForm();
 
     const providers = screen.getByRole('combobox', { name: 'ui-remote-storage.details.providerName' });
     const ciasoftOption = getByRole(providers, 'option', { name: CAIASOFT });
@@ -88,6 +88,7 @@ describe('Editor', () => {
 
     user.selectOptions(providers, ciasoftOption);
     expect(screen.queryByLabelText('ui-remote-storage.details.credProperties')).toBeVisible();
+
     otherOptions.forEach(option => {
       user.selectOptions(providers, option);
       expect(screen.queryByLabelText('ui-remote-storage.details.credProperties')).not.toBeInTheDocument();
