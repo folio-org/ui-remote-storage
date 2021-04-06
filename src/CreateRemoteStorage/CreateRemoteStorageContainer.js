@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -24,21 +24,6 @@ const CreateRemoteStorageContainer = ({
   const history = useHistory();
   const showCallout = useShowCallout();
 
-  const [providers, setProviders] = useState([]);
-  const [isLoading, setIsLoading] = useState();
-
-  useEffect(() => {
-    setIsLoading(true);
-    mutator.providers.GET()
-      .then((providersResponse) => {
-        setProviders(providersResponse.map(provider => ({
-          value: provider.id,
-          label: provider.name,
-        })));
-      }).finally(() => setIsLoading(false));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const onClose = useCallback(
     () => {
       history.push({
@@ -62,8 +47,6 @@ const CreateRemoteStorageContainer = ({
 
   return (
     <Editor
-      providers={providers}
-      isLoading={isLoading}
       onClose={onClose}
       onSubmit={onSubmit}
     />
@@ -74,12 +57,6 @@ CreateRemoteStorageContainer.manifest = Object.freeze({
   configurations: {
     type: 'okapi',
     path: 'remote-storage/configurations',
-    throwErrors: false,
-  },
-  providers: {
-    type: 'okapi',
-    path: 'remote-storage/providers',
-    accumulate: true,
     throwErrors: false,
     fetch: false,
   },

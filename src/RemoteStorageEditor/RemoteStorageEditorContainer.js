@@ -25,24 +25,13 @@ const RemoteStorageEditorContainer = ({
   const { id } = useParams();
 
   const [storage, setStorage] = useState({});
-  const [providers, setProviders] = useState([]);
-  const [isLoading, setIsLoading] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
-    const providersPromise = mutator.providers.GET();
-    const configurationsPromise = mutator.configurations.GET({
-      path: `remote-storage/configurations/${id}`,
-    });
-
-    Promise.all([providersPromise, configurationsPromise])
-      .then(([providersResponse, configurationsResponse]) => {
-        setProviders(providersResponse.map(provider => ({
-          value: provider.id,
-          label: provider.name,
-        })));
-        setStorage(configurationsResponse);
-      }).finally(() => setIsLoading(false));
+    mutator.configurations.GET({ path: `remote-storage/configurations/${id}` })
+      .then(setStorage)
+      .finally(() => setIsLoading(false));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
@@ -68,7 +57,6 @@ const RemoteStorageEditorContainer = ({
   return (
     <Editor
       initialValues={storage}
-      providers={providers}
       isLoading={isLoading}
       onClose={onClose}
       onSubmit={onSubmit}
@@ -80,13 +68,6 @@ RemoteStorageEditorContainer.manifest = Object.freeze({
   configurations: {
     type: 'okapi',
     path: 'remote-storage/configurations',
-    accumulate: true,
-    throwErrors: false,
-    fetch: false,
-  },
-  providers: {
-    type: 'okapi',
-    path: 'remote-storage/providers',
     accumulate: true,
     throwErrors: false,
     fetch: false,

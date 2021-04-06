@@ -1,9 +1,8 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { render, screen, getAllByRole, getByRole } from '@testing-library/react';
 import user from '@testing-library/user-event';
-
-import '@folio/stripes-acq-components/test/jest/__mock__';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import Editor from './Editor';
 
@@ -13,6 +12,19 @@ import {
   CAIASOFT,
 } from '../const';
 
+const mockProvidersOptions = [
+  { label: DEMATIC_EMS },
+  { label: DEMATIC_SD },
+  { label: CAIASOFT },
+];
+
+jest.mock(
+  '../Details/Sections/General/useProvidersOptions',
+  () => ({
+    useProvidersOptions: () => mockProvidersOptions,
+  }),
+);
+
 jest.mock(
   '@folio/stripes-components/lib/Layer',
   () => props => props.children,
@@ -20,25 +32,25 @@ jest.mock(
 
 const renderRemoteStorageForm = ({
   initialValues,
-  providers = [],
   onSubmit = jest.fn(),
   onClose = jest.fn(),
   pristine = true,
   submitting = false,
 } = {}) => (render(
-  <MemoryRouter>
-    <Editor
-      initialValues={initialValues}
-      providers={providers}
-      onSubmit={onSubmit}
-      onClose={onClose}
-      pristine={pristine}
-      submitting={submitting}
-    />
-  </MemoryRouter>,
+  <QueryClientProvider client={new QueryClient()}>
+    <MemoryRouter>
+      <Editor
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        onClose={onClose}
+        pristine={pristine}
+        submitting={submitting}
+      />
+    </MemoryRouter>
+  </QueryClientProvider>,
 ));
 
-describe('RemoteStorageForm', () => {
+describe('Editor', () => {
   it('should open create form if no initialValues', () => {
     renderRemoteStorageForm();
 
@@ -52,28 +64,34 @@ describe('RemoteStorageForm', () => {
   });
 
   it('should show Status URL if Dematic SD chosen', () => {
-    renderRemoteStorageForm({
-      initialValues: {},
-      providers: [{ label: DEMATIC_SD }, { label: DEMATIC_EMS }],
-    });
+    renderRemoteStorageForm();
 
-    user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), DEMATIC_SD);
+    const providers = screen.getByRole('combobox', { name: 'ui-remote-storage.details.providerName' });
+    const dematicSdOption = getByRole(providers, 'option', { name: DEMATIC_SD });
+    const otherOptions = getAllByRole(providers, 'option', { name: text => text !== DEMATIC_SD });
+
+    user.selectOptions(providers, dematicSdOption);
     expect(screen.queryByLabelText('ui-remote-storage.details.statusUrl')).toBeVisible();
 
-    user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), DEMATIC_EMS);
-    expect(screen.queryByLabelText('ui-remote-storage.details.statusUrl')).not.toBeInTheDocument();
+    otherOptions.forEach(option => {
+      user.selectOptions(providers, option);
+      expect(screen.queryByLabelText('ui-remote-storage.details.statusUrl')).not.toBeInTheDocument();
+    });
   });
 
   it('should show Credential properties if Caiasoft is chosen', () => {
-    renderRemoteStorageForm({
-      initialValues: {},
-      providers: [{ label: DEMATIC_SD }, { label: CAIASOFT }],
-    });
+    renderRemoteStorageForm();
 
-    user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), CAIASOFT);
+    const providers = screen.getByRole('combobox', { name: 'ui-remote-storage.details.providerName' });
+    const ciasoftOption = getByRole(providers, 'option', { name: CAIASOFT });
+    const otherOptions = getAllByRole(providers, 'option', { name: text => text !== CAIASOFT });
+
+    user.selectOptions(providers, ciasoftOption);
     expect(screen.queryByLabelText('ui-remote-storage.details.credProperties')).toBeVisible();
 
-    user.selectOptions(screen.getByLabelText('ui-remote-storage.details.providerName'), DEMATIC_SD);
-    expect(screen.queryByLabelText('ui-remote-storage.details.credProperties')).not.toBeInTheDocument();
+    otherOptions.forEach(option => {
+      user.selectOptions(providers, option);
+      expect(screen.queryByLabelText('ui-remote-storage.details.credProperties')).not.toBeInTheDocument();
+    });
   });
 });

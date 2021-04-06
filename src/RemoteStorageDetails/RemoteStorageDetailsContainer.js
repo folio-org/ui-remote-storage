@@ -30,7 +30,7 @@ const RemoteStorageDetailsContainer = ({
   const showCallout = useShowCallout();
 
   const [storage, setStorage] = useState({});
-  const [isLoading, setIsLoading] = useState();
+  const [isLoading, setIsLoading] = useState(true);
   const [isConfigurationUsed, setIsConfigurationUsed] = useState(false);
   const [isDeleteConfirmationShown, setIsDeleteConfirmationShown] = useState(false);
 
