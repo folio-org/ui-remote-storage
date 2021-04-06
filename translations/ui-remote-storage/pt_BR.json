@@ -23,16 +23,16 @@
     "cannotDeleteModal.message": "Um ou mais acervos e/ou registros de itens estão associados a este local e não podem ser excluídos.",
     "removingModal.title": "Remover {name}",
     "removingModal.message": "Tem certeza de que deseja excluir a configuração de armazenamento remoto?",
-    "remove.success": "Remote storage configuration was successfully deleted.",
-    "remove.error": "Remote storage configuration was not deleted.",
-    "create.success": "Remote storage configuration was successfully created.",
+    "remove.success": "A configuração de armazenamento remoto foi excluída com sucesso.",
+    "remove.error": "A configuração de armazenamento remoto não foi excluída.",
+    "create.success": "A configuração de armazenamento remoto foi criada com sucesso.",
     "create.error": "Error occurred while saving Remote storage configuration.",
     "synchronization.title": "Configurações de sincronização de dados",
     "synchronization.schedule.title": "Cronograma de sincronização de dados",
     "synchronization.schedule.info": "Executa a cada {delay} {unit}",
     "details.credProperties": "Propriedades de credencial",
     "name.CAIA_SOFT": "Caiasoft",
-    "edit.success.created": "Remote storage configuration was successfully created.",
-    "edit.success.changed": "Remote storage configuration was successfully changed.",
-    "edit.error": "Error occurred while saving Remote storage configuration."
+    "edit.success.created": "A configuração de armazenamento remoto foi criada com sucesso.",
+    "edit.success.changed": "A configuração de armazenamento remoto foi alterada com sucesso.",
+    "edit.error": "Ocorreu um erro ao salvar a configuração de armazenamento remoto."
 }
