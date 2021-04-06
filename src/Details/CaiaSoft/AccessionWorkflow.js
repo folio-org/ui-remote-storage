@@ -9,11 +9,11 @@ const FIELD_NAME = 'accessionWorkflowDetails';
 const OPTIONS = [
   {
     value: 'Create new holdings record',
-    label: 'Create new holdings record',
+    label: <FormattedMessage id="ui-remote-storage.accession-workflow.option.new" />,
   },
   {
     value: 'Assign to existing holdings record',
-    label: 'Assign to existing holdings record',
+    label: <FormattedMessage id="ui-remote-storage.accession-workflow.option.existing" />,
   },
 ];
 
