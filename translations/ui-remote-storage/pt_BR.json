@@ -34,5 +34,10 @@
     "name.CAIA_SOFT": "Caiasoft",
     "edit.success.created": "A configuração de armazenamento remoto foi criada com sucesso.",
     "edit.success.changed": "A configuração de armazenamento remoto foi alterada com sucesso.",
-    "edit.error": "Ocorreu um erro ao salvar a configuração de armazenamento remoto."
+    "edit.error": "Ocorreu um erro ao salvar a configuração de armazenamento remoto.",
+    "select": "Select",
+    "accession-workflow.title": "Accession workflow preference",
+    "accession-workflow.error.undefined": "Accession workflow preference must be selected to save configuration",
+    "accession-workflow.option.new": "Create new holdings record",
+    "accession-workflow.option.existing": "Assign to existing holdings record"
 }
