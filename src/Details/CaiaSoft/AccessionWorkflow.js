@@ -6,17 +6,6 @@ import { Select } from '@folio/stripes-acq-components';
 
 const FIELD_NAME = 'accessionWorkflowDetails';
 
-const OPTIONS = [
-  {
-    value: 'Create new holdings record',
-    label: <FormattedMessage id="ui-remote-storage.accession-workflow.option.new" />,
-  },
-  {
-    value: 'Assign to existing holdings record',
-    label: <FormattedMessage id="ui-remote-storage.accession-workflow.option.existing" />,
-  },
-];
-
 const validate = value => (
   value !== undefined
     ? undefined
@@ -26,6 +15,17 @@ const validate = value => (
 export const AccessionWorkflow = props => {
   const { formatMessage } = useIntl();
   const field = useField(FIELD_NAME, { validate });
+
+  const OPTIONS = [
+    {
+      value: 'Create new holdings record',
+      label: formatMessage({ id: 'ui-remote-storage.accession-workflow.option.new' }),
+    },
+    {
+      value: 'Assign to existing holdings record',
+      label: formatMessage({ id: 'ui-remote-storage.accession-workflow.option.existing' }),
+    },
+  ];
 
   return (
     <Select
