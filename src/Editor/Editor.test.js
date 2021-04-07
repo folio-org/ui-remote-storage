@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen, getAllByRole, getByRole } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
@@ -67,8 +67,8 @@ describe('Editor', () => {
     renderRemoteStorageForm();
 
     const providers = screen.getByRole('combobox', { name: 'ui-remote-storage.details.providerName' });
-    const dematicSdOption = getByRole(providers, 'option', { name: DEMATIC_SD });
-    const otherOptions = getAllByRole(providers, 'option', { name: text => text !== DEMATIC_SD });
+    const dematicSdOption = within(providers).getByRole('option', { name: DEMATIC_SD });
+    const otherOptions = within(providers).getAllByRole('option', { name: text => text !== DEMATIC_SD });
 
     user.selectOptions(providers, dematicSdOption);
     expect(screen.queryByLabelText('ui-remote-storage.details.statusUrl')).toBeVisible();
@@ -79,19 +79,33 @@ describe('Editor', () => {
     });
   });
 
-  it('should show Credential properties if Caiasoft is chosen', () => {
+  it('should show CaiaSoft-specific fields if CaiaSoft is chosen', () => {
+    const query = {
+      get credProperties() {
+        return screen.queryByLabelText('ui-remote-storage.details.credProperties');
+      },
+      get accessionWorkflowSection() {
+        return screen.queryByRole('region', { name: /ui-remote-storage.accession-workflow.title/ });
+      },
+    };
+
     renderRemoteStorageForm();
 
     const providers = screen.getByRole('combobox', { name: 'ui-remote-storage.details.providerName' });
-    const ciasoftOption = getByRole(providers, 'option', { name: CAIASOFT });
-    const otherOptions = getAllByRole(providers, 'option', { name: text => text !== CAIASOFT });
+    const ciasoftOption = within(providers).getByRole('option', { name: CAIASOFT });
+    const otherOptions = within(providers).getAllByRole('option', { name: text => text !== CAIASOFT });
 
     user.selectOptions(providers, ciasoftOption);
-    expect(screen.queryByLabelText('ui-remote-storage.details.credProperties')).toBeVisible();
+
+    expect(query.credProperties).toBeVisible();
+
+    expect(query.accessionWorkflowSection).toBeVisible();
+    expect(within(query.accessionWorkflowSection).getByRole('combobox')).toBeVisible();
 
     otherOptions.forEach(option => {
       user.selectOptions(providers, option);
-      expect(screen.queryByLabelText('ui-remote-storage.details.credProperties')).not.toBeInTheDocument();
+      expect(query.credProperties).not.toBeInTheDocument();
+      expect(query.accessionWorkflowSection).not.toBeInTheDocument();
     });
   });
 });
