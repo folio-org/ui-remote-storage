@@ -4,8 +4,6 @@ import { useIntl } from 'react-intl';
 
 import {
   Pane,
-  Col,
-  Row,
 } from '@folio/stripes/components';
 import {
   FormFooter,
@@ -34,25 +32,17 @@ const FormComponent = ({
   ), [intl, handleSubmit, pristine, submitting, onClose]);
 
   return (
-    <form style={{ height: '100vh' }}>
-      <Pane
-        defaultWidth="fill"
-        paneTitle={title}
-        footer={paneFooter}
-        onClose={onClose}
-        dismissible
-      >
-        <Row>
-          <Col
-            xs={12}
-            md={8}
-            mdOffset={2}
-          >
-            <Details />
-          </Col>
-        </Row>
-      </Pane>
-    </form>
+    <Pane
+      defaultWidth="fill"
+      paneTitle={title}
+      footer={paneFooter}
+      onClose={onClose}
+      dismissible
+    >
+      <form noValidate>
+        <Details />
+      </form>
+    </Pane>
   );
 };
 
