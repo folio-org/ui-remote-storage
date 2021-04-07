@@ -48,6 +48,7 @@
           "remote-storage.mappings.item.delete",
           "remote-storage.mappings.collection.get",
           "remote-storage.mappings.item.get",
+          "remote-storage.providers.collection.get",
           "settings.remote-storage.enabled"
         ]
       }
