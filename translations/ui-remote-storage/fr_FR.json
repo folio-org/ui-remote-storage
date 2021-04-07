@@ -34,5 +34,10 @@
     "name.CAIA_SOFT": "Caiasoft",
     "edit.success.created": "Remote storage configuration was successfully created.",
     "edit.success.changed": "Remote storage configuration was successfully changed.",
-    "edit.error": "Error occurred while saving Remote storage configuration."
+    "edit.error": "Error occurred while saving Remote storage configuration.",
+    "select": "Sélectionner",
+    "accession-workflow.title": "Préférence de flux de travail",
+    "accession-workflow.error.undefined": "La préférence de flux de travail doit être sélectionnée pour enregistrer la configuration",
+    "accession-workflow.option.new": "Créer un nouvel enregistrement de fonds documentaires",
+    "accession-workflow.option.existing": "Affecter à un enregistrement de fonds documentaires existant"
 }
