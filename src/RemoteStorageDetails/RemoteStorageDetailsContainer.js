@@ -119,7 +119,7 @@ const RemoteStorageDetailsContainer = ({
         message={intl.formatMessage({ id: 'ui-remote-storage.removingModal.message' })}
         onConfirm={onConfirmRemoving}
         onCancel={hideDeleteConfirmationModal}
-        confirmLabel={intl.formatMessage({ id: 'ui-remote-storage.confirmationModal.save' })}
+        confirmLabel={intl.formatMessage({ id: 'ui-remote-storage.delete' })}
       />
     </>
   );

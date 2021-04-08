@@ -29,7 +29,7 @@ export const General = ({ isNonInteractive }) => {
   const isCaiasoft = values.providerName === CAIASOFT;
 
   const labels = {
-    storageNameLabel: intl.formatMessage({ id: 'ui-remote-storage.details.storageName' }),
+    storageNameLabel: intl.formatMessage({ id: 'ui-remote-storage.details.name' }),
     urlLabel: intl.formatMessage({ id: 'ui-remote-storage.details.url' }),
     statusUrlLabel: intl.formatMessage({ id: 'ui-remote-storage.details.statusUrl' }),
     credPropertiesLabel: intl.formatMessage({ id: 'ui-remote-storage.details.credProperties' }),
@@ -39,7 +39,7 @@ export const General = ({ isNonInteractive }) => {
     <Accordion label={intl.formatMessage({ id: 'ui-remote-storage.details.title' })}>
       {initialValues?.metadata && <ViewMetaData metadata={initialValues.metadata} />}
       <Row>
-        <Col xs={3}>
+        <Col xs={8}>
           <Field
             component={TextField}
             area-label={labels.storageNameLabel}
@@ -47,11 +47,16 @@ export const General = ({ isNonInteractive }) => {
             name="name"
             isNonInteractive={isNonInteractive}
             required
+            validate={value => !(value?.trim().length > 0) &&
+              intl.formatMessage({ id: 'ui-remote-storage.details.name.error' })
+            }
             autoFocus
           />
         </Col>
-        <Providers isNonInteractive={isNonInteractive} />
         <Col xs={4}>
+          <Providers isNonInteractive={isNonInteractive} />
+        </Col>
+        <Col xs={6}>
           <Field
             component={TextField}
             area-label={labels.urlLabel}
@@ -60,8 +65,8 @@ export const General = ({ isNonInteractive }) => {
             isNonInteractive={isNonInteractive}
           />
         </Col>
-        {isDematicSD && (
-          <Col xs={4}>
+        <Col xs={6}>
+          {isDematicSD && (
             <Field
               component={TextField}
               area-label={labels.statusUrlLabel}
@@ -69,10 +74,8 @@ export const General = ({ isNonInteractive }) => {
               name="statusUrl"
               isNonInteractive={isNonInteractive}
             />
-          </Col>
-        )}
-        {isCaiasoft && (
-          <Col xs={4}>
+          )}
+          {isCaiasoft && (
             <Field
               component={TextField}
               area-label={labels.credPropertiesLabel}
@@ -80,8 +83,8 @@ export const General = ({ isNonInteractive }) => {
               name="apiKey"
               isNonInteractive={isNonInteractive}
             />
-          </Col>
-        )}
+          )}
+        </Col>
       </Row>
     </Accordion>
   );
