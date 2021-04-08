@@ -44,6 +44,9 @@
         "subPermissions": [
           "remote-storage.configurations.collection.get",
           "remote-storage.configurations.item.get",
+          "remote-storage.configurations.item.post",
+          "remote-storage.configurations.item.put",
+          "remote-storage.configurations.item.delete",
           "remote-storage.mappings.item.post",
           "remote-storage.mappings.item.delete",
           "remote-storage.mappings.collection.get",
