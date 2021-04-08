@@ -4,6 +4,8 @@ import { useIntl } from 'react-intl';
 
 import {
   Pane,
+  Row,
+  Col,
 } from '@folio/stripes/components';
 import {
   FormFooter,
@@ -39,9 +41,13 @@ const FormComponent = ({
       onClose={onClose}
       dismissible
     >
-      <form noValidate>
-        <Details />
-      </form>
+      <Row center="xs" style={{ textAlign: 'unset' }}>
+        <Col xs={12} sm={10} md={8} lg={6}>
+          <form noValidate>{/* `noValidate` to prevent browser native tooltips for required fields */}
+            <Details />
+          </form>
+        </Col>
+      </Row>
     </Pane>
   );
 };

@@ -5,14 +5,17 @@
   "saveAndClose": "Save & close",
   "delete": "Delete",
   "select": "Select",
+  "loading": "Loading...",
 
   "list.name": "Name",
   "list.providerName": "Provider",
   "list.lastUpdate": "Last Update",
 
   "details.title": "General information",
-  "details.storageName": "Remote storage name",
+  "details.name": "Remote storage name",
+  "details.name.error": "Name is required",
   "details.providerName": "Provider name",
+  "details.providerName.error": "Provider is required",
   "details.url": "URL (domain)",
   "details.statusUrl": "Status URL",
   "details.credProperties": "Credential properties",

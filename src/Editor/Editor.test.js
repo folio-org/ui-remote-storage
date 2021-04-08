@@ -21,7 +21,7 @@ const mockProvidersOptions = [
 jest.mock(
   '../Details/Sections/General/useProvidersOptions',
   () => ({
-    useProvidersOptions: () => mockProvidersOptions,
+    useProvidersOptions: () => ({ options: mockProvidersOptions }),
   }),
 );
 
@@ -74,6 +74,8 @@ describe('Editor', () => {
     expect(screen.queryByLabelText('ui-remote-storage.details.statusUrl')).toBeVisible();
 
     otherOptions.forEach(option => {
+      if (option.disabled) return; // for the 'Select' placeholder
+
       user.selectOptions(providers, option);
       expect(screen.queryByLabelText('ui-remote-storage.details.statusUrl')).not.toBeInTheDocument();
     });
@@ -103,6 +105,8 @@ describe('Editor', () => {
     expect(within(query.accessionWorkflowSection).getByRole('combobox')).toBeVisible();
 
     otherOptions.forEach(option => {
+      if (option.disabled) return; // for the 'Select' placeholder
+
       user.selectOptions(providers, option);
       expect(query.credProperties).not.toBeInTheDocument();
       expect(query.accessionWorkflowSection).not.toBeInTheDocument();

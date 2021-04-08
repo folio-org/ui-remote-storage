@@ -68,7 +68,7 @@ describe('RemoteStorageDetailsContainer', () => {
       renderRemoteStorageDetailsContainer({ mutator });
 
       RemoteStorageDetails.mock.calls[0][0].onRemovestorage();
-      const confirmationModalButton = await screen.findByText('ui-remote-storage.confirmationModal.save');
+      const confirmationModalButton = await screen.findByText('ui-remote-storage.delete');
 
       user.click(confirmationModalButton);
 

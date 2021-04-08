@@ -12,9 +12,12 @@ export const useProvidersOptions = () => {
   const queryKey = [API, searchParams];
   const queryFn = () => ky(API, { searchParams }).json();
 
-  const { data } = useQuery({ queryKey, queryFn });
+  const { data, isLoading } = useQuery({ queryKey, queryFn });
 
   const options = data?.map(({ id, name }) => ({ value: id, label: name }));
 
-  return options;
+  return {
+    options,
+    isLoading,
+  };
 };
