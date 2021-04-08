@@ -3,7 +3,7 @@
 ## (IN PROGRESS)
 * [UIRS-15](https://issues.folio.org/browse/UIRS-15) Remote Storage Settings: Credential properties (apiKey)
 * [UIRS-23](https://issues.folio.org/browse/UIRS-23) Add Accession workflow preference
-* [UIRS-27](https://issues.folio.org/browse/UIRS-27) Add "remote-storage.providers.collection.get" sub-permission to "Remote storage: Create, read, update, delete"
+* [UIRS-27](https://issues.folio.org/browse/UIRS-27) Add to "Remote storage: Create, read, update, delete" all the missing permissions on configurations and providers
 
 ## [1.0.0](https://github.com/folio-org/ui-remote-storage/tree/v1.0.0) (2021-03-19)
 
