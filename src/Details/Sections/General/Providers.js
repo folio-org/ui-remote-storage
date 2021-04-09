@@ -11,21 +11,24 @@ export const Providers = props => {
   const { formatMessage } = useIntl();
   const { options, isLoading } = useProvidersOptions();
 
+  const byValidity = (value, { valid, invalid }) => (options?.some(option => option.value === value) ? valid : invalid);
+
   const field = useField(FIELD_NAME, {
-    validate: value => !(options?.some(option => option.value === value)) &&
-      formatMessage({ id: 'ui-remote-storage.details.providerName.error' }),
+    validate: value => byValidity(value, {
+      invalid: formatMessage({ id: 'ui-remote-storage.details.providerName.error' }),
+    }),
+    format: value => byValidity(value, { valid: value, invalid: '' }),
   });
 
   const label = formatMessage({ id: 'ui-remote-storage.details.providerName' });
-  const dataOptions = !isLoading ? options : [{ label: formatMessage({ id: 'ui-remote-storage.loading' }) }];
-  const placeholder = isLoading ? undefined : formatMessage({ id: 'ui-remote-storage.select' })
+  const placeholder = formatMessage({ id: isLoading ? 'ui-remote-storage.loading' : 'ui-remote-storage.select' });
 
   return (
     <Select
       area-label={label}
       label={label}
       placeholder={placeholder}
-      dataOptions={dataOptions}
+      dataOptions={options}
       disabled={isLoading}
       required
       {...field}
