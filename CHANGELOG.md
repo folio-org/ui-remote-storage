@@ -2,6 +2,11 @@
 
 ## (IN PROGRESS)
 
+## [1.0.0](https://github.com/folio-org/ui-remote-storage/tree/v1.0.1) (2021-04-09)
+[Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v1.0.0...v1.0.1)
+
+* [UIRS-27](https://issues.folio.org/browse/UIRS-27) Add to "Remote storage: Create, read, update, delete" all the missing permissions on configurations and providers
+
 ## [1.0.0](https://github.com/folio-org/ui-remote-storage/tree/v1.0.0) (2021-03-19)
 
 * [UIRS-4](https://issues.folio.org/browse/UIRS-4) Project Setup: ui-remote-storage
