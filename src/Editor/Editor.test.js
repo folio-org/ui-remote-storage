@@ -89,6 +89,9 @@ describe('Editor', () => {
       get accessionWorkflowSection() {
         return screen.queryByRole('region', { name: /ui-remote-storage.accession-workflow.title/ });
       },
+      get returningWorkflowSection() {
+        return screen.queryByRole('region', { name: /ui-remote-storage.returning-workflow.title/ });
+      },
     };
 
     renderRemoteStorageForm();
@@ -104,12 +107,16 @@ describe('Editor', () => {
     expect(query.accessionWorkflowSection).toBeVisible();
     expect(within(query.accessionWorkflowSection).getByRole('combobox')).toBeVisible();
 
+    expect(query.returningWorkflowSection).toBeVisible();
+    expect(within(query.returningWorkflowSection).getByRole('combobox')).toBeVisible();
+
     otherOptions.forEach(option => {
       if (option.disabled) return; // for the 'Select' placeholder
 
       user.selectOptions(providers, option);
       expect(query.credProperties).not.toBeInTheDocument();
       expect(query.accessionWorkflowSection).not.toBeInTheDocument();
+      expect(query.returningWorkflowSection).not.toBeInTheDocument();
     });
   });
 });
