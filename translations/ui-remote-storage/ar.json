@@ -45,7 +45,7 @@
     "details.name.error": "الاسم مطلوب",
     "details.providerName.error": "مقدم الخدمة مطلوب",
     "returning-workflow.title": "تفضيل سير عمل الإعادة",
-    "returning-workflow.tooltip": "Select the System items are scanned into upon receipt at remote storage",
+    "returning-workflow.tooltip": "حدد النظام الذي يتم مسح المواد إليه ضوئياً عند استلامها في المخزون البعيد",
     "returning-workflow.error.undefined": "يجب تحديد تفضيل سير عمل الإعادة لحفظ التهيئة",
     "returning-workflow.option.folio": "تم مسح المواد المستلمة في المخزون البعيد ضوئيًا إلى فوليو",
     "returning-workflow.option.ciasoft": "تم مسح المواد المستلمة في المخزون البعيد ضوئيًا إلى CaiaSoft"
