@@ -25,7 +25,7 @@
     "remove.success": "A configuração de armazenamento remoto foi excluída com sucesso.",
     "remove.error": "A configuração de armazenamento remoto não foi excluída.",
     "create.success": "A configuração de armazenamento remoto foi criada com sucesso.",
-    "create.error": "Error occurred while saving Remote storage configuration.",
+    "create.error": "Ocorreu um erro ao salvar a configuração de armazenamento remoto.",
     "synchronization.title": "Configurações de sincronização de dados",
     "synchronization.schedule.title": "Cronograma de sincronização de dados",
     "synchronization.schedule.info": "Executa a cada {delay} {unit}",
