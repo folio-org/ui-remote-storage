@@ -86,9 +86,6 @@ describe('Editor', () => {
       get credProperties() {
         return screen.queryByLabelText('ui-remote-storage.details.credProperties');
       },
-      get accessionWorkflowSection() {
-        return screen.queryByRole('region', { name: /ui-remote-storage.accession-workflow.title/ });
-      },
       get returningWorkflowSection() {
         return screen.queryByRole('region', { name: /ui-remote-storage.returning-workflow.title/ });
       },
@@ -104,9 +101,6 @@ describe('Editor', () => {
 
     expect(query.credProperties).toBeVisible();
 
-    expect(query.accessionWorkflowSection).toBeVisible();
-    expect(within(query.accessionWorkflowSection).getByRole('combobox')).toBeVisible();
-
     expect(query.returningWorkflowSection).toBeVisible();
     expect(within(query.returningWorkflowSection).getByRole('combobox')).toBeVisible();
 
@@ -115,7 +109,6 @@ describe('Editor', () => {
 
       user.selectOptions(providers, option);
       expect(query.credProperties).not.toBeInTheDocument();
-      expect(query.accessionWorkflowSection).not.toBeInTheDocument();
       expect(query.returningWorkflowSection).not.toBeInTheDocument();
     });
   });

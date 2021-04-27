@@ -2,7 +2,6 @@
 
 ## (IN PROGRESS)
 * [UIRS-15](https://issues.folio.org/browse/UIRS-15) Remote Storage Settings: Credential properties (apiKey)
-* [UIRS-23](https://issues.folio.org/browse/UIRS-23) Add Accession workflow preference
 * [UIRS-24](https://issues.folio.org/browse/UIRS-24) Add Returning workflow preference
 * [UIRS-27](https://issues.folio.org/browse/UIRS-27) Add to "Remote storage: Create, read, update, delete" all the missing permissions on configurations and providers
 
