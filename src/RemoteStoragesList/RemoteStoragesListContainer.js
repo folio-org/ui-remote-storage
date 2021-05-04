@@ -36,18 +36,15 @@ const RemoteStoragesListContainer = ({
   const loadConfigurations = useCallback(() => {
     setIsLoading(true);
     mutator.configurations.GET().then(({ totalRecords, configurations }) => {
-      setStoragesList(prev => [
-        ...prev,
-        ...configurations.map(storage => {
-          const lastUpdate = moment.utc(storage.metadata.updatedDate || storage.metadata.createdDate);
+      setStoragesList(configurations.map(storage => {
+        const lastUpdate = moment.utc(storage.metadata.updatedDate || storage.metadata.createdDate);
 
-          return {
-            ...storage,
-            providerName: intl.formatMessage({ id: `ui-remote-storage.name.${storage.providerName}` }),
-            lastUpdate: lastUpdate.format(localeDateFormat),
-          };
-        }),
-      ]);
+        return {
+          ...storage,
+          providerName: intl.formatMessage({ id: `ui-remote-storage.name.${storage.providerName}` }),
+          lastUpdate: lastUpdate.format(localeDateFormat),
+        };
+      }));
       setStoragesCount(totalRecords);
     }).finally(() => setIsLoading(false));
   // eslint-disable-next-line react-hooks/exhaustive-deps

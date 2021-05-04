@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Route, withRouter } from 'react-router';
+import { Route, Switch, withRouter } from 'react-router';
 
 import {
   Paneset,
@@ -8,34 +8,35 @@ import {
 import RemoteStoragesListContainer from './RemoteStoragesList';
 import RemoteStorageDetails from './RemoteStorageDetails';
 import RemoteStorageEditorContainer from './RemoteStorageEditor';
-import CreateRomoteStoargeContainer from './CreateRemoteStorage';
+import CreateRemoteStorageContainer from './CreateRemoteStorage';
 
 import { STORAGES_LIST_ROUTE } from './const';
 
 const RemoteStorageSettings = () => {
   return (
-    <>
-      <Paneset
-        paneTitle={<FormattedMessage id="ui-remote-storage.meta.title" />}
-      >
-        <Route
-          path={STORAGES_LIST_ROUTE}
-          component={RemoteStoragesListContainer}
-        />
-        <Route
-          path={`${STORAGES_LIST_ROUTE}/view/:id`}
-          component={RemoteStorageDetails}
-        />
-      </Paneset>
+    <Switch>
       <Route
+        exact
         path={`${STORAGES_LIST_ROUTE}/edit/:id`}
         component={RemoteStorageEditorContainer}
       />
       <Route
+        exact
         path={`${STORAGES_LIST_ROUTE}/create`}
-        component={CreateRomoteStoargeContainer}
+        component={CreateRemoteStorageContainer}
       />
-    </>
+      <Route path={STORAGES_LIST_ROUTE}>
+        <Paneset
+          paneTitle={<FormattedMessage id="ui-remote-storage.meta.title" />}
+        >
+          <RemoteStoragesListContainer />
+          <Route
+            path={`${STORAGES_LIST_ROUTE}/view/:id`}
+            component={RemoteStorageDetails}
+          />
+        </Paneset>
+      </Route>
+    </Switch>
   );
 };
 
