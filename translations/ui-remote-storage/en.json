@@ -24,6 +24,12 @@
   "name.DEMATIC_EMS": "Dematic EMS",
   "name.CAIA_SOFT": "Caiasoft",
 
+  "accession-workflow.title": "Accession holding workflow preference",
+  "accession-workflow.tooltip": "Choose the appropriate accession workflow for holdings",
+  "accession-workflow.error.undefined": "Accession holdings workflow preference must be selected to save configuration",
+  "accession-workflow.option.change": "Change permanent location",
+  "accession-workflow.option.duplicate": "Duplicate holdings",
+
   "returning-workflow.title": "Returning workflow preference",
   "returning-workflow.tooltip": "Select the System items are scanned into upon receipt at remote storage",
   "returning-workflow.error.undefined": "Returning workflow preference must be selected to save configuration",
