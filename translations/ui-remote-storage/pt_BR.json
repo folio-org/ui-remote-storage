@@ -43,5 +43,10 @@
     "returning-workflow.tooltip": "Selecione os itens do Sistema que são digitalizados após o recebimento no armazenamento remoto",
     "returning-workflow.error.undefined": "A preferência de fluxo de trabalho de retorno deve ser selecionada para salvar a configuração",
     "returning-workflow.option.folio": "Itens recebidos em armazenamento remoto digitalizados no FOLIO",
-    "returning-workflow.option.ciasoft": "Itens recebidos em armazenamento remoto digitalizados no CaiaSoft"
+    "returning-workflow.option.ciasoft": "Itens recebidos em armazenamento remoto digitalizados no CaiaSoft",
+    "accession-workflow.title": "Accession holding workflow preference",
+    "accession-workflow.tooltip": "Choose the appropriate accession workflow for holdings",
+    "accession-workflow.error.undefined": "Accession holdings workflow preference must be selected to save configuration",
+    "accession-workflow.option.change": "Change permanent location",
+    "accession-workflow.option.duplicate": "Duplicate holdings"
 }
