@@ -43,5 +43,10 @@
     "returning-workflow.tooltip": "حدد النظام الذي يتم مسح المواد إليه ضوئياً عند استلامها في المخزون البعيد",
     "returning-workflow.error.undefined": "يجب تحديد تفضيل سير عمل الإعادة لحفظ التهيئة",
     "returning-workflow.option.folio": "تم مسح المواد المستلمة في المخزون البعيد ضوئيًا إلى فوليو",
-    "returning-workflow.option.ciasoft": "تم مسح المواد المستلمة في المخزون البعيد ضوئيًا إلى CaiaSoft"
+    "returning-workflow.option.ciasoft": "تم مسح المواد المستلمة في المخزون البعيد ضوئيًا إلى CaiaSoft",
+    "accession-workflow.title": "تفضيل سير عمل مقتنيات الانضمام",
+    "accession-workflow.tooltip": "اختر سير عمل الانضمام المناسب للمقتنيات",
+    "accession-workflow.error.undefined": "يجب تحديد تفضيلات سير عمل مقتنيات الانضمام لحفظ التهيئة",
+    "accession-workflow.option.change": "تغيير الموقع الدائم",
+    "accession-workflow.option.duplicate": "نسخ المقتنيات"
 }
