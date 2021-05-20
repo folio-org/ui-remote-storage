@@ -7,7 +7,7 @@ import { useOkapiMutation } from './useOkapiMutation';
 export const useListQuery = options => {
   const query = useOkapiQuery({
     path: 'remote-storage/configurations',
-    key: 'remote-storage/configurations',
+    queryKey: 'remote-storage/configurations',
     ...options,
   });
 
@@ -21,7 +21,7 @@ export const useListQuery = options => {
 export const useSingleQuery = ({ id, ...restOptions }) => {
   const query = useOkapiQuery({
     path: `remote-storage/configurations/${id}`,
-    key: ['remote-storage/configurations', id],
+    queryKey: ['remote-storage/configurations', id],
     ...restOptions,
   });
 
