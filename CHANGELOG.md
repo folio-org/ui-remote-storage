@@ -6,7 +6,7 @@
 * [UIRS-27](https://issues.folio.org/browse/UIRS-27) Add to "Remote storage: Create, read, update, delete" all the missing permissions on configurations and providers
 * [UIRS-30](https://issues.folio.org/browse/UIRS-30) Compile Translation Files into AST Format
 * [UIRS-41](https://issues.folio.org/browse/UIRS-41) Add Accession holdings workflow preference
-* [UIRS-33](https://issues.folio.org/browse/UIRS-33) Major refactor using `react-query`
+* [UIRS-33](https://issues.folio.org/browse/UIRS-33) Major rework using `react-query`
 
 ## [1.0.0](https://github.com/folio-org/ui-remote-storage/tree/v1.0.0) (2021-03-19)
 
