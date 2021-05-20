@@ -1,9 +1,4 @@
-export const STORAGES_LIST_ROUTE = '/settings/remote-storage';
-
-export const SECTIONS_STORAGE = {
-  INFORMATION: 'information',
-  SYNCHRONIZATION: 'synchronization',
-};
+export const CONFIGURATIONS_PATH = '/settings/remote-storage';
 
 export const TIME_UNITS = [
   { label: 'minute(s)', value: 'minutes' },
