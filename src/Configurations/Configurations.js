@@ -12,11 +12,10 @@ import { EditorLayer } from './EditorLayer';
 
 const List = () => {
   const history = useHistory();
+  const onCreate = () => history.push(`${CONFIGURATIONS_PATH}/create`);
+  const openDetails = (_, meta) => history.push([CONFIGURATIONS_PATH, meta?.id].join('/'));
 
-  const onCreateConfiguration = () => history.push(`${CONFIGURATIONS_PATH}/create`);
-  const openDetails = (e, meta) => history.push(`${CONFIGURATIONS_PATH}/${meta.id}`);
-
-  return <ListPane onCreate={onCreateConfiguration} openDetails={openDetails} />;
+  return <ListPane onCreate={onCreate} openDetails={openDetails} />;
 };
 
 
@@ -37,7 +36,6 @@ const Details = () => {
 const Edit = () => {
   const history = useHistory();
   const { id } = useParams();
-
   const handleClose = history.action === 'PUSH'
     ? history.goBack
     : () => history.push([CONFIGURATIONS_PATH, id].join('/'));
@@ -46,9 +44,8 @@ const Edit = () => {
 };
 
 
-export const Create = () => {
+const Create = () => {
   const history = useHistory();
-
   const handleClose = history.action === 'PUSH'
     ? history.goBack
     : () => history.push(CONFIGURATIONS_PATH);
