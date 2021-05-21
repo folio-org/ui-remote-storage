@@ -3,43 +3,53 @@ import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
 import { noop } from 'lodash';
 
+import { useStripes } from '@folio/stripes/core';
 import { Pane } from '@folio/stripes/components';
 
 import { LoadingCentered } from '../../components';
 import { Configurations } from '../../API';
 import { Fields } from '../Fields';
+import * as Delete from '../Delete';
 import { Menu } from './Menu';
 
 export const DetailsPane = ({ configurationId, onEdit, onClose, defaultWidth = 'fill', ...rest }) => {
+  const stripes = useStripes();
+
+  const DeleteScenario = Delete.useScenario({ configurationId, onSuccess: onClose });
+
   const query = Configurations.useSingleQuery({ id: configurationId });
 
-  const renderActionMenu = () => query.isSuccess && (
+  const isMenuRendered = stripes.hasPerm('ui-remote-storage.settings.remote-storages.all') && query.isSuccess;
+  const renderActionMenu = props => isMenuRendered && (
     <Menu
-      configurationId={configurationId}
       onEdit={onEdit}
-      onDeleted={onClose}
+      onDelete={DeleteScenario.start}
+      {...props}
     />
   );
 
   return (
-    <Pane
-      data-testid="storage-details-pane"
-      actionMenu={renderActionMenu}
-      onClose={onClose}
-      paneTitle={query.configuration?.name}
-      defaultWidth={defaultWidth}
-      dismissible
-      {...rest}
-    >
-      {query.isLoading
-        ? <LoadingCentered />
-        : (
-          <Form onSubmit={noop} initialValues={query.configuration}>
-            {() => <Fields isNonInteractive />}
-          </Form>
-        )
-      }
-    </Pane>
+    <>
+      <Pane
+        data-testid="storage-details-pane"
+        actionMenu={renderActionMenu}
+        onClose={onClose}
+        paneTitle={query.configuration?.name}
+        defaultWidth={defaultWidth}
+        dismissible
+        {...rest}
+      >
+        {query.isLoading
+          ? <LoadingCentered />
+          : (
+            <Form onSubmit={noop} initialValues={query.configuration}>
+              {() => <Fields isNonInteractive />}
+            </Form>
+          )
+        }
+      </Pane>
+      <Delete.UI {...DeleteScenario.props} />
+    </>
   );
 };
 
