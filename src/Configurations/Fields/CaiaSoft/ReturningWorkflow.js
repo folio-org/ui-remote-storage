@@ -1,20 +1,10 @@
 import React from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
-import { useField } from 'react-final-form';
+import { useIntl } from 'react-intl';
 
-import { Select } from '@folio/stripes-acq-components';
-
-const FIELD_NAME = 'returningWorkflowDetails';
-
-const validate = value => (
-  value !== undefined
-    ? undefined
-    : <FormattedMessage id="ui-remote-storage.returning-workflow.error.undefined" />
-);
+import { RequiredSelectField } from '../components';
 
 export const ReturningWorkflow = props => {
   const { formatMessage } = useIntl();
-  const field = useField(FIELD_NAME, { validate });
 
   const OPTIONS = [
     {
@@ -28,15 +18,15 @@ export const ReturningWorkflow = props => {
   ];
 
   return (
-    <Select
+    <RequiredSelectField
+      name="returningWorkflowDetails"
       dataOptions={OPTIONS}
+      requiredErrorMessage={formatMessage({ id: 'ui-remote-storage.returning-workflow.error.undefined' })}
       placeholder={formatMessage({ id: 'ui-remote-storage.select' })}
       tooltipText={formatMessage({ id: 'ui-remote-storage.returning-workflow.tooltip' })}
-      required
-      {...field}
       {...props}
     />
   );
 };
 
-ReturningWorkflow.propTypes = Select.propTypes;
+ReturningWorkflow.propTypes = RequiredSelectField.propTypes;
