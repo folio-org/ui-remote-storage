@@ -6,7 +6,7 @@ import { useStripes } from '@folio/stripes/core';
 import { MultiColumnList } from '@folio/stripes/components';
 
 import { Configurations } from '../../API';
-import { LoadingCentered } from '../../components';
+import { ErrorCentered, LoadingCentered } from '../../components';
 
 
 const visibleColumns = ['name', 'providerName', 'lastUpdate'];
@@ -36,6 +36,8 @@ export const List = props => {
   };
 
   if (query.isLoading) return <LoadingCentered />;
+
+  if (query.isError) return <ErrorCentered />;
 
   return (
     <MultiColumnList

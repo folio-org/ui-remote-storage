@@ -6,7 +6,7 @@ import { noop } from 'lodash';
 import { useStripes } from '@folio/stripes/core';
 import { Pane } from '@folio/stripes/components';
 
-import { LoadingCentered } from '../../components';
+import { ErrorCentered, LoadingCentered } from '../../components';
 import { Configurations } from '../../API';
 import { Fields } from '../Fields';
 import * as Delete from '../Delete';
@@ -39,9 +39,10 @@ export const DetailsPane = ({ configurationId, onEdit, onClose, defaultWidth = '
         dismissible
         {...rest}
       >
-        {query.isLoading
-          ? <LoadingCentered />
-          : (
+        {
+          (query.isLoading && <LoadingCentered />)
+          || (query.isError && <ErrorCentered />)
+          || (
             <Form onSubmit={noop} initialValues={query.configuration}>
               {() => <Fields isNonInteractive />}
             </Form>
