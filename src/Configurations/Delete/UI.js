@@ -8,7 +8,7 @@ import {
   ModalFooter,
 } from '@folio/stripes/components';
 
-import { LoadingCentered } from '../../components';
+import { LoadingCentered, ErrorCentered } from '../../components';
 
 
 const Button = props => <OriginalButton marginBottom0 {...props} />;
@@ -63,7 +63,7 @@ export const UI = ({
 
   const error = {
     ...impossible,
-    message: intl.formatMessage({ id: 'ui-remote-storage.error' }),
+    message: <ErrorCentered />,
   };
 
   const content = (isLoading && loading) || (isError && error) || (isDeletePossible && confirmation) || impossible;
