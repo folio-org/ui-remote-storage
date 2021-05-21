@@ -1,32 +1,21 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
 
-import { RequiredSelectField } from '../components';
+import { SelectField } from '../components';
 
-export const AccessionWorkflow = props => {
-  const { formatMessage } = useIntl();
-
-  const OPTIONS = [
-    {
-      value: 'Change permanent location',
-      label: formatMessage({ id: 'ui-remote-storage.accession-workflow.option.change' }),
-    },
-    {
-      value: 'Duplicate holdings',
-      label: formatMessage({ id: 'ui-remote-storage.accession-workflow.option.duplicate' }),
-    },
-  ];
-
-  return (
-    <RequiredSelectField
-      name="accessionWorkflowDetails"
-      dataOptions={OPTIONS}
-      requiredErrorMessage={formatMessage({ id: 'ui-remote-storage.accession-workflow.error.undefined' })}
-      placeholder={formatMessage({ id: 'ui-remote-storage.select' })}
-      tooltipText={formatMessage({ id: 'ui-remote-storage.accession-workflow.tooltip' })}
-      {...props}
-    />
-  );
+const OPTIONS = {
+  'Change permanent location': 'ui-remote-storage.accession-workflow.option.change',
+  'Duplicate holdings': 'ui-remote-storage.accession-workflow.option.duplicate',
 };
 
-AccessionWorkflow.propTypes = RequiredSelectField.propTypes;
+export const AccessionWorkflow = props => (
+  <SelectField
+    name="accessionWorkflowDetails"
+    options={OPTIONS}
+    placeholder="ui-remote-storage.select"
+    tooltipText="ui-remote-storage.accession-workflow.tooltip"
+    required="ui-remote-storage.accession-workflow.error.undefined"
+    {...props}
+  />
+);
+
+AccessionWorkflow.propTypes = SelectField.propTypes;
