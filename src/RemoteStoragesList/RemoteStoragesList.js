@@ -25,7 +25,6 @@ const columnMapping = {
 };
 
 const RemoteStoragesList = ({
-  defaultWidth,
   storages,
   isLoading,
   storagesCount,
