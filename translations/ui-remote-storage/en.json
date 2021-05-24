@@ -8,6 +8,7 @@
   "delete": "Delete",
   "select": "Select",
   "loading": "Loading...",
+  "error": "Something went wrong",
 
   "list.name": "Name",
   "list.providerName": "Provider",
@@ -52,7 +53,7 @@
   "confirmationModal.save": "Save",
 
   "cannotDeleteModal.header": "Cannot delete Remote Storage location",
-  "cannotDeleteModal.message": "One or more holdings and/or item records are associated with this location and cannot be deleted.",
+  "cannotDeleteModal.message": "One or more locations are associated with this configuration. The configuration cannot be deleted.",
 
   "removingModal.title": "Remove {name}",
   "removingModal.message": "Are you sure you want to delete the remote storage configuration?",
