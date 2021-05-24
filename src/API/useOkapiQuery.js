@@ -4,10 +4,8 @@ import { useOkapiKy } from '@folio/stripes/core';
 
 export const useOkapiQuery = ({ path, searchParams, ...rest }) => {
   const ky = useOkapiKy();
+  const queryKey = [path, searchParams];
+  const queryFn = () => ky(path, { searchParams }).json();
 
-  return useQuery({
-    queryKey: [path, searchParams],
-    queryFn: () => ky(path, { searchParams }).json(),
-    ...rest,
-  });
+  return useQuery({ queryKey, queryFn, ...rest });
 };
