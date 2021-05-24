@@ -1,6 +1,8 @@
 {
   "meta.title": "Remote storage",
 
+  "configurations.title": "Configurations",
+
   "edit": "Edit",
   "saveAndClose": "Save & close",
   "delete": "Delete",

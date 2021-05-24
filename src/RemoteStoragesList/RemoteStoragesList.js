@@ -63,8 +63,8 @@ const RemoteStoragesList = ({
 
   return (
     <Pane
-      paneTitle={<FormattedMessage id="ui-remote-storage.meta.title" />}
-      defaultWidth={defaultWidth}
+      paneTitle={<FormattedMessage id="ui-remote-storage.configurations.title" />}
+      defaultWidth="fill"
       lastMenu={lastMenu}
     >
       <MultiColumnList
@@ -89,7 +89,7 @@ RemoteStoragesList.propTypes = {
 };
 
 RemoteStoragesList.defaultProps = {
-  defaultWidth: '50%',
+  // defaultWidth: '50%',
 };
 
 export default RemoteStoragesList;

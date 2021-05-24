@@ -1,42 +1,26 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Route, withRouter } from 'react-router';
 
-import {
-  Paneset,
-} from '@folio/stripes/components';
-import RemoteStoragesListContainer from './RemoteStoragesList';
-import RemoteStorageDetails from './RemoteStorageDetails';
-import RemoteStorageEditorContainer from './RemoteStorageEditor';
-import CreateRomoteStoargeContainer from './CreateRemoteStorage';
+import { Settings } from '@folio/stripes/smart-components';
+import RemoteStorageRoutes from './RemoteStorageRoutes';
 
-import { STORAGES_LIST_ROUTE } from './const';
+const RemoteStorageSettings = (props) => {
+  const pages = [
+    {
+      route: 'configurations',
+      label: <FormattedMessage id="ui-remote-storage.configurations.title" />,
+      component: RemoteStorageRoutes,
+    },
+  ];
 
-const RemoteStorageSettings = () => {
   return (
-    <>
-      <Paneset
-        paneTitle={<FormattedMessage id="ui-remote-storage.meta.title" />}
-      >
-        <Route
-          path={STORAGES_LIST_ROUTE}
-          component={RemoteStoragesListContainer}
-        />
-        <Route
-          path={`${STORAGES_LIST_ROUTE}/view/:id`}
-          component={RemoteStorageDetails}
-        />
-      </Paneset>
-      <Route
-        path={`${STORAGES_LIST_ROUTE}/edit/:id`}
-        component={RemoteStorageEditorContainer}
-      />
-      <Route
-        path={`${STORAGES_LIST_ROUTE}/create`}
-        component={CreateRomoteStoargeContainer}
-      />
-    </>
+    <Settings
+      {...props}
+      pages={pages}
+      paneTitle={<FormattedMessage id="ui-remote-storage.meta.title" />}
+      navPaneWidth="20%"
+    />
   );
 };
 
-export default withRouter(RemoteStorageSettings);
+export default RemoteStorageSettings;
