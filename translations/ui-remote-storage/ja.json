@@ -1,7 +1,7 @@
 {
     "meta.title": "リモートストレージ",
     "permission.settings.remote-storages.all": "Remote storage: Create, read, update, delete",
-    "list.name": "Name",
+    "list.name": "名称",
     "list.providerName": "Provider",
     "list.lastUpdate": "Last Update",
     "details.title": "General information",
