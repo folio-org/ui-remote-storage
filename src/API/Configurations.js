@@ -25,7 +25,7 @@ export const useSingleQuery = ({ id, onError, ...rest }) => {
     path: `remote-storage/configurations/${id}`,
     queryKey: ['remote-storage/configurations', id],
     onError: () => {
-      // One of the most possible source of an error here
+      // One of the most possible sources of an error here
       // is navigating to the item that was already deleted (from another workplace).
       // Refreshing the list couldn't hurt in this case.
       queryClient.invalidateQueries(['remote-storage/configurations'], { exact: true });
@@ -36,20 +36,24 @@ export const useSingleQuery = ({ id, onError, ...rest }) => {
   });
 
   return {
-    configuration: query.data,
+    configuration: query.data ?? {},
     ...query,
   };
 };
 
 
-const useMutation = ({ onSuccess, ...rest }) => {
+const useMutation = ({ onSettled, ...rest }) => {
   const queryClient = useQueryClient();
 
   return useOkapiMutation({
-    onSuccess: () => {
+    // We refresh the list on any result of item mutation, success or error:
+    // One of the most possible sources of an error here
+    // is trying to mutate the item that was already deleted (from another workplace).
+    // Refreshing the list couldn't hurt in this case.
+    onSettled: () => {
       queryClient.invalidateQueries(['remote-storage/configurations'], { exact: true });
 
-      return onSuccess?.();
+      return onSettled?.();
     },
     ...rest,
   });
