@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl';
 
 import { ActionMenu } from '../../components';
 
-export const Menu = ({ onEdit, onDelete, ...rest }) => {
+export const Menu = ({ onEdit, onDelete, keyHandler: _keyHandler, ...rest }) => {
   const intl = useIntl();
 
   return (
