@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { QueryClient, QueryClientProvider, setLogger } from 'react-query';
 import { noop } from 'lodash';
 import 'cross-fetch/polyfill'; // for Ky using `fetch`
@@ -157,7 +157,35 @@ describe('Routing', () => {
     renderConfigurations(`/${id}`);
 
     await screen.findByRole('heading', { name: 'RS1' });
+    const generalSection = await screen.findByRole('region', { name: /details.title/ });
 
+    expect(within(generalSection).getByText('RS1')).toBeVisible();
     expect(screen.getByRole('grid')).toBeVisible();
+  });
+
+  it('displays editor with data on /:id/edit', async () => {
+    renderConfigurations(`/${id}/edit`);
+
+    const layer = screen.getByRole('dialog', { name: /edit/ });
+
+    expect(layer).toBeVisible();
+
+    const nameField = await within(layer).findByRole('textbox', { name: /name/ });
+
+    expect(nameField).toHaveValue('RS1');
+    expect(within(layer).getByRole('button', { name: /save/ })).toBeVisible();
+  });
+
+  it('displays empty editor on /create', async () => {
+    renderConfigurations('/create');
+
+    const layer = screen.getByRole('dialog', { name: /create/ });
+
+    expect(layer).toBeVisible();
+
+    const nameField = await within(layer).findByRole('textbox', { name: /name/ });
+
+    expect(nameField).toHaveValue('');
+    expect(within(layer).getByRole('button', { name: /save/ })).toBeVisible();
   });
 });
