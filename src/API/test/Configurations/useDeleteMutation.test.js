@@ -1,13 +1,13 @@
-// This should be imported before the tested hooks
-import { server, rest, renderAPIHook, ERROR_RESPONSE } from '../setup';
+import { server, rest, API_BASE } from '../../../test/net';
+import { renderAPIHook, ERROR_RESPONSE } from '../setup'; // must be imported before the tested hooks
 
 import { useDeleteMutation, useListQuery } from '../../Configurations';
 
 
 const id = 42;
 const url = {
-  delete: `http://test/remote-storage/configurations/${id}`,
-  list: 'http://test/remote-storage/configurations',
+  delete: `${API_BASE}/configurations/${id}`,
+  list: `${API_BASE}/configurations`,
 };
 
 

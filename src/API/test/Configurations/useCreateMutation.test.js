@@ -1,5 +1,5 @@
-// This should be imported before the tested hooks
-import { server, rest, renderAPIHook, ERROR_RESPONSE } from '../setup';
+import { server, rest, API_BASE } from '../../../test/net';
+import { renderAPIHook, ERROR_RESPONSE } from '../setup'; // must be imported before the tested hooks
 
 import { useCreateMutation, useListQuery } from '../../Configurations';
 
@@ -10,8 +10,8 @@ const data = {
 };
 
 const url = {
-  create: 'http://test/remote-storage/configurations',
-  list: 'http://test/remote-storage/configurations',
+  create: `${API_BASE}/configurations`,
+  list: `${API_BASE}/configurations`,
 };
 
 let request;

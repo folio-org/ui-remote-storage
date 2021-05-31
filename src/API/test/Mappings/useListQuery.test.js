@@ -1,10 +1,10 @@
-// This should be imported before the tested hooks
-import { server, rest, renderAPIHook, ERROR_RESPONSE } from '../setup';
+import { server, rest, API_BASE } from '../../../test/net';
+import { renderAPIHook, ERROR_RESPONSE } from '../setup'; // must be imported before the tested hooks
 
 import { useListQuery } from '../../Mappings';
 
 
-const url = 'http://test/remote-storage/mappings';
+const url = `${API_BASE}/mappings`;
 
 beforeEach(() => {
   server.use(rest.get(url, (req, res, ctx) => res(ctx.json({
