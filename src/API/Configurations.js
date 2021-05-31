@@ -1,13 +1,17 @@
 import { useQueryClient } from 'react-query';
 
+import { API_PATH } from '../const';
 import { useOkapiQuery } from './useOkapiQuery';
 import { useOkapiMutation } from './useOkapiMutation';
 
 
+const PATH = `${API_PATH}/configurations`;
+
+
 export const useListQuery = options => {
   const query = useOkapiQuery({
-    path: 'remote-storage/configurations',
-    queryKey: 'remote-storage/configurations',
+    path: PATH,
+    queryKey: PATH,
     ...options,
   });
 
@@ -18,45 +22,63 @@ export const useListQuery = options => {
 };
 
 
-export const useSingleQuery = ({ id, ...restOptions }) => {
+export const useSingleQuery = ({ id, onError, ...rest }) => {
+  const queryClient = useQueryClient();
+
   const query = useOkapiQuery({
-    path: `remote-storage/configurations/${id}`,
-    queryKey: ['remote-storage/configurations', id],
-    ...restOptions,
+    path: `${PATH}/${id}`,
+    queryKey: [PATH, id],
+    onError: () => {
+      // One of the most possible sources of an error here
+      // is navigating to the item that was already deleted (from another workplace).
+      // Refreshing the list couldn't hurt in this case.
+      queryClient.invalidateQueries(PATH, { exact: true });
+
+      return onError?.();
+    },
+    ...rest,
   });
 
   return {
-    configuration: query.data,
+    configuration: query.data ?? {},
     ...query,
   };
 };
 
 
-export const useCreateMutation = ({ onSuccess, ...rest }) => {
+const useMutation = ({ onSettled, ...rest }) => {
   const queryClient = useQueryClient();
 
   return useOkapiMutation({
-    method: 'post',
-    path: 'remote-storage/configurations',
-    onSuccess: () => {
-      queryClient.invalidateQueries(['remote-storage/configurations'], { exact: true });
+    // We refresh the list on any result of item mutation, success or error:
+    // One of the most possible sources of an error here
+    // is trying to mutate the item that was already deleted (from another workplace).
+    // Refreshing the list couldn't hurt in this case.
+    onSettled: () => {
+      queryClient.invalidateQueries(PATH, { exact: true });
 
-      return onSuccess?.();
+      return onSettled?.();
     },
     ...rest,
   });
 };
+
+
+export const useCreateMutation = options => useMutation({
+  method: 'post',
+  path: PATH,
+  ...options,
+});
 
 
 export const useUpdateMutation = ({ id, onSuccess, ...rest }) => {
   const queryClient = useQueryClient();
 
-  return useOkapiMutation({
+  return useMutation({
     method: 'put',
-    path: `remote-storage/configurations/${id}`,
+    path: `${PATH}/${id}`,
     onSuccess: () => {
-      queryClient.invalidateQueries(['remote-storage/configurations'], { exact: true });
-      queryClient.invalidateQueries(['remote-storage/configurations', id], { exact: true });
+      queryClient.invalidateQueries([PATH, id], { exact: true });
 
       return onSuccess?.();
     },
@@ -65,17 +87,8 @@ export const useUpdateMutation = ({ id, onSuccess, ...rest }) => {
 };
 
 
-export const useDeleteMutation = ({ id, onSuccess, ...rest }) => {
-  const queryClient = useQueryClient();
-
-  return useOkapiMutation({
-    method: 'delete',
-    path: `remote-storage/configurations/${id}`,
-    onSuccess: () => {
-      queryClient.invalidateQueries(['remote-storage/configurations'], { exact: true });
-
-      return onSuccess?.();
-    },
-    ...rest,
-  });
-};
+export const useDeleteMutation = ({ id, ...options }) => useMutation({
+  method: 'delete',
+  path: `${PATH}/${id}`,
+  ...options,
+});

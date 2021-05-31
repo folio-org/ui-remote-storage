@@ -2,17 +2,12 @@ import React from 'react';
 
 import { Loading } from '@folio/stripes/components';
 
-const centered = {
-  height: '100%',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-};
+import { Centered } from './Centered';
 
 export const LoadingCentered = props => (
-  <div style={centered}>
+  <Centered>
     <Loading size="xlarge" {...props} />
-  </div>
+  </Centered>
 );
 
 LoadingCentered.propTypes = Loading.propTypes;

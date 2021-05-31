@@ -16,7 +16,7 @@ export const SelectField = ({ name, required = '', options = {}, placeholder, to
 
   return (
     <AcqSelect
-      required={required}
+      required={Boolean(required)}
       dataOptions={dataOptions}
       placeholder={placeholder && formatMessage({ id: placeholder })}
       tooltipText={tooltipText && formatMessage({ id: tooltipText })}

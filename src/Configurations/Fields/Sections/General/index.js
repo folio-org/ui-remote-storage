@@ -44,7 +44,7 @@ export const General = ({ isNonInteractive }) => {
             name="name"
             isNonInteractive={isNonInteractive}
             required
-            validate={value => !(value?.trim().length > 0) &&
+            validate={value => (value?.trim().length < 1) &&
               intl.formatMessage({ id: 'ui-remote-storage.details.name.error' })
             }
             autoFocus

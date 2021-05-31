@@ -1,8 +1,9 @@
+import { API_PATH } from '../const';
 import { useOkapiQuery } from './useOkapiQuery';
 
 export const useListQuery = options => {
   const query = useOkapiQuery({
-    path: 'remote-storage/mappings',
+    path: `${API_PATH}/mappings`,
     ...options,
   });
 

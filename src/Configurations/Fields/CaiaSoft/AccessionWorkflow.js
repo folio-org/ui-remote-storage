@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { SelectField } from '../components';
 
@@ -18,4 +19,7 @@ export const AccessionWorkflow = props => (
   />
 );
 
-AccessionWorkflow.propTypes = SelectField.propTypes;
+AccessionWorkflow.propTypes = {
+  ...SelectField.propTypes,
+  name: PropTypes.string, // to make it not required
+};

@@ -1,5 +1,7 @@
 export const CONFIGURATIONS_PATH = '/settings/remote-storage/configurations';
 
+export const API_PATH = 'remote-storage';
+
 export const TIME_UNITS = [
   { label: 'minute(s)', value: 'minutes' },
   { label: 'hour(s)', value: 'hours' },

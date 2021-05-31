@@ -8,7 +8,8 @@
     {
       "files": ["*test.*", "test/**"],
       "rules": {
-        "react/prop-types": "off"
+        "react/prop-types": "off",
+        "padding-line-between-statements": "off"
       }
     }
   ]
