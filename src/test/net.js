@@ -5,12 +5,14 @@ import 'cross-fetch/polyfill'; // for Ky using `fetch`
 import ky from 'ky';
 import { setupServer } from 'msw/node';
 
+import { API_PATH } from '../const';
+
 export { rest } from 'msw';
 
 
 const API_ORIGIN = 'http://test/';
 
-export const API_BASE = new URL('/remote-storage', API_ORIGIN);
+export const API_BASE = new URL(API_PATH, API_ORIGIN);
 
 export const mockKy = ky.create({ prefixUrl: API_ORIGIN });
 
