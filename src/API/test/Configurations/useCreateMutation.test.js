@@ -49,7 +49,6 @@ describe('Invalidation of List query', () => {
 
     result.current.mutate(data);
 
-    // await waitFor(() => result.current.isSuccess);
     await waitFor(() => result.current.status === status);
 
     return listQueryHook.result.current.isFetching;

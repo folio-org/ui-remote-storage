@@ -3,10 +3,10 @@ import { BrowserRouter } from 'react-router-dom';
 import { render, screen, within } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import { Provider, server, rest, mockKy, API_BASE } from '../../test/net';
-import { CONFIGURATIONS_PATH } from '../../const';
+import { Provider, server, rest, mockKy, API_BASE } from '../test/net';
+import { CONFIGURATIONS_PATH } from '../const';
 
-import { Configurations } from '../Configurations';
+import { Configurations } from './Configurations';
 
 
 jest.mock('react-virtualized-auto-sizer', () => ({ children }) => children({ width: 1920, height: 1080 }));
@@ -28,7 +28,6 @@ jest.mock('@folio/stripes/core', () => ({
 }));
 
 
-// todo
 const url = {
   providers: `${API_BASE}/providers`,
   configurations: {
