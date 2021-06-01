@@ -55,6 +55,32 @@
           "remote-storage.providers.collection.get",
           "settings.remote-storage.enabled"
         ]
+      },
+      {
+        "permissionName": "ui-remote-storage.settings.remote-storages.view",
+        "displayName": "Remote storage: View",
+        "visible": true,
+        "subPermissions": [
+          "remote-storage.configurations.collection.get",
+          "remote-storage.configurations.item.get",
+          "settings.remote-storage.enabled"
+        ]
+      },
+      {
+        "permissionName": "ui-remote-storage.settings.remote-storages.view",
+        "displayName": "Remote storage: Create, edit, delete",
+        "visible": true,
+        "subPermissions": [
+          "remote-storage.configurations.item.post",
+          "remote-storage.configurations.item.put",
+          "remote-storage.configurations.item.delete",
+          "remote-storage.mappings.item.post",
+          "remote-storage.mappings.item.delete",
+          "remote-storage.mappings.collection.get",
+          "remote-storage.mappings.item.get",
+          "remote-storage.providers.collection.get",
+          "settings.remote-storage.enabled"
+        ]
       }
     ]
   },
