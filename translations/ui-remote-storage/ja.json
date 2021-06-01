@@ -19,7 +19,7 @@
     "confirmationModal.create.message": "Are you sure you want to save the remote storage configuration?",
     "confirmationModal.save": "Save",
     "cannotDeleteModal.header": "Cannot delete Remote Storage location",
-    "cannotDeleteModal.message": "One or more holdings and/or item records are associated with this location and cannot be deleted.",
+    "cannotDeleteModal.message": "One or more locations are associated with this configuration. The configuration cannot be deleted.",
     "removingModal.title": "Remove {name}",
     "removingModal.message": "Are you sure you want to delete the remote storage configuration?",
     "remove.success": "Remote storage configuration was successfully deleted.",
@@ -48,5 +48,6 @@
     "accession-workflow.tooltip": "Choose the appropriate accession workflow for holdings",
     "accession-workflow.error.undefined": "Accession holdings workflow preference must be selected to save configuration",
     "accession-workflow.option.change": "Change permanent location",
-    "accession-workflow.option.duplicate": "Duplicate holdings"
+    "accession-workflow.option.duplicate": "Duplicate holdings",
+    "error": "Something went wrong"
 }
