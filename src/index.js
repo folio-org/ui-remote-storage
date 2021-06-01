@@ -1,1 +1,1 @@
-export { default } from './RemoteStorageSettings';
+export { Configurations as default } from './Configurations';
