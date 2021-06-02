@@ -12,7 +12,6 @@ import * as Delete from '../Delete';
 import { Menu } from './Menu';
 
 export const DetailsPane = ({ configurationId, onEdit, onClose, defaultWidth = 'fill', ...rest }) => {
-
   const DeleteScenario = Delete.useScenario({ configurationId, onSuccess: onClose });
 
   const query = Configurations.useSingleQuery({ id: configurationId });
