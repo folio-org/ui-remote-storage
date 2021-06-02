@@ -44,9 +44,10 @@
     "returning-workflow.error.undefined": "必须选择返回工作流程首选项以保存配置",
     "returning-workflow.option.folio": "远程存储中收到的单件已扫描到FOLIO中",
     "returning-workflow.option.ciasoft": "远程存储中收到的单件已扫描到CaiaSoft中",
-    "accession-workflow.title": "Accession holding workflow preference",
-    "accession-workflow.tooltip": "Choose the appropriate accession workflow for holdings",
-    "accession-workflow.error.undefined": "Accession holdings workflow preference must be selected to save configuration",
-    "accession-workflow.option.change": "Change permanent location",
-    "accession-workflow.option.duplicate": "Duplicate holdings"
+    "accession-workflow.title": "入藏馆藏工作流程偏好",
+    "accession-workflow.tooltip": "选择合适的入藏工作流程",
+    "accession-workflow.error.undefined": "必须选择入藏馆藏工作流程首选项以保存配置",
+    "accession-workflow.option.change": "更改永久位置",
+    "accession-workflow.option.duplicate": "重复馆藏",
+    "error": "Something went wrong"
 }
