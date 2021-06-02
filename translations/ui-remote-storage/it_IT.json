@@ -49,5 +49,6 @@
     "accession-workflow.error.undefined": "La preferenza del flusso di lavoro delle collezioni deve essere selezionata per salvare la configurazione",
     "accession-workflow.option.change": "Modificare la sezione permanente",
     "accession-workflow.option.duplicate": "Duplica posseduto",
-    "error": "Something went wrong"
+    "error": "Something went wrong",
+    "configurations.title": "Configurations"
 }
