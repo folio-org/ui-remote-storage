@@ -1,16 +1,8 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
-import user from '@testing-library/user-event';
 
-import { CONFIGURATIONS_PATH } from './const';
 import RemoteStorageSettings from './RemoteStorageSettings';
-
-// jest.mock('@folio/stripes-core', () => ({
-//   ...jest.requireActual('@folio/stripes/core'),
-//   withStripes: Component => Component,
-//   stripesConnect: Component => props => <Component {...props} />,
-// }));
 
 jest.mock('@folio/stripes/smart-components', () => ({
   ...jest.requireActual('@folio/stripes/smart-components'),
@@ -24,8 +16,6 @@ jest.mock('@folio/stripes/smart-components', () => ({
     </>
   )),
 }));
-
-jest.mock('./Configurations', () => <>Configurations</>);
 
 const renderRemoteStorageSettings = () => (
   render(
