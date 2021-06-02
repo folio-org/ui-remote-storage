@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 
+import { IfPermission } from '@folio/stripes/core';
+
 import { ActionMenu } from '../../components';
 
 export const Menu = ({ onEdit, onDelete, ...rest }) => {
@@ -9,20 +11,22 @@ export const Menu = ({ onEdit, onDelete, ...rest }) => {
 
   return (
     <ActionMenu.Menu id="storage-details-actions" {...rest}>
-      <ActionMenu.Item
-        id="clickable-edit-storage"
-        icon="edit"
-        label={intl.formatMessage({ id: 'ui-remote-storage.edit' })}
-        data-test-button-edit-storage
-        onClick={onEdit}
-      />
-      <ActionMenu.Item
-        id="clickable-delete-storage"
-        icon="trash"
-        label={intl.formatMessage({ id: 'ui-remote-storage.delete' })}
-        data-test-button-delete-storage
-        onClick={onDelete}
-      />
+      <IfPermission perm="ui-remote-storage.settings.remote-storages.edit">
+        <ActionMenu.Item
+          id="clickable-edit-storage"
+          icon="edit"
+          label={intl.formatMessage({ id: 'ui-remote-storage.edit' })}
+          data-test-button-edit-storage
+          onClick={onEdit}
+        />
+        <ActionMenu.Item
+          id="clickable-delete-storage"
+          icon="trash"
+          label={intl.formatMessage({ id: 'ui-remote-storage.delete' })}
+          data-test-button-delete-storage
+          onClick={onDelete}
+        />
+      </IfPermission>
     </ActionMenu.Menu>
   );
 };
