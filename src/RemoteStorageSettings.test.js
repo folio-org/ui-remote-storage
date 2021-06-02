@@ -26,7 +26,7 @@ const renderRemoteStorageSettings = () => (
 );
 
 describe('RemoteStorageSettings', () => {
-  it('shoul open Remote storage settings', () => {
+  it('displays Configurations section link', () => {
     renderRemoteStorageSettings();
 
     expect(screen.getByRole('link', { name: /Configurations/i })).toBeVisible();
