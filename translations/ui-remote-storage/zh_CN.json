@@ -49,5 +49,6 @@
     "accession-workflow.error.undefined": "必须选择入藏馆藏工作流程首选项以保存配置",
     "accession-workflow.option.change": "更改永久位置",
     "accession-workflow.option.duplicate": "重复馆藏",
-    "error": "Something went wrong"
+    "error": "Something went wrong",
+    "configurations.title": "Configurations"
 }

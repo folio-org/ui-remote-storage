@@ -1,4 +1,4 @@
-export const CONFIGURATIONS_PATH = '/settings/remote-storage';
+export const CONFIGURATIONS_PATH = '/settings/remote-storage/configurations';
 
 export const API_PATH = 'remote-storage';
 

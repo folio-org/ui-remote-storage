@@ -49,5 +49,6 @@
     "accession-workflow.error.undefined": "يجب تحديد تفضيلات سير عمل مقتنيات الانضمام لحفظ التهيئة",
     "accession-workflow.option.change": "تغيير الموقع الدائم",
     "accession-workflow.option.duplicate": "نسخ المقتنيات",
-    "error": "Something went wrong"
+    "error": "Something went wrong",
+    "configurations.title": "Configurations"
 }
