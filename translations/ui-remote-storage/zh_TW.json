@@ -1,6 +1,5 @@
 {
     "meta.title": "远程存储",
-    "permission.settings.remote-storages.all": "远程存储：创建、阅读、更新、删除",
     "list.name": "名称",
     "list.providerName": "提供者",
     "list.lastUpdate": "最后更新",
@@ -50,5 +49,7 @@
     "accession-workflow.option.change": "Change permanent location",
     "accession-workflow.option.duplicate": "Duplicate holdings",
     "error": "Something went wrong",
-    "configurations.title": "Configurations"
+    "configurations.title": "Configurations",
+    "permission.settings.remote-storages.view": "Remote storage: View",
+    "permission.settings.remote-storages.edit": "Remote storage: Create, edit, delete"
 }
