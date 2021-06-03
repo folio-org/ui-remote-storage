@@ -9,7 +9,7 @@ import { Menu } from './Menu';
 
 export const ListPane = ({ defaultWidth = '50%', onCreate, openDetails, ...rest }) => (
   <Pane
-    paneTitle={<FormattedMessage id="ui-remote-storage.meta.title" />}
+    paneTitle={<FormattedMessage id="ui-remote-storage.configurations.title" />}
     defaultWidth={defaultWidth}
     lastMenu={<Menu onNew={onCreate} />}
     {...rest}

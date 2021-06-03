@@ -14,11 +14,13 @@ const RemoteStorageSettings = (props) => {
       route: 'configurations',
       label: <FormattedMessage id="ui-remote-storage.configurations.title" />,
       component: Configurations,
+      perm: 'ui-remote-storage.settings.remote-storages.view',
     },
     {
       route: query.configurations.length === 1 ? `accession-table/${query.configurations[0].id}` : 'accession-table',
       label: <FormattedMessage id="ui-remote-storage.accession-table.title" />,
       component: AccessionTable,
+      perm: 'ui-remote-storage.settings.remote-storages.view',
     },
   ], [query.configurations]);
 

@@ -49,5 +49,6 @@
     "accession-workflow.error.undefined": "Accession holdings workflow preference must be selected to save configuration",
     "accession-workflow.option.change": "Change permanent location",
     "accession-workflow.option.duplicate": "Duplicate holdings",
-    "error": "Something went wrong"
+    "error": "Something went wrong",
+    "configurations.title": "Configurations"
 }

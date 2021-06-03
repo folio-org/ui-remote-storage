@@ -6,7 +6,7 @@ import { PaneMenu, Button } from '@folio/stripes/components';
 import { IfPermission } from '@folio/stripes/core';
 
 export const Menu = ({ onNew }) => (
-  <IfPermission perm="ui-remote-storage.settings.remote-storages.all">
+  <IfPermission perm="ui-remote-storage.settings.remote-storages.edit">
     <PaneMenu>
       <Button
         data-testid="new-remote-storage"
