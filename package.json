@@ -39,12 +39,28 @@
         ]
       },
       {
-        "permissionName": "ui-remote-storage.settings.remote-storages.all",
-        "displayName": "Remote storage: Create, read, update, delete",
+        "permissionName": "ui-remote-storage.settings.remote-storages.view",
+        "displayName": "Remote storage: View",
         "visible": true,
         "subPermissions": [
           "remote-storage.configurations.collection.get",
           "remote-storage.configurations.item.get",
+          "remote-storage.mappings.item.get",
+          "remote-storage.mappings.collection.get",
+          "remote-storage.extended-mappings.collection.get",
+          "remote-storage.extended-mappings.item.get",
+          "remote-storage.extended-mappings-locations.collection.get",
+          "remote-storage.providers.collection.get",
+          "remote-storage.accessions.collection.get",
+          "remote-storage.retrievals.collection.get",
+          "settings.remote-storage.enabled"
+        ]
+      },
+      {
+        "permissionName": "ui-remote-storage.settings.remote-storages.edit",
+        "displayName": "Remote storage: Create, edit, delete",
+        "visible": true,
+        "subPermissions": [
           "remote-storage.configurations.item.post",
           "remote-storage.configurations.item.put",
           "remote-storage.configurations.item.delete",
@@ -53,6 +69,14 @@
           "remote-storage.mappings.collection.get",
           "remote-storage.mappings.item.get",
           "remote-storage.providers.collection.get",
+          "remote-storage.extended-mappings.item.post",
+          "remote-storage.extended-mappings.item.delete",
+          "remote-storage.accessions.item.post",
+          "remote-storage.accessions.item.put",
+          "remote-storage.retrievals.item.put",
+          "remote-storage.check-in.item.post",
+          "remote-storage.return.item.post",
+          "pubsub.events.post",
           "settings.remote-storage.enabled"
         ]
       }

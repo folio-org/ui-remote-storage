@@ -55,7 +55,7 @@ const Create = () => {
 
 
 export const Configurations = () => (
-  <Paneset paneTitle={<FormattedMessage id="ui-remote-storage.meta.title" />}>
+  <Paneset paneTitle={<FormattedMessage id="ui-remote-storage.configurations.title" />}>
     <Route path={CONFIGURATIONS_PATH} component={List} />
     <Switch>
       <Route path={`${CONFIGURATIONS_PATH}/create`} component={Create} />

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
 import { noop } from 'lodash';
 
-import { useStripes } from '@folio/stripes/core';
 import { Pane } from '@folio/stripes/components';
 
 import { ErrorCentered, LoadingCentered } from '../../components';
@@ -13,14 +12,11 @@ import * as Delete from '../Delete';
 import { Menu } from './Menu';
 
 export const DetailsPane = ({ configurationId, onEdit, onClose, defaultWidth = 'fill', ...rest }) => {
-  const stripes = useStripes();
-
   const DeleteScenario = Delete.useScenario({ configurationId, onSuccess: onClose });
 
   const query = Configurations.useSingleQuery({ id: configurationId });
 
-  const isMenuRendered = stripes.hasPerm('ui-remote-storage.settings.remote-storages.all') && query.isSuccess;
-  const renderActionMenu = props => isMenuRendered && (
+  const renderActionMenu = props => query.isSuccess && (
     <Menu
       onEdit={onEdit}
       onDelete={DeleteScenario.start}

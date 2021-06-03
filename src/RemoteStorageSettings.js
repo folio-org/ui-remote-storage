@@ -9,6 +9,7 @@ const pages = [
     route: 'configurations',
     label: <FormattedMessage id="ui-remote-storage.configurations.title" />,
     component: Configurations,
+    perm: 'ui-remote-storage.settings.remote-storages.view',
   },
 ];
 
