@@ -1,6 +1,5 @@
 {
     "meta.title": "Stockage à distance",
-    "permission.settings.remote-storages.all": "Stockage à distance: créer, lire, mettre à jour, supprimer",
     "list.name": "Nom",
     "list.providerName": "Fournisseur",
     "list.lastUpdate": "Dernière mise à jour",
@@ -50,5 +49,7 @@
     "accession-workflow.option.change": "Changer d'emplacement permanent",
     "accession-workflow.option.duplicate": "Dupliquer les collections",
     "error": "Quelque chose s'est mal déroulé",
-    "configurations.title": "Configurations"
+    "configurations.title": "Configurations",
+    "permission.settings.remote-storages.view": "Remote storage: View",
+    "permission.settings.remote-storages.edit": "Remote storage: Create, edit, delete"
 }

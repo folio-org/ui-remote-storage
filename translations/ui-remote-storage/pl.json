@@ -1,6 +1,5 @@
 {
     "meta.title": "Magazyn zdalny",
-    "permission.settings.remote-storages.all": "Magazyn zdalny: tworzenie i edycja",
     "list.name": "Nazwa",
     "list.providerName": "Dostawca",
     "list.lastUpdate": "Ostatnia aktualizacja",
@@ -50,5 +49,7 @@
     "accession-workflow.option.change": "Change permanent location",
     "accession-workflow.option.duplicate": "Duplicate holdings",
     "error": "Something went wrong",
-    "configurations.title": "Configurations"
+    "configurations.title": "Configurations",
+    "permission.settings.remote-storages.view": "Remote storage: View",
+    "permission.settings.remote-storages.edit": "Remote storage: Create, edit, delete"
 }

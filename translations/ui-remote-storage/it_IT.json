@@ -1,6 +1,5 @@
 {
     "meta.title": "Remote storage",
-    "permission.settings.remote-storages.all": "Remote storage: Create, read, update, delete",
     "list.name": "Name",
     "list.providerName": "Provider",
     "list.lastUpdate": "Last Update",
@@ -50,5 +49,7 @@
     "accession-workflow.option.change": "Modificare la sezione permanente",
     "accession-workflow.option.duplicate": "Duplica posseduto",
     "error": "Something went wrong",
-    "configurations.title": "Configurations"
+    "configurations.title": "Configurations",
+    "permission.settings.remote-storages.view": "Remote storage: View",
+    "permission.settings.remote-storages.edit": "Remote storage: Create, edit, delete"
 }

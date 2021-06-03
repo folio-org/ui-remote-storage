@@ -1,6 +1,5 @@
 {
     "meta.title": "Armazenamento externo",
-    "permission.settings.remote-storages.all": "Armazenamento remoto: Criar, ver, atualizar, deletar",
     "list.name": "Nome",
     "list.providerName": "Fornecedor",
     "list.lastUpdate": "Última atualização",
@@ -50,5 +49,7 @@
     "accession-workflow.option.change": "Mudar localização permanente",
     "accession-workflow.option.duplicate": "Duplicar holdings",
     "error": "Something went wrong",
-    "configurations.title": "Configurations"
+    "configurations.title": "Configurations",
+    "permission.settings.remote-storages.view": "Remote storage: View",
+    "permission.settings.remote-storages.edit": "Remote storage: Create, edit, delete"
 }
