@@ -1,10 +1,9 @@
 import React from 'react';
 import { Route, useRouteMatch, Redirect, Switch } from 'react-router';
 
-import { Select } from '@folio/stripes/components';
-
 import { Configurations } from '../API';
 import { NoConfigurations } from './NoConfigurations';
+import { ConfigurationsSelect } from './ConfigurationsSelect';
 
 export const Content = () => {
   const match = useRouteMatch();
@@ -13,7 +12,7 @@ export const Content = () => {
   return (
     <Switch>
       <Route path={`${match.path}/:id`}>
-        <Select />
+        <ConfigurationsSelect />
         <span>Table </span>
       </Route>
       <Route>
