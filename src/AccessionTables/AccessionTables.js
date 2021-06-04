@@ -5,9 +5,9 @@ import { Pane } from '@folio/stripes/components';
 
 import { Configurations } from '../API';
 import { LoadingCentered, ErrorCentered } from '../components';
-import AccessionTableContent from './AccessionTableContent';
+import { Content } from './Content';
 
-const AccessionTablePane = () => {
+export const AccessionTables = () => {
   const query = Configurations.useListQuery();
 
   return (
@@ -17,9 +17,7 @@ const AccessionTablePane = () => {
     >
       {query.isLoading && <LoadingCentered />}
       {query.isError && <ErrorCentered />}
-      {query.isSuccess && <AccessionTableContent configurations={query.configurations} />}
+      {query.isSuccess && <Content />}
     </Pane>
   );
 };
-
-export default AccessionTablePane;

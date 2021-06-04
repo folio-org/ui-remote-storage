@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { Settings } from '@folio/stripes/smart-components';
 import { Configurations } from './Configurations';
-import { AccessionTablePane } from './AccessionTable';
+import { AccessionTables } from './AccessionTables';
 
 const pages = [
   {
@@ -15,7 +15,7 @@ const pages = [
   {
     route: 'accession-tables',
     label: <FormattedMessage id="ui-remote-storage.accession-tables.title" />,
-    component: AccessionTablePane,
+    component: AccessionTables,
     perm: 'ui-remote-storage.settings.remote-storages.view',
   },
 ];

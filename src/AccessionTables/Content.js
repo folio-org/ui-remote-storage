@@ -1,13 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Route, useRouteMatch, Redirect, Switch } from 'react-router';
 
 import { Select } from '@folio/stripes/components';
 
-import { NoConfigurations } from '../components';
+import { Configurations } from '../API';
+import { NoConfigurations } from './NoConfigurations';
 
-const AccessionTableContent = ({ configurations }) => {
+export const Content = () => {
   const match = useRouteMatch();
+  const query = Configurations.useListQuery();
 
   return (
     <Switch>
@@ -17,17 +18,11 @@ const AccessionTableContent = ({ configurations }) => {
       </Route>
       <Route>
         {
-          configurations.length
-            ? <Redirect to={`${match.path}/${configurations[0].id}`} />
+          query.configurations.length
+            ? <Redirect to={`${match.path}/${query.configurations[0].id}`} />
             : <NoConfigurations />
         }
       </Route>
     </Switch>
   );
 };
-
-AccessionTableContent.propTypes = {
-  configurations: PropTypes.arrayOf(PropTypes.object),
-};
-
-export default AccessionTableContent;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { Centered } from './Centered';
+import { Centered } from '../components/Centered';
 
 export const NoConfigurations = props => (
   <Centered {...props}>
