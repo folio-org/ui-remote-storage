@@ -5,7 +5,7 @@ import { Centered } from './Centered';
 
 export const NoConfigurations = props => (
   <Centered {...props}>
-    <FormattedMessage id="ui-remote-storage.accession-table.empty" />
+    <FormattedMessage id="ui-remote-storage.accession-tables.empty" />
   </Centered>
 );
 

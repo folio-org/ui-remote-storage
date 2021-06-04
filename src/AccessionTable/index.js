@@ -1,1 +1,1 @@
-export { default as AccessionTable } from './AccessionTable';
+export { default as AccessionTablePane } from './AccessionTablePane';
