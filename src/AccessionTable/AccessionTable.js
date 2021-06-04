@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Switch, Route, useRouteMatch, Redirect } from 'react-router';
+import { Route, useRouteMatch, Redirect } from 'react-router';
 
 import { Pane, Select } from '@folio/stripes/components';
 
