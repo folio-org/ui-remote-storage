@@ -1,22 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Switch, Route } from 'react-router';
+import { Switch, Route, useRouteMatch, Redirect } from 'react-router';
 
 import { Pane, Select } from '@folio/stripes/components';
 
-import { ACCESSION_PATH } from '../const';
-import { NoConfigurations } from '../components';
+import { Configurations } from '../API';
+import { NoConfigurations, LoadingCentered, ErrorCentered } from '../components';
 
 const AccessionTable = () => {
+  const match = useRouteMatch();
+  const query = Configurations.useListQuery();
+
+  if (query.isLoading) return <LoadingCentered />;
+
+  if (query.isError) return <ErrorCentered />;
+
   return (
     <Pane>
-      <Switch>
-        <Route path={ACCESSION_PATH} component={NoConfigurations} />
-        <Route path={`${ACCESSION_PATH}/:id`}>
-          <Select />
-          <span>Table </span>
-        </Route>
-      </Switch>
+      <Route path={match.path}>
+        {
+          query.configurations.length
+            ? <Redirect to={`${match.path}/${query.configurations[0].id}`} />
+            : <NoConfigurations />
+        }
+      </Route>
+      <Route path={`${match.path}/:id`}>
+        <Select />
+        <span>Table </span>
+      </Route>
     </Pane>
   );
 };
