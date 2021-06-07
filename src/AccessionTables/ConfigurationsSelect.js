@@ -1,25 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useParams } from 'react-router';
+import { escapeRegExp } from 'lodash';
 
-import { Select } from '@folio/stripes-acq-components';
+import { Selection } from '@folio/stripes-acq-components';
 
-export const ConfigurationsSelect = ({ onSelectConfig, caiasoftConfigurations }) => {
-  const params = useParams();
+import { useCaiaSoftConfigurations } from './useCaiaSoftConfigurations';
 
-  const dataOptions = caiasoftConfigurations.map(({ id, name }) => ({ value: id, label: name }));
+
+const filter = (value, data) => {
+  return data.filter(o => new RegExp(escapeRegExp(value), 'i').test(o.label));
+};
+
+
+export const ConfigurationsSelect = props => {
+  const query = useCaiaSoftConfigurations();
+  const dataOptions = query.configurations.map(({ id, name }) => ({ value: id, label: name }));
 
   return (
-    <Select
-      required
+    <Selection
       dataOptions={dataOptions}
-      defaultValue={params.id}
-      onChange={onSelectConfig}
+      onFilter={filter}
+      {...props}
     />
   );
 };
 
-ConfigurationsSelect.propTypes = {
-  onSelectConfig: PropTypes.func.isRequired,
-  caiasoftConfigurations: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
+ConfigurationsSelect.propTypes = Selection.propTypes;
