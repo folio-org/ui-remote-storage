@@ -1,27 +1,25 @@
 import React from 'react';
-import { useRouteMatch, useHistory } from 'react-router';
+import PropTypes from 'prop-types';
+import { useParams } from 'react-router';
 
 import { Select } from '@folio/stripes-acq-components';
 
-import { Configurations } from '../API';
+export const ConfigurationsSelect = ({ onSelectConfig, caiasoftConfigurations }) => {
+  const params = useParams();
 
-export const ConfigurationsSelect = () => {
-  const match = useRouteMatch();
-  const history = useHistory();
-  const query = Configurations.useListQuery();
-
-  const dataOptions = query.configurations.map(({ id, name }) => ({ value: id, label: name }));
-
-  const selectConfig = ({ target }) => {
-    history.push(`${match.path}/${target.value}`);
-  };
+  const dataOptions = caiasoftConfigurations.map(({ id, name }) => ({ value: id, label: name }));
 
   return (
     <Select
       required
       dataOptions={dataOptions}
-      defaultValue={match.params.id}
-      onChange={selectConfig}
+      defaultValue={params.id}
+      onChange={onSelectConfig}
     />
   );
+};
+
+ConfigurationsSelect.propTypes = {
+  onSelectConfig: PropTypes.func.isRequired,
+  caiasoftConfigurations: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
