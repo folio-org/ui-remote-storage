@@ -50,6 +50,6 @@
     "accession-workflow.option.duplicate": "Dupliquer les collections",
     "error": "Quelque chose s'est mal déroulé",
     "configurations.title": "Configurations",
-    "permission.settings.remote-storages.view": "Remote storage: View",
-    "permission.settings.remote-storages.edit": "Remote storage: Create, edit, delete"
+    "permission.settings.remote-storages.view": "Stockage à distance: Afficher",
+    "permission.settings.remote-storages.edit": "Stockage à distance: créer, modifier, supprimer"
 }
