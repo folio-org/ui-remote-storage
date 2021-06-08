@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 
@@ -6,7 +5,7 @@ import { IfPermission } from '@folio/stripes/core';
 
 import { ActionMenu } from '../../components';
 
-export const Menu = ({ onEdit, onDelete, ...rest }) => {
+export const Menu = ({ onEdit, onDelete, onOpenTable, isCaiasoft, ...rest }) => {
   const intl = useIntl();
 
   return (
@@ -27,6 +26,13 @@ export const Menu = ({ onEdit, onDelete, ...rest }) => {
           onClick={onDelete}
         />
       </IfPermission>
+      {isCaiasoft && (
+        <ActionMenu.Item
+          id="clickable-open-accession-table"
+          label={intl.formatMessage({ id: 'ui-remote-storage.accession-tables.open' })}
+          onClick={onOpenTable}
+        />
+      )}
     </ActionMenu.Menu>
   );
 };

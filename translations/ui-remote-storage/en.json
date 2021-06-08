@@ -4,6 +4,7 @@
   "configurations.title": "Configurations",
   "accession-tables.title": "Accession tables",
   "accession-tables.empty": "CaisSoft Accession tables are available after remote storage has been configured.",
+  "accession-tables.open": "Open Accession table",
 
   "edit": "Edit",
   "saveAndClose": "Save & close",
