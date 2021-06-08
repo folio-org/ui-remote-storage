@@ -9,7 +9,9 @@
       "files": ["*test.*", "test/**"],
       "rules": {
         "react/prop-types": "off",
-        "padding-line-between-statements": "off"
+        "padding-line-between-statements": "off",
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off"
       }
     }
   ]

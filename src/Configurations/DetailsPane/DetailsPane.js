@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
 import { noop } from 'lodash';
@@ -10,17 +9,21 @@ import { Configurations } from '../../API';
 import { Fields } from '../Fields';
 import * as Delete from '../Delete';
 import { Menu } from './Menu';
+import { CAIASOFT } from '../../const';
 
 export const DetailsPane = ({ configurationId, onEdit, onClose, onOpenTable, defaultWidth = 'fill', ...rest }) => {
   const DeleteScenario = Delete.useScenario({ configurationId, onSuccess: onClose });
 
   const query = Configurations.useSingleQuery({ id: configurationId });
 
+  const isCaiasoft = query.configuration.providerName === CAIASOFT;
+
   const renderActionMenu = props => query.isSuccess && (
     <Menu
       onEdit={onEdit}
       onDelete={DeleteScenario.start}
       onOpenTable={onOpenTable}
+      isCaiasoft={isCaiasoft}
       {...props}
     />
   );
