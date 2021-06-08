@@ -6,7 +6,7 @@ import { IfPermission } from '@folio/stripes/core';
 
 import { ActionMenu } from '../../components';
 
-export const Menu = ({ onEdit, onDelete, ...rest }) => {
+export const Menu = ({ onEdit, onDelete, onOpenTable, ...rest }) => {
   const intl = useIntl();
 
   return (
@@ -27,6 +27,12 @@ export const Menu = ({ onEdit, onDelete, ...rest }) => {
           onClick={onDelete}
         />
       </IfPermission>
+      <ActionMenu.Item
+        id="clickable-edit-accession-table"
+        icon="edit"
+        label={intl.formatMessage({ id: 'ui-remote-storage.accession-tables.open' })}
+        onClick={onOpenTable}
+      />
     </ActionMenu.Menu>
   );
 };

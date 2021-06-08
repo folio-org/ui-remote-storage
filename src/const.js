@@ -1,4 +1,5 @@
 export const CONFIGURATIONS_PATH = '/settings/remote-storage/configurations';
+export const ACCESSION_TABLES_PATH = '/settings/remote-storage/accession-tables';
 
 export const API_PATH = 'remote-storage';
 

@@ -11,7 +11,7 @@ import { Fields } from '../Fields';
 import * as Delete from '../Delete';
 import { Menu } from './Menu';
 
-export const DetailsPane = ({ configurationId, onEdit, onClose, defaultWidth = 'fill', ...rest }) => {
+export const DetailsPane = ({ configurationId, onEdit, onClose, onOpenTable, defaultWidth = 'fill', ...rest }) => {
   const DeleteScenario = Delete.useScenario({ configurationId, onSuccess: onClose });
 
   const query = Configurations.useSingleQuery({ id: configurationId });
@@ -20,6 +20,7 @@ export const DetailsPane = ({ configurationId, onEdit, onClose, defaultWidth = '
     <Menu
       onEdit={onEdit}
       onDelete={DeleteScenario.start}
+      onOpenTable={onOpenTable}
       {...props}
     />
   );

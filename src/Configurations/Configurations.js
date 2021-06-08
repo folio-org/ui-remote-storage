@@ -1,10 +1,10 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Route, Switch, useHistory, useParams } from 'react-router-dom';
+import { Route, Switch, useHistory, useParams, useRouteMatch } from 'react-router-dom';
 
 import { Paneset } from '@folio/stripes/components';
 
-import { CONFIGURATIONS_PATH } from '../const';
+import { CONFIGURATIONS_PATH, ACCESSION_TABLES_PATH } from '../const';
 import { ListPane } from './ListPane';
 import { DetailsPane } from './DetailsPane';
 import { EditorLayer } from './EditorLayer';
@@ -22,12 +22,15 @@ const List = () => {
 const Details = () => {
   const history = useHistory();
   const { id } = useParams();
+  const match = useRouteMatch();
+  console.log(`match`, match);
 
   return (
     <DetailsPane
       configurationId={id}
       onEdit={() => history.push(`${CONFIGURATIONS_PATH}/${id}/edit`)}
       onClose={() => history.push(CONFIGURATIONS_PATH)}
+      onOpenTable={() => history.push(`${ACCESSION_TABLES_PATH}/${id}`)}
     />
   );
 };
