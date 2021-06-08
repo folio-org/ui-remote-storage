@@ -1,6 +1,5 @@
 {
     "meta.title": "Remote storage",
-    "permission.settings.remote-storages.all": "Remote storage: Create, read, update, delete",
     "list.name": "Name",
     "list.providerName": "Provider",
     "list.lastUpdate": "Last Update",
@@ -49,6 +48,8 @@
     "accession-workflow.error.undefined": "Accession holdings workflow preference must be selected to save configuration",
     "accession-workflow.option.change": "Change permanent location",
     "accession-workflow.option.duplicate": "Duplicate holdings",
-    "error": "Something went wrong",
-    "configurations.title": "Configurations"
+    "error": "Fehler ist aufgetreten",
+    "configurations.title": "Konfigurationen",
+    "permission.settings.remote-storages.view": "Remote storage: View",
+    "permission.settings.remote-storages.edit": "Remote storage: Create, edit, delete"
 }

@@ -1,41 +1,30 @@
-import React, { useMemo } from 'react';
-import { Route, useRouteMatch, useHistory, Redirect, Switch } from 'react-router';
+import { Route, Redirect, Switch, useRouteMatch } from 'react-router-dom';
 
-import { Configurations } from '../API';
-import { NoConfigurations } from './NoConfigurations';
+import { useCaiaSoftConfigurations } from './useCaiaSoftConfigurations';
 import { ConfigurationsSelect } from './ConfigurationsSelect';
-import { CAIASOFT } from '../const';
+import { Table } from './Table';
 
 export const Content = () => {
-  const match = useRouteMatch();
-  const history = useHistory();
+  const { path } = useRouteMatch();
+  const query = useCaiaSoftConfigurations();
 
-  const query = Configurations.useListQuery();
-
-  const onSelectConfig = ({ target }) => {
-    history.push(`${match.path}/${target.value}`);
-  };
-
-  const caiasoftConfigurations = useMemo(() => {
-    return query.configurations.filter(({ providerName }) => providerName === CAIASOFT);
-  }, [query.configurations]);
+  const defaultConfiguration = query.configurations[0];
 
   return (
     <Switch>
-      <Route path={`${match.path}/:id`}>
-        <ConfigurationsSelect
-          onSelectConfig={onSelectConfig}
-          caiasoftConfigurations={caiasoftConfigurations}
-        />
-        <span>Table </span>
-      </Route>
-      <Route>
-        {
-          caiasoftConfigurations.length
-            ? <Redirect to={`${match.path}/${caiasoftConfigurations[0].id}`} />
-            : <NoConfigurations />
-        }
-      </Route>
+      <Route
+        path={`${path}/:id`}
+        render={({ match, history }) => (
+          <>
+            <ConfigurationsSelect
+              value={match.params.id}
+              onChange={newId => history.push(`${path}/${newId}`)}
+            />
+            <Table configurationId={match.params.id} />
+          </>
+        )}
+      />
+      <Redirect to={`${path}/${defaultConfiguration.id}`} />
     </Switch>
   );
 };

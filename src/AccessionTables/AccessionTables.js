@@ -1,14 +1,14 @@
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { Pane } from '@folio/stripes/components';
 
-import { Configurations } from '../API';
 import { LoadingCentered, ErrorCentered } from '../components';
 import { Content } from './Content';
+import { useCaiaSoftConfigurations } from './useCaiaSoftConfigurations';
+import { NoConfigurations } from './NoConfigurations';
 
 export const AccessionTables = () => {
-  const query = Configurations.useListQuery();
+  const query = useCaiaSoftConfigurations();
 
   return (
     <Pane
@@ -17,7 +17,7 @@ export const AccessionTables = () => {
     >
       {query.isLoading && <LoadingCentered />}
       {query.isError && <ErrorCentered />}
-      {query.isSuccess && <Content />}
+      {query.isSuccess && query.configurations.length ? <Content /> : <NoConfigurations />}
     </Pane>
   );
 };
