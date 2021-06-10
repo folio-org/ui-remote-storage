@@ -3,7 +3,7 @@
 
   "configurations.title": "Configurations",
   "accession-tables.title": "Accession tables",
-  "accession-tables.empty": "CaisSoft Accession tables are available after remote storage has been configured.",
+  "accession-tables.empty": "CaiaSoft Accession tables are available after remote storage has been configured.",
   "accession-tables.open": "Open Accession table",
 
   "edit": "Edit",
@@ -70,5 +70,8 @@
 
   "edit.success.created": "Remote storage configuration was successfully created.",
   "edit.success.changed": "Remote storage configuration was successfully changed.",
-  "edit.error": "Error occurred while saving Remote storage configuration."
+  "edit.error": "Error occurred while saving Remote storage configuration.",
+
+  "location.original": "Original location",
+  "location.final": "Final location (Remote)"
 }

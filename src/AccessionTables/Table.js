@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
+import { FormattedMessage } from 'react-intl';
 
 import { EditableList } from '@folio/stripes/smart-components';
 
@@ -9,10 +10,9 @@ import { Locations, AccessionTable } from '../data';
 import { Location, LocationSelection } from './components';
 
 
-// todo: make translations
 const columnMapping = {
-  originalLocationId: 'from',
-  finalLocationId: 'to',
+  originalLocationId: <FormattedMessage id="ui-remote-storage.location.original" />,
+  finalLocationId: <FormattedMessage id="ui-remote-storage.location.final" />,
 };
 
 
