@@ -68,7 +68,7 @@ export const Table = ({ configurationId }) => {
       }}
       onCreate={handleEdit}
       onUpdate={handleEdit} // only onCreate is really used because of bug with `id` in EditableList
-      validate={() => {}} // because it's required to be a function
+      validate={() => { /* validation function must be supplied */ }}
     />
   );
 };
