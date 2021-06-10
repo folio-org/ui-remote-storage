@@ -14,7 +14,7 @@ export const Menu = ({ onNew }) => (
         buttonStyle="primary"
         marginBottom0
       >
-        <FormattedMessage id="stripes-smart-components.new" />
+        <FormattedMessage id="stripes-core.button.new" />
       </Button>
     </PaneMenu>
   </IfPermission>
