@@ -1,6 +1,9 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen, within } from '@testing-library/react';
+import { createStore, combineReducers } from 'redux';
+import { Provider as ReduxProvider } from 'react-redux';
+import { reducer as formReducer } from 'redux-form';
+import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
 import { Provider, server, rest, mockKy, API_BASE } from '../test/net';
@@ -10,10 +13,6 @@ import { AccessionTables } from './AccessionTables';
 jest.mock('@folio/stripes/core', () => ({
   ...jest.requireActual('@folio/stripes/core'),
   useOkapiKy: () => mockKy,
-  // useStripes: () => ({
-  //   hasPerm: jest.fn().mockReturnValue(true),
-  // }),
-  // IfPermission: props => <>{props.children}</>,
 }));
 
 const url = {
@@ -48,14 +47,19 @@ beforeEach(() => {
   );
 });
 
-const renderAccessionTables = () => (
+const renderAccessionTables = () => {
+  const rootReducer = combineReducers({ form: formReducer });
+  const store = createStore(rootReducer);
+
   render(
     <MemoryRouter>
-      <AccessionTables />
+      <ReduxProvider store={store}>
+        <AccessionTables />
+      </ReduxProvider>
     </MemoryRouter>,
     { wrapper: Provider },
-  )
-);
+  );
+};
 
 describe('Selection', () => {
   it('displays the selection', async () => {
