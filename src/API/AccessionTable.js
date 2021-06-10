@@ -33,7 +33,9 @@ const useMutation = ({ onSettled, ...rest } = {}) => {
     // is trying to mutate the item that was already deleted (from another workplace).
     // Refreshing the list couldn't hurt in this case.
     onSettled: () => {
-      queryClient.invalidateQueries(QUERY_PATH, { exact: true, refetchInactive: true });
+      // todo: `invalidateQueries` temporarily changed to `resetQueries` to deal with <EditableList> lack of refresh
+      // queryClient.invalidateQueries(QUERY_PATH, { exact: true, refetchInactive: true });
+      queryClient.resetQueries(QUERY_PATH, { exact: true, refetchInactive: true });
 
       return onSettled?.();
     },
