@@ -54,7 +54,7 @@ export const Table = ({ configurationId }) => {
       }}
       readOnlyFields={['originalLocationId']}
       visibleFields={['originalLocationId', 'finalLocationId']}
-      actionSuppression={{ delete: () => true, edit: () => isReadOnly }}
+      actionSuppression={{ delete: () => true, edit: () => false }}
       columnMapping={columnMapping}
       fieldComponents={{
         finalLocationId: item => (
