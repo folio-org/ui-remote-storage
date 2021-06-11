@@ -22,8 +22,7 @@ export const DetailsPane = ({ configurationId, onEdit, onClose, onOpenTable, def
     <Menu
       onEdit={onEdit}
       onDelete={DeleteScenario.start}
-      onOpenTable={onOpenTable}
-      isCaiasoft={isCaiasoft}
+      onOpenTable={isCaiasoft ? onOpenTable : undefined}
       {...props}
     />
   );

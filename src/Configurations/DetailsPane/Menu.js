@@ -5,7 +5,7 @@ import { IfPermission } from '@folio/stripes/core';
 
 import { ActionMenu } from '../../components';
 
-export const Menu = ({ onEdit, onDelete, onOpenTable, isCaiasoft, ...rest }) => {
+export const Menu = ({ onEdit, onDelete, onOpenTable, ...rest }) => {
   const intl = useIntl();
 
   return (
@@ -26,7 +26,7 @@ export const Menu = ({ onEdit, onDelete, onOpenTable, isCaiasoft, ...rest }) => 
           onClick={onDelete}
         />
       </IfPermission>
-      {isCaiasoft && (
+      {onOpenTable && (
         <ActionMenu.Item
           id="clickable-open-accession-table"
           label={intl.formatMessage({ id: 'ui-remote-storage.accession-tables.open' })}
@@ -41,4 +41,5 @@ Menu.propTypes = {
   ...ActionMenu.Menu.propTypes,
   onEdit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  onOpenTable: PropTypes.func,
 };
