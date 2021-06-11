@@ -1,6 +1,7 @@
 import React from 'react';
 import { screen, within } from '@testing-library/react';
 import user from '@testing-library/user-event';
+import { byRole } from 'testing-library-selector';
 
 import { server, rest } from '../../test/net';
 import { url, renderAccessionTables } from './setup';
@@ -55,6 +56,8 @@ beforeEach(() => {
   );
 });
 
+const editButton = byRole('button', { name: /edit/ });
+
 
 it('has a row for every local location', async () => {
   renderAccessionTables();
@@ -67,14 +70,20 @@ it('has a row for every local location', async () => {
   expect(screen.getAllByRole('row').length).toBe(1 + 2); // 1 header row + 2 data rows
 });
 
-it('opens final location select for row', async () => {
+it('has Edit button in every row', async () => {
   renderAccessionTables();
 
-  await screen.findByRole('grid');
+  const rows = await screen.findAllByRole('row', { name: /Local location/ });
 
-  const firstRow = screen.getAllByRole('row')[1];
-  const editButton = within(firstRow).getByRole('button');
-  user.click(editButton);
+  rows.forEach(row => expect(editButton.get(row)).toBeVisible());
+});
 
-  expect(within(firstRow).getByRole('button', { expanded: false })).toBeVisible();
+it('opens final location select on Edit button click', async () => {
+  renderAccessionTables();
+
+  const row = await screen.findByRole('row', { name: /Local location 1/ });
+
+  user.click(editButton.get(row));
+
+  expect(within(row).getByRole('button', { expanded: false })).toBeVisible();
 });
