@@ -72,7 +72,6 @@ export const Table = ({ configurationId }) => {
       onCreate={handleEdit}
       onUpdate={handleEdit} // only onCreate is really used because of bug with `id` in EditableList
       validate={() => { /* validation function must be supplied */ }}
-      autosize
     />
   );
 };
