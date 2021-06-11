@@ -9,6 +9,7 @@ import { Location } from '../Location';
 
 // todo: this is forked from stripes-smart-components, got to figure out the way to merge
 
+// todo: does not highlights the search criterion in the results
 const filter = (value, data) => {
   return data.filter(o => new RegExp(escapeRegExp(value), 'i').test(o.label.props?.location.name));
 };
