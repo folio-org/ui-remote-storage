@@ -1,25 +1,9 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
-import { createStore, combineReducers } from 'redux';
-import { Provider as ReduxProvider } from 'react-redux';
-import { reducer as formReducer } from 'redux-form';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import { Provider, server, rest, mockKy, API_BASE } from '../../test/net';
-
-import { AccessionTables } from '../AccessionTables';
-
-jest.mock('@folio/stripes/core', () => ({
-  ...jest.requireActual('@folio/stripes/core'),
-  useOkapiKy: () => mockKy,
-}));
-
-const url = {
-  configurations: {
-    list: `${API_BASE}/configurations`,
-  },
-};
+import { server, rest } from '../../test/net';
+import { url, renderAccessionTables } from './setup';
 
 beforeEach(() => {
   server.use(
@@ -63,20 +47,6 @@ beforeEach(() => {
     }))),
   );
 });
-
-const renderAccessionTables = () => {
-  const rootReducer = combineReducers({ form: formReducer });
-  const store = createStore(rootReducer);
-
-  render(
-    <MemoryRouter>
-      <ReduxProvider store={store}>
-        <AccessionTables />
-      </ReduxProvider>
-    </MemoryRouter>,
-    { wrapper: Provider },
-  );
-};
 
 
 it('has only CaiaSoft options', async () => {

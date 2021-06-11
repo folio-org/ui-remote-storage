@@ -10,7 +10,7 @@ import { API_PATH } from '../const';
 export { rest } from 'msw';
 
 
-const API_ORIGIN = 'http://test/';
+export const API_ORIGIN = 'http://test';
 
 export const API_BASE = new URL(API_PATH, API_ORIGIN);
 
