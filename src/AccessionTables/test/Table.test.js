@@ -61,10 +61,10 @@ it('has a row for every local location', async () => {
 
   await screen.findByRole('grid');
 
-  expect(screen.getAllByRole('row').length).toBe(1 + 2); // 1 header row + 2 data rows
+  expect(await screen.findByRole('row', { name: /Local location 1/ })).toBeVisible();
+  expect(await screen.findByRole('row', { name: /Local location 2/ })).toBeVisible();
 
-  expect(screen.getByRole('row', { name: /Local location 1/ })).toBeVisible();
-  expect(screen.getByRole('row', { name: /Local location 2/ })).toBeVisible();
+  expect(screen.getAllByRole('row').length).toBe(1 + 2); // 1 header row + 2 data rows
 });
 
 it('opens final location select for row', async () => {
