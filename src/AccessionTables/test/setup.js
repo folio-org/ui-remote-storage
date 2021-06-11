@@ -8,6 +8,15 @@ import { render } from '@testing-library/react';
 import { Provider, server, rest, mockKy, API_ORIGIN, API_BASE } from '../../test/net';
 import { AccessionTables } from '../AccessionTables';
 
+jest.mock('react-virtualized-auto-sizer', () => ({ children }) => children({ width: 1920, height: 1080 }));
+
+jest.mock('@folio/stripes-components/lib/Icon', () => props => (
+  <span data-testid={props['data-testid']}>
+    <svg />
+    {props.children && <span>{props.children}</span>}
+  </span>
+));
+
 jest.mock('@folio/stripes/core', () => ({
   ...jest.requireActual('@folio/stripes/core'),
   useOkapiKy: () => mockKy,
