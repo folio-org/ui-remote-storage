@@ -16,12 +16,15 @@ const columnMapping = {
 };
 
 
-// todo: propTypes
-// eslint-disable-next-line react/prop-types
 const LocationField = ({ name, configurationId, ...props }) => {
   const { locations } = Locations.useByConfigurationId(configurationId);
 
   return <Field name={name} component={LocationSelection} locations={locations} {...props} />;
+};
+
+LocationField.propTypes = {
+  ...Field.propTypes,
+  configurationId: PropTypes.string.isRequired,
 };
 
 
@@ -51,7 +54,7 @@ export const Table = ({ configurationId }) => {
       }}
       readOnlyFields={['originalLocationId']}
       visibleFields={['originalLocationId', 'finalLocationId']}
-      actionSuppression={{ delete: () => true, edit: () => false }}
+      actionSuppression={{ delete: () => true, edit: () => isReadOnly }}
       columnMapping={columnMapping}
       fieldComponents={{
         finalLocationId: item => (
@@ -69,6 +72,7 @@ export const Table = ({ configurationId }) => {
       onCreate={handleEdit}
       onUpdate={handleEdit} // only onCreate is really used because of bug with `id` in EditableList
       validate={() => { /* validation function must be supplied */ }}
+      autosize
     />
   );
 };
