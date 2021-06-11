@@ -1,6 +1,6 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-// import user from '@testing-library/user-event';
+import { screen, within } from '@testing-library/react';
+import user from '@testing-library/user-event';
 
 import { server, rest } from '../../test/net';
 import { url, renderAccessionTables } from './setup';
@@ -24,20 +24,6 @@ beforeEach(() => {
         {
           id: 'L1',
           name: 'Local location 1',
-          // code: 'KU/CC/DI/A',
-          // isActive: true,
-          // institutionId: '40ee00ca-a518-4b49-be01-0638d0a4ac57',
-          // campusId: '62cf76b7-cca5-4d33-9217-edf42ce1a848',
-          // libraryId: '5d78803e-ca04-4b4a-aeae-2c63b924518b',
-          // primaryServicePoint: '3a40852d-49fd-4df2-a1f9-6e2641a6e91f',
-          // servicePointIds: [
-          //   '3a40852d-49fd-4df2-a1f9-6e2641a6e91f',
-          // ],
-          // servicePoints: [],
-          // metadata: {
-          //   createdDate: '2021-06-11T03:22:07.792+00:00',
-          //   updatedDate: '2021-06-11T03:22:07.792+00:00',
-          // },
         },
         {
           id: 'L2',
@@ -79,4 +65,16 @@ it('has a row for every local location', async () => {
 
   expect(screen.getByRole('row', { name: /Local location 1/ })).toBeVisible();
   expect(screen.getByRole('row', { name: /Local location 2/ })).toBeVisible();
+});
+
+it('opens final location select for row', async () => {
+  renderAccessionTables();
+
+  await screen.findByRole('grid');
+
+  const firstRow = screen.getAllByRole('row')[1];
+  const editButton = within(firstRow).getByRole('button');
+  user.click(editButton);
+
+  expect(within(firstRow).getByRole('button', { expanded: false })).toBeVisible();
 });
