@@ -6,9 +6,9 @@ import { reducer as formReducer } from 'redux-form';
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import { Provider, server, rest, mockKy, API_BASE } from '../test/net';
+import { Provider, server, rest, mockKy, API_BASE } from '../../test/net';
 
-import { AccessionTables } from './AccessionTables';
+import { AccessionTables } from '../AccessionTables';
 
 jest.mock('@folio/stripes/core', () => ({
   ...jest.requireActual('@folio/stripes/core'),
@@ -24,7 +24,6 @@ const url = {
 beforeEach(() => {
   server.use(
     rest.get(url.configurations.list, (req, res, ctx) => res(ctx.json({
-      totalRecords: 2,
       configurations: [
         {
           id: '1',
@@ -79,37 +78,36 @@ const renderAccessionTables = () => {
   );
 };
 
-describe('Configuration selection', () => {
-  it('has only CaiaSoft options', async () => {
-    renderAccessionTables();
 
-    await screen.findByRole('button');
+it('has only CaiaSoft options', async () => {
+  renderAccessionTables();
 
-    const selection = screen.getByRole('button', { expanded: false });
+  await screen.findByRole('button');
 
-    user.click(selection);
+  const selection = screen.getByRole('button', { expanded: false });
 
-    expect(screen.getByRole('option', { name: 'CaiaSoft Configuration 1' })).toBeVisible();
-    expect(screen.getByRole('option', { name: 'CaiaSoft Configuration 2' })).toBeVisible();
-    expect(screen.queryByRole('option', { name: 'Dematic SD Configuration' })).not.toBeInTheDocument();
-    expect(screen.queryByRole('option', { name: 'Dematic EMS Configuration' })).not.toBeInTheDocument();
-  });
+  user.click(selection);
 
-  it('filters the options', async () => {
-    renderAccessionTables();
+  expect(screen.getByRole('option', { name: 'CaiaSoft Configuration 1' })).toBeVisible();
+  expect(screen.getByRole('option', { name: 'CaiaSoft Configuration 2' })).toBeVisible();
+  expect(screen.queryByRole('option', { name: 'Dematic SD Configuration' })).not.toBeInTheDocument();
+  expect(screen.queryByRole('option', { name: 'Dematic EMS Configuration' })).not.toBeInTheDocument();
+});
 
-    await screen.findByRole('button');
+it('filters the options', async () => {
+  renderAccessionTables();
 
-    const selection = screen.getByRole('button', { expanded: false });
+  await screen.findByRole('button');
 
-    user.click(selection);
+  const selection = screen.getByRole('button', { expanded: false });
 
-    expect(screen.getByRole('option', { name: /1/ })).toBeVisible();
-    expect(screen.getByRole('option', { name: /2/ })).toBeVisible();
+  user.click(selection);
 
-    user.type(screen.getByRole('combobox', { name: /selection/i }), '1');
+  expect(screen.getByRole('option', { name: /1/ })).toBeVisible();
+  expect(screen.getByRole('option', { name: /2/ })).toBeVisible();
 
-    expect(screen.getByRole('option', { name: /1/ })).toBeVisible();
-    expect(screen.queryByRole('option', { name: /2/ })).not.toBeInTheDocument();
-  });
+  user.type(screen.getByRole('combobox', { name: /selection/i }), '1');
+
+  expect(screen.getByRole('option', { name: /1/ })).toBeVisible();
+  expect(screen.queryByRole('option', { name: /2/ })).not.toBeInTheDocument();
 });
