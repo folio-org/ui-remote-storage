@@ -51,10 +51,8 @@ export const useCreateOrUpdateMutation = options => useMutation({
 });
 
 
-// todo: remove, replace by new DELETE API (by `originalLocationId`) - when it's ready
-// Not needed: deletes all records by finalLocationId - that's not what we want
 export const useDeleteMutation = options => useMutation({
   method: 'delete',
-  path: ({ id }) => `${MUTATION_PATH}/${id}`,
+  path: item => `${MUTATION_PATH}/${item.remoteConfigurationId}/${item.originalLocationId}`,
   ...options,
 });
