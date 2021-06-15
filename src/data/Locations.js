@@ -1,6 +1,9 @@
 import { Locations, Mappings } from '../API';
 
 
+export const compare = (a, b) => a.name.localeCompare(b.name);
+
+
 export const useMap = () => {
   const query = Locations.useListQuery();
   const map = Object.fromEntries(query.locations.map(l => [l.id, l]));
@@ -26,9 +29,7 @@ export const useByConfigurationId = configurationId => {
 
   const byConfiguration = location => configurations[location.id] === configurationId;
 
-  const locations = locationsQuery.locations
-    .filter(byConfiguration)
-    .sort((a, b) => a.name.localeCompare(b.name));
+  const locations = locationsQuery.locations.filter(byConfiguration).sort(compare);
 
   return {
     locations,

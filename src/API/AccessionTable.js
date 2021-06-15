@@ -10,10 +10,13 @@ const QUERY_PATH = `${COMMON_PATH}/locations`;
 const MUTATION_PATH = COMMON_PATH;
 
 
-export const useQuery = options => {
+export const useQuery = ({ configurationId, ...options }) => {
+  const params = { remoteStorageConfigurationId: configurationId };
+
   const query = useOkapiQuery({
     path: QUERY_PATH,
-    queryKey: QUERY_PATH, // todo: refine key machinery
+    params,
+    queryKey: [QUERY_PATH, params], // todo: refine key machinery
     ...options,
   });
 
@@ -24,8 +27,9 @@ export const useQuery = options => {
 };
 
 
-const useMutation = ({ onSettled, ...rest } = {}) => {
+const useMutation = ({ configurationId, onSettled, ...rest } = {}) => {
   const queryClient = useQueryClient();
+  const params = { remoteStorageConfigurationId: configurationId };
 
   return useOkapiMutation({
     // We refresh the list on any result of item mutation, success or error:
@@ -34,8 +38,7 @@ const useMutation = ({ onSettled, ...rest } = {}) => {
     // Refreshing the list couldn't hurt in this case.
     onSettled: () => {
       // todo: `invalidateQueries` temporarily changed to `resetQueries` to deal with <EditableList> lack of refresh
-      // queryClient.invalidateQueries(QUERY_PATH, { exact: true, refetchInactive: true });
-      queryClient.resetQueries(QUERY_PATH, { exact: true, refetchInactive: true });
+      queryClient.resetQueries([QUERY_PATH, params], { exact: true, refetchInactive: true });
 
       return onSettled?.();
     },
@@ -44,7 +47,7 @@ const useMutation = ({ onSettled, ...rest } = {}) => {
 };
 
 
-export const useCreateOrUpdateMutation = options => useMutation({
+export const useUpdateMutation = options => useMutation({
   method: 'post',
   path: MUTATION_PATH,
   ...options,

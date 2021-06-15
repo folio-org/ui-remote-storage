@@ -5,7 +5,6 @@ import { FormattedMessage } from 'react-intl';
 import { EditableList } from '@folio/stripes/smart-components';
 
 import { LoadingCentered } from '../components';
-import { AccessionTable as AT } from '../API';
 import { Locations, AccessionTable } from '../data';
 import { Location, LocationSelection } from './components';
 
@@ -30,18 +29,10 @@ LocationField.propTypes = {
 
 // todo: guard editing with permissions
 export const Table = ({ configurationId }) => {
-  const { rows } = AccessionTable.useByConfigurationId(configurationId);
+  const { rows, update } = AccessionTable.useByConfigurationId(configurationId);
   const { map: locationsMap } = Locations.useMap();
-  const { mutate: update } = AT.useCreateOrUpdateMutation();
 
-  const handleEdit = item => {
-    const json = {
-      ...item,
-      remoteConfigurationId: configurationId,
-    };
-
-    return update(json);
-  };
+  const handleEdit = item => update({ ...item, remoteConfigurationId: configurationId });
 
   return (
     <EditableList
@@ -70,7 +61,7 @@ export const Table = ({ configurationId }) => {
         finalLocationId: item => <Location location={locationsMap[item.finalLocationId]} />,
       }}
       onCreate={handleEdit}
-      onUpdate={handleEdit} // only onCreate is really used because of bug with `id` in EditableList
+      onUpdate={handleEdit} // only onCreate is really used because of the bug with `id` in EditableList
       validate={() => { /* validation function must be supplied */ }}
     />
   );
