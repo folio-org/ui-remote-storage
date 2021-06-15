@@ -15,8 +15,9 @@
     "displayName": "ui-remote-storage.meta.title",
     "route": "/remote-storage",
     "okapiInterfaces": {
-      "remote-storage-configurations": "1.0",
+      "remote-storage-configurations": "1.1",
       "remote-storage-mappings": "1.0 2.0",
+      "remote-storage-extended-mappings": "1.0",
       "remote-storage-providers": "1.0"
     },
     "icons": [
