@@ -10,6 +10,7 @@
 * [UIRS-33](https://issues.folio.org/browse/UIRS-33) Major rework using `react-query`
 * [UIRS-37](https://issues.folio.org/browse/UIRS-37) Update remote storage look and feel
 * [UIRS-38](https://issues.folio.org/browse/UIRS-38) Update remote storage permissions
+* [UIRS-39](https://issues.folio.org/browse/UIRS-39) Add Accession Table
 
 ## [1.0.0](https://github.com/folio-org/ui-remote-storage/tree/v1.0.0) (2021-03-19)
 
