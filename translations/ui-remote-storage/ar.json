@@ -51,5 +51,10 @@
     "error": "لقد حدث خطأ ما",
     "configurations.title": "التهيئات",
     "permission.settings.remote-storages.view": "المخزون البعيد: اعرض",
-    "permission.settings.remote-storages.edit": "المخزون البعيد: أنشئ، حدّث، احذف"
+    "permission.settings.remote-storages.edit": "المخزون البعيد: أنشئ، حدّث، احذف",
+    "accession-tables.title": "جداول الانضمام",
+    "accession-tables.empty": "تصبح جداول انضمام CaiaSoft متاحة بعد تهيئة المخزون البعيد.",
+    "accession-tables.open": "فتح جدول الانضمام",
+    "location.original": "الموقع الأصلي",
+    "location.final": "الموقع النهائي (بعيد)"
 }
