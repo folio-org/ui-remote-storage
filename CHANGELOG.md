@@ -2,8 +2,8 @@
 
 ## (IN PROGRESS)
 
-## [1.1.0](https://github.com/folio-org/ui-remote-storage/tree/v1.1.0) (2021-06-17)
-[Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v1.0.0...v1.1.0)
+## [2.0.0](https://github.com/folio-org/ui-remote-storage/tree/v2.0.0) (2021-06-17)
+[Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v1.0.0...v2.0.0)
 
 * [UIRS-15](https://issues.folio.org/browse/UIRS-15) Remote Storage Settings: Credential properties (apiKey)
 * [UIRS-24](https://issues.folio.org/browse/UIRS-24) Add Returning workflow preference
