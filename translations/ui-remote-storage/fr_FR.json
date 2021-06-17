@@ -51,5 +51,10 @@
     "error": "Quelque chose s'est mal déroulé",
     "configurations.title": "Configurations",
     "permission.settings.remote-storages.view": "Stockage à distance: Afficher",
-    "permission.settings.remote-storages.edit": "Stockage à distance: créer, modifier, supprimer"
+    "permission.settings.remote-storages.edit": "Stockage à distance: créer, modifier, supprimer",
+    "accession-tables.title": "Accession tables",
+    "accession-tables.empty": "CaiaSoft Accession tables are available after remote storage has been configured.",
+    "accession-tables.open": "Open Accession table",
+    "location.original": "Emplacement d'origine",
+    "location.final": "Emplacement final (à distance)"
 }

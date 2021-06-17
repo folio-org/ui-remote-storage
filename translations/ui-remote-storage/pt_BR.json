@@ -51,5 +51,10 @@
     "error": "Algo deu errado.",
     "configurations.title": "Configurações",
     "permission.settings.remote-storages.view": "Armazenamento remoto: Ver",
-    "permission.settings.remote-storages.edit": "Armazenamento remoto: criar, editar, excluir"
+    "permission.settings.remote-storages.edit": "Armazenamento remoto: criar, editar, excluir",
+    "accession-tables.title": "Accession tables",
+    "accession-tables.empty": "CaiaSoft Accession tables are available after remote storage has been configured.",
+    "accession-tables.open": "Open Accession table",
+    "location.original": "Original location",
+    "location.final": "Final location (Remote)"
 }
