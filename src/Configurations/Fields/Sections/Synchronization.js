@@ -8,29 +8,46 @@ import {
   Col,
   Row,
   KeyValue,
+  NoValue,
 } from '@folio/stripes/components';
 import {
   TextField,
   Select,
 } from '@folio/stripes-acq-components';
 
-import { TIME_UNITS } from '../../../const';
+const formatNumber = (value) => (
+  Math.sign(value) === -1 ? 1 : value
+);
 
 export const Synchronization = ({ isNonInteractive }) => {
   const intl = useIntl();
   const { values } = useFormState();
 
+  const TIME_UNITS = [
+    { label: intl.formatMessage({ id: 'ui-remote-storage.minutes' }), value: 'minutes' },
+    { label: intl.formatMessage({ id: 'ui-remote-storage.hours' }), value: 'hours' },
+    { label: intl.formatMessage({ id: 'ui-remote-storage.days' }), value: 'days' },
+    { label: intl.formatMessage({ id: 'ui-remote-storage.weeks' }), value: 'weeks' },
+    { label: intl.formatMessage({ id: 'ui-remote-storage.months' }), value: 'months' },
+  ];
+
+  const formattedTimeUnit = values.accessionDelay === 1
+    ? values.accessionTimeUnit.slice(0, -1)
+    : values.accessionTimeUnit;
+
   return (
     <Accordion label={intl.formatMessage({ id: 'ui-remote-storage.synchronization.title' })}>
       <KeyValue label={intl.formatMessage({ id: 'ui-remote-storage.synchronization.schedule.title' })}>
         {isNonInteractive
-          ? intl.formatMessage(
-            { id: 'ui-remote-storage.synchronization.schedule.info' },
-            {
-              delay: values.accessionDelay,
-              unit: values.accessionTimeUnit,
-            },
-          )
+          ? values.accessionDelay
+            ? intl.formatMessage(
+              { id: 'ui-remote-storage.synchronization.schedule.info' },
+              {
+                delay: values.accessionDelay,
+                unit: formattedTimeUnit,
+              },
+            )
+            : <NoValue />
           : (
             <Row>
               <Col xsOffset={0}>
@@ -52,6 +69,8 @@ export const Synchronization = ({ isNonInteractive }) => {
                   type="number"
                   name="accessionDelay"
                   hasClearIcon={false}
+                  format={formatNumber}
+                  min={1}
                   isNonInteractive={isNonInteractive}
                 />
               </Col>
