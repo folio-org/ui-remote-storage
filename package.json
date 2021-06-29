@@ -15,6 +15,7 @@
     "displayName": "ui-remote-storage.meta.title",
     "route": "/remote-storage",
     "okapiInterfaces": {
+      "locations": "3.0",
       "remote-storage-configurations": "1.1",
       "remote-storage-mappings": "1.0 2.0",
       "remote-storage-extended-mappings": "1.0",
@@ -44,6 +45,8 @@
         "displayName": "Remote storage: View",
         "visible": true,
         "subPermissions": [
+          "inventory-storage.locations.collection.get",
+          "inventory-storage.locations.item.get",
           "remote-storage.configurations.collection.get",
           "remote-storage.configurations.item.get",
           "remote-storage.mappings.item.get",
@@ -52,8 +55,6 @@
           "remote-storage.extended-mappings.item.get",
           "remote-storage.extended-mappings-locations.collection.get",
           "remote-storage.providers.collection.get",
-          "remote-storage.accessions.collection.get",
-          "remote-storage.retrievals.collection.get",
           "settings.remote-storage.enabled"
         ]
       },
@@ -62,23 +63,14 @@
         "displayName": "Remote storage: Create, edit, delete",
         "visible": true,
         "subPermissions": [
+          "ui-remote-storage.settings.remote-storages.view",
           "remote-storage.configurations.item.post",
           "remote-storage.configurations.item.put",
           "remote-storage.configurations.item.delete",
           "remote-storage.mappings.item.post",
           "remote-storage.mappings.item.delete",
-          "remote-storage.mappings.collection.get",
-          "remote-storage.mappings.item.get",
-          "remote-storage.providers.collection.get",
           "remote-storage.extended-mappings.item.post",
-          "remote-storage.extended-mappings.item.delete",
-          "remote-storage.accessions.item.post",
-          "remote-storage.accessions.item.put",
-          "remote-storage.retrievals.item.put",
-          "remote-storage.check-in.item.post",
-          "remote-storage.return.item.post",
-          "pubsub.events.post",
-          "settings.remote-storage.enabled"
+          "remote-storage.extended-mappings.item.delete"
         ]
       }
     ]
