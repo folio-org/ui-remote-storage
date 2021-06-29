@@ -16,7 +16,7 @@ import {
 } from '@folio/stripes-acq-components';
 
 const formatNumber = (value) => (
-  Math.sign(value) === -1 ? 1 : value
+  Math.sign(value) !== 1 ? 1 : value
 );
 
 export const Synchronization = ({ isNonInteractive }) => {
@@ -31,20 +31,15 @@ export const Synchronization = ({ isNonInteractive }) => {
     { label: intl.formatMessage({ id: 'ui-remote-storage.months' }), value: 'months' },
   ];
 
-  const formattedTimeUnit = values.accessionDelay === 1
-    ? values.accessionTimeUnit.slice(0, -1)
-    : values.accessionTimeUnit;
-
   return (
     <Accordion label={intl.formatMessage({ id: 'ui-remote-storage.synchronization.title' })}>
       <KeyValue label={intl.formatMessage({ id: 'ui-remote-storage.synchronization.schedule.title' })}>
         {isNonInteractive
           ? values.accessionDelay
             ? intl.formatMessage(
-              { id: 'ui-remote-storage.synchronization.schedule.info' },
+              { id: `ui-remote-storage.synchronization.schedule.info.${values.accessionTimeUnit}` },
               {
                 delay: values.accessionDelay,
-                unit: formattedTimeUnit,
               },
             )
             : <NoValue />

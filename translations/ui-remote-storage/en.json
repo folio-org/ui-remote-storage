@@ -50,7 +50,11 @@
 
   "synchronization.title": "Data synchronization settings",
   "synchronization.schedule.title": "Data synchronization schedule",
-  "synchronization.schedule.info": "Runs every {delay} {unit}",
+  "synchronization.schedule.info.minutes": "Runs every {delay} {delay, plural, one {minute} other {minutes}}",
+  "synchronization.schedule.info.hours": "Runs every {delay} {delay, plural, one {hour} other {hours}}",
+  "synchronization.schedule.info.days": "Runs every {delay} {delay, plural, one {day} other {days}}",
+  "synchronization.schedule.info.weeks": "Runs every {delay} {delay, plural, one {week} other {weeks}}",
+  "synchronization.schedule.info.months": "Runs every {delay} {delay, plural, one {month} other {months}}",
 
   "permission.settings.remote-storages.view": "Remote storage: View",
   "permission.settings.remote-storages.edit": "Remote storage: Create, edit, delete",
