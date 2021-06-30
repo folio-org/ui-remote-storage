@@ -26,6 +26,6 @@ export const Item = ({ icon, label, onClick, ...rest }) => {
 
 Item.propTypes = {
   ...Button.propTypes,
-  icon: PropTypes.string,
+  icon: Icon.propTypes.icon,
   label: PropTypes.string.isRequired,
 };
