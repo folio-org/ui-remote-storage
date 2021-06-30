@@ -2,22 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import { Field, useFormState } from 'react-final-form';
+import NumberFormat from 'react-number-format';
 
 import {
   Accordion,
   Col,
   Row,
   KeyValue,
-  NoValue,
 } from '@folio/stripes/components';
 import {
   TextField,
   Select,
 } from '@folio/stripes-acq-components';
 
-const formatNumber = (value) => (
-  Math.sign(value) !== 1 ? 1 : value
-);
+const formatInteger = string => {
+  const integerAccept = /[^0-]\d*/g;
+  const parsed = (string?.match(integerAccept) || []).join('');
+  const number = Number.parseInt(parsed, 10);
+
+  if (Number.isNaN(number)) {
+    return '';
+  }
+
+  return number;
+};
+
 
 export const Synchronization = ({ isNonInteractive }) => {
   const intl = useIntl();
@@ -42,20 +51,12 @@ export const Synchronization = ({ isNonInteractive }) => {
                 delay: values.accessionDelay,
               },
             )
-            : <NoValue />
+            : intl.formatMessage({ id: 'ui-remote-storage.synchronization.schedule.info.notSet' })
           : (
             <Row>
               <Col xsOffset={0}>
                 <KeyValue>
-                  {intl.formatMessage(
-                    {
-                      id: 'ui-remote-storage.synchronization.schedule.info',
-                    },
-                    {
-                      delay: '',
-                      unit: '',
-                    },
-                  )}
+                  {intl.formatMessage({ id: 'ui-remote-storage.synchronization.schedule.info' })}
                 </KeyValue>
               </Col>
               <Col xs={1}>
@@ -63,8 +64,8 @@ export const Synchronization = ({ isNonInteractive }) => {
                   component={TextField}
                   type="number"
                   name="accessionDelay"
+                  format={formatInteger}
                   hasClearIcon={false}
-                  format={formatNumber}
                   min={1}
                   isNonInteractive={isNonInteractive}
                 />
