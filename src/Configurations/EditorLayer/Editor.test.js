@@ -109,4 +109,14 @@ describe('Editor', () => {
       expect(query.returningWorkflowSection).not.toBeInTheDocument();
     });
   });
+
+  it('Should show error message when accessionDelay isn\'t valid', () => {
+    renderRemoteStorageForm();
+
+    const sceduleDelayInput = screen.getByRole('spinbutton');
+    user.type(sceduleDelayInput, '0');
+    user.click(screen.getByRole('button', { name: /save/ }));
+
+    expect(screen.queryByLabelText('ui-remote-storage.synchronization.schedule.info.notSet'));
+  });
 });

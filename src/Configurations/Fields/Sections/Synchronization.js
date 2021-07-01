@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Field, useFormState } from 'react-final-form';
 
 import {
@@ -14,44 +14,53 @@ import {
   Select,
 } from '@folio/stripes-acq-components';
 
-import { TIME_UNITS } from '../../../const';
+const validateNumber = value => (
+  Number.isInteger(Number(value)) && value > 0
+    ? undefined
+    : <FormattedMessage id="ui-remote-storage.synchronization.schedule.info.notValid" />
+);
 
 export const Synchronization = ({ isNonInteractive }) => {
   const intl = useIntl();
   const { values } = useFormState();
 
+  const TIME_UNITS = [
+    { label: intl.formatMessage({ id: 'ui-remote-storage.minutes' }), value: 'minutes' },
+    { label: intl.formatMessage({ id: 'ui-remote-storage.hours' }), value: 'hours' },
+    { label: intl.formatMessage({ id: 'ui-remote-storage.days' }), value: 'days' },
+    { label: intl.formatMessage({ id: 'ui-remote-storage.weeks' }), value: 'weeks' },
+    { label: intl.formatMessage({ id: 'ui-remote-storage.months' }), value: 'months' },
+  ];
+
+  const scheduleInfoMessage = values.accessionDelay
+    ? intl.formatMessage(
+      { id: `ui-remote-storage.synchronization.schedule.info.${values.accessionTimeUnit}` },
+      {
+        delay: values.accessionDelay,
+      },
+    )
+    : intl.formatMessage({ id: 'ui-remote-storage.synchronization.schedule.info.notSet' });
+
   return (
     <Accordion label={intl.formatMessage({ id: 'ui-remote-storage.synchronization.title' })}>
       <KeyValue label={intl.formatMessage({ id: 'ui-remote-storage.synchronization.schedule.title' })}>
         {isNonInteractive
-          ? intl.formatMessage(
-            { id: 'ui-remote-storage.synchronization.schedule.info' },
-            {
-              delay: values.accessionDelay,
-              unit: values.accessionTimeUnit,
-            },
-          )
+          ? scheduleInfoMessage
           : (
             <Row>
               <Col xsOffset={0}>
                 <KeyValue>
-                  {intl.formatMessage(
-                    {
-                      id: 'ui-remote-storage.synchronization.schedule.info',
-                    },
-                    {
-                      delay: '',
-                      unit: '',
-                    },
-                  )}
+                  {intl.formatMessage({ id: 'ui-remote-storage.synchronization.schedule.info' })}
                 </KeyValue>
               </Col>
-              <Col xs={1}>
+              <Col xs={3}>
                 <Field
                   component={TextField}
                   type="number"
                   name="accessionDelay"
+                  validate={validateNumber}
                   hasClearIcon={false}
+                  min={1}
                   isNonInteractive={isNonInteractive}
                 />
               </Col>
