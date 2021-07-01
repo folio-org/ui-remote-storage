@@ -2,12 +2,15 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import { FormattedMessage } from 'react-intl';
 
+import { useStripes } from '@folio/stripes/core';
 import { EditableList } from '@folio/stripes/smart-components';
 
 import { LoadingCentered } from '../components';
 import { Locations, AccessionTable } from '../data';
 import { Location, LocationSelection } from './components';
 
+
+const EDIT_PERMISSION = 'ui-remote-storage.settings.remote-storages.edit';
 
 const columnMapping = {
   originalLocationId: <FormattedMessage id="ui-remote-storage.location.original" />,
@@ -27,8 +30,8 @@ LocationField.propTypes = {
 };
 
 
-// todo: guard editing with permissions
 export const Table = ({ configurationId }) => {
+  const stripes = useStripes();
   const { rows, update } = AccessionTable.useByConfigurationId(configurationId);
   const { map: locationsMap } = Locations.useMap();
 
@@ -45,6 +48,7 @@ export const Table = ({ configurationId }) => {
       }}
       readOnlyFields={['originalLocationId']}
       visibleFields={['originalLocationId', 'finalLocationId']}
+      editable={stripes.hasPerm(EDIT_PERMISSION)}
       actionSuppression={{ delete: () => true, edit: () => false }}
       columnMapping={columnMapping}
       fieldComponents={{
