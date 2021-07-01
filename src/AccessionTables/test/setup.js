@@ -20,6 +20,9 @@ jest.mock('@folio/stripes-components/lib/Icon', () => props => (
 jest.mock('@folio/stripes/core', () => ({
   ...jest.requireActual('@folio/stripes/core'),
   useOkapiKy: () => mockKy,
+  useStripes: () => ({
+    hasPerm: jest.fn().mockReturnValue(true),
+  }),
 }));
 
 export const url = {
