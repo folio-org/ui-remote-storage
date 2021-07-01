@@ -11,7 +11,6 @@ import {
   DEMATIC_EMS,
   CAIASOFT,
 } from '../../const';
-import { utc } from 'moment-timezone';
 
 const mockProvidersOptions = [
   { label: DEMATIC_EMS },
