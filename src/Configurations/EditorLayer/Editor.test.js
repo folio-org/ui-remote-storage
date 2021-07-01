@@ -11,6 +11,7 @@ import {
   DEMATIC_EMS,
   CAIASOFT,
 } from '../../const';
+import { utc } from 'moment-timezone';
 
 const mockProvidersOptions = [
   { label: DEMATIC_EMS },
@@ -108,5 +109,15 @@ describe('Editor', () => {
       expect(query.accessionWorkflowSection).not.toBeInTheDocument();
       expect(query.returningWorkflowSection).not.toBeInTheDocument();
     });
+  });
+
+  it('Should show error message when accessionDelay isn\'t valid', () => {
+    renderRemoteStorageForm();
+
+    const sceduleDelayInput = screen.getByRole('spinbutton');
+    user.type(sceduleDelayInput, '0');
+    user.click(screen.getByRole('button', { name: /save/ }));
+
+    expect(screen.queryByLabelText('ui-remote-storage.synchronization.schedule.info.notSet'));
   });
 });
