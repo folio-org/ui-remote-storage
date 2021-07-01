@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Field, useFormState } from 'react-final-form';
-import NumberFormat from 'react-number-format';
 
 import {
   Accordion,
@@ -15,16 +14,12 @@ import {
   Select,
 } from '@folio/stripes-acq-components';
 
-const formatInteger = string => {
-  const integerAccept = /[^0-]\d*/g;
-  const parsed = (string?.match(integerAccept) || []).join('');
-  const number = Number.parseInt(parsed, 10);
+const validateNumber = value => {
+  const integerAccept = /\d+/g;
 
-  if (Number.isNaN(number)) {
-    return '';
-  }
-
-  return number;
+  return integerAccept.test(value) && value > 0
+    ? undefined
+    : <FormattedMessage id="ui-remote-storage.synchronization.schedule.info.notValid" />;
 };
 
 
@@ -59,12 +54,12 @@ export const Synchronization = ({ isNonInteractive }) => {
                   {intl.formatMessage({ id: 'ui-remote-storage.synchronization.schedule.info' })}
                 </KeyValue>
               </Col>
-              <Col xs={1}>
+              <Col xs={3}>
                 <Field
                   component={TextField}
                   type="number"
                   name="accessionDelay"
-                  format={formatInteger}
+                  validate={validateNumber}
                   hasClearIcon={false}
                   min={1}
                   isNonInteractive={isNonInteractive}
