@@ -56,5 +56,17 @@
     "accession-tables.empty": "CaiaSoft Accession tables are available after remote storage has been configured.",
     "accession-tables.open": "Tabela de adesão aberta",
     "location.original": "Localização original",
-    "location.final": "Localização final (remota)"
+    "location.final": "Localização final (remota)",
+    "minutes": "minute(s)",
+    "hours": "hour(s)",
+    "days": "day(s)",
+    "weeks": "week(s)",
+    "months": "month(s)",
+    "synchronization.schedule.info.notSet": "Not set",
+    "synchronization.schedule.info.notValid": "Value should be positive, non-zero, non-fractional",
+    "synchronization.schedule.info.minutes": "Runs every {delay} {delay, plural, one {minute} other {minutes}}",
+    "synchronization.schedule.info.hours": "Runs every {delay} {delay, plural, one {hour} other {hours}}",
+    "synchronization.schedule.info.days": "Runs every {delay} {delay, plural, one {day} other {days}}",
+    "synchronization.schedule.info.weeks": "Runs every {delay} {delay, plural, one {week} other {weeks}}",
+    "synchronization.schedule.info.months": "Runs every {delay} {delay, plural, one {month} other {months}}"
 }

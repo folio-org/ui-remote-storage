@@ -56,5 +56,17 @@
     "accession-tables.empty": "تصبح جداول انضمام CaiaSoft متاحة بعد تهيئة المخزون البعيد.",
     "accession-tables.open": "فتح جدول الانضمام",
     "location.original": "الموقع الأصلي",
-    "location.final": "الموقع النهائي (بعيد)"
+    "location.final": "الموقع النهائي (بعيد)",
+    "minutes": "minute(s)",
+    "hours": "hour(s)",
+    "days": "day(s)",
+    "weeks": "week(s)",
+    "months": "month(s)",
+    "synchronization.schedule.info.notSet": "Not set",
+    "synchronization.schedule.info.notValid": "Value should be positive, non-zero, non-fractional",
+    "synchronization.schedule.info.minutes": "Runs every {delay} {delay, plural, one {minute} other {minutes}}",
+    "synchronization.schedule.info.hours": "Runs every {delay} {delay, plural, one {hour} other {hours}}",
+    "synchronization.schedule.info.days": "Runs every {delay} {delay, plural, one {day} other {days}}",
+    "synchronization.schedule.info.weeks": "Runs every {delay} {delay, plural, one {week} other {weeks}}",
+    "synchronization.schedule.info.months": "Runs every {delay} {delay, plural, one {month} other {months}}"
 }
