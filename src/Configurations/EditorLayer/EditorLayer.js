@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import { noop } from 'lodash';
 
+import { useStripes } from '@folio/stripes/core';
 import { Layer } from '@folio/stripes/components';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
@@ -10,8 +11,12 @@ import { Configurations } from '../../API';
 import { Editor } from './Editor';
 
 
+const PERMISSION = 'ui-remote-storage.settings.remote-storages.edit';
+
+
 export const EditorLayer = ({ configurationId, create = false, onClose = noop }) => {
   const intl = useIntl();
+  const stripes = useStripes();
   const showCallout = useShowCallout();
 
   const query = Configurations.useSingleQuery({ id: configurationId, enabled: !create });
@@ -38,6 +43,8 @@ export const EditorLayer = ({ configurationId, create = false, onClose = noop })
       throw error;
     },
   });
+
+  if (!stripes.hasPerm(PERMISSION)) return null;
 
   const title = create
     ? intl.formatMessage({ id: 'ui-remote-storage.createForm.title' })
