@@ -56,5 +56,17 @@
     "accession-tables.empty": "CaiaSoft 入藏表在配置远程存储后可用。",
     "accession-tables.open": "打开登记表",
     "location.original": "原位置",
-    "location.final": "最终位置（远程）"
+    "location.final": "最终位置（远程）",
+    "minutes": "minute(s)",
+    "hours": "hour(s)",
+    "days": "day(s)",
+    "weeks": "week(s)",
+    "months": "month(s)",
+    "synchronization.schedule.info.notSet": "Not set",
+    "synchronization.schedule.info.notValid": "Value should be positive, non-zero, non-fractional",
+    "synchronization.schedule.info.minutes": "Runs every {delay} {delay, plural, one {minute} other {minutes}}",
+    "synchronization.schedule.info.hours": "Runs every {delay} {delay, plural, one {hour} other {hours}}",
+    "synchronization.schedule.info.days": "Runs every {delay} {delay, plural, one {day} other {days}}",
+    "synchronization.schedule.info.weeks": "Runs every {delay} {delay, plural, one {week} other {weeks}}",
+    "synchronization.schedule.info.months": "Runs every {delay} {delay, plural, one {month} other {months}}"
 }
