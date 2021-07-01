@@ -22,7 +22,6 @@ const validateNumber = value => {
     : <FormattedMessage id="ui-remote-storage.synchronization.schedule.info.notValid" />;
 };
 
-
 export const Synchronization = ({ isNonInteractive }) => {
   const intl = useIntl();
   const { values } = useFormState();
@@ -35,18 +34,20 @@ export const Synchronization = ({ isNonInteractive }) => {
     { label: intl.formatMessage({ id: 'ui-remote-storage.months' }), value: 'months' },
   ];
 
+  const scheduleInfoMessage = values.accessionDelay
+    ? intl.formatMessage(
+      { id: `ui-remote-storage.synchronization.schedule.info.${values.accessionTimeUnit}` },
+      {
+        delay: values.accessionDelay,
+      },
+    )
+    : intl.formatMessage({ id: 'ui-remote-storage.synchronization.schedule.info.notSet' });
+
   return (
     <Accordion label={intl.formatMessage({ id: 'ui-remote-storage.synchronization.title' })}>
       <KeyValue label={intl.formatMessage({ id: 'ui-remote-storage.synchronization.schedule.title' })}>
         {isNonInteractive
-          ? values.accessionDelay
-            ? intl.formatMessage(
-              { id: `ui-remote-storage.synchronization.schedule.info.${values.accessionTimeUnit}` },
-              {
-                delay: values.accessionDelay,
-              },
-            )
-            : intl.formatMessage({ id: 'ui-remote-storage.synchronization.schedule.info.notSet' })
+          ? scheduleInfoMessage
           : (
             <Row>
               <Col xsOffset={0}>
