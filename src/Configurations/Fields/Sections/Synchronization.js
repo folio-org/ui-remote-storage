@@ -14,13 +14,11 @@ import {
   Select,
 } from '@folio/stripes-acq-components';
 
-const validateNumber = value => {
-  const integerAccept = /\d+/g;
-
-  return integerAccept.test(value) && value > 0
+const validateNumber = value => (
+  Number.isInteger(Number(value)) && value > 0
     ? undefined
-    : <FormattedMessage id="ui-remote-storage.synchronization.schedule.info.notValid" />;
-};
+    : <FormattedMessage id="ui-remote-storage.synchronization.schedule.info.notValid" />
+);
 
 export const Synchronization = ({ isNonInteractive }) => {
   const intl = useIntl();
