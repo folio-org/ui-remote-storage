@@ -18,6 +18,7 @@
 * [UIRS-38](https://issues.folio.org/browse/UIRS-38) Update remote storage permissions
 * [UIRS-39](https://issues.folio.org/browse/UIRS-39) Add Accession Table
 * [UIRS-51](https://issues.folio.org/browse/UIRS-51) Refine UI permissions, close editing UI functionality without suitable permission
+* [UIRS-34](https://issues.folio.org/browse/UIRS-34) "Data synchronization schedule" field enhancements: validation, translation, "Not set" for empty value
 
 ## [1.0.0](https://github.com/folio-org/ui-remote-storage/tree/v1.0.0) (2021-03-19)
 
