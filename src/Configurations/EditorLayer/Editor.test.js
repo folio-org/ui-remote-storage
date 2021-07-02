@@ -110,13 +110,33 @@ describe('Editor', () => {
     });
   });
 
-  it('Should show error message when accessionDelay isn\'t valid', () => {
-    renderRemoteStorageForm();
+  describe('Data synchronization schedule delay', () => {
+    const validValues = ['1', '2', String(Number.MAX_SAFE_INTEGER)];
+    const invalidValues = ['0', '-1', '3.14', '.2', '-0.2', 'abc'];
 
-    const sceduleDelayInput = screen.getByRole('spinbutton');
-    user.type(sceduleDelayInput, '0');
-    user.click(screen.getByRole('button', { name: /save/ }));
+    it.each(validValues)('shows no error when valid', value => {
+      renderRemoteStorageForm();
 
-    expect(screen.queryByLabelText('ui-remote-storage.synchronization.schedule.info.notSet'));
+      const region = screen.getByRole('region', { name: /synchronization/ });
+      const input = within(region).getByRole('spinbutton');
+
+      user.type(input, value);
+      user.tab();
+
+      expect(region).not.toHaveTextContent(/synchronization.schedule.info.notValid/);
+    });
+
+    it.each(invalidValues)('shows error message when not valid', value => {
+      renderRemoteStorageForm();
+
+      const region = screen.getByRole('region', { name: /synchronization/ });
+      const input = within(region).getByRole('spinbutton');
+
+      user.type(input, value);
+      user.tab();
+
+      const alert = within(region).getAllByRole('alert')[0];
+      expect(alert).toHaveTextContent(/synchronization.schedule.info.notValid/);
+    });
   });
 });
