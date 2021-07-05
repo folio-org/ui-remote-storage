@@ -7,6 +7,7 @@ import { MultiColumnList } from '@folio/stripes/components';
 
 import { Configurations } from '../../API';
 import { ErrorCentered, LoadingCentered } from '../../components';
+import { useSort } from '../../util/useSort';
 
 
 const visibleColumns = ['name', 'providerName', 'lastUpdate'];
@@ -22,6 +23,10 @@ export const List = props => {
   const stripes = useStripes();
 
   const query = Configurations.useListQuery();
+  const { sortedData: configurations } = useSort({
+    initialData: query.configurations,
+    sortByField: 'name',
+  });
 
   const localeDateFormat = useMemo(
     () => moment.localeData(stripes.locale).longDateFormat('L'),
@@ -42,7 +47,7 @@ export const List = props => {
   return (
     <MultiColumnList
       id="storages-list"
-      contentData={query.configurations}
+      contentData={configurations}
       visibleColumns={visibleColumns}
       columnMapping={columnMapping}
       formatter={formatter}
