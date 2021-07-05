@@ -5,30 +5,17 @@ import { FORM_ERROR } from 'final-form';
 
 import { ConfirmationModal } from '@folio/stripes/components';
 
-import { DEMATIC_SD, CAIASOFT } from '../../const';
 import { useConfirmationModal } from '../../util/useConfirmationModal';
 import { TheForm } from './TheForm';
+import { prepareValuesForAPI } from './prepareValuesForAPI';
 
 export const Editor = ({ title, isLoading, initialValues, onSubmit, onClose, ...rest }) => {
   const intl = useIntl();
   const confirmation = useConfirmationModal();
 
-  const handleSubmit = (values) => {
-    if (values.providerName !== DEMATIC_SD) {
-      delete values.statusUrl;
-      delete values.accessionDelay;
-    }
-
-    if (values.providerName !== CAIASOFT) {
-      delete values.apiKey;
-      delete values.accessionWorkflowDetails;
-    }
-
-    return confirmation
-      .wait()
-      .then(() => onSubmit(values))
-      .catch(() => ({ [FORM_ERROR]: true })); // to make submitSucceeded: false
-  };
+  const handleSubmit = values => confirmation.wait()
+    .then(() => onSubmit(prepareValuesForAPI(values)))
+    .catch(() => ({ [FORM_ERROR]: true })); // to make submitSucceeded: false;
 
   const modalMessage = initialValues
     ? intl.formatMessage({ id: 'ui-remote-storage.confirmationModal.edit.message' })
