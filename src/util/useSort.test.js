@@ -20,6 +20,15 @@ const descendingArray = [
 ];
 
 describe('useSort.js', () => {
+  it('It should use ASC sorting by default', () => {
+    const data = renderHook(() => useSort({
+      initialData: baseArray,
+      sortByField: 'name',
+    }));
+
+    expect(data.result.current.direction).toEqual('ASC');
+  });
+
   it('Should return sorted array', () => {
     const data = renderHook(() => useSort({
       initialData: baseArray,

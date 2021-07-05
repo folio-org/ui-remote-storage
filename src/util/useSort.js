@@ -7,7 +7,7 @@ import { useMemo } from 'react';
  * @param direction {string} - Optional. 'ASC' or 'DESC'. ASC is used by default
  * @returns {{initialData, sortByField, sortedData: *[], direction}}
  */
-export const useSort = ({ initialData = [], sortByField, direction }) => {
+export const useSort = ({ initialData, sortByField, direction = 'ASC' }) => {
   const sortedData = useMemo(() => [...initialData].sort((a, b) => {
     const current = a[sortByField];
     const next = b[sortByField];
