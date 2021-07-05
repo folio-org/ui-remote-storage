@@ -17,7 +17,6 @@ export const Editor = ({ title, isLoading, initialValues, onSubmit, onClose, ...
     if (values.providerName !== DEMATIC_SD) {
       delete values.statusUrl;
       delete values.accessionDelay;
-      // delete values.accessionTimeUnit; // Do NOT mutate with empty accessionTimeUnit! The endpoint breaks for good.
     }
 
     if (values.providerName !== CAIASOFT) {
