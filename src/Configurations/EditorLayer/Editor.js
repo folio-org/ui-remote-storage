@@ -14,7 +14,11 @@ export const Editor = ({ title, isLoading, initialValues, onSubmit, onClose, ...
   const confirmation = useConfirmationModal();
 
   const handleSubmit = (values) => {
-    if (values.providerName !== DEMATIC_SD) delete values.statusUrl;
+    if (values.providerName !== DEMATIC_SD) {
+      delete values.statusUrl;
+      delete values.accessionDelay;
+      // delete values.accessionTimeUnit; // Do NOT mutate with empty accessionTimeUnit! The endpoint breaks for good.
+    }
 
     if (values.providerName !== CAIASOFT) {
       delete values.apiKey;
