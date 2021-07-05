@@ -13,12 +13,13 @@ export const useSort = ({ initialData = [], sortByField, direction }) => {
     const next = b[sortByField];
     let mult;
 
-    if (direction === 'ASC') {
-      mult = 1;
-    } else if (direction === 'DESC') {
-      mult = -1;
-    } else {
-      mult = 1;
+    switch (direction) {
+      case 'DESC':
+        mult = -1;
+        break;
+      case 'ASC':
+      default:
+        mult = 1;
     }
 
     if (current === next) {
