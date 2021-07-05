@@ -68,7 +68,6 @@ describe('Editor', () => {
       if (option.disabled) return; // for the 'Select' placeholder
 
       user.selectOptions(providers, option);
-      expect(screen.queryByLabelText('ui-remote-storage.details.statusUrl')).not.toBeInTheDocument();
       expect(screen.queryByRole('textbox', { name: /statusUrl/ })).not.toBeInTheDocument();
       expect(screen.queryByRole('region', { name: /synchronization/ })).not.toBeInTheDocument();
     });

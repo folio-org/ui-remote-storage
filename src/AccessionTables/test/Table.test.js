@@ -1,10 +1,13 @@
 import React from 'react';
 import { screen, within } from '@testing-library/react';
 import user from '@testing-library/user-event';
+import { configure } from '@testing-library/dom';
 import { byRole } from 'testing-library-selector';
 
 import { server, rest } from '../../test/net';
 import { url, renderAccessionTables } from './setup';
+
+configure({ asyncUtilTimeout: 2000 });
 
 beforeEach(() => {
   server.use(
