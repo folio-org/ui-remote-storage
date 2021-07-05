@@ -57,9 +57,49 @@ describe('useSort.js', () => {
       direction,
     }));
 
-    expect(data.result.current.initialData).toEqual(baseArray);
-    expect(data.result.current.direction).toEqual(direction);
-    expect(data.result.current.sortByField).toEqual(sortByField);
+    const { current } = data.result;
+
+    expect(current.initialData).toEqual(baseArray);
+    expect(current.direction).toEqual(direction);
+    expect(current.sortByField).toEqual(sortByField);
+  });
+
+  describe('Sorting with empty values', () => {
+    let arrayWithEmptyField;
+
+    beforeAll(() => {
+      arrayWithEmptyField = [
+        { name: null },
+        ...baseArray,
+        { name: null },
+      ];
+    });
+
+    it('All empty fields should be at the TOP of the list if sorting by DESC', () => {
+      const data = renderHook(() => useSort({
+        initialData: arrayWithEmptyField,
+        sortByField: 'name',
+        direction: 'DESC',
+      }));
+
+      const sortedData = data.result.current.sortedData;
+
+      expect(sortedData[0].name).toBeNull();
+      expect(sortedData[1].name).toBeNull();
+    });
+
+    it('All empty fields should be at the BOTTOM of the list if sorting by ASC', () => {
+      const data = renderHook(() => useSort({
+        initialData: arrayWithEmptyField,
+        sortByField: 'name',
+        direction: 'ASC',
+      }));
+
+      const { sortedData } = data.result.current;
+
+      expect(sortedData[sortedData.length - 1].name).toBeNull();
+      expect(sortedData[sortedData.length - 2].name).toBeNull();
+    });
   });
 });
 
