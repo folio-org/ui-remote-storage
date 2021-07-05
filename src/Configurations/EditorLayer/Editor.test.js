@@ -53,7 +53,7 @@ const renderRemoteStorageForm = ({
 ));
 
 describe('Editor', () => {
-  it('should show Status URL if Dematic SD chosen', () => {
+  it('shows Dematic SD specific fields if Dematic SD chosen', () => {
     renderRemoteStorageForm();
 
     const providers = screen.getByRole('combobox', { name: 'ui-remote-storage.details.providerName' });
@@ -61,17 +61,20 @@ describe('Editor', () => {
     const otherOptions = within(providers).getAllByRole('option', { name: text => text !== DEMATIC_SD });
 
     user.selectOptions(providers, dematicSdOption);
-    expect(screen.queryByLabelText('ui-remote-storage.details.statusUrl')).toBeVisible();
+    expect(screen.getByRole('textbox', { name: /statusUrl/ })).toBeVisible();
+    expect(screen.getByRole('region', { name: /synchronization/ })).toBeVisible();
 
     otherOptions.forEach(option => {
       if (option.disabled) return; // for the 'Select' placeholder
 
       user.selectOptions(providers, option);
       expect(screen.queryByLabelText('ui-remote-storage.details.statusUrl')).not.toBeInTheDocument();
+      expect(screen.queryByRole('textbox', { name: /statusUrl/ })).not.toBeInTheDocument();
+      expect(screen.queryByRole('region', { name: /synchronization/ })).not.toBeInTheDocument();
     });
   });
 
-  it('should show CaiaSoft-specific fields if CaiaSoft is chosen', () => {
+  it('shows CaiaSoft specific fields if CaiaSoft is chosen', () => {
     const query = {
       get credProperties() {
         return screen.queryByLabelText('ui-remote-storage.details.credProperties');
@@ -117,6 +120,10 @@ describe('Editor', () => {
     it.each(validValues)('shows no error when valid', value => {
       renderRemoteStorageForm();
 
+      const providers = screen.getByRole('combobox', { name: /providerName/ });
+      const dematicSdOption = within(providers).getByRole('option', { name: DEMATIC_SD });
+      user.selectOptions(providers, dematicSdOption);
+
       const region = screen.getByRole('region', { name: /synchronization/ });
       const input = within(region).getByRole('spinbutton');
 
@@ -128,6 +135,10 @@ describe('Editor', () => {
 
     it.each(invalidValues)('shows error message when not valid', value => {
       renderRemoteStorageForm();
+
+      const providers = screen.getByRole('combobox', { name: /providerName/ });
+      const dematicSdOption = within(providers).getByRole('option', { name: DEMATIC_SD });
+      user.selectOptions(providers, dematicSdOption);
 
       const region = screen.getByRole('region', { name: /synchronization/ });
       const input = within(region).getByRole('spinbutton');
