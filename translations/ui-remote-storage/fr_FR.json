@@ -63,10 +63,10 @@
     "weeks": "Semaine(s)",
     "months": "Mois(s)",
     "synchronization.schedule.info.notSet": "Not set",
-    "synchronization.schedule.info.notValid": "Value should be positive, non-zero, non-fractional",
-    "synchronization.schedule.info.minutes": "Runs every {delay} {delay, plural, one {minute} other {minutes}}",
-    "synchronization.schedule.info.hours": "Runs every {delay} {delay, plural, one {hour} other {hours}}",
-    "synchronization.schedule.info.days": "Runs every {delay} {delay, plural, one {day} other {days}}",
-    "synchronization.schedule.info.weeks": "Runs every {delay} {delay, plural, one {week} other {weeks}}",
-    "synchronization.schedule.info.months": "Runs every {delay} {delay, plural, one {month} other {months}}"
+    "synchronization.schedule.info.notValid": "La valeur doit être positive, non nulle, non fractionnaire",
+    "synchronization.schedule.info.minutes": "S'exécute toutes les {delay} {delay, plural, one { minute } other { minutes }}",
+    "synchronization.schedule.info.hours": "S'exécute toutes les {delay} {delay, plural, one { heure } other { heures }}",
+    "synchronization.schedule.info.days": "S'exécute tous les {delay} {delay, plural, one { jour } other { jours }}",
+    "synchronization.schedule.info.weeks": "S'exécute toutes les {delay} {delay, plural, one { semaine } other { semaines }}",
+    "synchronization.schedule.info.months": "S'exécute tous les {delay} {delay, plural, one { mois } other { mois }}"
 }
