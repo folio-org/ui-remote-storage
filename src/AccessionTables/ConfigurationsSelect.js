@@ -1,4 +1,4 @@
-import escapeRegExp from 'lodash/escapeRegExp';
+import { escapeRegExp } from 'lodash';
 
 import { Selection } from '@folio/stripes-acq-components';
 

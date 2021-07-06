@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import escapeRegExp from 'lodash/escapeRegExp';
+import { escapeRegExp } from 'lodash';
 import { useIntl } from 'react-intl';
 
 import { Selection } from '@folio/stripes-acq-components';
