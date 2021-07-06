@@ -10,13 +10,14 @@ import {
   Row,
 } from '@folio/stripes/components';
 
-import { CAIASOFT } from '../../const';
+import { CAIASOFT, DEMATIC_SD } from '../../const';
 import * as CaiaSoft from './CaiaSoft';
 import { General, Synchronization } from './Sections';
 
 export const Fields = ({ isNonInteractive = false }) => {
   const { values } = useFormState();
 
+  const isDematicSD = values.providerName === DEMATIC_SD;
   const isCaiasoft = values.providerName === CAIASOFT;
 
   return (
@@ -28,7 +29,7 @@ export const Fields = ({ isNonInteractive = false }) => {
       </Row>
       <AccordionSet>
         <General isNonInteractive={isNonInteractive} />
-        <Synchronization isNonInteractive={isNonInteractive} />
+        {isDematicSD && <Synchronization isNonInteractive={isNonInteractive} />}
         {isCaiasoft && <CaiaSoft.Sections isNonInteractive={isNonInteractive} />}
       </AccordionSet>
     </AccordionStatus>

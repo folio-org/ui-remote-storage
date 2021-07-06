@@ -51,7 +51,7 @@
   "synchronization.title": "Data synchronization settings",
   "synchronization.schedule.title": "Data synchronization schedule",
   "synchronization.schedule.info.notSet": "Not set",
-  "synchronization.schedule.info.notValid": "Value should be positive, non-zero, non-fractional",
+  "synchronization.schedule.info.notValid": "Value must be positive integer",
   "synchronization.schedule.info": "Runs every",
   "synchronization.schedule.info.minutes": "Runs every {delay} {delay, plural, one {minute} other {minutes}}",
   "synchronization.schedule.info.hours": "Runs every {delay} {delay, plural, one {hour} other {hours}}",
