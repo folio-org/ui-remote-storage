@@ -27,7 +27,7 @@
     "create.error": "Error occurred while saving Remote storage configuration.",
     "synchronization.title": "Настройки синхронизации",
     "synchronization.schedule.title": "Расписание синхронизации",
-    "synchronization.schedule.info": "Runs every",
+    "synchronization.schedule.info": "Выполняется раз",
     "details.credProperties": "Credential properties",
     "name.CAIA_SOFT": "Caiasoft",
     "edit.success.created": "Remote storage configuration was successfully created.",
@@ -64,9 +64,9 @@
     "months": "месяцев",
     "synchronization.schedule.info.notSet": "Не задано",
     "synchronization.schedule.info.notValid": "Значение должно быть положительным, не дробным числом",
-    "synchronization.schedule.info.minutes": "Выполняется раз в {delay, plural, one {минуту} few {{delay} минуты} other {{delay} минут}}",
-    "synchronization.schedule.info.hours": "Выполняется раз в {delay, plural, one {час} few {{delay} часа} other {{delay} часов}}",
-    "synchronization.schedule.info.days": "Выполняется раз в {delay, plural, one {день} few {{delay} дня} other {{delay} дней}}",
-    "synchronization.schedule.info.weeks": "Выполняется раз в {delay, plural, one {неделю} few {{delay} недели} other {{delay} недель}}",
-    "synchronization.schedule.info.months": "Выполняется раз в {delay, plural, one {месяц} few {{delay} месяца} other {{delay} месяцев}}"
+    "synchronization.schedule.info.minutes": "Выполняется раз в {delay, plural, =1 {минуту} one {# минуту} few {# минуты} other {# минут}}",
+    "synchronization.schedule.info.hours": "Выполняется раз в {delay, plural, =1 {час} one {{delay} час} few {{delay} часа} other {{delay} часов}}",
+    "synchronization.schedule.info.days": "Выполняется раз в {delay, plural, =1 {день} one {{delay} день} few {{delay} дня} other {{delay} дней}}",
+    "synchronization.schedule.info.weeks": "Выполняется раз в {delay, plural, =1 {неделю} one {{delay} неделю} few {{delay} недели} other {{delay} недель}}",
+    "synchronization.schedule.info.months": "Выполняется раз в {delay, plural, =1 {месяц} one {{delay} месяц} few {{delay} месяца} other {{delay} месяцев}}"
 }
