@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { noop } from 'lodash';
+import { useState } from 'react';
+import noop from 'lodash/noop';
 
 import { useShowCallout } from '@folio/stripes-acq-components';
 

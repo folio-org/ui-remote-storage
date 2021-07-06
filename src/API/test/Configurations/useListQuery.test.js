@@ -13,7 +13,6 @@ beforeEach(() => {
   }))));
 });
 
-
 it('returns list of configurations when loaded', async () => {
   const { result, waitFor } = renderAPIHook(useListQuery);
 

@@ -1,14 +1,10 @@
 import React, { useMemo } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import moment from 'moment';
-
 import { useStripes } from '@folio/stripes/core';
 import { MultiColumnList } from '@folio/stripes/components';
-
 import { Configurations } from '../../API';
 import { ErrorCentered, LoadingCentered } from '../../components';
-import { useSort } from '../../util/useSort';
-
 
 const visibleColumns = ['name', 'providerName', 'lastUpdate'];
 const columnMapping = {
@@ -17,16 +13,11 @@ const columnMapping = {
   lastUpdate: <FormattedMessage id="ui-remote-storage.list.lastUpdate" />,
 };
 
-
 export const List = props => {
   const intl = useIntl();
   const stripes = useStripes();
 
   const query = Configurations.useListQuery();
-  const { sortedData: configurations } = useSort({
-    initialData: query.configurations,
-    sortByField: 'name',
-  });
 
   const localeDateFormat = useMemo(
     () => moment.localeData(stripes.locale).longDateFormat('L'),
@@ -47,7 +38,7 @@ export const List = props => {
   return (
     <MultiColumnList
       id="storages-list"
-      contentData={configurations}
+      contentData={query.configurations}
       visibleColumns={visibleColumns}
       columnMapping={columnMapping}
       formatter={formatter}

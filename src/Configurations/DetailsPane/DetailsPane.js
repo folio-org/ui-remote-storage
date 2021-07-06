@@ -1,6 +1,7 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
-import { noop } from 'lodash';
+import noop from 'lodash/noop';
 
 import { Pane } from '@folio/stripes/components';
 

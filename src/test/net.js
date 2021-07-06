@@ -1,6 +1,6 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider, setLogger } from 'react-query';
-import { noop } from 'lodash';
+import noop from 'lodash/noop';
 import 'cross-fetch/polyfill'; // for Ky using `fetch`
 import ky from 'ky';
 import { setupServer } from 'msw/node';

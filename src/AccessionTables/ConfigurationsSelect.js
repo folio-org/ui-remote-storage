@@ -1,9 +1,9 @@
-import { escapeRegExp } from 'lodash';
+import React from 'react';
+import escapeRegExp from 'lodash/escapeRegExp';
 
 import { Selection } from '@folio/stripes-acq-components';
 
 import { useCaiaSoftConfigurations } from './useCaiaSoftConfigurations';
-
 
 const filter = (value, data) => {
   return data.filter(o => new RegExp(escapeRegExp(value), 'i').test(o.label));
