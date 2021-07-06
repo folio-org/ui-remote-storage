@@ -8,6 +8,7 @@ import { MultiColumnList } from '@folio/stripes/components';
 import { Configurations } from '../../API';
 import { ErrorCentered, LoadingCentered } from '../../components';
 
+
 const visibleColumns = ['name', 'providerName', 'lastUpdate'];
 const columnMapping = {
   name: <FormattedMessage id="ui-remote-storage.list.name" />,
