@@ -1,4 +1,3 @@
-import React from 'react';
 import escapeRegExp from 'lodash/escapeRegExp';
 
 import { Selection } from '@folio/stripes-acq-components';

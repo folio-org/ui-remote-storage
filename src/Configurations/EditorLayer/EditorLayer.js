@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import noop from 'lodash/noop';
+import { noop } from 'lodash';
 
 import { useStripes } from '@folio/stripes/core';
 import { Layer } from '@folio/stripes/components';

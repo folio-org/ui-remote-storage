@@ -1,8 +1,10 @@
 import React, { useMemo } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import moment from 'moment';
+
 import { useStripes } from '@folio/stripes/core';
 import { MultiColumnList } from '@folio/stripes/components';
+
 import { Configurations } from '../../API';
 import { ErrorCentered, LoadingCentered } from '../../components';
 
@@ -12,6 +14,7 @@ const columnMapping = {
   providerName: <FormattedMessage id="ui-remote-storage.list.providerName" />,
   lastUpdate: <FormattedMessage id="ui-remote-storage.list.lastUpdate" />,
 };
+
 
 export const List = props => {
   const intl = useIntl();
