@@ -42,7 +42,6 @@ test('DEMATIC_EMS', () => {
     providerName: DEMATIC_EMS,
     name: 'name',
     url: 'https://url.com',
-    accessionTimeUnit: 'minutes',
   };
 
   expect(prepareValuesForAPI(formValues)).toEqual(resultValues);
@@ -61,17 +60,6 @@ test('CAIASOFT', () => {
     apiKey: 'apiKey',
     accessionWorkflowDetails: 'accessionWorkflowDetails',
     returningWorkflowDetails: 'returningWorkflowDetails',
-    accessionTimeUnit: 'minutes',
-  };
-
-  expect(prepareValuesForAPI(formValues)).toEqual(resultValues);
-});
-
-test('accessionTimeUnit is always there', () => {
-  const formValues = {};
-
-  const resultValues = {
-    accessionTimeUnit: 'minutes',
   };
 
   expect(prepareValuesForAPI(formValues)).toEqual(resultValues);
