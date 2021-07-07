@@ -5,7 +5,7 @@ import { noop } from 'lodash';
 import { Pane } from '@folio/stripes/components';
 
 import { ErrorCentered, LoadingCentered } from '../../components';
-import { Configurations } from '../../API';
+import { Configurations } from '../../data';
 import { Fields } from '../Fields';
 import * as Delete from '../Delete';
 import { Menu } from './Menu';

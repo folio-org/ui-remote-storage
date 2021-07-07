@@ -1,4 +1,4 @@
-import { Configurations } from '../API';
+import { Configurations } from '../data';
 import { CAIASOFT } from '../const';
 
 export const useCaiaSoftConfigurations = () => {

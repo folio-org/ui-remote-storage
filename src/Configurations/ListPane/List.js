@@ -5,7 +5,7 @@ import moment from 'moment';
 import { useStripes } from '@folio/stripes/core';
 import { MultiColumnList } from '@folio/stripes/components';
 
-import { Configurations } from '../../API';
+import { Configurations } from '../../data';
 import { ErrorCentered, LoadingCentered } from '../../components';
 
 

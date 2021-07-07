@@ -7,7 +7,7 @@ import { useStripes } from '@folio/stripes/core';
 import { Layer } from '@folio/stripes/components';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
-import { Configurations } from '../../API';
+import { Configurations } from '../../data';
 import { Editor } from './Editor';
 
 

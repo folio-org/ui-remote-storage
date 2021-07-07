@@ -1,6 +1,5 @@
 import { useQueryClient } from 'react-query';
 
-import { orderBy } from 'lodash';
 import { API_PATH } from '../const';
 import { useOkapiQuery } from './useOkapiQuery';
 import { useOkapiMutation } from './useOkapiMutation';
@@ -16,13 +15,8 @@ export const useListQuery = options => {
     ...options,
   });
 
-  const configurations = orderBy(
-      query.data?.configurations ?? [],
-      ['name'],
-  );
-
   return {
-    configurations,
+    configurations: query.data?.configurations ?? [],
     ...query,
   };
 };
