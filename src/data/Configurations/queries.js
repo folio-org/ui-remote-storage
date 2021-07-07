@@ -7,8 +7,8 @@ export const useListQuery = options => {
   const configurations = query.configurations.sort((a, b) => a.name.localeCompare(b.name));
 
   return {
-    configurations,
     ...query,
+    configurations,
   };
 };
 
