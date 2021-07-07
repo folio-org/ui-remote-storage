@@ -7,14 +7,13 @@ import { ConfirmationModal } from '@folio/stripes/components';
 
 import { useConfirmationModal } from '../../util/useConfirmationModal';
 import { TheForm } from './TheForm';
-import { prepareValuesForAPI } from './prepareValuesForAPI';
 
 export const Editor = ({ title, isLoading, initialValues, onSubmit, onClose, ...rest }) => {
   const intl = useIntl();
   const confirmation = useConfirmationModal();
 
   const handleSubmit = values => confirmation.wait()
-    .then(() => onSubmit(prepareValuesForAPI(values)))
+    .then(() => onSubmit(values))
     .catch(() => ({ [FORM_ERROR]: true })); // to make submitSucceeded: false;
 
   const modalMessage = initialValues

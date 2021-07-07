@@ -3,7 +3,8 @@ import { noop } from 'lodash';
 
 import { useShowCallout } from '@folio/stripes-acq-components';
 
-import { Configurations, Mappings } from '../../API';
+import { Mappings } from '../../API';
+import { Configurations } from '../../data';
 import { useConfirmationModal } from '../../util/useConfirmationModal';
 
 export const useScenario = ({ configurationId, onSuccess = noop }) => {

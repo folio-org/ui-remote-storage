@@ -1,5 +1,5 @@
 import { DEMATIC_SD, DEMATIC_EMS, CAIASOFT } from '../../const';
-import { prepareValuesForAPI } from './prepareValuesForAPI';
+import { prepareMutationValues } from './prepareMutationValues';
 
 const allValues = {
   providerName: 'providerName',
@@ -29,7 +29,7 @@ test('DEMATIC_SD', () => {
     accessionTimeUnit: 'minutes',
   };
 
-  expect(prepareValuesForAPI(formValues)).toEqual(resultValues);
+  expect(prepareMutationValues(formValues)).toEqual(resultValues);
 });
 
 test('DEMATIC_EMS', () => {
@@ -44,7 +44,7 @@ test('DEMATIC_EMS', () => {
     url: 'https://url.com',
   };
 
-  expect(prepareValuesForAPI(formValues)).toEqual(resultValues);
+  expect(prepareMutationValues(formValues)).toEqual(resultValues);
 });
 
 test('CAIASOFT', () => {
@@ -62,5 +62,5 @@ test('CAIASOFT', () => {
     returningWorkflowDetails: 'returningWorkflowDetails',
   };
 
-  expect(prepareValuesForAPI(formValues)).toEqual(resultValues);
+  expect(prepareMutationValues(formValues)).toEqual(resultValues);
 });

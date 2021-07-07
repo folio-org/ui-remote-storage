@@ -1,6 +1,6 @@
 import { DEMATIC_SD, CAIASOFT } from '../../const';
 
-export const prepareValuesForAPI = formValues => {
+export const prepareMutationValues = formValues => {
   const values = { ...formValues };
 
   if (values.providerName !== DEMATIC_SD) {
