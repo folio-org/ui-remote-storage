@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { render, screen, within } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
+import { IntlProvider } from 'react-intl';
 import { Provider, server, rest, mockKy, API_BASE } from '../test/net';
 import { CONFIGURATIONS_PATH } from '../const';
 
@@ -94,7 +95,9 @@ const renderConfigurations = route => {
   return render(
     (
       <BrowserRouter>
-        <Configurations />
+        <IntlProvider locale="en">
+          <Configurations />
+        </IntlProvider>
       </BrowserRouter>
     ),
     { wrapper: Provider },

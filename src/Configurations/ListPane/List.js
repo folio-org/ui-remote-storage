@@ -1,8 +1,5 @@
-import React, { useMemo } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
-import moment from 'moment';
+import { FormattedMessage, FormattedDate } from 'react-intl';
 
-import { useStripes } from '@folio/stripes/core';
 import { MultiColumnList } from '@folio/stripes/components';
 
 import { Configurations } from '../../data';
@@ -16,24 +13,21 @@ const columnMapping = {
   lastUpdate: <FormattedMessage id="ui-remote-storage.list.lastUpdate" />,
 };
 
+const formatter = {
+  providerName: item => <FormattedMessage id={`ui-remote-storage.name.${item.providerName}`} />,
+  lastUpdate: item => (
+    <FormattedDate
+      value={item.metadata.updatedDate || item.metadata.createdDate}
+      timeZone="UTC"
+      year="numeric"
+      month="2-digit"
+      day="2-digit"
+    />
+  ),
+};
 
 export const List = props => {
-  const intl = useIntl();
-  const stripes = useStripes();
-
   const query = Configurations.useListQuery();
-
-  const localeDateFormat = useMemo(
-    () => moment.localeData(stripes.locale).longDateFormat('L'),
-    [stripes.locale],
-  );
-
-  const formatter = {
-    providerName: item => intl.formatMessage({ id: `ui-remote-storage.name.${item.providerName}` }),
-    lastUpdate: item => moment
-      .utc(item.metadata.updatedDate || item.metadata.createdDate)
-      .format(localeDateFormat),
-  };
 
   if (query.isLoading) return <LoadingCentered />;
 
