@@ -1,6 +1,5 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import moment from 'moment';
 
 import { useStripes } from '@folio/stripes/core';
 import { MultiColumnList } from '@folio/stripes/components';
@@ -23,16 +22,20 @@ export const List = props => {
 
   const query = Configurations.useListQuery();
 
-  const localeDateFormat = useMemo(
-    () => moment.localeData(stripes.locale).longDateFormat('L'),
-    [stripes.locale],
-  );
+  const getFormattedLastUpdate = (value, locales) => Intl.DateTimeFormat(locales, {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    timeZone: 'UTC',
+  }).format(value);
+
 
   const formatter = {
     providerName: item => intl.formatMessage({ id: `ui-remote-storage.name.${item.providerName}` }),
-    lastUpdate: item => moment
-      .utc(item.metadata.updatedDate || item.metadata.createdDate)
-      .format(localeDateFormat),
+    lastUpdate: item => getFormattedLastUpdate(
+      new Date(item.metadata.updatedDate || item.metadata.createdDate),
+      [stripes.locale],
+    ),
   };
 
   if (query.isLoading) return <LoadingCentered />;
