@@ -121,7 +121,6 @@
   },
   "dependencies": {
     "@folio/stripes-acq-components": "^2.1.0",
-    "@formatjs/intl-datetimeformat": "^4.1.6",
     "lodash": "^4.17.5",
     "prop-types": "^15.5.10",
     "query-string": "^6.1.0",
