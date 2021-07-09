@@ -22,7 +22,7 @@ export const List = props => {
 
   const query = Configurations.useListQuery();
 
-  const getFormattedLastUpdate = (value, locales) => Intl.DateTimeFormat(locales, {
+  const getFormattedLastUpdate = (value, locale) => Intl.DateTimeFormat(locale, {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
@@ -34,7 +34,7 @@ export const List = props => {
     providerName: item => intl.formatMessage({ id: `ui-remote-storage.name.${item.providerName}` }),
     lastUpdate: item => getFormattedLastUpdate(
       new Date(item.metadata.updatedDate || item.metadata.createdDate),
-      [stripes.locale],
+      stripes.locale,
     ),
   };
 
