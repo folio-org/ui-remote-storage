@@ -19,13 +19,15 @@ export const List = props => {
 
   const formatter = {
     providerName: item => <FormattedMessage id={`ui-remote-storage.name.${item.providerName}`} />,
-    lastUpdate: item => <FormattedDate
-      value={item.metadata.updatedDate || item.metadata.createdDate}
-      timeZone="UTC"
-      year="numeric"
-      month="2-digit"
-      day="2-digit"
-                        />,
+    lastUpdate: item => (
+      <FormattedDate
+        value={item.metadata.updatedDate || item.metadata.createdDate}
+        timeZone="UTC"
+        year="numeric"
+        month="2-digit"
+        day="2-digit"
+      />
+    ),
   };
 
   if (query.isLoading) return <LoadingCentered />;
