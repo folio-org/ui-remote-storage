@@ -1,7 +1,5 @@
-import React from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage, FormattedDate } from 'react-intl';
 
-import { useStripes } from '@folio/stripes/core';
 import { MultiColumnList } from '@folio/stripes/components';
 
 import { Configurations } from '../../data';
@@ -17,25 +15,17 @@ const columnMapping = {
 
 
 export const List = props => {
-  const intl = useIntl();
-  const stripes = useStripes();
-
   const query = Configurations.useListQuery();
 
-  const getFormattedLastUpdate = (value, locale) => Intl.DateTimeFormat(locale, {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    timeZone: 'UTC',
-  }).format(value);
-
-
   const formatter = {
-    providerName: item => intl.formatMessage({ id: `ui-remote-storage.name.${item.providerName}` }),
-    lastUpdate: item => getFormattedLastUpdate(
-      new Date(item.metadata.updatedDate || item.metadata.createdDate),
-      stripes.locale,
-    ),
+    providerName: item => <FormattedMessage id={`ui-remote-storage.name.${item.providerName}`} />,
+    lastUpdate: item => <FormattedDate
+      value={item.metadata.updatedDate || item.metadata.createdDate}
+      timeZone="UTC"
+      year="numeric"
+      month="2-digit"
+      day="2-digit"
+                        />,
   };
 
   if (query.isLoading) return <LoadingCentered />;
