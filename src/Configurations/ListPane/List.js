@@ -13,22 +13,21 @@ const columnMapping = {
   lastUpdate: <FormattedMessage id="ui-remote-storage.list.lastUpdate" />,
 };
 
+const formatter = {
+  providerName: item => <FormattedMessage id={`ui-remote-storage.name.${item.providerName}`} />,
+  lastUpdate: item => (
+    <FormattedDate
+      value={item.metadata.updatedDate || item.metadata.createdDate}
+      timeZone="UTC"
+      year="numeric"
+      month="2-digit"
+      day="2-digit"
+    />
+  ),
+};
 
 export const List = props => {
   const query = Configurations.useListQuery();
-
-  const formatter = {
-    providerName: item => <FormattedMessage id={`ui-remote-storage.name.${item.providerName}`} />,
-    lastUpdate: item => (
-      <FormattedDate
-        value={item.metadata.updatedDate || item.metadata.createdDate}
-        timeZone="UTC"
-        year="numeric"
-        month="2-digit"
-        day="2-digit"
-      />
-    ),
-  };
 
   if (query.isLoading) return <LoadingCentered />;
 
