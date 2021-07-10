@@ -27,7 +27,7 @@
     "create.error": "Error occurred while saving Remote storage configuration.",
     "synchronization.title": "Настройки синхронизации",
     "synchronization.schedule.title": "Расписание синхронизации",
-    "synchronization.schedule.info": "Выполняется раз",
+    "synchronization.schedule.info": "Выполняется раз в",
     "details.credProperties": "Credential properties",
     "name.CAIA_SOFT": "Caiasoft",
     "edit.success.created": "Remote storage configuration was successfully created.",

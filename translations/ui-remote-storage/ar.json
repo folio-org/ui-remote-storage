@@ -63,7 +63,7 @@
     "weeks": "أسبوعاً",
     "months": "شهراً",
     "synchronization.schedule.info.notSet": "لم يتم تعيينه",
-    "synchronization.schedule.info.notValid": "يجب أن تكون القيمة موجبة، وغير صفرية، وغير كسرية",
+    "synchronization.schedule.info.notValid": "يجب أن تكون القيمة عدداً صحيحاً موجباً",
     "synchronization.schedule.info.minutes": "يتم تشغليه كل {delay} {delay, plural, one {دقيقة} other {دقيقة}}",
     "synchronization.schedule.info.hours": "يتم تشغيله كل {delay} {delay, plural, one {ساعة} other {ساعة}}",
     "synchronization.schedule.info.days": "يتم تشغيله كل {delay} {delay, plural, one {يوم} other {يوماً}}",
