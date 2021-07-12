@@ -16,9 +16,14 @@ const filter = (value, data) => {
 
 const formatter = ({ option, searchTerm }) => {
   const props = option?.label.props;
-  const label = props ? `${props.location?.name} ${props.location?.code}` : option?.label;
+  const label = props ? `${props?.location?.name} ${props?.location?.code}` : option?.label;
 
   return <OptionSegment searchTerm={searchTerm}>{label}</OptionSegment>;
+};
+
+formatter.propTypes = {
+  option: PropTypes.object,
+  searchTerm: PropTypes.string,
 };
 
 export const LocationSelection = ({ locations, placeholder, ...rest }) => {
