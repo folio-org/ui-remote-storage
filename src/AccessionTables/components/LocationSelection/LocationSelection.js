@@ -10,11 +10,16 @@ import { Location } from '../Location';
 
 // todo: this is forked from stripes-smart-components, got to figure out the way to merge
 
-// todo: does not highlights the search criterion in the results
 const filter = (value, data) => {
   return data.filter(o => new RegExp(escapeRegExp(value), 'i').test(o.label.props?.location.name));
 };
 
+const formatter = ({ option, searchTerm }) => {
+  const props = option?.label.props;
+  const label = props ? `${props.location?.name} ${props.location?.code}` : option?.label;
+
+  return <OptionSegment searchTerm={searchTerm}>{label}</OptionSegment>;
+};
 
 export const LocationSelection = ({ locations, placeholder, ...rest }) => {
   const { formatMessage } = useIntl();
@@ -25,13 +30,6 @@ export const LocationSelection = ({ locations, placeholder, ...rest }) => {
     label: <Location location={loc} />,
     value: loc.id,
   }));
-
-  const formatter = ({ option, searchTerm }) => {
-    const props = option?.label.props;
-    const label = props ? `${props.location?.name} ${props.location?.code}` : option?.label;
-
-    return <OptionSegment searchTerm={searchTerm}>{label}</OptionSegment>;
-  };
 
 
   return (
