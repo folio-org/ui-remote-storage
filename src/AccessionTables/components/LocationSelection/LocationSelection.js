@@ -4,6 +4,7 @@ import { escapeRegExp } from 'lodash';
 import { useIntl } from 'react-intl';
 
 import { Selection } from '@folio/stripes-acq-components';
+import { OptionSegment } from '@folio/stripes/components';
 
 import { Location } from '../Location';
 
@@ -25,11 +26,20 @@ export const LocationSelection = ({ locations, placeholder, ...rest }) => {
     value: loc.id,
   }));
 
+  const formatter = ({ option, searchTerm }) => {
+    const props = option?.label.props;
+    const label = props ? `${props.location?.name} ${props.location?.code}` : option?.label;
+
+    return <OptionSegment searchTerm={searchTerm}>{label}</OptionSegment>;
+  };
+
+
   return (
     <Selection
       placeholder={finalPlaceholder}
       dataOptions={[{ label: `${finalPlaceholder}`, value: '' }, ...locationOpts]}
       onFilter={filter}
+      formatter={formatter}
       {...rest}
     />
   );
