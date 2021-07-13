@@ -18,6 +18,7 @@
   "select": "Select",
   "loading": "Loading...",
   "error": "Something went wrong",
+  "notSet": "Not set",
 
   "list.name": "Name",
   "list.providerName": "Provider",
@@ -50,7 +51,6 @@
 
   "synchronization.title": "Data synchronization settings",
   "synchronization.schedule.title": "Data synchronization schedule",
-  "synchronization.schedule.info.notSet": "Not set",
   "synchronization.schedule.info.notValid": "Value must be positive integer",
   "synchronization.schedule.info": "Runs every",
   "synchronization.schedule.info.minutes": "Runs every {delay} {delay, plural, one {minute} other {minutes}}",

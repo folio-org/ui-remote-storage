@@ -39,7 +39,7 @@ export const Synchronization = ({ isNonInteractive }) => {
         delay: values.accessionDelay,
       },
     )
-    : intl.formatMessage({ id: 'ui-remote-storage.synchronization.schedule.info.notSet' });
+    : intl.formatMessage({ id: 'ui-remote-storage.notSet' });
 
   return (
     <Accordion label={intl.formatMessage({ id: 'ui-remote-storage.synchronization.title' })}>
