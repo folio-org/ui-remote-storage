@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { escapeRegExp } from 'lodash';
-import { useIntl } from 'react-intl';
+import { useIntl, FormattedMessage } from 'react-intl';
 
 import { OptionSegment } from '@folio/stripes/components';
 import { Selection } from '@folio/stripes-acq-components';
@@ -19,9 +19,7 @@ const filter = (searchString, dataOptions) => {
 
 
 const Formatter = ({ option, searchTerm }) => {
-  const { formatMessage } = useIntl();
-
-  if (!option.value) return formatMessage({ id: 'ui-remote-storage.notSet' });
+  if (!option.value) return <FormattedMessage id="ui-remote-storage.notSet" />;
 
   return (
     <Location
