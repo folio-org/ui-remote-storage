@@ -1,6 +1,6 @@
 import { escapeRegExp } from 'lodash';
 
-import { Selection } from '@folio/stripes-acq-components';
+import { Selection, useShowCallout } from '@folio/stripes-acq-components';
 
 import { useCaiaSoftConfigurations } from './useCaiaSoftConfigurations';
 
@@ -11,7 +11,13 @@ const filter = (value, data) => {
 
 
 export const ConfigurationsSelect = props => {
-  const query = useCaiaSoftConfigurations();
+  const showCallout = useShowCallout();
+
+  const query = useCaiaSoftConfigurations({
+    onError: () => {
+      showCallout({ messageId: 'ui-remote-storage.error' });
+    },
+  });
   const dataOptions = query.configurations.map(({ id, name }) => ({ value: id, label: name }));
 
   return (

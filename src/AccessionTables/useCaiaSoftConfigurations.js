@@ -1,8 +1,8 @@
 import { Configurations } from '../data';
 import { CAIASOFT } from '../const';
 
-export const useCaiaSoftConfigurations = () => {
-  const query = Configurations.useListQuery();
+export const useCaiaSoftConfigurations = (options) => {
+  const query = Configurations.useListQuery(options);
 
   const configurations = query.configurations.filter(({ providerName }) => providerName === CAIASOFT);
 
