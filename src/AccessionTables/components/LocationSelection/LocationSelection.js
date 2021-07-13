@@ -5,15 +5,11 @@ import { useIntl } from 'react-intl';
 
 import { Selection } from '@folio/stripes-acq-components';
 
-import { Location } from '../Location';
-
 // todo: this is forked from stripes-smart-components, got to figure out the way to merge
 
-// todo: does not highlights the search criterion in the results
 const filter = (value, data) => {
-  return data.filter(o => new RegExp(escapeRegExp(value), 'i').test(o.label.props?.location.name));
+  return data.filter(o => new RegExp(escapeRegExp(value), 'i').test(o.label));
 };
-
 
 export const LocationSelection = ({ locations, placeholder, ...rest }) => {
   const { formatMessage } = useIntl();
@@ -21,9 +17,10 @@ export const LocationSelection = ({ locations, placeholder, ...rest }) => {
   const finalPlaceholder = placeholder || formatMessage({ id: 'stripes-smart-components.ls.locationPlaceholder' });
 
   const locationOpts = locations.map(loc => ({
-    label: <Location location={loc} />,
+    label: `${loc.name} (${loc.code})`,
     value: loc.id,
   }));
+
 
   return (
     <Selection
