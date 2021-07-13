@@ -21,7 +21,7 @@ const filter = (searchString, dataOptions) => {
 const Formatter = ({ option, searchTerm }) => {
   const { formatMessage } = useIntl();
 
-  if (option.value === '') return formatMessage({ id: 'ui-remote-storage.notSet' });
+  if (!option.value) return formatMessage({ id: 'ui-remote-storage.notSet' });
 
   return (
     <Location
