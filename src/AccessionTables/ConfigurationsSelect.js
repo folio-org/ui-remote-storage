@@ -15,7 +15,7 @@ export const ConfigurationsSelect = props => {
 
   const query = useCaiaSoftConfigurations({
     onError: () => {
-      showCallout({ messageId: 'ui-remote-storage.error' });
+      showCallout({ messageId: 'ui-remote-storage.error', type: 'error' });
     },
   });
   const dataOptions = query.configurations.map(({ id, name }) => ({ value: id, label: name }));

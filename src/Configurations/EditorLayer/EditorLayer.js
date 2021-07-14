@@ -23,7 +23,7 @@ export const EditorLayer = ({ configurationId, create = false, onClose = noop })
     id: configurationId,
     enabled: !create,
     onError: () => {
-      showCallout({ messageId: 'ui-remote-storage.error' });
+      showCallout({ messageId: 'ui-remote-storage.error', type: 'error' });
     },
   });
 

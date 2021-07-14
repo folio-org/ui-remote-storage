@@ -11,7 +11,7 @@ export const Content = () => {
   const { path } = useRouteMatch();
   const query = useCaiaSoftConfigurations({
     onError: () => {
-      showCallout({ messageId: 'ui-remote-storage.error' });
+      showCallout({ messageId: 'ui-remote-storage.error', type: 'error' });
     },
   });
 
