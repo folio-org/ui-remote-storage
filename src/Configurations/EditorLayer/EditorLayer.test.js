@@ -1,45 +1,57 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import { render, screen, fireEvent, logDOM } from '@testing-library/react';
+
+import { BrowserRouter } from 'react-router-dom';
+import { IntlProvider } from 'react-intl';
+
 import { Paneset } from '@folio/stripes/components';
+import * as components from '@folio/stripes-acq-components';
+import * as confirmation from '../../util/useConfirmationModal';
+
+
 import { EditorLayer } from './EditorLayer';
-import * as Mutations from '../../data/Configurations/mutations';
+import { API_BASE, Provider, rest, server } from '../../test/net';
+import { ERROR_RESPONSE, SUCCESS_RESPONSE } from '../../API/test/setup';
+
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  useShowCallout: jest.fn(),
+}));
+
+/* jest.mock('../../util/useConfirmationModal', () => ({
+  useConfirmationModal: () => ({
+    wait: Promise.resolve(),
+    props: {
+      ...jest.requireActual('../../util/useConfirmationModal').useConfirmationModal().props,
+    },
+  }),
+})); */
 
 const renderLayer = (create) => {
   const handleClose = () => true;
 
-  render(
-    <QueryClientProvider client={new QueryClient()}>
+  return render(
+    <Provider>
       <BrowserRouter>
-        <Paneset paneTitle="ok">
-          <Switch>
-            <Route path="/">
-              <EditorLayer configurationId="id" create={create} onClose={handleClose} />
-            </Route>
-          </Switch>
-        </Paneset>
+        <IntlProvider locale="en">
+          <Paneset paneTitle="ok">
+            <EditorLayer configurationId="id" create={create} onClose={handleClose} />
+          </Paneset>
+        </IntlProvider>
       </BrowserRouter>
 
-    </QueryClientProvider>,
+    </Provider>,
   );
 };
 
 describe('EditorLayer', () => {
-  it('renders EditorLayer with EDIT FORM', () => {
-    renderLayer(false);
-    expect(screen.getByText('ui-remote-storage.editForm.title')).toBeVisible();
-  });
+  it('`useSingleQuery` fires showCalloutHook if any error', async () => {
+    server.use(rest.get(`${API_BASE}/configurations/id`, ERROR_RESPONSE));
 
-  it('renders EditorLayer with CREATE FORM', () => {
-    renderLayer(true);
-    expect(screen.getByText('ui-remote-storage.createForm.title')).toBeVisible();
-  });
+    const spy = jest.spyOn(components, 'useShowCallout').mockImplementation(() => jest.fn());
 
-  it('updateConfiguration mutation must be called', () => {
-    const spy = jest.spyOn(Mutations, 'useUpdateMutation');
     renderLayer(false);
 
-    expect(spy).toBeCalled();
+    expect(spy).toBeCalledTimes(1);
   });
 });
