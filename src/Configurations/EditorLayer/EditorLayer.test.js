@@ -15,6 +15,8 @@ jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   useShowCallout: jest.fn(),
 }));
+
+
 const renderLayer = (create) => {
   const handleClose = () => true;
 
