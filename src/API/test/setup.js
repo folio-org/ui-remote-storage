@@ -13,5 +13,3 @@ jest.mock('@folio/stripes/core', () => ({
 export const renderAPIHook = (hook, options) => renderHook(hook, { wrapper: Provider, ...options });
 
 export const ERROR_RESPONSE = (req, res, ctx) => res(ctx.status(500));
-
-export const SUCCESS_RESPONSE = (req, res, ctx) => res(ctx.status(200));

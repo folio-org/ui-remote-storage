@@ -1,32 +1,20 @@
 import React from 'react';
-import { render, screen, fireEvent, logDOM } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import { BrowserRouter } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 
 import { Paneset } from '@folio/stripes/components';
 import * as components from '@folio/stripes-acq-components';
-import * as confirmation from '../../util/useConfirmationModal';
-
 
 import { EditorLayer } from './EditorLayer';
 import { API_BASE, Provider, rest, server } from '../../test/net';
-import { ERROR_RESPONSE, SUCCESS_RESPONSE } from '../../API/test/setup';
+import { ERROR_RESPONSE } from '../../API/test/setup';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   useShowCallout: jest.fn(),
 }));
-
-/* jest.mock('../../util/useConfirmationModal', () => ({
-  useConfirmationModal: () => ({
-    wait: Promise.resolve(),
-    props: {
-      ...jest.requireActual('../../util/useConfirmationModal').useConfirmationModal().props,
-    },
-  }),
-})); */
-
 const renderLayer = (create) => {
   const handleClose = () => true;
 
