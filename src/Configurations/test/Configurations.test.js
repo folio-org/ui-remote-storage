@@ -1,13 +1,10 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { render, screen, within } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import { IntlProvider } from 'react-intl';
-import { Provider, server, rest, mockKy, API_BASE } from '../test/net';
-import { CONFIGURATIONS_PATH } from '../const';
-
-import { Configurations } from './Configurations';
+import { server, rest, mockKy } from '../../test/net';
+import { CONFIGURATIONS_PATH } from '../../const';
+import { renderConfigurations, url } from './setup';
 
 
 jest.mock('react-virtualized-auto-sizer', () => ({ children }) => children({ width: 1920, height: 1080 }));
@@ -27,15 +24,6 @@ jest.mock('@folio/stripes/core', () => ({
   }),
   IfPermission: props => <>{props.children}</>,
 }));
-
-
-const url = {
-  providers: `${API_BASE}/providers`,
-  configurations: {
-    single: `${API_BASE}/configurations/1`,
-    list: `${API_BASE}/configurations`,
-  },
-};
 
 beforeEach(() => {
   server.use(
@@ -85,24 +73,6 @@ beforeEach(() => {
     }))),
   );
 });
-
-
-const renderConfigurations = route => {
-  const path = [CONFIGURATIONS_PATH, route].join('');
-
-  window.history.pushState({}, 'Test page', path);
-
-  return render(
-    (
-      <BrowserRouter>
-        <IntlProvider locale="en">
-          <Configurations />
-        </IntlProvider>
-      </BrowserRouter>
-    ),
-    { wrapper: Provider },
-  );
-};
 
 
 describe('Routing', () => {
