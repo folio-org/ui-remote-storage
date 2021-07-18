@@ -1,18 +1,31 @@
 import React from 'react';
-import { waitFor } from '@testing-library/react';
+import { waitFor, screen } from '@testing-library/react';
+import user from '@testing-library/user-event';
+
 
 import * as components from '@folio/stripes-acq-components';
 
-import { mockKy, rest, server } from '../../test/net';
-import { ERROR_RESPONSE, renderConfigurations, url } from './setup';
+import { mockKy, server } from '../../test/net';
+import {
+  mockedConfigurations,
+  mockedSingleConfiguration,
+  renderConfigurations,
+} from './setup';
 
+
+jest.mock('react-virtualized-auto-sizer', () => ({ children }) => children({ width: 1920, height: 1080 }));
+
+jest.mock('@folio/stripes-components/lib/Icon', () => props => (
+  <span data-testid={props['data-testid']}>
+    <svg />
+    {props.children && <span>{props.children}</span>}
+  </span>
+));
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   useShowCallout: jest.fn(),
 }));
-
-jest.mock('react-virtualized-auto-sizer', () => ({ children }) => children({ width: 1920, height: 1080 }));
 
 jest.mock('@folio/stripes/core', () => ({
   ...jest.requireActual('@folio/stripes/core'),
@@ -24,31 +37,41 @@ jest.mock('@folio/stripes/core', () => ({
 }));
 
 
-describe('EditorLayer', () => {
-  it('`useSingleQuery` fires showCalloutHook if any error', async () => {
-    server.use(rest.get(url.configurations.single, ERROR_RESPONSE));
+const renderDetailsPane = async () => {
+  renderConfigurations();
 
-    const mockShowCallout = jest.fn().mockImplementation(() => jest.fn());
+  const cell = await screen.findByRole('gridcell', { name: 'RS1' });
+  user.click(cell);
+};
 
+
+describe('Fetching single configuration', async () => {
+  const mockShowCallout = jest.fn();
+
+  beforeEach(async () => {
     jest.spyOn(components, 'useShowCallout').mockImplementation(() => mockShowCallout);
-
-    renderConfigurations('/1/edit');
-
-    await waitFor(() => expect(mockShowCallout).toBeCalledWith({ 'messageId': 'ui-remote-storage.error', 'type': 'error' }));
   });
 
-  it('`useSingleQuery` NOT fires showCalloutHook if success', async () => {
-    server.use(rest.get(url.configurations.single, (req, res, ctx) => res(ctx.json({
-      field1: 'field1',
-      field2: 'field2',
-    }))));
 
-    const mockShowCallout = jest.fn().mockImplementation(() => jest.fn());
+  it('Does not show error callout in DetailsPane, if there are not errors', async () => {
+    server.use(
+      mockedConfigurations(),
+      mockedSingleConfiguration(),
+    );
 
-    jest.spyOn(components, 'useShowCallout').mockImplementationOnce(() => mockShowCallout);
-
-    renderConfigurations('/1/edit');
+    await renderDetailsPane();
 
     await waitFor(() => expect(mockShowCallout).not.toBeCalled());
+  });
+
+  it('shows error callout in DetailsPane, in case of server error', async () => {
+    server.use(
+      mockedConfigurations(),
+      mockedSingleConfiguration(true),
+    );
+
+    await renderDetailsPane();
+
+    await waitFor(() => expect(mockShowCallout).toBeCalledWith(expect.objectContaining({ type: 'error' })));
   });
 });

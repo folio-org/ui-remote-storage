@@ -3,6 +3,7 @@ import { Form } from 'react-final-form';
 import { noop } from 'lodash';
 
 import { Pane } from '@folio/stripes/components';
+import { useShowCallout } from '@folio/stripes-acq-components';
 
 import { ErrorCentered, LoadingCentered } from '../../components';
 import { Configurations } from '../../data';
@@ -12,9 +13,15 @@ import { Menu } from './Menu';
 import { CAIASOFT } from '../../const';
 
 export const DetailsPane = ({ configurationId, onEdit, onClose, onOpenTable, defaultWidth = 'fill', ...rest }) => {
+  const showCallout = useShowCallout();
   const DeleteScenario = Delete.useScenario({ configurationId, onSuccess: onClose });
 
-  const query = Configurations.useSingleQuery({ id: configurationId });
+  const query = Configurations.useSingleQuery({
+    id: configurationId,
+    onError: () => {
+      showCallout({ messageId: 'ui-remote-storage.error', type: 'error' });
+    },
+  });
 
   const isCaiasoft = query.configuration.providerName === CAIASOFT;
 

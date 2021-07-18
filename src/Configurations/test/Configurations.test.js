@@ -2,9 +2,14 @@ import React from 'react';
 import { screen, within } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import { server, rest, mockKy } from '../../test/net';
+import { server, mockKy } from '../../test/net';
 import { CONFIGURATIONS_PATH } from '../../const';
-import { renderConfigurations, url } from './setup';
+import {
+  mockedProviders,
+  mockedConfigurations,
+  mockedSingleConfiguration,
+  renderConfigurations,
+} from './setup';
 
 
 jest.mock('react-virtualized-auto-sizer', () => ({ children }) => children({ width: 1920, height: 1080 }));
@@ -27,50 +32,9 @@ jest.mock('@folio/stripes/core', () => ({
 
 beforeEach(() => {
   server.use(
-    rest.get(url.providers, (req, res, ctx) => res(ctx.json([
-      { id: 'DEMATIC_EMS', name: 'Dematic EMS' },
-      { id: 'DEMATIC_SD', name: 'Dematic StagingDirector' },
-      { id: 'CAIA_SOFT', name: 'CaiaSoft' },
-    ]))),
-
-    rest.get(url.configurations.list, (req, res, ctx) => res(ctx.json({
-      totalRecords: 2,
-      configurations: [
-        {
-          id: '1',
-          name: 'RS1',
-          providerName: 'DEMATIC_SD',
-          accessionTimeUnit: 'minutes',
-          metadata: { 'createdDate': '2021-05-28T10:08:08.216+00:00' },
-        },
-        {
-          id: '2',
-          name: 'RS2',
-          providerName: 'DEMATIC_EMS',
-          url: 'http://rs2.dematic.com',
-          accessionDelay: 2,
-          accessionTimeUnit: 'minutes',
-          metadata: { 'createdDate': '2021-05-28T01:53:57.036+00:00' },
-        },
-        {
-          id: '3',
-          name: 'RS3',
-          providerName: 'DEMATIC_EMS',
-          url: 'http://rs3.caiasoft.com',
-          accessionDelay: 1,
-          accessionTimeUnit: 'minutes',
-          metadata: { createdDat: '2021-05-28T01:53:57.036+00:00', updatedDate: '2021-05-28T10:23:53.918+00:00' },
-        },
-      ],
-    }))),
-
-    rest.get(url.configurations.single, (req, res, ctx) => res(ctx.json({
-      id: '1',
-      name: 'RS1',
-      providerName: 'DEMATIC_SD',
-      accessionTimeUnit: 'minutes',
-      metadata: { 'createdDate': '2021-05-28T10:08:08.216+00:00' },
-    }))),
+    mockedProviders(),
+    mockedConfigurations(),
+    mockedSingleConfiguration(),
   );
 });
 
