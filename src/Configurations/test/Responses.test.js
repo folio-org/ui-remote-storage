@@ -41,6 +41,7 @@ const renderSingleConfiguration = async () => {
 
   const cell = await screen.findByRole('gridcell', { name: 'RS1' });
   user.click(cell);
+  await screen.findByRole('heading', { name: /details/ });
 };
 
 const renderConfigurationEdit = () => {
