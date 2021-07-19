@@ -1,13 +1,15 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { render, screen, within } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import { IntlProvider } from 'react-intl';
-import { Provider, server, rest, mockKy, API_BASE } from '../test/net';
-import { CONFIGURATIONS_PATH } from '../const';
-
-import { Configurations } from './Configurations';
+import { server, mockKy } from '../../test/net';
+import { CONFIGURATIONS_PATH } from '../../const';
+import {
+  mockedProviders,
+  mockedConfigurations,
+  mockedSingleConfiguration,
+  renderConfigurations,
+} from './setup';
 
 
 jest.mock('react-virtualized-auto-sizer', () => ({ children }) => children({ width: 1920, height: 1080 }));
@@ -28,81 +30,13 @@ jest.mock('@folio/stripes/core', () => ({
   IfPermission: props => <>{props.children}</>,
 }));
 
-
-const url = {
-  providers: `${API_BASE}/providers`,
-  configurations: {
-    single: `${API_BASE}/configurations/1`,
-    list: `${API_BASE}/configurations`,
-  },
-};
-
 beforeEach(() => {
   server.use(
-    rest.get(url.providers, (req, res, ctx) => res(ctx.json([
-      { id: 'DEMATIC_EMS', name: 'Dematic EMS' },
-      { id: 'DEMATIC_SD', name: 'Dematic StagingDirector' },
-      { id: 'CAIA_SOFT', name: 'CaiaSoft' },
-    ]))),
-
-    rest.get(url.configurations.list, (req, res, ctx) => res(ctx.json({
-      totalRecords: 2,
-      configurations: [
-        {
-          id: '1',
-          name: 'RS1',
-          providerName: 'DEMATIC_SD',
-          accessionTimeUnit: 'minutes',
-          metadata: { 'createdDate': '2021-05-28T10:08:08.216+00:00' },
-        },
-        {
-          id: '2',
-          name: 'RS2',
-          providerName: 'DEMATIC_EMS',
-          url: 'http://rs2.dematic.com',
-          accessionDelay: 2,
-          accessionTimeUnit: 'minutes',
-          metadata: { 'createdDate': '2021-05-28T01:53:57.036+00:00' },
-        },
-        {
-          id: '3',
-          name: 'RS3',
-          providerName: 'DEMATIC_EMS',
-          url: 'http://rs3.caiasoft.com',
-          accessionDelay: 1,
-          accessionTimeUnit: 'minutes',
-          metadata: { createdDat: '2021-05-28T01:53:57.036+00:00', updatedDate: '2021-05-28T10:23:53.918+00:00' },
-        },
-      ],
-    }))),
-
-    rest.get(url.configurations.single, (req, res, ctx) => res(ctx.json({
-      id: '1',
-      name: 'RS1',
-      providerName: 'DEMATIC_SD',
-      accessionTimeUnit: 'minutes',
-      metadata: { 'createdDate': '2021-05-28T10:08:08.216+00:00' },
-    }))),
+    mockedProviders(),
+    mockedConfigurations(),
+    mockedSingleConfiguration(),
   );
 });
-
-
-const renderConfigurations = route => {
-  const path = [CONFIGURATIONS_PATH, route].join('');
-
-  window.history.pushState({}, 'Test page', path);
-
-  return render(
-    (
-      <BrowserRouter>
-        <IntlProvider locale="en">
-          <Configurations />
-        </IntlProvider>
-      </BrowserRouter>
-    ),
-    { wrapper: Provider },
-  );
-};
 
 
 describe('Routing', () => {

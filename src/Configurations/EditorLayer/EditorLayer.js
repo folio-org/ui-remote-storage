@@ -19,7 +19,13 @@ export const EditorLayer = ({ configurationId, create = false, onClose = noop })
   const stripes = useStripes();
   const showCallout = useShowCallout();
 
-  const query = Configurations.useSingleQuery({ id: configurationId, enabled: !create });
+  const query = Configurations.useSingleQuery({
+    id: configurationId,
+    enabled: !create,
+    onError: () => {
+      showCallout({ messageId: 'ui-remote-storage.error', type: 'error' });
+    },
+  });
 
   const { mutate: createConfiguration } = Configurations.useCreateMutation({
     onSuccess: () => {
