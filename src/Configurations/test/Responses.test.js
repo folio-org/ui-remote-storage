@@ -44,7 +44,7 @@ const renderSingleConfiguration = async () => {
   await screen.findByRole('heading', { name: /details/ });
 };
 
-const renderConfigurationEdit = async () => {
+const renderConfigurationEdit = () => {
   renderConfigurations('/1/edit');
 };
 
