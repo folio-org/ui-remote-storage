@@ -1,5 +1,5 @@
 import React from 'react';
-import { waitFor, screen } from '@testing-library/react';
+import { waitFor, screen, within } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
 import * as components from '@folio/stripes-acq-components';
@@ -44,7 +44,7 @@ const renderSingleConfiguration = async () => {
   await screen.findByRole('heading', { name: /details/ });
 };
 
-const renderConfigurationEdit = () => {
+const renderConfigurationEdit = async () => {
   renderConfigurations('/1/edit');
 };
 
@@ -55,25 +55,27 @@ beforeAll(async () => {
   jest.spyOn(components, 'useShowCallout').mockImplementation(() => mockShowCallout);
 });
 
-afterEach(() => {
+beforeEach(() => {
   mockShowCallout.mockClear();
 });
 
 describe('Fetching single configuration', () => {
   it('Does not show error callout in EditorLayer, if there are not errors', async () => {
     server.use(
-      mockedConfigurations(),
+      mockedProviders(),
       mockedSingleConfiguration(),
     );
 
     await renderConfigurationEdit();
 
-    await waitFor(() => expect(mockShowCallout).not.toBeCalled());
+    await screen.findByRole('button', { name: /actions/i });
+
+    await waitFor(() => expect(mockShowCallout).not.toBeCalledWith(expect.objectContaining({ type: 'error' })));
   });
 
   it('shows error callout in EditorLayer, in case of server error', async () => {
     server.use(
-      mockedConfigurations(),
+      mockedProviders(),
       mockedSingleConfiguration(true),
     );
 
@@ -93,7 +95,18 @@ describe('Fetching providers', () => {
 
     await renderSingleConfiguration();
 
-    await waitFor(() => expect(mockShowCallout).not.toBeCalled());
+    const actions = await screen.findByRole('button', { name: /actions/i });
+    user.click(actions);
+
+    const edit = screen.getByRole('button', { name: /edit/i });
+    user.click(edit);
+
+    const editor = screen.getByRole('dialog', { name: /edit/ });
+    expect(editor).toBeVisible();
+
+    await within(editor).findByRole('option', { name: 'Dematic EMS' });
+
+    await waitFor(() => expect(mockShowCallout).not.toBeCalledWith(expect.objectContaining({ type: 'error' })));
   });
 
   it('shows error callout in Providers, in case of server error', async () => {
