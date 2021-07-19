@@ -34,9 +34,9 @@ export const url = {
   },
 };
 
-export const mockedProviders = (withError = false) => rest.get(
+export const mockedProviders = ({ error } = {}) => rest.get(
   url.providers,
-  withError
+  error
     ? ERROR_RESPONSE
     : (req, res, ctx) => res(ctx.json([
       { id: 'DEMATIC_EMS', name: 'Dematic EMS' },
@@ -45,9 +45,9 @@ export const mockedProviders = (withError = false) => rest.get(
     ])),
 );
 
-export const mockedConfigurations = (withError = false) => rest.get(
+export const mockedConfigurations = ({ error } = {}) => rest.get(
   url.configurations.list,
-  withError
+  error
     ? ERROR_RESPONSE
     : (req, res, ctx) => res(ctx.json({
       totalRecords: 2,
@@ -81,9 +81,9 @@ export const mockedConfigurations = (withError = false) => rest.get(
     })),
 );
 
-export const mockedSingleConfiguration = (withError = false) => rest.get(
+export const mockedSingleConfiguration = ({ error } = {}) => rest.get(
   url.configurations.single,
-  withError
+  error
     ? ERROR_RESPONSE
     : (req, res, ctx) => res(ctx.json({
       id: '1',

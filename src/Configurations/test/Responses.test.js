@@ -56,16 +56,17 @@ beforeAll(async () => {
 });
 
 beforeEach(() => {
+  server.use(
+    mockedConfigurations(),
+    mockedProviders(),
+    mockedSingleConfiguration(),
+  );
+
   mockShowCallout.mockClear();
 });
 
 describe('Fetching single configuration', () => {
   it('Does not show error callout in EditorLayer, if there are not errors', async () => {
-    server.use(
-      mockedProviders(),
-      mockedSingleConfiguration(),
-    );
-
     await renderConfigurationEdit();
 
     await screen.findByRole('button', { name: /actions/i });
@@ -74,10 +75,7 @@ describe('Fetching single configuration', () => {
   });
 
   it('shows error callout in EditorLayer, in case of server error', async () => {
-    server.use(
-      mockedProviders(),
-      mockedSingleConfiguration(true),
-    );
+    server.use(mockedSingleConfiguration({ error: true }));
 
     await renderConfigurationEdit();
 
@@ -87,12 +85,6 @@ describe('Fetching single configuration', () => {
 
 describe('Fetching providers', () => {
   it('Does not show error callout in Providers, if there are not errors', async () => {
-    server.use(
-      mockedProviders(),
-      mockedConfigurations(),
-      mockedSingleConfiguration(),
-    );
-
     await renderSingleConfiguration();
 
     const actions = await screen.findByRole('button', { name: /actions/i });
@@ -110,11 +102,7 @@ describe('Fetching providers', () => {
   });
 
   it('shows error callout in Providers, in case of server error', async () => {
-    server.use(
-      mockedProviders(true),
-      mockedConfigurations(),
-      mockedSingleConfiguration(),
-    );
+    server.use(mockedProviders({ error: true }));
 
     await renderSingleConfiguration();
 
