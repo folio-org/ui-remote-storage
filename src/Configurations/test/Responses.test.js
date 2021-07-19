@@ -66,7 +66,7 @@ beforeEach(() => {
 });
 
 describe('Fetching single configuration', () => {
-  it('Does not show error callout in EditorLayer, if there are not errors', async () => {
+  it('does not show error callout in EditorLayer, if there are not errors', async () => {
     await renderConfigurationEdit();
 
     await screen.findByRole('button', { name: /actions/i });
@@ -84,19 +84,12 @@ describe('Fetching single configuration', () => {
 });
 
 describe('Fetching providers', () => {
-  it('Does not show error callout in Providers, if there are not errors', async () => {
+  it('does not show error callout in Providers, if there are not errors', async () => {
     await renderSingleConfiguration();
 
-    const actions = await screen.findByRole('button', { name: /actions/i });
-    user.click(actions);
+    const details = screen.getByRole('region', { name: /details/ });
 
-    const edit = screen.getByRole('button', { name: /edit/i });
-    user.click(edit);
-
-    const editor = screen.getByRole('dialog', { name: /edit/ });
-    expect(editor).toBeVisible();
-
-    await within(editor).findByRole('option', { name: 'Dematic EMS' });
+    await within(details).findByText(/dematic/i);
 
     expect(mockShowCallout).not.toBeCalledWith(expect.objectContaining({ type: 'error' }));
   });
