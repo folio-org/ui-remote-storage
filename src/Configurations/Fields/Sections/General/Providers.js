@@ -2,14 +2,19 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import { useField } from 'react-final-form';
 
-import { Select } from '@folio/stripes-acq-components';
+import { Select, useShowCallout } from '@folio/stripes-acq-components';
 import { useProvidersOptions } from './useProvidersOptions';
 
 const FIELD_NAME = 'providerName';
 
 export const Providers = props => {
   const { formatMessage } = useIntl();
-  const { options, isLoading } = useProvidersOptions();
+  const showCallout = useShowCallout();
+  const { options, isLoading } = useProvidersOptions({
+    onError: () => {
+      showCallout({ messageId: 'ui-remote-storage.error', type: 'error' });
+    },
+  });
 
   const byValidity = (value, { valid, invalid }) => (options?.some(option => option.value === value) ? valid : invalid);
 

@@ -2,12 +2,11 @@ import React from 'react';
 import { waitFor, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-
 import * as components from '@folio/stripes-acq-components';
 
 import { mockKy, server } from '../../test/net';
 import {
-  mockedConfigurations,
+  mockedConfigurations, mockedProviders,
   mockedSingleConfiguration,
   renderConfigurations,
 } from './setup';
@@ -37,40 +36,73 @@ jest.mock('@folio/stripes/core', () => ({
 }));
 
 
-const renderDetailsPane = async () => {
+const renderSingleConfiguration = async () => {
   renderConfigurations();
 
   const cell = await screen.findByRole('gridcell', { name: 'RS1' });
   user.click(cell);
 };
 
+const renderConfigurationEdit = () => {
+  renderConfigurations('/1/edit');
+};
+
+
+const mockShowCallout = jest.fn();
+
+beforeAll(async () => {
+  jest.spyOn(components, 'useShowCallout').mockImplementation(() => mockShowCallout);
+});
+
+afterEach(() => {
+  mockShowCallout.mockClear();
+});
 
 describe('Fetching single configuration', async () => {
-  const mockShowCallout = jest.fn();
-
-  beforeEach(async () => {
-    jest.spyOn(components, 'useShowCallout').mockImplementation(() => mockShowCallout);
-  });
-
-
-  it('Does not show error callout in DetailsPane, if there are not errors', async () => {
+  it('Does not show error callout in EditorLayer, if there are not errors', async () => {
     server.use(
       mockedConfigurations(),
       mockedSingleConfiguration(),
     );
 
-    await renderDetailsPane();
+    await renderConfigurationEdit();
 
     await waitFor(() => expect(mockShowCallout).not.toBeCalled());
   });
 
-  it('shows error callout in DetailsPane, in case of server error', async () => {
+  it('shows error callout in EditorLayer, in case of server error', async () => {
     server.use(
       mockedConfigurations(),
       mockedSingleConfiguration(true),
     );
 
-    await renderDetailsPane();
+    await renderConfigurationEdit();
+
+    await waitFor(() => expect(mockShowCallout).toBeCalledWith(expect.objectContaining({ type: 'error' })));
+  });
+});
+
+describe('Fetching providers', async () => {
+  it('Does not show error callout in Providers, if there are not errors', async () => {
+    server.use(
+      mockedProviders(),
+      mockedConfigurations(),
+      mockedSingleConfiguration(),
+    );
+
+    await renderSingleConfiguration();
+
+    await waitFor(() => expect(mockShowCallout).not.toBeCalled());
+  });
+
+  it('shows error callout in Providers, in case of server error', async () => {
+    server.use(
+      mockedProviders(true),
+      mockedConfigurations(),
+      mockedSingleConfiguration(),
+    );
+
+    await renderSingleConfiguration();
 
     await waitFor(() => expect(mockShowCallout).toBeCalledWith(expect.objectContaining({ type: 'error' })));
   });
