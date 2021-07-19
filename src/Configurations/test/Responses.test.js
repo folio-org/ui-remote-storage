@@ -98,7 +98,7 @@ describe('Fetching providers', () => {
 
     await within(editor).findByRole('option', { name: 'Dematic EMS' });
 
-    await waitFor(() => expect(mockShowCallout).not.toBeCalledWith(expect.objectContaining({ type: 'error' })));
+    expect(mockShowCallout).not.toBeCalledWith(expect.objectContaining({ type: 'error' }));
   });
 
   it('shows error callout in Providers, in case of server error', async () => {
