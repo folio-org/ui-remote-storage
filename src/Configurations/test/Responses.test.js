@@ -59,7 +59,7 @@ afterEach(() => {
   mockShowCallout.mockClear();
 });
 
-describe('Fetching single configuration', async () => {
+describe('Fetching single configuration', () => {
   it('Does not show error callout in EditorLayer, if there are not errors', async () => {
     server.use(
       mockedConfigurations(),
