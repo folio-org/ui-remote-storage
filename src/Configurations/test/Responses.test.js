@@ -83,7 +83,7 @@ describe('Fetching single configuration', async () => {
   });
 });
 
-describe('Fetching providers', async () => {
+describe('Fetching providers', () => {
   it('Does not show error callout in Providers, if there are not errors', async () => {
     server.use(
       mockedProviders(),
