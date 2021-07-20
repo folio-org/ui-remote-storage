@@ -36,9 +36,7 @@ const Details = () => {
 const Edit = () => {
   const history = useHistory();
   const { id } = useParams();
-  const handleClose = history.action === 'PUSH'
-    ? history.goBack
-    : () => history.push([CONFIGURATIONS_PATH, id].join('/'));
+  const handleClose = () => history.push([CONFIGURATIONS_PATH, id].join('/'));
 
   return <EditorLayer configurationId={id} onClose={handleClose} />;
 };
@@ -46,9 +44,7 @@ const Edit = () => {
 
 const Create = () => {
   const history = useHistory();
-  const handleClose = history.action === 'PUSH'
-    ? history.goBack
-    : () => history.push(CONFIGURATIONS_PATH);
+  const handleClose = () => history.push(CONFIGURATIONS_PATH);
 
   return <EditorLayer create onClose={handleClose} />;
 };
