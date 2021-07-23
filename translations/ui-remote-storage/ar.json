@@ -68,5 +68,5 @@
     "synchronization.schedule.info.hours": "يتم تشغيله كل {delay} {delay, plural, one {ساعة} other {ساعة}}",
     "synchronization.schedule.info.days": "يتم تشغيله كل {delay} {delay, plural, one {يوم} other {يوماً}}",
     "synchronization.schedule.info.weeks": "يتم تشغيله كل {delay} {delay, plural, one {أسبوع} other {أسبوعاً}}",
-    "synchronization.schedule.info.months": "يتم تشغليه كل {delay} {delay, plural, one {شهر} other {شهراً}}"
+    "synchronization.schedule.info.months": "يتم تشغليه كل {delay} {delay, plural, one {شهر}  two { شهراً } few { شهور }other  {شهراً}}"
 }
