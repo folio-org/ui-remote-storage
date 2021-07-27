@@ -21,12 +21,12 @@ const columnMapping = {
 
 const LocationField = ({ name, configurationId, ...props }) => {
   const showCallout = useShowCallout();
-  const { locations } = Locations.useByConfigurationId({
+  const { locations, isError } = Locations.useByConfigurationId({
     configurationId,
     onMappingsError: () => showCallout({ messageId: 'ui-remote-storage.error', type: 'error' }),
   });
 
-  return <Field name={name} component={LocationSelection} locations={locations} {...props} />;
+  return <Field name={name} component={LocationSelection} locations={locations} disabled={isError} {...props} />;
 };
 
 LocationField.propTypes = {
