@@ -4,58 +4,21 @@ import user from '@testing-library/user-event';
 import { configure } from '@testing-library/dom';
 import { byRole } from 'testing-library-selector';
 
-import { server, rest } from '../../test/net';
-import { url, renderAccessionTables } from './setup';
+import { server } from '../../test/net';
+import {
+  renderAccessionTables,
+  mockedConfigurations,
+  mockedLocations,
+  mockedMappingsLocations,
+} from './setup';
 
 configure({ asyncUtilTimeout: 2000 });
 
 beforeEach(() => {
   server.use(
-    rest.get(url.configurations.list, (req, res, ctx) => res(ctx.json({
-      configurations: [
-        {
-          id: '1',
-          name: 'CaiaSoft Configuration 1',
-          providerName: 'CAIA_SOFT',
-          accessionTimeUnit: 'minutes',
-          metadata: { 'createdDate': '2021-05-28T10:08:08.216+00:00' },
-        },
-      ],
-    }))),
-
-    rest.get(url.locations.list, (req, res, ctx) => res(ctx.json({
-      locations: [
-        {
-          id: 'L1',
-          name: 'Local location 1',
-        },
-        {
-          id: 'L2',
-          name: 'Local location 2',
-        },
-        {
-          id: 'R1',
-          name: 'Remote location 2',
-        },
-        {
-          id: 'R1',
-          name: 'Remote location 2',
-        },
-      ],
-    }))),
-
-    rest.get(url.extendedMappingsLocations.list, (req, res, ctx) => res(ctx.json({
-      mappings: [
-        {
-          finalLocationId: 'R1',
-          remoteConfigurationId: '1',
-          originalLocationId: 'L1',
-        },
-        {
-          originalLocationId: 'L2',
-        },
-      ],
-    }))),
+    mockedConfigurations(),
+    mockedLocations(),
+    mockedMappingsLocations(),
   );
 });
 
