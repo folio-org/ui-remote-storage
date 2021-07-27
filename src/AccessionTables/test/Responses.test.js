@@ -60,21 +60,27 @@ beforeAll(async () => {
 
 const editButton = byRole('button', { name: /edit/ });
 
-describe('Fetching locations', () => {
-  it('does not show error callout in Table, if there are not errors', async () => {
-    renderAccessionTables();
+const renderAccessionTablesWithError = async () => {
+  renderAccessionTables();
 
-    await screen.findByRole('row', { name: /Local location 1/ });
-
-    await waitFor(() => expect(mockShowCallout).not.toBeCalledWith(expect.objectContaining({ type: 'error' })));
+  await waitFor(() => {
+    expect(screen.getByText('ui-remote-storage.error')).toBeInTheDocument();
   });
+};
 
-  it('shows error callout in Table, in case of server error', async () => {
+describe('Fetching locations', () => {
+  it('shows error text in Table, in case of server error', async () => {
     server.use(mockedLocations({ error: true }));
 
-    renderAccessionTables();
+    await renderAccessionTablesWithError();
+  });
+});
 
-    await waitFor(() => expect(mockShowCallout).toBeCalledWith(expect.objectContaining({ type: 'error' })));
+describe('Fetching mappings location', () => {
+  it('shows error text in Table, in case of server error', async () => {
+    server.use(mockedMappingsLocations({ error: true }));
+
+    await renderAccessionTablesWithError();
   });
 });
 
