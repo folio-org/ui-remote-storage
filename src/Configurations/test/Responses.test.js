@@ -71,7 +71,7 @@ describe('Fetching single configuration', () => {
 
     await screen.findByRole('button', { name: /actions/i });
 
-    await waitFor(() => expect(mockShowCallout).not.toBeCalledWith(expect.objectContaining({ type: 'error' })));
+    expect(mockShowCallout).not.toBeCalledWith(expect.objectContaining({ type: 'error' }));
   });
 
   it('shows error callout in EditorLayer, in case of server error', async () => {
