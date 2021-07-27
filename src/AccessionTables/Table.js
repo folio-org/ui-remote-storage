@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { useStripes } from '@folio/stripes/core';
 import { EditableList } from '@folio/stripes/smart-components';
+import { useShowCallout } from '@folio/stripes-acq-components';
 
 import { LoadingCentered } from '../components';
 import { Locations, AccessionTable } from '../data';
@@ -19,7 +20,11 @@ const columnMapping = {
 
 
 const LocationField = ({ name, configurationId, ...props }) => {
-  const { locations } = Locations.useByConfigurationId(configurationId);
+  const showCallout = useShowCallout();
+  const { locations } = Locations.useByConfigurationId({
+    configurationId,
+    onMappingsError: () => showCallout({ messageId: 'ui-remote-storage.error', type: 'error' }),
+  });
 
   return <Field name={name} component={LocationSelection} locations={locations} {...props} />;
 };
@@ -32,8 +37,11 @@ LocationField.propTypes = {
 
 export const Table = ({ configurationId }) => {
   const stripes = useStripes();
+  const showCallout = useShowCallout();
   const { rows, update } = AccessionTable.useByConfigurationId(configurationId);
-  const { map: locationsMap } = Locations.useMap();
+  const { map: locationsMap } = Locations.useMap({
+    onError: () => showCallout({ messageId: 'ui-remote-storage.error', type: 'error' }),
+  });
 
   const handleEdit = item => update({ ...item, remoteConfigurationId: configurationId });
 
