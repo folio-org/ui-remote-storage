@@ -85,17 +85,28 @@ describe('Fetching mappings location', () => {
 });
 
 describe('Fetching mappings', () => {
-  it('shows error callout in LocationField, in case of server error', async () => {
+  let row;
+
+  beforeEach(async () => {
     server.use(mockedMappings({ error: true }));
 
     renderAccessionTables();
 
-    const row = await screen.findByRole('row', { name: /Local location 1/ });
+    row = await screen.findByRole('row', { name: /Local location 1/ });
 
     user.click(editButton.get(row));
+  });
 
+
+  it('shows error callout in LocationField, in case of server error', async () => {
     expect(within(row).getByRole('button', { expanded: false })).toBeVisible();
 
     await waitFor(() => expect(mockShowCallout).toBeCalledWith(expect.objectContaining({ type: 'error' })));
+  });
+
+  it('disable select button, in case of server error', async () => {
+    waitFor(() => {
+      expect(within(row).getByRole('button', { expanded: false })).toHaveAttribute('disabled');
+    });
   });
 });
