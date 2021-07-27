@@ -40,6 +40,7 @@ jest.mock('@folio/stripes/core', () => ({
   }),
 }));
 
+
 const mockShowCallout = jest.fn();
 
 beforeEach(() => {
