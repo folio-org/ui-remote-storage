@@ -60,12 +60,10 @@ beforeAll(async () => {
 
 const editButton = byRole('button', { name: /edit/ });
 
-const renderAccessionTablesWithError = async () => {
+const expectAccessionTablesError = async () => {
   renderAccessionTables();
 
-  await waitFor(() => {
-    expect(screen.getByText('ui-remote-storage.error')).toBeInTheDocument();
-  });
+  expect(await screen.findByText('ui-remote-storage.error')).toBeVisible();
 };
 
 describe('Fetching locations', () => {
