@@ -70,7 +70,7 @@ describe('Fetching locations', () => {
   it('shows error text in Table, in case of server error', async () => {
     server.use(mockedLocations({ error: true }));
 
-    await renderAccessionTablesWithError();
+    await expectAccessionTablesError();
   });
 });
 
@@ -78,7 +78,7 @@ describe('Fetching mappings location', () => {
   it('shows error text in Table, in case of server error', async () => {
     server.use(mockedMappingsLocations({ error: true }));
 
-    await renderAccessionTablesWithError();
+    await expectAccessionTablesError();
   });
 });
 
