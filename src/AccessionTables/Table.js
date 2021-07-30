@@ -4,8 +4,9 @@ import { FormattedMessage } from 'react-intl';
 
 import { useStripes } from '@folio/stripes/core';
 import { EditableList } from '@folio/stripes/smart-components';
+import { useShowCallout } from '@folio/stripes-acq-components';
 
-import { LoadingCentered } from '../components';
+import { ErrorCentered, LoadingCentered } from '../components';
 import { Locations, AccessionTable } from '../data';
 import { Location, LocationSelection } from './components';
 
@@ -19,9 +20,13 @@ const columnMapping = {
 
 
 const LocationField = ({ name, configurationId, ...props }) => {
-  const { locations } = Locations.useByConfigurationId(configurationId);
+  const showCallout = useShowCallout();
+  const { locations, isSuccess } = Locations.useByConfigurationId({
+    configurationId,
+    onError: () => showCallout({ messageId: 'ui-remote-storage.error', type: 'error' }),
+  });
 
-  return <Field name={name} component={LocationSelection} locations={locations} {...props} />;
+  return <Field name={name} component={LocationSelection} locations={locations} disabled={!isSuccess} {...props} />;
 };
 
 LocationField.propTypes = {
@@ -32,13 +37,16 @@ LocationField.propTypes = {
 
 export const Table = ({ configurationId }) => {
   const stripes = useStripes();
-  const { rows, update } = AccessionTable.useByConfigurationId(configurationId);
-  const { map: locationsMap } = Locations.useMap();
+  const { rows, update, isError: isExtendedMappingsError } = AccessionTable.useByConfigurationId(configurationId);
+  const { map: locationsMap, isError: isLocationError } = Locations.useMap();
 
   const handleEdit = item => update({ ...item, remoteConfigurationId: configurationId });
 
-  return (
-    <EditableList
+  const hasError = isLocationError || isExtendedMappingsError;
+
+  return hasError
+    ? <ErrorCentered />
+    : <EditableList
       contentData={rows}
       uniqueField="originalLocationId" // todo: file a bug in EditableList - ignored for choosing of onCreate, onUpdate
       isEmptyMessage={<LoadingCentered />}
@@ -67,8 +75,7 @@ export const Table = ({ configurationId }) => {
       onCreate={handleEdit}
       onUpdate={handleEdit} // only onCreate is really used because of the bug with `id` in EditableList
       validate={() => { /* validation function must be supplied */ }}
-    />
-  );
+      />;
 };
 
 Table.propTypes = {

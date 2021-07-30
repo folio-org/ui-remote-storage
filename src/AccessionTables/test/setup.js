@@ -35,6 +35,9 @@ export const url = {
   extendedMappingsLocations: {
     list: `${API_BASE}/extended-mappings/locations`,
   },
+  mappings: {
+    list: `${API_BASE}/mappings`,
+  },
 };
 
 export const renderAccessionTables = () => {
@@ -50,6 +53,84 @@ export const renderAccessionTables = () => {
     { wrapper: Provider },
   );
 };
+
+export const ERROR_RESPONSE = (req, res, ctx) => res(ctx.status(500));
+
+export const mockedConfigurations = ({ error } = {}) => rest.get(
+  url.configurations.list,
+  error
+    ? ERROR_RESPONSE
+    : (req, res, ctx) => res(ctx.json({
+      configurations: [
+        {
+          id: '1',
+          name: 'CaiaSoft Configuration 1',
+          providerName: 'CAIA_SOFT',
+          accessionTimeUnit: 'minutes',
+          metadata: { 'createdDate': '2021-05-28T10:08:08.216+00:00' },
+        },
+      ],
+    })),
+);
+
+export const mockedLocations = ({ error } = {}) => rest.get(
+  url.locations.list,
+  error
+    ? ERROR_RESPONSE
+    : (req, res, ctx) => res(ctx.json({
+      locations: [
+        {
+          id: 'L1',
+          name: 'Local location 1',
+        },
+        {
+          id: 'L2',
+          name: 'Local location 2',
+        },
+        {
+          id: 'R1',
+          name: 'Remote location 2',
+        },
+        {
+          id: 'R1',
+          name: 'Remote location 2',
+        },
+      ],
+    })),
+);
+
+export const mockedMappingsLocations = ({ error } = {}) => rest.get(
+  url.extendedMappingsLocations.list,
+  error
+    ? ERROR_RESPONSE
+    : (req, res, ctx) => res(ctx.json({
+      mappings: [
+        {
+          finalLocationId: 'R1',
+          remoteConfigurationId: '1',
+          originalLocationId: 'L1',
+        },
+        {
+          originalLocationId: 'L2',
+        },
+      ],
+    })),
+);
+
+export const mockedMappings = ({ error } = {}) => rest.get(
+  url.mappings.list,
+  error
+    ? ERROR_RESPONSE
+    : (req, res, ctx) => res(ctx.json({
+      mappings: [
+        {
+          configurationId: '1',
+          folioLocationId: 'L1',
+        },
+      ],
+    })),
+);
+
 
 beforeEach(() => {
   server.use(

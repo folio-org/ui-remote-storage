@@ -4,8 +4,8 @@ import { Locations, Mappings } from '../API';
 export const compare = (a, b) => a.name.localeCompare(b.name);
 
 
-export const useMap = () => {
-  const query = Locations.useListQuery();
+export const useMap = ({ onError } = {}) => {
+  const query = Locations.useListQuery({ onError });
   const map = Object.fromEntries(query.locations.map(l => [l.id, l]));
 
   return {
@@ -15,9 +15,9 @@ export const useMap = () => {
 };
 
 
-export const useByConfigurationId = configurationId => {
-  const mappingsQuery = Mappings.useListQuery();
-  const locationsQuery = Locations.useListQuery();
+export const useByConfigurationId = ({ configurationId, onError }) => {
+  const mappingsQuery = Mappings.useListQuery({ onError });
+  const locationsQuery = Locations.useListQuery({ onError });
 
   const configurations = Object.fromEntries(mappingsQuery.mappings.map(r => [r.folioLocationId, r.configurationId]));
 
