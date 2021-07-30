@@ -15,11 +15,9 @@ export const useMap = ({ onError } = {}) => {
 };
 
 
-export const useByConfigurationId = ({ configurationId, onMappingsError }) => {
-  const mappingsQuery = Mappings.useListQuery({
-    onError: onMappingsError,
-  });
-  const locationsQuery = Locations.useListQuery();
+export const useByConfigurationId = ({ configurationId, onError }) => {
+  const mappingsQuery = Mappings.useListQuery({ onError });
+  const locationsQuery = Locations.useListQuery({ onError });
 
   const configurations = Object.fromEntries(mappingsQuery.mappings.map(r => [r.folioLocationId, r.configurationId]));
 
