@@ -32,10 +32,6 @@
   "details.statusUrl": "Status URL",
   "details.credProperties": "Credential properties",
 
-  "name.DEMATIC_SD": "Dematic StagingDirector",
-  "name.DEMATIC_EMS": "Dematic EMS",
-  "name.CAIA_SOFT": "Caiasoft",
-
   "accession-workflow.title": "Accession holding workflow preference",
   "accession-workflow.tooltip": "Choose the appropriate accession workflow for holdings",
   "accession-workflow.error.undefined": "Accession holdings workflow preference must be selected to save configuration",

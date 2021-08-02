@@ -1,6 +1,7 @@
 import { FormattedMessage, FormattedDate } from 'react-intl';
 
 import { MultiColumnList } from '@folio/stripes/components';
+import { useShowCallout } from '@folio/stripes-acq-components';
 
 import { Configurations, Providers } from '../../data';
 import { ErrorCentered, LoadingCentered } from '../../components';
@@ -13,9 +14,13 @@ const columnMapping = {
 };
 
 export const List = props => {
+  const showCallout = useShowCallout();
+
   const query = Configurations.useListQuery();
 
-  const { map } = Providers.useMap();
+  const { map } = Providers.useMap({
+    onError: () => showCallout({ messageId: 'ui-remote-storage.error', type: 'error' }),
+  });
 
   const formatter = {
     providerName: item => map[item.providerName],
