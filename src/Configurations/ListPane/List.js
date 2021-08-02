@@ -14,7 +14,6 @@ const columnMapping = {
 };
 
 const formatter = {
-  providerName: item => <FormattedMessage id={`ui-remote-storage.name.${item.providerName}`} />,
   lastUpdate: item => (
     <FormattedDate
       value={item.metadata.updatedDate || item.metadata.createdDate}
