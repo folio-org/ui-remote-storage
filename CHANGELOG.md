@@ -9,6 +9,7 @@
 * [UIRS-54](https://issues.folio.org/browse/UIRS-54) Use `moment` library alternative
 * [UIRS-60](https://issues.folio.org/browse/UIRS-60) Make search in Locations Select highlight the search criterion in results
 * [UIRS-57](https://issues.folio.org/browse/UIRS-57) Add query failure error messages
+* [UIRS-53](https://issues.folio.org/browse/UIRS-53) Refactor providers-related code
 
 ## [2.0.0](https://github.com/folio-org/ui-remote-storage/tree/v2.0.0) (2021-06-17)
 [Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v1.0.0...v2.0.0)
