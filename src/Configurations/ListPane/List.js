@@ -2,9 +2,8 @@ import { FormattedMessage, FormattedDate } from 'react-intl';
 
 import { MultiColumnList } from '@folio/stripes/components';
 
-import { Configurations } from '../../data';
+import { Configurations, Providers } from '../../data';
 import { ErrorCentered, LoadingCentered } from '../../components';
-
 
 const visibleColumns = ['name', 'providerName', 'lastUpdate'];
 const columnMapping = {
@@ -13,20 +12,23 @@ const columnMapping = {
   lastUpdate: <FormattedMessage id="ui-remote-storage.list.lastUpdate" />,
 };
 
-const formatter = {
-  lastUpdate: item => (
-    <FormattedDate
-      value={item.metadata.updatedDate || item.metadata.createdDate}
-      timeZone="UTC"
-      year="numeric"
-      month="2-digit"
-      day="2-digit"
-    />
-  ),
-};
-
 export const List = props => {
   const query = Configurations.useListQuery();
+
+  const { map } = Providers.useMap();
+
+  const formatter = {
+    providerName: item => map[item.providerName],
+    lastUpdate: item => (
+      <FormattedDate
+        value={item.metadata.updatedDate || item.metadata.createdDate}
+        timeZone="UTC"
+        year="numeric"
+        month="2-digit"
+        day="2-digit"
+      />
+    ),
+  };
 
   if (query.isLoading) return <LoadingCentered />;
 
