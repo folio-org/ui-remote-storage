@@ -25,7 +25,7 @@
     "create.error": "Ocorreu um erro ao salvar a configuração de armazenamento remoto.",
     "synchronization.title": "Configurações de sincronização de dados",
     "synchronization.schedule.title": "Cronograma de sincronização de dados",
-    "synchronization.schedule.info": "Executa a cada {delay} {unit}",
+    "synchronization.schedule.info": "Executa a cada",
     "details.credProperties": "Propriedades de credencial",
     "edit.success.created": "A configuração de armazenamento remoto foi criada com sucesso.",
     "edit.success.changed": "A configuração de armazenamento remoto foi alterada com sucesso.",
@@ -61,9 +61,9 @@
     "months": "mês(es)",
     "synchronization.schedule.info.notSet": "Não configurado",
     "synchronization.schedule.info.notValid": "O valor deve ser um número inteiro positivo",
-    "synchronization.schedule.info.minutes": "Runs every {delay} {delay, plural, one {minute} other {minutes}}",
-    "synchronization.schedule.info.hours": "Runs every {delay} {delay, plural, one {hour} other {hours}}",
-    "synchronization.schedule.info.days": "Runs every {delay} {delay, plural, one {day} other {days}}",
-    "synchronization.schedule.info.weeks": "Runs every {delay} {delay, plural, one {week} other {weeks}}",
-    "synchronization.schedule.info.months": "Runs every {delay} {delay, plural, one {month} other {months}}"
+    "synchronization.schedule.info.minutes": "Executa a cada {delay} {delay, plural, one { minuto } other { minutos }}",
+    "synchronization.schedule.info.hours": "Executa a cada {delay} {delay, plural, one { hora } other { horas }}",
+    "synchronization.schedule.info.days": "Executa a cada {delay} {delay, plural, one {dia} other {dias}}",
+    "synchronization.schedule.info.weeks": "Executa a cada {delay} {delay, plural, one {semana} other {semana}}",
+    "synchronization.schedule.info.months": "Executa a cada {delay} {delay, plural, one {mês} other {meses}}"
 }
