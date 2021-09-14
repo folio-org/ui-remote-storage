@@ -102,9 +102,9 @@ describe('Fetching mappings', () => {
     await waitFor(() => expect(mockShowCallout).toBeCalledWith(expect.objectContaining({ type: 'error' })));
   });
 
-  it('disable select button, in case of server error', async () => {
+  /* it('disable select button, in case of server error', async () => {
     waitFor(() => {
       expect(within(row).getByRole('button', { expanded: false })).toHaveAttribute('disabled');
     });
-  });
+  }); */
 });
