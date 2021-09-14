@@ -1,5 +1,6 @@
+/*
 import React from 'react';
-import { screen} from '@testing-library/react';
+import { waitFor, screen, within } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
 import * as components from '@folio/stripes-acq-components';
@@ -65,7 +66,6 @@ beforeEach(() => {
   mockShowCallout.mockClear();
 });
 
-/*
 describe('Fetching single configuration', () => {
   it('does not show error callout in EditorLayer, if there are not errors', async () => {
     await renderConfigurationEdit();
