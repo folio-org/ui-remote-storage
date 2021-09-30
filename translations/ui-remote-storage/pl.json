@@ -25,7 +25,7 @@
     "create.error": "Konfiguracja zdalnego magazynu nie została utworzona.",
     "synchronization.title": "Ustawienia synchronizacji danych",
     "synchronization.schedule.title": "Harmonogram synchronizacji danych",
-    "synchronization.schedule.info": "Uruchamiane co {delay} {unit}",
+    "synchronization.schedule.info": "Uruchamiane co",
     "details.credProperties": "Credential properties",
     "edit.success.created": "Remote storage configuration was successfully created.",
     "edit.success.changed": "Remote storage configuration was successfully changed.",

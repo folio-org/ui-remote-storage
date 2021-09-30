@@ -61,9 +61,9 @@
     "months": "месяцев",
     "synchronization.schedule.info.notSet": "Не задано",
     "synchronization.schedule.info.notValid": "Значение должно быть положительным, не дробным числом",
-    "synchronization.schedule.info.minutes": "Выполняется раз в {delay, plural, =1 {минуту} one {# минуту} few {# минуты} other {# минут}}",
-    "synchronization.schedule.info.hours": "Выполняется раз в {delay, plural, =1 {час} one {{delay} час} few {{delay} часа} other {{delay} часов}}",
-    "synchronization.schedule.info.days": "Выполняется раз в {delay, plural, =1 {день} one {{delay} день} few {{delay} дня} other {{delay} дней}}",
-    "synchronization.schedule.info.weeks": "Выполняется раз в {delay, plural, =1 {неделю} one {{delay} неделю} few {{delay} недели} other {{delay} недель}}",
-    "synchronization.schedule.info.months": "Выполняется раз в {delay, plural, =1 {месяц} one {{delay} месяц} few {{delay} месяца} other {{delay} месяцев}}"
+    "synchronization.schedule.info.minutes": "Выполняется раз в {delay} {delay, plural, =1 {минуту} one {# минуту} few {# минуты} other {# минут}}",
+    "synchronization.schedule.info.hours": "Выполняется раз в {delay} {delay, plural, =1 {час} one {час} few {часа} other {часов}}",
+    "synchronization.schedule.info.days": "Выполняется раз в {delay} {delay, plural, =1 {день} one {день} few {дня} other {дней}}",
+    "synchronization.schedule.info.weeks": "Выполняется раз в {delay} {delay, plural, =1 {неделю} one {неделю} few {недели} other {недель}}",
+    "synchronization.schedule.info.months": "Выполняется раз в {delay} {delay, plural, =1 {месяц} one {месяц} few {месяца} other {месяцев}}"
 }

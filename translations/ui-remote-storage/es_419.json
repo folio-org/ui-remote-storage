@@ -61,9 +61,9 @@
     "months": "mes(es)",
     "synchronization.schedule.info.notSet": "No configurado",
     "synchronization.schedule.info.notValid": "El valor debe ser un número entero positivo",
-    "synchronization.schedule.info.minutes": "Se ejecuta cada {retraso} {retraso, plural, un {minuto} otros {minutos}}",
-    "synchronization.schedule.info.hours": "Se ejecuta cada {retraso} {retraso, plural, una {hora} otras {horas}}",
-    "synchronization.schedule.info.days": "Se ejecuta cada {retraso} {retraso, plural, un {día} otros {días}}",
-    "synchronization.schedule.info.weeks": "Vacío",
+    "synchronization.schedule.info.minutes": "Se ejecuta cada {delay} {delay, plural, one {minuto} other {minutos}}",
+    "synchronization.schedule.info.hours": "Se ejecuta cada {delay} {delay, plural, one {hora} other {horas}}",
+    "synchronization.schedule.info.days": "Se ejecuta cada {delay} {delay, plural, one {día} other {días}}",
+    "synchronization.schedule.info.weeks": "Runs every {delay} {delay, plural, one {week} other {weeks}}",
     "synchronization.schedule.info.months": "Runs every {delay} {delay, plural, one {month} other {months}}"
 }
