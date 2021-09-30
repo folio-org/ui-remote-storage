@@ -25,7 +25,7 @@
     "create.error": "Une erreur s'est produite lors de l'enregistrement de la configuration du stockage à distance.",
     "synchronization.title": "Paramètres de synchronisation des données",
     "synchronization.schedule.title": "Calendrier de synchronisation des données",
-    "synchronization.schedule.info": "S'exécute tou(te)s les {delay} {unit}",
+    "synchronization.schedule.info": "S'exécute tou(te)s les",
     "details.credProperties": "Propriétés des identifiants",
     "edit.success.created": "La configuration du stockage à distance a été créée avec succès.",
     "edit.success.changed": "La configuration du stockage à distance a été modifiée avec succès.",

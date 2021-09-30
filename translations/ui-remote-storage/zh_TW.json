@@ -25,7 +25,7 @@
     "create.error": "远程存储配置未创建。",
     "synchronization.title": "数据同步设置",
     "synchronization.schedule.title": "数据同步时间表",
-    "synchronization.schedule.info": "运行每{delay} {unit}",
+    "synchronization.schedule.info": "运行每个",
     "details.credProperties": "憑證屬性",
     "edit.success.created": "遠端儲存設定已成功建立。",
     "edit.success.changed": "遠端儲存設定已成功修改。",

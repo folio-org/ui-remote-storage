@@ -25,7 +25,7 @@
     "create.error": "Remote storage configuration was not created.",
     "synchronization.title": "Data synchronization settings",
     "synchronization.schedule.title": "Data synchronization schedule",
-    "synchronization.schedule.info": "Runs every {delay} {unit}",
+    "synchronization.schedule.info": "Runs every",
     "details.credProperties": "Credential properties",
     "edit.success.created": "Remote storage configuration was successfully created.",
     "edit.success.changed": "Remote storage configuration was successfully changed.",
