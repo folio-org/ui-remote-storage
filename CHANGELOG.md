@@ -2,15 +2,23 @@
 
 ## (IN PROGRESS)
 
+## [3.0.0](https://github.com/folio-org/ui-remote-storage/tree/v3.0.0) (2021-10-07)
+[Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v2.0.1...v3.0.0)
+
 * [UIRS-34](https://issues.folio.org/browse/UIRS-34) "Data synchronization schedule" field enhancements
 * [UIRS-62](https://issues.folio.org/browse/UIRS-34) "Data synchronization schedule" is there only for Dematic StagingDirector
 * [UIRS-59](https://issues.folio.org/browse/UIRS-59) Unify configurations sorting order over the module
-* [UIRS-56](https://issues.folio.org/browse/UIRS-56) Fix navigation on Configuration editor close
 * [UIRS-54](https://issues.folio.org/browse/UIRS-54) Use `moment` library alternative
 * [UIRS-60](https://issues.folio.org/browse/UIRS-60) Make search in Locations Select highlight the search criterion in results
 * [UIRS-57](https://issues.folio.org/browse/UIRS-57) Add query failure error messages
 * [UIRS-53](https://issues.folio.org/browse/UIRS-53) Refactor providers-related code
 * [UIRS-64](https://issues.folio.org/browse/UIRS-64) increment stripes to v7. Refs UIRS-64.
+
+## [2.0.1](https://github.com/folio-org/ui-remote-storage/tree/v2.0.1) (2021-07-20)
+[Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v2.0.0...v2.0.1)
+
+* [UIRS-51](https://issues.folio.org/browse/UIRS-51) Refine UI permissions, close editing UI functionality without suitable permission
+* [UIRS-56](https://issues.folio.org/browse/UIRS-56) The "Remote storage" page unavailable after creating a configuration with an existing name
 
 ## [2.0.0](https://github.com/folio-org/ui-remote-storage/tree/v2.0.0) (2021-06-17)
 [Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v1.0.0...v2.0.0)
