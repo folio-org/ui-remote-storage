@@ -2,6 +2,11 @@
 
 ## (IN PROGRESS)
 
+## [3.1.0](https://github.com/folio-org/ui-remote-storage/tree/v3.1.0) (2022-02-03)
+[Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v3.0.0...v3.1.0)
+
+* Translations update
+
 ## [3.0.0](https://github.com/folio-org/ui-remote-storage/tree/v3.0.0) (2021-10-07)
 [Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v2.0.1...v3.0.0)
 
