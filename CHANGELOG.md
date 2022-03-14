@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* [UIRS-72](https://issues.folio.org/browse/UIRS-72) Update translated display names for permissions in Remote Storage settings.
+
 ## [3.1.0](https://github.com/folio-org/ui-remote-storage/tree/v3.1.0) (2022-03-03)
 [Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v3.0.0...v3.1.0)
 

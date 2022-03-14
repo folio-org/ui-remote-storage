@@ -55,8 +55,8 @@
   "synchronization.schedule.info.weeks": "Runs every {delay} {delay, plural, one {week} other {weeks}}",
   "synchronization.schedule.info.months": "Runs every {delay} {delay, plural, one {month} other {months}}",
 
-  "permission.settings.remote-storages.view": "Remote storage: View",
-  "permission.settings.remote-storages.edit": "Remote storage: Create, edit, delete",
+  "permission.settings.remote-storages.view": "Settings (Remote storage): Can view remote storage settings",
+  "permission.settings.remote-storages.edit": "Settings (Remote storage): Can create, edit, delete remote storage settings",
 
   "editForm.title": "Edit {name}",
   "createForm.title": "Create configuration",
