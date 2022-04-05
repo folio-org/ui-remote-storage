@@ -57,7 +57,7 @@
     "minutes": "minute(s)",
     "hours": "hour(s)",
     "days": "day(s)",
-    "weeks": "week(s)",
+    "weeks": "settimana(e)",
     "months": "month(s)",
     "synchronization.schedule.info.notSet": "Not set",
     "synchronization.schedule.info.notValid": "Value must be positive integer",
