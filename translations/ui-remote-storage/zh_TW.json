@@ -33,7 +33,7 @@
     "select": "選擇",
     "loading": "載入中 ...",
     "details.name": "Remote storage name",
-    "details.name.error": "Name is required",
+    "details.name.error": "姓名為必填項",
     "details.providerName.error": "Provider is required",
     "returning-workflow.title": "Returning workflow preference",
     "returning-workflow.tooltip": "Select the System items are scanned into upon receipt at remote storage",
