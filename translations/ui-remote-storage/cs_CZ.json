@@ -37,7 +37,7 @@
     "details.providerName.error": "Provider is required",
     "returning-workflow.title": "Returning workflow preference",
     "returning-workflow.tooltip": "Select the System items are scanned into upon receipt at remote storage",
-    "returning-workflow.error.undefined": "Returning workflow preference must be selected to save configuration",
+    "returning-workflow.error.undefined": "Chcete-li uložit konfiguraci, je třeba vybrat předvolbu vracení pracovního postupu",
     "returning-workflow.option.folio": "Items received at remote storage scanned into FOLIO",
     "returning-workflow.option.ciasoft": "Items received at remote storage scanned into CaiaSoft",
     "accession-workflow.title": "Upřednostnění pracovního postupu holdingů",
