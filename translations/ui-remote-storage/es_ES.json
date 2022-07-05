@@ -59,7 +59,7 @@
     "days": "day(s)",
     "weeks": "week(s)",
     "months": "month(s)",
-    "synchronization.schedule.info.notSet": "Not set",
+    "synchronization.schedule.info.notSet": "No establecido",
     "synchronization.schedule.info.notValid": "Value must be positive integer",
     "synchronization.schedule.info.minutes": "Runs every {delay} {delay, plural, one {minute} other {minutes}}",
     "synchronization.schedule.info.hours": "Runs every {delay} {delay, plural, one {hour} other {hours}}",
