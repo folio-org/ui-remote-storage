@@ -80,6 +80,7 @@
     "lint": "eslint .",
     "start": "yarn stripes serve",
     "test": "jest --ci --coverage",
+    "build-mod-descriptor": "stripes mod descriptor --full --strict | jq '.[]' > module-descriptor.json ",
     "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-remote-storage ./translations/ui-remote-storage/compiled"
   },
   "devDependencies": {
