@@ -1,8 +1,12 @@
 # Change history for ui-remote-storage
 
 ## (IN PROGRESS)
+
+## [3.2.1](https://github.com/folio-org/ui-remote-storage/tree/v3.2.1) (2022-07-22)
+[Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v3.2.1...v3.2.0)
+
 * [UIRS-74](https://issues.folio.org/browse/UIRS-74) Remove react-hot-loader from package.json
-* [UIRS-75](https://issues.folio.org/browse/UIRS-75) Rreplace babel-eslint with @babel/eslint-parser
+* [UIRS-75](https://issues.folio.org/browse/UIRS-75) Replace babel-eslint with @babel/eslint-parser
 
 ## [3.2.0](https://github.com/folio-org/ui-remote-storage/tree/v3.2.0) (2022-07-07)
 [Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v3.1.0...v3.2.0)
