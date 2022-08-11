@@ -1,6 +1,7 @@
 # Change history for ui-remote-storage
 
 ## (IN PROGRESS)
+* [UIRS-82](https://issues.folio.org/browse/UIRS-82) Created locations not displaying in accession table
 
 ## [3.2.1](https://github.com/folio-org/ui-remote-storage/tree/v3.2.1) (2022-07-22)
 [Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v3.2.1...v3.2.0)
