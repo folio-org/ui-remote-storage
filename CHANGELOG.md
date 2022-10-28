@@ -1,11 +1,11 @@
 # Change history for ui-remote-storage
 
 ## (IN PROGRESS)
-* [UIRS-88](https://issues.folio.org/browse/UIRS-88) Move @babel/eslint-parser to devDependencies
 
-## [3.3.0](https://github.com/folio-org/ui-remote-storage/tree/v3.3.0) (2022-10-26)
+## [3.3.0](https://github.com/folio-org/ui-remote-storage/tree/v3.3.0) (2022-10-28)
 [Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v3.2.2...v3.3.0)
 
+* [UIRS-88](https://issues.folio.org/browse/UIRS-88) Move @babel/eslint-parser to devDependencies
 * Translations update
 
 ## [3.2.2](https://github.com/folio-org/ui-remote-storage/tree/v3.2.2) (2022-08-13)
