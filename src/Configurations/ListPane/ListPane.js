@@ -7,7 +7,7 @@ import { Pane } from '@folio/stripes/components';
 import { List } from './List';
 import { Menu } from './Menu';
 
-export const ListPane = ({ defaultWidth = '50%', onCreate, openDetails, ...rest }) => (
+export const ListPane = ({ defaultWidth = 'fill', onCreate, openDetails, ...rest }) => (
   <Pane
     paneTitle={<FormattedMessage id="ui-remote-storage.configurations.title" />}
     defaultWidth={defaultWidth}
