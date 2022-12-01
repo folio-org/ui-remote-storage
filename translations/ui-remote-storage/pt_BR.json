@@ -12,7 +12,7 @@
     "details.statusUrl": "URL de status",
     "editForm.title": "Editar {name}",
     "createForm.title": "Criar configuração",
-    "confirmationModal.edit.message": "Tem certeza de que deseja alterar a configuração de armazenamento remoto?",
+    "confirmationModal.edit.message": "Tem certeza de que deseja criar esta configuração de armazenamento remoto?",
     "confirmationModal.create.message": "Tem certeza de que deseja salvar a configuração de armazenamento remoto?",
     "confirmationModal.save": "Salvar",
     "cannotDeleteModal.header": "Não é possível excluir o local de armazenamento remoto",
