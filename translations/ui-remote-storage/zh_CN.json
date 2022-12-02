@@ -12,7 +12,7 @@
     "details.statusUrl": "状态网址",
     "editForm.title": "编辑 {name}",
     "createForm.title": "创建配置",
-    "confirmationModal.edit.message": "确定要更改远程存储配置吗？",
+    "confirmationModal.edit.message": "确定要创建本远程存储配置？",
     "confirmationModal.create.message": "确定要保存远程存储配置吗？",
     "confirmationModal.save": "保存",
     "cannotDeleteModal.header": "无法删除远程存储馆藏地",
