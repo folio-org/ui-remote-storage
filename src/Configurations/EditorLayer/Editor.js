@@ -17,7 +17,7 @@ export const Editor = ({ title, isLoading, initialValues, onSubmit, onClose, ...
     .catch(() => ({ [FORM_ERROR]: true })); // to make submitSucceeded: false;
 
   const modalMessage = initialValues.name
-    ? intl.formatMessage({ id: 'ui-remote-storage.confirmationModal.create.message' })
+    ? intl.formatMessage({ id: 'ui-remote-storage.confirmationModal.change.message' })
     : intl.formatMessage({ id: 'ui-remote-storage.confirmationModal.edit.message' });
 
   return (
