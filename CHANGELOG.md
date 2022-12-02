@@ -2,12 +2,12 @@
 
 ## (IN PROGRESS)
 
-## [3.3.2](https://github.com/folio-org/ui-remote-storage/tree/v3.3.0) (2022-12-02)
+## [3.3.2](https://github.com/folio-org/ui-remote-storage/tree/v3.3.2) (2022-12-02)
 [Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v3.3.1...v3.3.2)
 
 * Translations update
 
-## [3.3.1](https://github.com/folio-org/ui-remote-storage/tree/v3.3.0) (2022-12-02)
+## [3.3.1](https://github.com/folio-org/ui-remote-storage/tree/v3.3.1) (2022-12-02)
 [Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v3.3.0...v3.3.1)
 
 *[UIRS-89](https://issues.folio.org/browse/UIRS-89) Incorrect success toast when creating remote storage configurations
