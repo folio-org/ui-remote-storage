@@ -14,7 +14,6 @@
     "createForm.title": "Create configuration",
     "confirmationModal.edit.message": "Are you sure you want to create this remote storage configuration?",
     "confirmationModal.create.message": "Are you sure you want to save the remote storage configuration?",
-    "confirmationModal.change.message": "Are you sure you want to change the remote storage configuration?",
     "confirmationModal.save": "Save",
     "cannotDeleteModal.header": "Cannot delete Remote Storage location",
     "cannotDeleteModal.message": "One or more holdings and/or item records are associated with this location and cannot be deleted.",
