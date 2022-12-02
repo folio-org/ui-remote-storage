@@ -32,7 +32,9 @@ jest.mock(
 
 const renderRemoteStorageForm = ({
   title = 'title',
-  initialValues,
+  initialValues = {
+    name: 'test',
+  },
   onSubmit = jest.fn(),
   onClose = jest.fn(),
   pristine = true,
