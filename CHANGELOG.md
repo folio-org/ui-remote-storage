@@ -4,6 +4,7 @@
 
 *[UIRS-89](https://issues.folio.org/browse/UIRS-89) Incorrect success toast when creating remote storage configurations
 *[UIRS-90](https://issues.folio.org/browse/UIRS-90) 4th pane appearing when nothing is selected in 3rd
+*[UIRS-91](https://issues.folio.org/browse/UIRS-91) Incorrect success toast when editing remote storage configurations
 
 ## [3.3.0](https://github.com/folio-org/ui-remote-storage/tree/v3.3.0) (2022-10-28)
 [Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v3.2.2...v3.3.0)
