@@ -63,6 +63,8 @@
 
   "confirmationModal.edit.message": "Are you sure you want to create this remote storage configuration?",
   "confirmationModal.create.message": "Are you sure you want to save the remote storage configuration?",
+  "confirmationModal.configuration.edit.message": "Are you sure you want to change the remote storage configuration?",
+  "confirmationModal.configuration.create.message": "Are you sure you want to create the remote storage configuration?",
   "confirmationModal.save": "Save",
 
   "cannotDeleteModal.header": "Cannot delete Remote Storage location",
