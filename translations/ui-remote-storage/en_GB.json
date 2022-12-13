@@ -12,7 +12,7 @@
     "details.statusUrl": "Status URL",
     "editForm.title": "Edit {name}",
     "createForm.title": "Create configuration",
-    "confirmationModal.edit.message": "Are you sure you want to create this remote storage configuration?",
+    "confirmationModal.edit.message": "Are you sure you want to change the remote storage configuration?",
     "confirmationModal.create.message": "Are you sure you want to save the remote storage configuration?",
     "confirmationModal.save": "Save",
     "cannotDeleteModal.header": "Cannot delete Remote Storage location",
@@ -65,5 +65,7 @@
     "synchronization.schedule.info.hours": "Runs every {delay} {delay, plural, one {hour} other {hours}}",
     "synchronization.schedule.info.days": "Runs every {delay} {delay, plural, one {day} other {days}}",
     "synchronization.schedule.info.weeks": "Runs every {delay} {delay, plural, one {week} other {weeks}}",
-    "synchronization.schedule.info.months": "Runs every {delay} {delay, plural, one {month} other {months}}"
+    "synchronization.schedule.info.months": "Runs every {delay} {delay, plural, one {month} other {months}}",
+    "confirmationModal.configuration.edit.message": "Are you sure you want to change the remote storage configuration?",
+    "confirmationModal.configuration.create.message": "Are you sure you want to create the remote storage configuration?"
 }

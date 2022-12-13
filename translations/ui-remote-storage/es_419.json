@@ -65,5 +65,7 @@
     "synchronization.schedule.info.hours": "Se ejecuta cada {delay} {delay, plural, one {hora} other {horas}}",
     "synchronization.schedule.info.days": "Se ejecuta cada {delay} {delay, plural, one {día} other {días}}",
     "synchronization.schedule.info.weeks": "Runs every {delay} {delay, plural, one {week} other {weeks}}",
-    "synchronization.schedule.info.months": "Runs every {delay} {delay, plural, one {month} other {months}}"
+    "synchronization.schedule.info.months": "Runs every {delay} {delay, plural, one {month} other {months}}",
+    "confirmationModal.configuration.edit.message": "¿Estás seguro de que quieres cambiar la configuración del almacenamiento remoto?",
+    "confirmationModal.configuration.create.message": "¿Está seguro de que desea crear la configuración de almacenamiento remoto?"
 }
