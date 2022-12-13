@@ -65,5 +65,7 @@
     "synchronization.schedule.info.hours": "Běží každou {delay} {delay, plural, one {hodinu} other {hodiny}}",
     "synchronization.schedule.info.days": "Spouští se každý {delay} {delay, plural, one {den} other {dny}}",
     "synchronization.schedule.info.weeks": "Spouští se každý {delay} {delay, plural, one {týden} other {týdny}}",
-    "synchronization.schedule.info.months": "Spouští se každé {delay} {delay, plural, one {měsíc} other {měsíce}}"
+    "synchronization.schedule.info.months": "Spouští se každé {delay} {delay, plural, one {měsíc} other {měsíce}}",
+    "confirmationModal.configuration.edit.message": "Opravdu chcete změnit konfiguraci vzdáleného úložiště?",
+    "confirmationModal.configuration.create.message": "Opravdu chcete vytvořit konfiguraci vzdáleného úložiště?"
 }
