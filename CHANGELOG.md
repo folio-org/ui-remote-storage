@@ -1,6 +1,10 @@
 # Change history for ui-remote-storage
 
-## (4.0.0 IN PROGRESS)
+## (4.0.1 IN PROGRESS)
+
+## [4.0.0](https://github.com/folio-org/ui-remote-storage/tree/v4.0.0) (2022-02-24)
+[Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v3.3.2...v4.0.0)
+
 * [UIRS-94](https://issues.folio.org/browse/UIRS-94) Bump stripes to 8.0.0 for Orchid/2023-R1.
 * [UIRS-95](https://issues.folio.org/browse/UIRS-95) Upgrade `react-redux` to `v8` and `stripes-acq-components` to `v4`
 
