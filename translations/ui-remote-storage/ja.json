@@ -59,7 +59,7 @@
     "days": "day(s)",
     "weeks": "week(s)",
     "months": "month(s)",
-    "synchronization.schedule.info.notSet": "Not set",
+    "synchronization.schedule.info.notSet": "未設定",
     "synchronization.schedule.info.notValid": "値は正の整数でなければなりません",
     "synchronization.schedule.info.minutes": "Runs every {delay} {delay, plural, one {minute} other {minutes}}",
     "synchronization.schedule.info.hours": "Runs every {delay} {delay, plural, one {hour} other {hours}}",
