@@ -41,7 +41,7 @@
     "returning-workflow.option.folio": "Jednotky přijaté ve vzdáleném úložišti načtené do FOLIO",
     "returning-workflow.option.ciasoft": "Jednotky přijaté na vzdáleném úložišti načtené do CaiaSoft",
     "accession-workflow.title": "Upřednostnění pracovního postupu holdingů",
-    "accession-workflow.tooltip": "Vyberte vhodný pracovní postup přistoupení pro holdingy",
+    "accession-workflow.tooltip": "Vybrat vhodný pracovní postup přistoupení pro holdingy",
     "accession-workflow.error.undefined": "Chcete-li uložit konfiguraci, musí být vybrána předvolba pracovního postupu přístupových holdingů",
     "accession-workflow.option.change": "Změna trvalé lokace",
     "accession-workflow.option.duplicate": "Duplikovat holdingy",
