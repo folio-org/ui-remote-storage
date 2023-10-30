@@ -1,5 +1,5 @@
 {
-    "meta.title": "Almacenamiento remoto",
+    "meta.title": "Remote storage",
     "list.name": "Name",
     "list.providerName": "Provider",
     "list.lastUpdate": "Last Update",
@@ -44,9 +44,9 @@
     "accession-workflow.tooltip": "Choose the appropriate accession workflow for holdings",
     "accession-workflow.error.undefined": "Accession holdings workflow preference must be selected to save configuration",
     "accession-workflow.option.change": "Change permanent location",
-    "accession-workflow.option.duplicate": "Fondos duplicados",
+    "accession-workflow.option.duplicate": "Duplicate holdings",
     "error": "Something went wrong",
-    "configurations.title": "Configuraciones",
+    "configurations.title": "Configurations",
     "permission.settings.remote-storages.view": "Settings (Remote storage): Can view remote storage settings",
     "permission.settings.remote-storages.edit": "Settings (Remote storage): Can create, edit, delete remote storage settings",
     "accession-tables.title": "Accession tables",
@@ -59,13 +59,13 @@
     "days": "day(s)",
     "weeks": "week(s)",
     "months": "month(s)",
-    "synchronization.schedule.info.notSet": "No establecido",
+    "synchronization.schedule.info.notSet": "Not set",
     "synchronization.schedule.info.notValid": "Value must be positive integer",
     "synchronization.schedule.info.minutes": "Runs every {delay} {delay, plural, one {minute} other {minutes}}",
     "synchronization.schedule.info.hours": "Runs every {delay} {delay, plural, one {hour} other {hours}}",
     "synchronization.schedule.info.days": "Runs every {delay} {delay, plural, one {day} other {days}}",
     "synchronization.schedule.info.weeks": "Runs every {delay} {delay, plural, one {week} other {weeks}}",
     "synchronization.schedule.info.months": "Runs every {delay} {delay, plural, one {month} other {months}}",
-    "confirmationModal.configuration.edit.message": "¿Estás seguro de que quieres cambiar la configuración del almacenamiento remoto?",
-    "confirmationModal.configuration.create.message": "¿Está seguro de que desea crear la configuración de almacenamiento remoto?"
+    "confirmationModal.configuration.edit.message": "Are you sure you want to change the remote storage configuration?",
+    "confirmationModal.configuration.create.message": "Are you sure you want to create the remote storage configuration?"
 }
