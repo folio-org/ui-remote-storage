@@ -30,7 +30,7 @@
     "edit.success.created": "Remote storage configuration was successfully created.",
     "edit.success.changed": "Remote storage configuration was successfully changed.",
     "edit.error": "Error occurred while saving Remote storage configuration.",
-    "select": "Select",
+    "select": "Wybierz",
     "loading": "Loading...",
     "details.name": "Remote storage name",
     "details.name.error": "Name is required",
