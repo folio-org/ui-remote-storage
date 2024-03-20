@@ -119,7 +119,7 @@
     "testing-library-selector": "^0.1.3"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "^5.0.0",
+    "@folio/stripes-acq-components": "~5.1.0",
     "lodash": "^4.17.5",
     "prop-types": "^15.5.10",
     "query-string": "^6.1.0",
