@@ -1,8 +1,13 @@
 # Change history for ui-remote-storage
 
-## (6.0.0 IN PROGRESS)
+## (5.2.0 IN PROGRESS)
 
-## [5.0.0](https://github.com/folio-org/ui-remote-storage/tree/v5.0.0) (2022-10-12)
+##[5.1.0](https://github.com/folio-org/ui-remote-storage/tree/v5.1.0) (2024-03-20)
+[Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v5.0.0...v5.1.0)
+
+* Several translations have been introduced/updated.
+
+## [5.0.0](https://github.com/folio-org/ui-remote-storage/tree/v5.0.0) (2023-10-12)
 [Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v4.0.0...v5.0.0)
 
 * [UIRS-102](https://issues.folio.org/browse/UIRS-102) *BREAKING* Upgrade React to v18.
