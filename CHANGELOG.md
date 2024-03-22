@@ -2,6 +2,8 @@
 
 ## (5.2.0 IN PROGRESS)
 
+* Use Save & close button label stripes-component translation key. Refs UIRS-109.
+
 ##[5.1.0](https://github.com/folio-org/ui-remote-storage/tree/v5.1.0) (2024-03-20)
 [Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v5.0.0...v5.1.0)
 
