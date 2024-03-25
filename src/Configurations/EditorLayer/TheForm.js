@@ -14,7 +14,7 @@ const FormComponent = ({ pristine, submitting, onClose, handleSubmit, title, isL
 
   const paneFooter = useMemo(() => (
     <FormFooter
-      label={intl.formatMessage({ id: 'ui-remote-storage.saveAndClose' })}
+      label={intl.formatMessage({ id: 'stripes-components.saveAndClose' })}
       handleSubmit={handleSubmit}
       pristine={pristine}
       submitting={submitting}
