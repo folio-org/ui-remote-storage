@@ -1,6 +1,7 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
+import { TitleManager } from '@folio/stripes/core';
 import { Settings } from '@folio/stripes/smart-components';
 import { Configurations } from './Configurations';
 import { AccessionTables } from './AccessionTables';
@@ -20,13 +21,21 @@ const pages = [
   },
 ];
 
-const RemoteStorageSettings = (props) => (
-  <Settings
-    {...props}
-    pages={pages}
-    paneTitle={<FormattedMessage id="ui-remote-storage.meta.title" />}
-    navPaneWidth="20%"
-  />
-);
+const RemoteStorageSettings = (props) => {
+  const intl = useIntl();
+
+  return (
+  <TitleManager
+    page={intl.formatMessage({ id: 'ui-remote-storage.settings.title' })}
+  >
+    <Settings
+      {...props}
+      pages={pages}
+      paneTitle={<FormattedMessage id="ui-remote-storage.meta.title" />}
+      navPaneWidth="20%"
+    />
+  </TitleManager>
+)
+};
 
 export default RemoteStorageSettings;

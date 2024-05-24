@@ -33,6 +33,9 @@ jest.mock('@folio/stripes/core', () => ({
     hasPerm: jest.fn().mockReturnValue(true),
   }),
   IfPermission: props => <>{props.children}</>,
+  TitleManager: jest.fn(({ children, ...rest }) => (
+    <span {...rest}>{children}</span>
+  )),
 }));
 
 

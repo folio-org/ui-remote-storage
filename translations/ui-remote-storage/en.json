@@ -7,6 +7,7 @@
   "weeks": "week(s)",
   "months": "month(s)",
 
+  "settings.title": "Remote storage settings",
   "configurations.title": "Configurations",
   "accession-tables.title": "Accession tables",
   "accession-tables.empty": "CaiaSoft Accession tables are available after remote storage has been configured.",

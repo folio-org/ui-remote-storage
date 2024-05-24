@@ -4,6 +4,13 @@ import { render, screen } from '@testing-library/react';
 
 import RemoteStorageSettings from './RemoteStorageSettings';
 
+jest.mock('@folio/stripes/core', () => ({
+  ...jest.requireActual('@folio/stripes/core'),
+  TitleManager: jest.fn(({ children, ...rest }) => (
+    <span {...rest}>{children}</span>
+  )),
+}));
+
 jest.mock('@folio/stripes/smart-components', () => ({
   ...jest.requireActual('@folio/stripes/smart-components'),
   Settings: jest.fn(({
