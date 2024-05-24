@@ -7,6 +7,9 @@ import { Provider, mockKy } from '../../test/net';
 jest.mock('@folio/stripes/core', () => ({
   ...jest.requireActual('@folio/stripes/core'),
   useOkapiKy: () => mockKy,
+  TitleManager: jest.fn(({ children, ...rest }) => (
+    <span {...rest}>{children}</span>
+  )),
 }));
 
 

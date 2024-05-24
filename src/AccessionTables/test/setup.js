@@ -23,6 +23,9 @@ jest.mock('@folio/stripes/core', () => ({
   useStripes: () => ({
     hasPerm: jest.fn().mockReturnValue(true),
   }),
+  TitleManager: jest.fn(({ children, ...rest }) => (
+    <span {...rest}>{children}</span>
+  )),
 }));
 
 export const url = {

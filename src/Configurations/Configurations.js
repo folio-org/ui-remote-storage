@@ -1,7 +1,8 @@
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Route, Switch, useHistory, useParams } from 'react-router-dom';
 
 import { Paneset } from '@folio/stripes/components';
+import { TitleManager } from '@folio/stripes/core';
 
 import { CONFIGURATIONS_PATH, ACCESSION_TABLES_PATH } from '../const';
 import { ListPane } from './ListPane';
@@ -50,15 +51,23 @@ const Create = () => {
 };
 
 
-export const Configurations = () => (
-  <Paneset paneTitle={<FormattedMessage id="ui-remote-storage.configurations.title" />}>
-    <Route path={CONFIGURATIONS_PATH} component={List} />
-    <Switch>
-      <Route path={`${CONFIGURATIONS_PATH}/create`} component={Create} />
-      <Route path={`${CONFIGURATIONS_PATH}/:id`}>
-        <Details />
-        <Route path={`${CONFIGURATIONS_PATH}/:id/edit`} component={Edit} />
-      </Route>
-    </Switch>
-  </Paneset>
-);
+export const Configurations = () => {
+  const intl = useIntl();
+
+  return (
+    <TitleManager
+      record={intl.formatMessage({ id: 'ui-remote-storage.configurations.title' })}
+    >
+      <Paneset paneTitle={<FormattedMessage id="ui-remote-storage.configurations.title" />}>
+        <Route path={CONFIGURATIONS_PATH} component={List} />
+        <Switch>
+          <Route path={`${CONFIGURATIONS_PATH}/create`} component={Create} />
+          <Route path={`${CONFIGURATIONS_PATH}/:id`}>
+            <Details />
+            <Route path={`${CONFIGURATIONS_PATH}/:id/edit`} component={Edit} />
+          </Route>
+        </Switch>
+      </Paneset>
+    </TitleManager>
+  )
+};
