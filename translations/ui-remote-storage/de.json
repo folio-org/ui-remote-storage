@@ -66,5 +66,6 @@
     "synchronization.schedule.info.weeks": "Läuft alle {delay} {delay, plural, one { Woche } other { Wochen }}",
     "synchronization.schedule.info.months": "Läuft alle {delay} {delay, plural, one { Monat } other { Monate }}",
     "confirmationModal.configuration.edit.message": "Are you sure you want to change the remote storage configuration?",
-    "confirmationModal.configuration.create.message": "Are you sure you want to create the remote storage configuration?"
+    "confirmationModal.configuration.create.message": "Are you sure you want to create the remote storage configuration?",
+    "settings.title": "Remote storage settings"
 }

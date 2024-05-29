@@ -66,5 +66,6 @@
     "synchronization.schedule.info.weeks": "Executa a cada {delay} {delay, plural, one {semana} other {semana}}",
     "synchronization.schedule.info.months": "Executa a cada {delay} {delay, plural, one {mês} other {meses}}",
     "confirmationModal.configuration.edit.message": "Tem certeza de que deseja alterar a configuração de armazenamento remoto?",
-    "confirmationModal.configuration.create.message": "Tem certeza de que deseja criar a configuração de armazenamento remoto?"
+    "confirmationModal.configuration.create.message": "Tem certeza de que deseja criar a configuração de armazenamento remoto?",
+    "settings.title": "Configurações de armazenamento remoto"
 }

@@ -66,5 +66,6 @@
     "synchronization.schedule.info.weeks": "运行每{delay} {delay, plural, one {周} other {周}}",
     "synchronization.schedule.info.months": "运行每{delay} {delay, plural, one {月} other {月}}",
     "confirmationModal.configuration.edit.message": "确定要更改远程存储配置吗？",
-    "confirmationModal.configuration.create.message": "确定要创建远程存储配置吗？"
+    "confirmationModal.configuration.create.message": "确定要创建远程存储配置吗？",
+    "settings.title": "Remote storage settings"
 }
