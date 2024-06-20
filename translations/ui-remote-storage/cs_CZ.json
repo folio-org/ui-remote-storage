@@ -67,5 +67,5 @@
     "synchronization.schedule.info.months": "Spustit každý {delay} {delay, plural, one {měsíc} other {měsíce}}",
     "confirmationModal.configuration.edit.message": "Opravdu chcete změnit konfiguraci vzdáleného úložiště?",
     "confirmationModal.configuration.create.message": "Opravdu chcete vytvořit konfiguraci vzdáleného úložiště?",
-    "settings.title": "Remote storage settings"
+    "settings.title": "Nastavení vzdáleného úložiště"
 }
