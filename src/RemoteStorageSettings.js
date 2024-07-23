@@ -25,17 +25,17 @@ const RemoteStorageSettings = (props) => {
   const intl = useIntl();
 
   return (
-  <TitleManager
-    page={intl.formatMessage({ id: 'ui-remote-storage.settings.title' })}
-  >
-    <Settings
-      {...props}
-      pages={pages}
-      paneTitle={<FormattedMessage id="ui-remote-storage.meta.title" />}
-      navPaneWidth="20%"
-    />
-  </TitleManager>
-)
+    <TitleManager
+      page={intl.formatMessage({ id: 'ui-remote-storage.settings.title' })}
+    >
+      <Settings
+        {...props}
+        pages={pages}
+        paneTitle={<FormattedMessage id="ui-remote-storage.meta.title" />}
+        navPaneWidth="20%"
+      />
+    </TitleManager>
+  );
 };
 
 export default RemoteStorageSettings;

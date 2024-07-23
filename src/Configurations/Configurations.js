@@ -69,5 +69,5 @@ export const Configurations = () => {
         </Switch>
       </Paneset>
     </TitleManager>
-  )
+  );
 };

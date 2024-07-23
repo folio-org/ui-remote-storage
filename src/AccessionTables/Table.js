@@ -47,34 +47,34 @@ export const Table = ({ configurationId }) => {
   return hasError
     ? <ErrorCentered />
     : <EditableList
-      contentData={rows}
-      uniqueField="originalLocationId" // todo: file a bug in EditableList - ignored for choosing of onCreate, onUpdate
-      isEmptyMessage={<LoadingCentered />}
-      canCreate={false} // does not really help with "Create" button, just disables it
-      actionProps={{
-        create: () => ({ style: { display: 'none' } }), // to get rid of "Create" button
-      }}
-      readOnlyFields={['originalLocationId']}
-      visibleFields={['originalLocationId', 'finalLocationId']}
-      editable={stripes.hasPerm(EDIT_PERMISSION)}
-      actionSuppression={{ delete: () => true, edit: () => false }}
-      columnMapping={columnMapping}
-      fieldComponents={{
-        finalLocationId: item => (
-          <LocationField
-            {...item.fieldProps}
-            configurationId={configurationId}
-            marginBottom0
-          />
-        ),
-      }}
-      formatter={{
-        originalLocationId: item => <Location location={locationsMap[item.originalLocationId]} />,
-        finalLocationId: item => <Location location={locationsMap[item.finalLocationId]} />,
-      }}
-      onCreate={handleEdit}
-      onUpdate={handleEdit} // only onCreate is really used because of the bug with `id` in EditableList
-      validate={() => { /* validation function must be supplied */ }}
+        contentData={rows}
+        uniqueField="originalLocationId" // todo: file a bug in EditableList - ignored for choosing of onCreate, onUpdate
+        isEmptyMessage={<LoadingCentered />}
+        canCreate={false} // does not really help with "Create" button, just disables it
+        actionProps={{
+          create: () => ({ style: { display: 'none' } }), // to get rid of "Create" button
+        }}
+        readOnlyFields={['originalLocationId']}
+        visibleFields={['originalLocationId', 'finalLocationId']}
+        editable={stripes.hasPerm(EDIT_PERMISSION)}
+        actionSuppression={{ delete: () => true, edit: () => false }}
+        columnMapping={columnMapping}
+        fieldComponents={{
+          finalLocationId: item => (
+            <LocationField
+              {...item.fieldProps}
+              configurationId={configurationId}
+              marginBottom0
+            />
+          ),
+        }}
+        formatter={{
+          originalLocationId: item => <Location location={locationsMap[item.originalLocationId]} />,
+          finalLocationId: item => <Location location={locationsMap[item.finalLocationId]} />,
+        }}
+        onCreate={handleEdit}
+        onUpdate={handleEdit} // only onCreate is really used because of the bug with `id` in EditableList
+        validate={() => { /* validation function must be supplied */ }}
       />;
 };
 
