@@ -1,12 +1,12 @@
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { Pane } from '@folio/stripes/components';
+import { TitleManager } from '@folio/stripes/core';
 
 import { LoadingCentered, ErrorCentered } from '../components';
 import { Content } from './Content';
 import { useCaiaSoftConfigurations } from './useCaiaSoftConfigurations';
 import { NoConfigurations } from './NoConfigurations';
-import { TitleManager } from '@folio/stripes/core';
 
 export const AccessionTables = () => {
   const query = useCaiaSoftConfigurations();
