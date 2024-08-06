@@ -120,7 +120,7 @@
   },
   "dependencies": {
     "@folio/stripes-acq-components": "~5.1.0",
-    "ky": "*",
+    "ky": "^0.23.0",
     "lodash": "^4.17.5",
     "prop-types": "^15.5.10",
     "query-string": "^6.1.0",

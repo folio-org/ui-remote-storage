@@ -53,7 +53,7 @@ describe('on error', () => {
     expect(result.current.configuration).toEqual({});
   });
 
-  it.only('invalidates List query', async () => {
+  it('invalidates List query', async () => {
     server.use(rest.get(url.list, (req, res, ctx) => res(ctx.json({
       configurations: [1, 2, 3],
     }))));
@@ -66,6 +66,6 @@ describe('on error', () => {
     const singleQueryHook = renderAPIHook(() => useSingleQuery({ id: '42' }));
 
     await waitFor(() => singleQueryHook.result.current.isError);
-    await waitFor(() => expect(result.current.isFetching).toBeTruthy());
+    expect(result.current.isFetching).toBeTruthy();
   });
 });
