@@ -15,7 +15,7 @@
     "confirmationModal.create.message": "Opravdu chcete uložit konfiguraci vzdáleného úložiště?",
     "confirmationModal.save": "Uložit",
     "cannotDeleteModal.header": "Nelze smazat lokaci vzdáleného úložiště",
-    "cannotDeleteModal.message": "K této konfiguraci je přidruženo jedno nebo více lokací. Konfiguraci nelze smazat.",
+    "cannotDeleteModal.message": "K této konfiguraci je spojeno jedno nebo více lokací. Konfiguraci nelze smazat.",
     "removingModal.title": "Odstranit {name}",
     "removingModal.message": "Opravdu chcete smazat konfiguraci vzdáleného úložiště?",
     "remove.success": "Konfigurace vzdáleného úložiště byla úspěšně smazána.",
