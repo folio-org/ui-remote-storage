@@ -6,6 +6,7 @@
 * Add HTML page titles for each page in Remote Storage Settings. Refs UIRS-110.
 * Fix lint config and lint issues. Refs UIRS-106.
 * Directly satisfy ky dependency. Refs UIRS-107.
+* Upgrade version for `actions/upload-artifact` from v2 to v4. Ref UIRS-118.
 
 ##[5.1.0](https://github.com/folio-org/ui-remote-storage/tree/v5.1.0) (2024-03-20)
 [Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v5.0.0...v5.1.0)
