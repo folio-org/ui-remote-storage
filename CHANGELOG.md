@@ -1,13 +1,13 @@
 # Change history for ui-remote-storage
 
-## (5.2.0 IN PROGRESS)
+## (6.0.0 IN PROGRESS)
 
 * [UIRS-109](https://issues.folio.org/browse/UIRS-109) Use Save & close button label stripes-component translation key.
 * [UIRS-110](https://issues.folio.org/browse/UIRS-110) Add HTML page titles for each page in Remote Storage Settings.
 * [UIRS-106](https://issues.folio.org/browse/UIRS-106) Fix lint config and lint issues.
 * [UIRS-107](https://issues.folio.org/browse/UIRS-107) Directly satisfy ky dependency. Refs UIRS-107.
 * [UIRS-118](https://issues.folio.org/browse/UIRS-118) Upgrade version for `actions/upload-artifact` from v2 to v4.
-* [UIRS-117](https://issues.folio.org/browse/UIRS-117) Bump "@folio/stripes-acq-components" version to v6.0.0.
+* [UIRS-117](https://issues.folio.org/browse/UIRS-117) *BREAKING* Bump "@folio/stripes-acq-components" version to v6.0.0.
 
 ##[5.1.0](https://github.com/folio-org/ui-remote-storage/tree/v5.1.0) (2024-03-20)
 [Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v5.0.0...v5.1.0)
