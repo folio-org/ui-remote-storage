@@ -1,6 +1,7 @@
 # Change history for ui-remote-storage
 
-## (6.0.0 IN PROGRESS)
+##[6.0.0] (https://github.com/folio-org/ui-remote-storage/tree/v6.0.0) (2024-10-30)
+[Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v5.1.0...v6.0.0)
 
 * [UIRS-109](https://issues.folio.org/browse/UIRS-109) Use Save & close button label stripes-component translation key.
 * [UIRS-110](https://issues.folio.org/browse/UIRS-110) Add HTML page titles for each page in Remote Storage Settings.
