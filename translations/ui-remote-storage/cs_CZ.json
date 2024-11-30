@@ -23,7 +23,7 @@
     "create.success": "Konfigurace vzdáleného úložiště byla úspěšně vytvořena.",
     "create.error": "Při ukládání konfigurace vzdáleného úložiště došlo k chybě.",
     "synchronization.title": "Nastavení synchronizace dat",
-    "synchronization.schedule.title": "Rozvrh synchronizace dat",
+    "synchronization.schedule.title": "Plán synchronizace dat",
     "synchronization.schedule.info": "Spustí se každých",
     "details.credProperties": "Vlastnosti přihlašovacích údajů",
     "edit.success.created": "Konfigurace vzdáleného úložiště byla úspěšně vytvořena.",
