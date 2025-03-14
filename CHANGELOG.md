@@ -1,6 +1,7 @@
 # Change history for ui-remote-storage
 
-## [7.0.0] In progress
+## [7.0.0] (https://github.com/folio-org/ui-remote-storage/tree/v7.0.0) (2025-03-14)
+[Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v6.0.0...v7.0.0)
 
 * *BREAKING* Migrate stripes dependencies to their Sunflower versions. Refs UIRS-122.
 * *BREAKING* Migrate react-intl to v7. Refs UIRS-123.
