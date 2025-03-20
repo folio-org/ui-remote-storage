@@ -1,6 +1,7 @@
 # Change history for ui-remote-storage
 
-## [7.0.1] In progress
+## [7.0.1] (https://github.com/folio-org/ui-remote-storage/tree/v7.0.1) (2025-03-20)
+[Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v7.0.0...v7.0.1)
 
 * Bump `@folio/stripes-acq-components` to 7.0.0. Refs UIRS-126.
 
