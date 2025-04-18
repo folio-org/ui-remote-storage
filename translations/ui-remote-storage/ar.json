@@ -15,7 +15,7 @@
     "confirmationModal.create.message": "هل أنت متأكد من أنك تريد حفظ تهيئة المخزون البعيد؟",
     "confirmationModal.save": "حفظ",
     "cannotDeleteModal.header": "لا يمكن حذف موقع المخزون البعيد",
-    "cannotDeleteModal.message": "إحدى  المواقع أو أكثر ترتبط بهذه التهيئة. لا يمكن حذف التهيئة.",
+    "cannotDeleteModal.message": "أحد المواقع أو أكثر مرتبط بهذه التهيئة. لا يمكن حذف التهيئة.",
     "removingModal.title": "إزالة {name}",
     "removingModal.message": "هل أنت متأكد من أنك تريد حذف تهيئة المخزون البعيد؟",
     "remove.success": "تم حذف تهيئة المخزون البعيد بنجاح.",
@@ -65,7 +65,7 @@
     "synchronization.schedule.info.days": "يتم تشغيله كل {delay} {delay, plural, one {يوم} other {يوماً}}",
     "synchronization.schedule.info.weeks": "يتم تشغيله كل {delay} {delay, plural, one {أسبوع} other {أسبوعاً}}",
     "synchronization.schedule.info.months": "يتم تشغليه كل {delay} {delay, plural, one {شهر}  two { شهراً } few { شهور }other  {شهراً}}",
-    "confirmationModal.configuration.edit.message": "Are you sure you want to change the remote storage configuration?",
-    "confirmationModal.configuration.create.message": "Are you sure you want to create the remote storage configuration?",
+    "confirmationModal.configuration.edit.message": "هل أنت متأكد من أنك تريد تغيير تهيئة المخزون البعيد؟",
+    "confirmationModal.configuration.create.message": "هل أنت متأكد أنك تريد إنشاء تهيئة التخزين البعيد؟",
     "settings.title": "Remote storage settings"
 }
