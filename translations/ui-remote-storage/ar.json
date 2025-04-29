@@ -43,7 +43,7 @@
     "accession-workflow.tooltip": "اختر سير عمل الانضمام المناسب للمقتنيات",
     "accession-workflow.error.undefined": "يجب تحديد تفضيلات سير عمل مقتنيات الانضمام لحفظ التهيئة",
     "accession-workflow.option.change": "تغيير الموقع الدائم",
-    "accession-workflow.option.duplicate": "نسخ المقتنيات",
+    "accession-workflow.option.duplicate": "تكرار المقتنيات",
     "error": "لقد حدث خطأ ما",
     "configurations.title": "التهيئات",
     "permission.settings.remote-storages.view": "الإعدادات (التخزين البعيد): إمكانية عرض إعدادات التخزين البعيد",
