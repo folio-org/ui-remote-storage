@@ -1,5 +1,5 @@
 {
-    "meta.title": "Remote storage",
+    "meta.title": "Віддалене сховище",
     "list.name": "Name",
     "list.providerName": "Provider",
     "list.lastUpdate": "Last Update",
@@ -16,10 +16,10 @@
     "confirmationModal.save": "Save",
     "cannotDeleteModal.header": "Cannot delete Remote Storage location",
     "cannotDeleteModal.message": "One or more locations are associated with this configuration. The configuration cannot be deleted.",
-    "removingModal.title": "Remove {name}",
-    "removingModal.message": "Are you sure you want to delete the remote storage configuration?",
-    "remove.success": "Remote storage configuration was successfully deleted.",
-    "remove.error": "Remote storage configuration was not deleted.",
+    "removingModal.title": "Видалити {name}",
+    "removingModal.message": "Ви впевнені, що хочете видалити конфігурацію віддаленого сховища?",
+    "remove.success": "Конфігурація віддаленого сховища успішно видалена.",
+    "remove.error": "Конфігурація віддаленого сховища не видалена.",
     "create.success": "Конфігурацію Віддаленого сховища успішно створено.",
     "create.error": "Під час збереження конфігурації Віддаленого сховища сталася помилка.",
     "synchronization.title": "Data synchronization settings",
@@ -46,8 +46,8 @@
     "accession-workflow.option.duplicate": "Дублювати дані про фонди (холдінгси)",
     "error": "Something went wrong",
     "configurations.title": "Configurations",
-    "permission.settings.remote-storages.view": "Settings (Remote storage): Can view remote storage settings",
-    "permission.settings.remote-storages.edit": "Settings (Remote storage): Can create, edit, delete remote storage settings",
+    "permission.settings.remote-storages.view": "Налаштування (Віддалене сховище): Перегляд налаштувань віддаленого сховища",
+    "permission.settings.remote-storages.edit": "Налаштування (Віддалене сховище): Створення, редагування та видалення налаштувань віддаленого сховища",
     "accession-tables.title": "Accession tables",
     "accession-tables.empty": "CaiaSoft Accession tables are available after remote storage has been configured.",
     "accession-tables.open": "Open Accession table",
@@ -67,5 +67,5 @@
     "synchronization.schedule.info.months": "Runs every {delay} {delay, plural, one {month} other {months}}",
     "confirmationModal.configuration.edit.message": "Are you sure you want to change the remote storage configuration?",
     "confirmationModal.configuration.create.message": "Are you sure you want to create the remote storage configuration?",
-    "settings.title": "Remote storage settings"
+    "settings.title": "Налаштування віддаленого сховища"
 }
