@@ -58,7 +58,7 @@
     "days": "day(s)",
     "weeks": "week(s)",
     "months": "month(s)",
-    "synchronization.schedule.info.notSet": "Not set",
+    "synchronization.schedule.info.notSet": "Nie ustawiono",
     "synchronization.schedule.info.notValid": "Wartość musi być dodatnią liczbą całkowitą",
     "synchronization.schedule.info.minutes": "Runs every {delay} {delay, plural, one {minute} other {minutes}}",
     "synchronization.schedule.info.hours": "Runs every {delay} {delay, plural, one {hour} other {hours}}",
