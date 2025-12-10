@@ -1,6 +1,8 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { IntlProvider } from 'react-intl';
+
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import RemoteStorageSettings from './RemoteStorageSettings';
 
@@ -27,7 +29,9 @@ jest.mock('@folio/stripes/smart-components', () => ({
 const renderRemoteStorageSettings = () => (
   render(
     <MemoryRouter>
-      <RemoteStorageSettings />
+      <IntlProvider locale="en">
+        <RemoteStorageSettings />
+      </IntlProvider>
     </MemoryRouter>,
   )
 );

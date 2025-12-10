@@ -1,6 +1,6 @@
-import React from 'react';
-import { waitFor, screen, within } from '@testing-library/react';
-import user from '@testing-library/user-event';
+import { act } from 'react';
+import { screen, waitFor, within } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
 import * as components from '@folio/stripes-acq-components';
 
@@ -31,6 +31,7 @@ jest.mock('@folio/stripes/core', () => ({
   useOkapiKy: () => mockKy,
   useStripes: () => ({
     hasPerm: jest.fn().mockReturnValue(true),
+    okapi: { url: 'http://localhost:9130', tenant: 'diku' },
   }),
   IfPermission: props => <>{props.children}</>,
   TitleManager: jest.fn(({ children, ...rest }) => (
@@ -43,7 +44,9 @@ const renderSingleConfiguration = async () => {
   renderConfigurations();
 
   const cell = await screen.findByRole('gridcell', { name: 'RS1' });
-  user.click(cell);
+  await act(async () => {
+    await user.click(cell);
+  });
   await screen.findByRole('heading', { name: /details/ });
 };
 

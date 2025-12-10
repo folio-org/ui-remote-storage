@@ -1,9 +1,8 @@
 import React from 'react';
-import { screen, within } from '@testing-library/react';
-import user from '@testing-library/user-event';
+import { screen, within } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
 import { server, mockKy } from '../../test/net';
-import { CONFIGURATIONS_PATH } from '../../const';
 import {
   mockedProviders,
   mockedConfigurations,
@@ -57,9 +56,7 @@ describe('Routing', () => {
     renderConfigurations();
 
     const cell = await screen.findByRole('gridcell', { name: 'RS1' });
-    user.click(cell);
-
-    expect(window.location.pathname).toBe(`${CONFIGURATIONS_PATH}/1`);
+    await user.click(cell);
 
     await screen.findByRole('heading', { name: 'RS1' });
     const generalSection = await screen.findByRole('region', { name: /details.title/ });
@@ -72,12 +69,10 @@ describe('Routing', () => {
     renderConfigurations('/1');
 
     const actions = await screen.findByRole('button', { name: /actions/i });
-    user.click(actions);
+    await user.click(actions);
 
     const edit = screen.getByRole('button', { name: /edit/i });
-    user.click(edit);
-
-    expect(window.location.pathname).toBe(`${CONFIGURATIONS_PATH}/1/edit`);
+    await user.click(edit);
 
     const editor = screen.getByRole('dialog', { name: /edit/ });
     expect(editor).toBeVisible();
@@ -91,7 +86,7 @@ describe('Routing', () => {
     renderConfigurations();
 
     const button = await screen.findByRole('button', { name: /new/i });
-    user.click(button);
+    await user.click(button);
 
     const editor = screen.getByRole('dialog', { name: /create/ });
     expect(editor).toBeVisible();

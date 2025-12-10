@@ -1,11 +1,10 @@
 import React from 'react';
-import { screen, waitFor, within } from '@testing-library/react';
-import user from '@testing-library/user-event';
-import { configure } from '@testing-library/dom';
+import { screen, waitFor, within } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { configure } from '@folio/jest-config-stripes/testing-library/dom';
 
 import * as components from '@folio/stripes-acq-components';
 
-import { byRole } from 'testing-library-selector';
 import { mockKy, server } from '../../test/net';
 import {
   renderAccessionTables,
@@ -61,8 +60,6 @@ beforeAll(async () => {
   jest.spyOn(components, 'useShowCallout').mockImplementation(() => mockShowCallout);
 });
 
-const editButton = byRole('button', { name: /edit/ });
-
 const expectAccessionTablesError = async () => {
   renderAccessionTables();
 
@@ -95,7 +92,7 @@ describe('Fetching mappings', () => {
 
     row = await screen.findByRole('row', { name: /Local location 1/ });
 
-    user.click(editButton.get(row));
+    await user.click(within(row).getByRole('button', { name: /edit/ }));
   });
 
 
@@ -105,9 +102,9 @@ describe('Fetching mappings', () => {
     await waitFor(() => expect(mockShowCallout).toBeCalledWith(expect.objectContaining({ type: 'error' })));
   });
 
-  /* it('disable select button, in case of server error', async () => {
-    waitFor(() => {
+  it('disable select button, in case of server error', async () => {
+    await waitFor(() => {
       expect(within(row).getByRole('button', { expanded: false })).toHaveAttribute('disabled');
     });
-  }); */
+  });
 });

@@ -3,7 +3,9 @@ import { MemoryRouter } from 'react-router-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider as ReduxProvider } from 'react-redux';
 import { reducer as formReducer } from 'redux-form';
-import { render } from '@testing-library/react';
+import { IntlProvider } from 'react-intl';
+
+import { render } from '@folio/jest-config-stripes/testing-library/react';
 
 import { Provider, server, rest, mockKy, API_ORIGIN, API_BASE } from '../../test/net';
 import { AccessionTables } from '../AccessionTables';
@@ -49,9 +51,11 @@ export const renderAccessionTables = () => {
 
   render(
     <MemoryRouter>
-      <ReduxProvider store={store}>
-        <AccessionTables />
-      </ReduxProvider>
+      <IntlProvider locale="en">
+        <ReduxProvider store={store}>
+          <AccessionTables />
+        </ReduxProvider>
+      </IntlProvider>
     </MemoryRouter>,
     { wrapper: Provider },
   );
