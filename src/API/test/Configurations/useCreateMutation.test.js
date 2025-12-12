@@ -53,9 +53,9 @@ describe('Invalidation of List query', () => {
 
     result.current.mutate(data);
 
-    await waitFor(() => listQueryHook.result.current.dataUpdatedAt > fetchCountBefore);
-
-    return true;
+    await waitFor(() => {
+      expect(listQueryHook.result.current.dataUpdatedAt).toBeGreaterThan(fetchCountBefore);
+    });
   };
 
   beforeEach(() => {
@@ -65,12 +65,12 @@ describe('Invalidation of List query', () => {
   });
 
   it('is made on success', async () => {
-    expect(await checkListInvalidatedOn('success')).toBeTruthy();
+    await checkListInvalidatedOn();
   });
 
   it('is made on error', async () => {
     server.use(rest.post(url.create, ERROR_RESPONSE));
 
-    expect(await checkListInvalidatedOn('error')).toBeTruthy();
+    await checkListInvalidatedOn();
   });
 });

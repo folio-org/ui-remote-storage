@@ -31,7 +31,7 @@ it('DELETESs data from server', async () => {
 
 
 describe('Invalidation of List query', () => {
-  const checkListInvalidatedOn = async (status) => {
+  const checkListInvalidatedOn = async () => {
     const { result } = renderAPIHook(() => useDeleteMutation({ id }));
 
     const listQueryHook = renderAPIHook(useListQuery);
@@ -43,11 +43,9 @@ describe('Invalidation of List query', () => {
 
     result.current.mutate();
 
-    await waitFor(() => result.current.status === status);
-
-    await waitFor(() => listQueryHook.result.current.dataUpdatedAt > fetchCountBefore);
-
-    return true;
+    await waitFor(() => {
+      expect(listQueryHook.result.current.dataUpdatedAt).toBeGreaterThan(fetchCountBefore);
+    });
   };
 
   beforeEach(() => {
@@ -57,12 +55,12 @@ describe('Invalidation of List query', () => {
   });
 
   it('is made on success', async () => {
-    expect(await checkListInvalidatedOn('success')).toBeTruthy();
+    await checkListInvalidatedOn();
   });
 
   it('is made on error', async () => {
     server.use(rest.delete(url.delete, ERROR_RESPONSE));
 
-    expect(await checkListInvalidatedOn('error')).toBeTruthy();
+    await checkListInvalidatedOn();
   });
 });
