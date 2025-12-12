@@ -1,3 +1,5 @@
+import { waitFor } from '@folio/jest-config-stripes/testing-library/react';
+
 import { server, rest, API_BASE } from '../../../test/net';
 import { renderAPIHook, ERROR_RESPONSE } from '../setup'; // must be imported before the tested hooks
 
@@ -31,28 +33,30 @@ beforeEach(() => {
 
 
 it('PUTs data to server', async () => {
-  const { result, waitFor } = renderAPIHook(() => useUpdateMutation({ id: data.id }));
+  const { result } = renderAPIHook(() => useUpdateMutation({ id: data.id }));
 
   result.current.mutate(data);
 
-  await waitFor(() => result.current.isSuccess);
+  await waitFor(() => expect(result.current.isSuccess).toBeTruthy());
   expect(request?.body).toEqual(data);
 });
 
 describe('Invalidation of List query', () => {
-  const checkListInvalidatedOn = async (status) => {
-    const { result, waitFor } = renderAPIHook(() => useUpdateMutation({ id: data.id }));
+  const checkListInvalidatedOn = async () => {
+    const { result } = renderAPIHook(() => useUpdateMutation({ id: data.id }));
 
     const listQueryHook = renderAPIHook(useListQuery);
 
     await waitFor(() => listQueryHook.result.current.isFetching);
     await waitFor(() => !listQueryHook.result.current.isFetching && listQueryHook.result.current.isSuccess);
 
+    const fetchCountBefore = listQueryHook.result.current.dataUpdatedAt;
+
     result.current.mutate(data);
 
-    await waitFor(() => result.current.status === status);
-
-    return listQueryHook.result.current.isFetching;
+    await waitFor(() => {
+      expect(listQueryHook.result.current.dataUpdatedAt).toBeGreaterThan(fetchCountBefore);
+    });
   };
 
   beforeEach(() => {
@@ -62,12 +66,12 @@ describe('Invalidation of List query', () => {
   });
 
   it('is made on success', async () => {
-    expect(await checkListInvalidatedOn('success')).toBeTruthy();
+    await checkListInvalidatedOn();
   });
 
   it('is made on error', async () => {
     server.use(rest.put(url.update, ERROR_RESPONSE));
 
-    expect(await checkListInvalidatedOn('error')).toBeTruthy();
+    await checkListInvalidatedOn();
   });
 });

@@ -1,6 +1,6 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import user from '@testing-library/user-event';
+import { screen } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
 import { server, rest } from '../../test/net';
 import { url, renderAccessionTables } from './setup';
@@ -56,7 +56,7 @@ it('has only CaiaSoft options', async () => {
 
   const selection = screen.getByRole('button', { expanded: false });
 
-  user.click(selection);
+  await user.click(selection);
 
   expect(screen.getByRole('option', { name: 'CaiaSoft Configuration 1' })).toBeVisible();
   expect(screen.getByRole('option', { name: 'CaiaSoft Configuration 2' })).toBeVisible();

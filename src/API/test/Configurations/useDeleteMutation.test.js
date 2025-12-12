@@ -1,3 +1,5 @@
+import { waitFor } from '@folio/jest-config-stripes/testing-library/react';
+
 import { server, rest, API_BASE } from '../../../test/net';
 import { renderAPIHook, ERROR_RESPONSE } from '../setup'; // must be imported before the tested hooks
 
@@ -20,7 +22,7 @@ beforeEach(() => {
 
 
 it('DELETESs data from server', async () => {
-  const { result, waitFor } = renderAPIHook(() => useDeleteMutation({ id }));
+  const { result } = renderAPIHook(() => useDeleteMutation({ id }));
 
   result.current.mutate();
 
@@ -29,19 +31,21 @@ it('DELETESs data from server', async () => {
 
 
 describe('Invalidation of List query', () => {
-  const checkListInvalidatedOn = async (status) => {
-    const { result, waitFor } = renderAPIHook(() => useDeleteMutation({ id }));
+  const checkListInvalidatedOn = async () => {
+    const { result } = renderAPIHook(() => useDeleteMutation({ id }));
 
     const listQueryHook = renderAPIHook(useListQuery);
 
     await waitFor(() => listQueryHook.result.current.isFetching);
     await waitFor(() => !listQueryHook.result.current.isFetching && listQueryHook.result.current.isSuccess);
 
+    const fetchCountBefore = listQueryHook.result.current.dataUpdatedAt;
+
     result.current.mutate();
 
-    await waitFor(() => result.current.status === status);
-
-    return listQueryHook.result.current.isFetching;
+    await waitFor(() => {
+      expect(listQueryHook.result.current.dataUpdatedAt).toBeGreaterThan(fetchCountBefore);
+    });
   };
 
   beforeEach(() => {
@@ -51,12 +55,12 @@ describe('Invalidation of List query', () => {
   });
 
   it('is made on success', async () => {
-    expect(await checkListInvalidatedOn('success')).toBeTruthy();
+    await checkListInvalidatedOn();
   });
 
   it('is made on error', async () => {
     server.use(rest.delete(url.delete, ERROR_RESPONSE));
 
-    expect(await checkListInvalidatedOn('error')).toBeTruthy();
+    await checkListInvalidatedOn();
   });
 });

@@ -1,3 +1,5 @@
+import { waitFor } from '@folio/jest-config-stripes/testing-library/react';
+
 // This should be imported before the tested hooks
 import { server, rest, API_BASE } from '../../../test/net';
 import { renderAPIHook, ERROR_RESPONSE } from '../setup'; // must be imported before the tested hooks
@@ -21,11 +23,11 @@ describe('on success', () => {
   });
 
   it('returns configuration by id when loaded', async () => {
-    const { result, waitFor } = renderAPIHook(() => useSingleQuery({ id }));
+    const { result } = renderAPIHook(() => useSingleQuery({ id }));
 
     expect(result.current.isLoading).toBeTruthy();
 
-    await waitFor(() => result.current.isSuccess);
+    await waitFor(() => expect(result.current.isSuccess).toBeTruthy());
     expect(result.current.configuration).toEqual({
       field1: 'field1',
       field2: 'field2',
@@ -47,9 +49,9 @@ describe('on error', () => {
   });
 
   it('returns empty object', async () => {
-    const { result, waitFor } = renderAPIHook(() => useSingleQuery({ id: '42' }));
+    const { result } = renderAPIHook(() => useSingleQuery({ id: '42' }));
 
-    await waitFor(() => result.current.isError);
+    await waitFor(() => expect(result.current.isError).toBeTruthy());
     expect(result.current.configuration).toEqual({});
   });
 
@@ -58,14 +60,19 @@ describe('on error', () => {
       configurations: [1, 2, 3],
     }))));
 
-    const { result, waitFor } = renderAPIHook(useListQuery);
+    const { result } = renderAPIHook(useListQuery);
 
     await waitFor(() => result.current.isFetching);
-    await waitFor(() => !result.current.isFetching && result.current.isSuccess);
+    await waitFor(() => expect(!result.current.isFetching && result.current.isSuccess).toBeTruthy());
+
+    const fetchCountBefore = result.current.dataUpdatedAt;
 
     const singleQueryHook = renderAPIHook(() => useSingleQuery({ id: '42' }));
 
-    await waitFor(() => singleQueryHook.result.current.isError);
-    expect(result.current.isFetching).toBeTruthy();
+    await waitFor(() => expect(singleQueryHook.result.current.isError).toBeTruthy());
+
+    await waitFor(() => {
+      expect(result.current.dataUpdatedAt > fetchCountBefore).toBeTruthy();
+    });
   });
 });

@@ -1,7 +1,7 @@
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 
-import { render } from '@testing-library/react';
+import { render } from '@folio/jest-config-stripes/testing-library/react';
 
 import { CONFIGURATIONS_PATH } from '../../const';
 import { Configurations } from '../Configurations';
@@ -10,15 +10,13 @@ import { API_BASE, Provider, rest } from '../../test/net';
 export const renderConfigurations = route => {
   const path = [CONFIGURATIONS_PATH, route].join('');
 
-  window.history.pushState({}, 'Test page', path);
-
   return render(
     (
-      <BrowserRouter>
+      <MemoryRouter initialEntries={[path]}>
         <IntlProvider locale="en">
           <Configurations />
         </IntlProvider>
-      </BrowserRouter>
+      </MemoryRouter>
     ),
     { wrapper: Provider },
   );

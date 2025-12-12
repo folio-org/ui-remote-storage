@@ -1,3 +1,5 @@
+import { waitFor } from '@folio/jest-config-stripes/testing-library/react';
+
 import { server, rest, API_BASE } from '../../../test/net';
 import { renderAPIHook, ERROR_RESPONSE } from '../setup'; // must be imported before the tested hooks
 
@@ -14,11 +16,11 @@ beforeEach(() => {
 
 
 it('returns list of mappings when loaded', async () => {
-  const { result, waitFor } = renderAPIHook(useListQuery);
+  const { result } = renderAPIHook(useListQuery);
 
   expect(result.current.isLoading).toBeTruthy();
 
-  await waitFor(() => result.current.isSuccess);
+  await waitFor(() => expect(result.current.isSuccess).toBeTruthy());
   expect(result.current.mappings).toEqual([1, 2, 3]);
 });
 
@@ -32,8 +34,8 @@ it('returns empty list while loading', () => {
 it('returns empty list on error', async () => {
   server.use(rest.get(url, ERROR_RESPONSE));
 
-  const { result, waitFor } = renderAPIHook(useListQuery);
+  const { result } = renderAPIHook(useListQuery);
 
-  await waitFor(() => result.current.isError);
+  await waitFor(() => expect(result.current.isError).toBeTruthy());
   expect(result.current.mappings).toEqual([]);
 });

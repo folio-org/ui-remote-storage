@@ -1,8 +1,10 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen, within } from '@testing-library/react';
-import user from '@testing-library/user-event';
+import { IntlProvider } from 'react-intl';
 import { QueryClient, QueryClientProvider } from 'react-query';
+
+import { render, screen, within } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
 import { Editor } from './Editor';
 
@@ -42,40 +44,42 @@ const renderRemoteStorageForm = ({
 } = {}) => render(
   <QueryClientProvider client={new QueryClient()}>
     <MemoryRouter>
-      <Editor
-        title={title}
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-        onClose={onClose}
-        pristine={pristine}
-        submitting={submitting}
-      />
+      <IntlProvider locale="en">
+        <Editor
+          title={title}
+          initialValues={initialValues}
+          onSubmit={onSubmit}
+          onClose={onClose}
+          pristine={pristine}
+          submitting={submitting}
+        />
+      </IntlProvider>
     </MemoryRouter>
   </QueryClientProvider>,
 );
 
 describe('Editor', () => {
-  it('shows Dematic SD specific fields if Dematic SD chosen', () => {
+  it('shows Dematic SD specific fields if Dematic SD chosen', async () => {
     renderRemoteStorageForm();
 
     const providers = screen.getByRole('combobox', { name: 'ui-remote-storage.details.providerName' });
     const dematicSdOption = within(providers).getByRole('option', { name: DEMATIC_SD });
     const otherOptions = within(providers).getAllByRole('option', { name: text => text !== DEMATIC_SD });
 
-    user.selectOptions(providers, dematicSdOption);
+    await user.selectOptions(providers, dematicSdOption);
     expect(screen.getByRole('textbox', { name: /statusUrl/ })).toBeVisible();
     expect(screen.getByRole('region', { name: /synchronization/ })).toBeVisible();
 
-    otherOptions.forEach(option => {
+    otherOptions.forEach(async option => {
       if (option.disabled) return; // for the 'Select' placeholder
 
-      user.selectOptions(providers, option);
+      await user.selectOptions(providers, option);
       expect(screen.queryByRole('textbox', { name: /statusUrl/ })).not.toBeInTheDocument();
       expect(screen.queryByRole('region', { name: /synchronization/ })).not.toBeInTheDocument();
     });
   });
 
-  it('shows CaiaSoft specific fields if CaiaSoft is chosen', () => {
+  it('shows CaiaSoft specific fields if CaiaSoft is chosen', async () => {
     const query = {
       get credProperties() {
         return screen.queryByLabelText('ui-remote-storage.details.credProperties');
@@ -94,7 +98,7 @@ describe('Editor', () => {
     const ciasoftOption = within(providers).getByRole('option', { name: CAIASOFT });
     const otherOptions = within(providers).getAllByRole('option', { name: text => text !== CAIASOFT });
 
-    user.selectOptions(providers, ciasoftOption);
+    await user.selectOptions(providers, ciasoftOption);
 
     expect(query.credProperties).toBeVisible();
 
@@ -104,10 +108,10 @@ describe('Editor', () => {
     expect(query.returningWorkflowSection).toBeVisible();
     expect(within(query.returningWorkflowSection).getByRole('combobox')).toBeVisible();
 
-    otherOptions.forEach(option => {
+    otherOptions.forEach(async option => {
       if (option.disabled) return; // for the 'Select' placeholder
 
-      user.selectOptions(providers, option);
+      await user.selectOptions(providers, option);
       expect(query.credProperties).not.toBeInTheDocument();
       expect(query.accessionWorkflowSection).not.toBeInTheDocument();
       expect(query.returningWorkflowSection).not.toBeInTheDocument();
