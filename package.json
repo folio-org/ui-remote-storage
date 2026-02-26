@@ -34,7 +34,8 @@
         "displayName": "Settings (Remote storages): Module is enabled.",
         "visible": false,
         "subPermissions": [
-          "settings.enabled"
+          "settings.enabled",
+          "stripes-core.settings.read"
         ]
       },
       {
