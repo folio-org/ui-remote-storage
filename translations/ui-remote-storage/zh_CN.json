@@ -15,7 +15,7 @@
     "confirmationModal.create.message": "确定要保存远程存储配置吗？",
     "confirmationModal.save": "保存",
     "cannotDeleteModal.header": "无法删除远程存储馆藏地",
-    "cannotDeleteModal.message": "一个或多个位置与此配置相关联。无法删除配置。",
+    "cannotDeleteModal.message": "一个或多个馆藏地与此配置相关联。无法删除配置。",
     "removingModal.title": "移除{name}",
     "removingModal.message": "确定要删除远程存储配置吗？",
     "remove.success": "远程存储配置已成功删除。",
