@@ -44,7 +44,7 @@
     "accession-workflow.error.undefined": "Accession holdings workflow preference must be selected to save configuration",
     "accession-workflow.option.change": "Change permanent location",
     "accession-workflow.option.duplicate": "Duplicate holdings",
-    "error": "Something went wrong",
+    "error": "Kaut kas nogāja greizi.",
     "configurations.title": "Configurations",
     "permission.settings.remote-storages.view": "Settings (Remote storage): Can view remote storage settings",
     "permission.settings.remote-storages.edit": "Settings (Remote storage): Can create, edit, delete remote storage settings",
