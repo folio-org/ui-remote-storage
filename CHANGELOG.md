@@ -1,6 +1,10 @@
 # Change history for ui-remote-storage
 
-## [7.1.0] In progress
+## IN PROGRESS
+
+
+## [7.1.0] (https://github.com/folio-org/ui-remote-storage/tree/v7.1.0) (2026-04-16)
+[Full Changelog](https://github.com/folio-org/ui-remote-storage/compare/v7.0.0...v7.1.0)
 
 * Bump `@folio/stripes-acq-components` to 7.0.0. Refs UIRS-126.
 * Migrate from `@folio/stripes-acq-components/jest.config` to `@folio/jest-config-stripes`. Refs UIRS-126.
